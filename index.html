@@ -77,8 +77,74 @@
   <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
 
 
-  <div class="media mb-5">
-    <div class="media-body">
+  <div class="mb-5">
+      <h4><a href="/2015/12/05/nvm/">使用 nvm 管理 Node.js</a></h4>
+
+      <div class="text-secondary mb-3">
+        <div class="italic mb-2">By Garryshield, Created at 2015-12-05, Updated at 2015-12-05</div>
+        
+        
+
+        
+      </div>
+
+      <article class="article mb-5">
+        <section>
+          
+            <p>同时开发多个项目，项目的需求不同，进而依赖不同版本的 Node.js 运行环境。<a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">nvm</a> 版本管理工具能够很方便的切换，而不用每次全局修改。</p>
+<h2 id="1-安装-amp-更新"><a href="#1-安装-amp-更新" class="headerlink" title="1. 安装 &amp; 更新"></a>1. 安装 &amp; 更新</h2><p>建议先删除系统安装的 node 和 npm，完全使用 nvm 来管理。<br>以 MacOS 为例：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">brew uninstall node; </span><br><span class="line"><span class="comment"># or `brew uninstall --force node` which removes all versions</span></span><br><span class="line">brew prune;</span><br><span class="line">rm -rf /opt/<span class="built_in">local</span>/bin/node /opt/<span class="built_in">local</span>/include/node /opt/<span class="built_in">local</span>/lib/node_modules</span><br><span class="line">rm -rf /usr/<span class="built_in">local</span>/bin/npm /usr/<span class="built_in">local</span>/share/man/man1/node.1 /usr/<span class="built_in">local</span>/lib/dtrace/node.d</span><br><span class="line">rm -rf ~/.npm ~/.npmrc ~/.node-gyp</span><br></pre></td></tr></table></figure></p>
+<p>安装 &amp; 升级 nvm<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</span><br></pre></td></tr></table></figure></p>
+          
+        </section>
+      </article>
+
+      <div class="mt-4">
+          <a href="/2015/12/05/nvm/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+      </div>
+  </div>
+
+  <div class="mb-5">
+      <h4><a href="/2015/10/05/mac-screen-recorder-tool-kap/">Mac 开源的录屏工具 - KAP</a></h4>
+
+      <div class="text-secondary mb-3">
+        <div class="italic mb-2">By Garryshield, Created at 2015-10-05, Updated at 2015-10-05</div>
+        
+        
+        <dl class="tags mb-1">
+            <dt>Tags:</dt>
+            
+              <dd><a href="/tags/#Gif">Gif</a></dd>
+            
+              <dd><a href="/tags/#Kap">Kap</a></dd>
+            
+        </dl>
+        
+
+        
+        <dl class="tags mb-1">
+            <dt>Categories:</dt>
+            
+              <dd><a href="/categories/#MacOS">MacOS</a></dd>
+            
+        </dl>
+        
+      </div>
+
+      <article class="article mb-5">
+        <section>
+          
+            <p><img src="/2015/10/05/mac-screen-recorder-tool-kap/assets/logo.svg" width="100" title="Kap"></p>
+<p><a href="https://getkap.co/" target="_blank" rel="noopener">Kap</a> 是一个开源的录屏工具，支持导出 GIF，MP4，WebM，APNG。同时可以自己编写插件用来分享，转化…<br>官网： <a href="https://getkap.co/" target="_blank" rel="noopener">Kap</a><br>GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="noopener">Kap GitHub</a></p>
+          
+        </section>
+      </article>
+
+      <div class="mt-4">
+          <a href="/2015/10/05/mac-screen-recorder-tool-kap/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+      </div>
+  </div>
+
+  <div class="mb-5">
       <h4><a href="/2015/09/12/vs-code-custom-snippets/">VS Code 创建代码片段</a></h4>
 
       <div class="text-secondary mb-3">
@@ -103,21 +169,23 @@
         
       </div>
 
-      
-        <div><p>Snippet，也即代码段，指的是能够帮助输入重复代码模式，比如循环或条件语句的模板。</p>
-<p>通过 Snippet 我们仅仅输入一小段字符串，就可以在代码段引擎的帮助下，生成预定义的模板代码，接着我们还可以通过在预定义的光标位置之间跳转，来快速补全模板。</p>
+      <article class="article mb-5">
+        <section>
+          
+            <p>Snippet 即代码段，指的是能够帮助输入重复代码模式，比如循环或条件语句的模板。</p>
+<p>通过 Snippet 我们仅仅输入一小段字符串「prefix」，就可以在代码段引擎的帮助下，生成预定义的模板代码，接着我们还可以通过在预定义的光标位置之间跳转，来快速补全模板。</p>
 <p>当然，看图更易懂。下图将 aja 补全为 JQuery 的 ajax() 方法，并通过光标的跳转，快速补全了待填键值对：</p>
-<p><img src="/2015/09/12/vs-code-custom-snippets/Kapture_2018-07-20_at_22.57.09.gif" class="border img-fluid" title="ajax snippet"><br></div>
-      
+<p><img src="/2015/09/12/vs-code-custom-snippets/assets/Kapture_2018-07-20_at_22.57.09.gif" class="border img-fluid" title="ajax snippet"><br>
+          
+        </section>
+      </article>
 
       <div class="mt-4">
           <a href="/2015/09/12/vs-code-custom-snippets/" class="btn btn-sm btn-outline-primary">READ MORE</a>
       </div>
-    </div>
   </div>
 
-  <div class="media mb-5">
-    <div class="media-body">
+  <div class="mb-5">
       <h4><a href="/2015/08/24/linux-command-tree/">Linux 命令 - Tree</a></h4>
 
       <div class="text-secondary mb-3">
@@ -142,22 +210,24 @@
         
       </div>
 
-      
-        <div><p>Linux tree 命令用于以树状图列出目录的内容。</p>
+      <article class="article mb-5">
+        <section>
+          
+            <p>Linux tree 命令用于以树状图列出目录的内容。</p>
 <p>执行 <code>tree</code> 指令，它会列出指定目录下的所有文件，包括子目录里的文件。</p>
-<h2 id="常用："><a href="#常用：" class="headerlink" title="常用："></a>常用：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-a              所有文件包括隐藏文件</span><br><span class="line">-d              只显示目录</span><br><span class="line">-L level        只显示第几级</span><br><span class="line">-P pattern      只显示匹配的文件</span><br><span class="line">-I pattern      不显示匹配的文件</span><br><span class="line">-o filename     输出到文件，而不是 stdout             </span><br></pre></td></tr></table></figure>
-<h2 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h2><h6 id="列出目录-第一级文件名"><a href="#列出目录-第一级文件名" class="headerlink" title="列出目录 ./ 第一级文件名"></a>列出目录 ./ 第一级文件名</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tree -L 1 ./</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./</span><br><span class="line">├── _config.yml</span><br><span class="line">├── node_modules</span><br><span class="line">├── package-lock.json</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── <span class="built_in">source</span></span><br><span class="line">└── themes</span><br><span class="line"></span><br><span class="line">4 directories, 3 files</span><br></pre></td></tr></table></figure></div>
-      
+<h2 id="1-常用"><a href="#1-常用" class="headerlink" title="1. 常用"></a>1. 常用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-a              所有文件包括隐藏文件</span><br><span class="line">-d              只显示目录</span><br><span class="line">-L level        只显示第几级</span><br><span class="line">-P pattern      只显示匹配的文件</span><br><span class="line">-I pattern      不显示匹配的文件</span><br><span class="line">-o filename     输出到文件，而不是 stdout             </span><br></pre></td></tr></table></figure>
+<h2 id="2-实例"><a href="#2-实例" class="headerlink" title="2. 实例"></a>2. 实例</h2><h4 id="2-1-层级"><a href="#2-1-层级" class="headerlink" title="2.1. 层级"></a>2.1. 层级</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 列出目录 ./ 第一级文件名</span><br><span class="line">tree -L 1 ./</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./</span><br><span class="line">├── _config.yml</span><br><span class="line">├── node_modules</span><br><span class="line">├── package-lock.json</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── <span class="built_in">source</span></span><br><span class="line">└── themes</span><br><span class="line"></span><br><span class="line">4 directories, 3 files</span><br></pre></td></tr></table></figure>
+          
+        </section>
+      </article>
 
       <div class="mt-4">
           <a href="/2015/08/24/linux-command-tree/" class="btn btn-sm btn-outline-primary">READ MORE</a>
       </div>
-    </div>
   </div>
 
-  <div class="media mb-5">
-    <div class="media-body">
+  <div class="mb-5">
       <h4><a href="/2015/08/24/create-you-now-blog-with-hexo/">使用 Hexo 创建博客</a></h4>
 
       <div class="text-secondary mb-3">
@@ -182,25 +252,27 @@
         
       </div>
 
-      
-        <div><p><img src="/2015/08/24/create-you-now-blog-with-hexo/logo.svg" width="200" title="Hexo blog framework"></p>
+      <article class="article mb-5">
+        <section>
+          
+            <p><img src="/2015/08/24/create-you-now-blog-with-hexo/assets/logo.svg" width="200" title="Hexo blog framework"></p>
 <p>了解过的静态博客框架有 <code>Hexo</code>，<code>Jekyll</code>，<code>Hugo</code> 几种。</p>
 <ol>
-<li><code>Hexo</code> 基于 <code>NodeJs</code></li>
+<li><code>Hexo</code> 基于 <code>Node.js</code></li>
 <li><code>Jekyll</code> 基于 <code>Ruby</code>，由 <code>Github</code> 开发用来服务于 <code>GitHub pages</code></li>
 <li><code>Hugo</code> 基于 <code>Go</code></li>
 </ol>
-<p>静态站点框架的基本思路是本地创建然后生成静态页面后部署到服务器上。<br>这样做的好处是服务器不需要做类似页面处理，数据库处理之类的工作，只需要发送 Html, css, js, image…<br></div>
-      
+<p>静态站点框架的基本思路是本地创建然后生成静态页面后部署到服务器上。<br>这样做的好处是服务器不需要做类似页面处理，数据库处理之类的工作，只需要发送 Html, css, js, image…<br>
+          
+        </section>
+      </article>
 
       <div class="mt-4">
           <a href="/2015/08/24/create-you-now-blog-with-hexo/" class="btn btn-sm btn-outline-primary">READ MORE</a>
       </div>
-    </div>
   </div>
 
-  <div class="media mb-5">
-    <div class="media-body">
+  <div class="mb-5">
       <h4><a href="/2015/07/21/grunt-task-runner/">任务自动管理工具 GRUNT</a></h4>
 
       <div class="text-secondary mb-3">
@@ -212,7 +284,7 @@
             
               <dd><a href="/tags/#Grunt">Grunt</a></dd>
             
-              <dd><a href="/tags/#NodeJS">NodeJS</a></dd>
+              <dd><a href="/tags/#Node.js">Node.js</a></dd>
             
               <dd><a href="/tags/#Javascript">Javascript</a></dd>
             
@@ -229,20 +301,22 @@
         
       </div>
 
-      
-        <div><p><img src="/2015/07/21/grunt-task-runner/grunt-logo.svg" width="200" title="The JavaScript Task Runner"></p>
+      <article class="article mb-5">
+        <section>
+          
+            <p><img src="/2015/07/21/grunt-task-runner/assets/grunt-logo.svg" width="200" title="The JavaScript Task Runner"></p>
 <p>在前端的开发过程中，经常会遇到一些重复性的任务，比如合并文件、压缩代码、检查语法错误、将Less代码转成CSS代码等等。<br>通常，我们需要使用不同的工具，来完成不同的任务，既重复劳动又非常耗时。<br>Grunt就是为了解决这个问题而发明的工具，可以帮助我们自动管理和运行各种任务。</p>
-<p>简单说，Grunt是一个自动任务运行器，会按照预先设定的顺序自动运行一系列的任务。<br>这可以简化工作流程，减轻重复性工作带来的负担。<br></div>
-      
+<p>简单说，Grunt是一个自动任务运行器，会按照预先设定的顺序自动运行一系列的任务。<br>这可以简化工作流程，减轻重复性工作带来的负担。<br>
+          
+        </section>
+      </article>
 
       <div class="mt-4">
           <a href="/2015/07/21/grunt-task-runner/" class="btn btn-sm btn-outline-primary">READ MORE</a>
       </div>
-    </div>
   </div>
 
-  <div class="media mb-5">
-    <div class="media-body">
+  <div class="mb-5">
       <h4><a href="/2015/07/19/demo/">Blog主题功能演示</a></h4>
 
       <div class="text-secondary mb-3">
@@ -267,9 +341,11 @@
         
       </div>
 
-      
-        <div><h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment">###### CONFIG</span></span><br><span class="line">ACCEPTED_HOSTS=<span class="string">"/root/.hag_accepted.conf"</span></span><br><span class="line">BE_VERBOSE=<span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$UID</span>"</span> -ne 0 ]</span><br><span class="line"></span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"> <span class="built_in">echo</span> <span class="string">"Superuser rights required"</span></span><br><span class="line"> <span class="built_in">exit</span> 2</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">genApacheConf</span></span>()&#123;</span><br><span class="line"> <span class="built_in">echo</span> -e <span class="string">"# Host <span class="variable">$&#123;HOME_DIR&#125;</span><span class="variable">$1</span>/<span class="variable">$2</span> :"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="相册"><a href="#相册" class="headerlink" title="相册"></a>相册</h2>
+      <article class="article mb-5">
+        <section>
+          
+            <h2 id="1-代码块"><a href="#1-代码块" class="headerlink" title="1. 代码块"></a>1. 代码块</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment">###### CONFIG</span></span><br><span class="line">ACCEPTED_HOSTS=<span class="string">"/root/.hag_accepted.conf"</span></span><br><span class="line">BE_VERBOSE=<span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$UID</span>"</span> -ne 0 ]</span><br><span class="line"></span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"> <span class="built_in">echo</span> <span class="string">"Superuser rights required"</span></span><br><span class="line"> <span class="built_in">exit</span> 2</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">genApacheConf</span></span>()&#123;</span><br><span class="line"> <span class="built_in">echo</span> -e <span class="string">"# Host <span class="variable">$&#123;HOME_DIR&#125;</span><span class="variable">$1</span>/<span class="variable">$2</span> :"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-相册"><a href="#2-相册" class="headerlink" title="2. 相册"></a>2. 相册</h2>
 <div class="gallery">
 <div class="row gutters-5px justify-content-center">
     
@@ -323,19 +399,19 @@
     
 </div>
 </div>
-<h2 id="用户输入"><a href="#用户输入" class="headerlink" title="用户输入"></a>用户输入</h2><p>To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<br>To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd></p>
-<h2 id="行内代码块"><a href="#行内代码块" class="headerlink" title="行内代码块"></a>行内代码块</h2><p>For example, <code>&lt;section&gt;</code> should be wrapped as inline.</p>
-</div>
-      
+<h2 id="3-用户输入"><a href="#3-用户输入" class="headerlink" title="3. 用户输入"></a>3. 用户输入</h2><p>To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<br>To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd></p>
+<h2 id="4-行内代码块"><a href="#4-行内代码块" class="headerlink" title="4. 行内代码块"></a>4. 行内代码块</h2><p>For example, <code>&lt;section&gt;</code> should be wrapped as inline.</p>
+
+          
+        </section>
+      </article>
 
       <div class="mt-4">
           <a href="/2015/07/19/demo/" class="btn btn-sm btn-outline-primary">READ MORE</a>
       </div>
-    </div>
   </div>
 
-  <div class="media mb-5">
-    <div class="media-body">
+  <div class="mb-5">
       <h4><a href="/2015/07/17/genesis/">写在最前面！</a></h4>
 
       <div class="text-secondary mb-3">
@@ -360,16 +436,19 @@
         
       </div>
 
-      
-        <div><h2 id="写在最前面！"><a href="#写在最前面！" class="headerlink" title="写在最前面！"></a>写在最前面！</h2><p>折腾 折腾 折腾 一直在折腾。<br>芳华落尽，风轻云淡。<br>默然回首才发现什么都没有改变，什么都没有留下。<br>去他妈的。<br>我要在这里安家。</p>
+      <article class="article mb-5">
+        <section>
+          
+            <h2 id="写在最前面！"><a href="#写在最前面！" class="headerlink" title="写在最前面！"></a>写在最前面！</h2><p>折腾 折腾 折腾 一直在折腾。<br>芳华落尽，风轻云淡。<br>默然回首才发现什么都没有改变，什么都没有留下。<br>去他妈的。<br>我要在这里安家。</p>
 <p>The smaller the mind, the greater the conceit.<br>思想越狭隘，自负越膨胀。</p>
-</div>
-      
+
+          
+        </section>
+      </article>
 
       <div class="mt-4">
           <a href="/2015/07/17/genesis/" class="btn btn-sm btn-outline-primary">READ MORE</a>
       </div>
-    </div>
   </div>
 
 
@@ -387,17 +466,21 @@
     
   <dd><a href="/tags/#日志">日志</a></dd>
 
-  <dd><a href="/tags/#Hexo">Hexo</a></dd>
-
   <dd><a href="/tags/#Grunt">Grunt</a></dd>
 
-  <dd><a href="/tags/#NodeJS">NodeJS</a></dd>
+  <dd><a href="/tags/#Node.js">Node.js</a></dd>
 
   <dd><a href="/tags/#Javascript">Javascript</a></dd>
+
+  <dd><a href="/tags/#Hexo">Hexo</a></dd>
 
   <dd><a href="/tags/#Tree">Tree</a></dd>
 
   <dd><a href="/tags/#VS Code snippets">VS Code snippets</a></dd>
+
+  <dd><a href="/tags/#Gif">Gif</a></dd>
+
+  <dd><a href="/tags/#Kap">Kap</a></dd>
 
     </dl>
   </div>
@@ -410,13 +493,15 @@
     
   <dd><a href="/categories/#日志">日志</a></dd>
 
-  <dd><a href="/categories/#Hexo">Hexo</a></dd>
-
   <dd><a href="/categories/#Grunt">Grunt</a></dd>
+
+  <dd><a href="/categories/#Hexo">Hexo</a></dd>
 
   <dd><a href="/categories/#Linux Command">Linux Command</a></dd>
 
   <dd><a href="/categories/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/categories/#MacOS">MacOS</a></dd>
 
     </dl>
   </div>
@@ -428,6 +513,12 @@
     <dd><a href="/archives">All</a></dd>
     
 
+
+  
+  
+
+  
+  
 
   
   
