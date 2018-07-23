@@ -152,13 +152,14 @@
 <li>一种是 url 风格的 <code>rsync://[USER@]HOST[:PORT]/TARGET</code></li>
 </ol>
 <p>上述语法中，其中 TARGET 代表的是模块名，而不是真的文件系统中的路径。</p>
-<h4 id="7-1-rsyncd-conf-配置文件"><a href="#7-1-rsyncd-conf-配置文件" class="headerlink" title="7.1. rsyncd.conf 配置文件"></a>7.1. rsyncd.conf 配置文件</h4><p>参见<a href="https://rsync.samba.org/ftp/rsync/rsyncd.conf.html" target="_blank" rel="noopener">官方的配置说明</a>了解全部配置项。</p>
+<h4 id="7-1-rsyncd-conf-配置文件"><a href="#7-1-rsyncd-conf-配置文件" class="headerlink" title="7.1. rsyncd.conf 配置文件"></a>7.1. rsyncd.conf 配置文件</h4><p>参见<a href="https://download.samba.org/pub/rsync/rsyncd.conf.html" target="_blank" rel="noopener">官方的配置说明</a>了解全部配置项。</p>
 <p>在服务器端启动 rsync daemon 的命令为 <code>rsync --daemon</code>，可能通过 <code>rsync --daemon --help</code> 查看其选项。<br>服务器端需要两个配置文件：rsyncd.conf 和 rsyncd.secrets。<br>rsyncd.conf 是 rsync daemon 的主配置文件，rsyncd.secrets 用于存储 rsync 用户名和密码。</p>
 <p>MacOS 下默认配置文件为 <code>/usr/local/etc/rsyncd.conf</code><br>Linux 下默认配置文件为 <code>etc/rsyncd.conf</code><br>如果文件不存在，可以手动创建，也可以通过 <code>--config=FILE</code> 选项来指定。</p>
 <p>rsyncd.conf 配置实例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"># 全屏配置</span><br><span class="line">port = 873    # rsync 端口，默认873</span><br><span class="line">uid = root</span><br><span class="line">gid = root</span><br><span class="line">user chroot = no</span><br><span class="line">max connections = 200   # 0 表示没有限制</span><br><span class="line">timeout = 600   # 0 表示永远等待</span><br><span class="line">pid file = /var/run/rsyncd.pid</span><br><span class="line">lock file = /var/run/rsyncd.lock</span><br><span class="line">log file = /var/run/rsyncd.log</span><br><span class="line"></span><br><span class="line"># 模块配置</span><br><span class="line">[www]   # 模块ID</span><br><span class="line">path = /www/    # 模块路径</span><br><span class="line">uid = www   # 模块路径的最终所属用户名</span><br><span class="line">gid = www   # 模块路径的最终所属用户组</span><br><span class="line">ignore errors</span><br><span class="line">read only = no    # yes：不能上传，no：能上传</span><br><span class="line">write only = no   # yes：不能下载，no：能下载</span><br><span class="line">list = yes    # 客户端请求显示模块列表时，该模块是否显示出来</span><br><span class="line">hosts allow = 10.0.0.0/24   # 指定允许连接到该模块的机器，多个用空格隔开</span><br><span class="line">hosts deny = 0.0.0.0/32   # 指定不允许连接到该模块的机器</span><br><span class="line">auth users = rsync_www    # 指定允许链接到该模块的用户名列表，多个用空格隔开</span><br><span class="line">secrets file = /etc/rsyncd.secrets   # 指定一个包含定义用户名:密码对的文件</span><br><span class="line">comment = rsync deamon www module   # 模块描述</span><br><span class="line"></span><br><span class="line"># 其它模块</span><br><span class="line"># ...</span><br></pre></td></tr></table></figure></p>
 <h4 id="7-2-rsyncd-secrets-格式"><a href="#7-2-rsyncd-secrets-格式" class="headerlink" title="7.2. rsyncd.secrets 格式"></a>7.2. rsyncd.secrets 格式</h4><p>文件的权限一定要是600，否则客户端将不能连接服务器<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">username:password</span><br><span class="line">username1:password1</span><br></pre></td></tr></table></figure></p>
 <h4 id="7-3-演示"><a href="#7-3-演示" class="headerlink" title="7.3. 演示"></a>7.3. 演示</h4><p>服务端：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">useradd -r -s /sbin/nologin www</span><br><span class="line">mkdir /var/www</span><br><span class="line">chown -R www:www /var/www</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"rsync_www:123456"</span> &gt;&gt; /usr/<span class="built_in">local</span>/etc/rsyncd.secrets</span><br><span class="line">chmod 600 /usr/<span class="built_in">local</span>/etc/rsyncd.secrets</span><br><span class="line"></span><br><span class="line">rsync --deamon</span><br></pre></td></tr></table></figure></p>
 <p>客户端：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">useradd -r -s /sbin/nologin www</span><br><span class="line">mkdir /var/www</span><br><span class="line">touch /var/www/01.txt</span><br><span class="line">chown -R www:www /var/www</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"123456"</span> &gt;&gt; /usr/<span class="built_in">local</span>/etc/rsyncd.secrets</span><br><span class="line">chmod 600 /usr/<span class="built_in">local</span>/etc/rsyncd.secrets</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /var/www</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列表服务端文件</span></span><br><span class="line">rsync rsync_www@172.17.0.2::www --password-file=/usr/<span class="built_in">local</span>/etc/rsyncd.secrets</span><br><span class="line"><span class="comment"># 上传</span></span><br><span class="line">rsync -avz ./ rsync_www@172.17.0.2::www --password-file=/usr/<span class="built_in">local</span>/etc/rsyncd.secrets</span><br></pre></td></tr></table></figure></p>
+<h2 id="8-参考链接"><a href="#8-参考链接" class="headerlink" title="8. 参考链接"></a>8. 参考链接</h2><p>· <a href="https://rsync.samba.org/" target="_blank" rel="noopener">rsync</a><br>· <a href="https://download.samba.org/pub/rsync/rsyncd.conf.html" target="_blank" rel="noopener">rsyncd.conf man page</a></p>
 
         </section>
       </article>
@@ -189,13 +190,13 @@
 
   <dd><a href="/tags/#Tree">Tree</a></dd>
 
+  <dd><a href="/tags/#Nvm">Nvm</a></dd>
+
   <dd><a href="/tags/#VS Code snippets">VS Code snippets</a></dd>
 
   <dd><a href="/tags/#Gif">Gif</a></dd>
 
   <dd><a href="/tags/#Kap">Kap</a></dd>
-
-  <dd><a href="/tags/#Nvm">Nvm</a></dd>
 
   <dd><a href="/tags/#Grunt">Grunt</a></dd>
 
@@ -220,11 +221,11 @@
 
   <dd><a href="/categories/#Linux Command">Linux Command</a></dd>
 
+  <dd><a href="/categories/#Node.Js">Node.Js</a></dd>
+
   <dd><a href="/categories/#VS Code">VS Code</a></dd>
 
   <dd><a href="/categories/#MacOS">MacOS</a></dd>
-
-  <dd><a href="/categories/#Node.Js">Node.Js</a></dd>
 
   <dd><a href="/categories/#Hexo">Hexo</a></dd>
 
