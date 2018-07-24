@@ -78,6 +78,201 @@
 
 
   <div class="mb-5">
+      <h4><a href="/2015/08/24/create-you-now-blog-with-hexo/">使用 Hexo 创建博客</a></h4>
+
+      <div class="text-secondary mb-3">
+        <div class="italic mb-2">By Garryshield, Created at 2015-08-24, Updated at 2015-08-24</div>
+        
+        
+        <dl class="tags mb-1">
+            <dt>Tags:</dt>
+            
+              <dd><a href="/tags/#Hexo">Hexo</a></dd>
+            
+        </dl>
+        
+
+        
+        <dl class="tags mb-1">
+            <dt>Categories:</dt>
+            
+              <dd><a href="/categories/#Node.js">Node.js</a></dd>
+            
+              <dd><a href="/categories/#Hexo">Hexo</a></dd>
+            
+        </dl>
+        
+      </div>
+
+      <article class="article mb-5">
+        <section>
+          
+            <img src="/2015/08/24/create-you-now-blog-with-hexo/assets/logo.svg" width="200" title="Hexo blog framework">
+<p>了解过的静态博客框架有 <code>Hexo</code>，<code>Jekyll</code>，<code>Hugo</code> 几种。</p>
+<ol>
+<li><code>Hexo</code> 基于 <code>Node.js</code></li>
+<li><code>Jekyll</code> 基于 <code>Ruby</code>，由 <code>Github</code> 开发用来服务于 <code>GitHub pages</code></li>
+<li><code>Hugo</code> 基于 <code>Go</code></li>
+</ol>
+<p>静态站点框架的基本思路是本地创建然后生成静态页面后部署到服务器上。<br>
+这样做的好处是服务器不需要做类似页面处理，数据库处理之类的工作，只需要发送 Html, css, js, image…</p>
+          
+        </section>
+      </article>
+
+      <div class="mt-4">
+          <a href="/2015/08/24/create-you-now-blog-with-hexo/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+      </div>
+  </div>
+
+  <div class="mb-5">
+      <h4><a href="/2015/07/21/grunt-task-runner/">任务自动管理工具 Grunt</a></h4>
+
+      <div class="text-secondary mb-3">
+        <div class="italic mb-2">By Garryshield, Created at 2015-07-21, Updated at 2015-07-22</div>
+        
+        
+        <dl class="tags mb-1">
+            <dt>Tags:</dt>
+            
+              <dd><a href="/tags/#Grunt">Grunt</a></dd>
+            
+              <dd><a href="/tags/#Node.js">Node.js</a></dd>
+            
+              <dd><a href="/tags/#Javascript">Javascript</a></dd>
+            
+        </dl>
+        
+
+        
+        <dl class="tags mb-1">
+            <dt>Categories:</dt>
+            
+              <dd><a href="/categories/#Grunt">Grunt</a></dd>
+            
+        </dl>
+        
+      </div>
+
+      <article class="article mb-5">
+        <section>
+          
+            <img src="/2015/07/21/grunt-task-runner/assets/grunt-logo.svg" width="200" title="The JavaScript Task Runner">
+<p>在前端的开发过程中，经常会遇到一些重复性的任务，比如合并文件、压缩代码、检查语法错误、将Less代码转成CSS代码等等。<br>
+通常，我们需要使用不同的工具，来完成不同的任务，既重复劳动又非常耗时。<br>
+Grunt就是为了解决这个问题而发明的工具，可以帮助我们自动管理和运行各种任务。</p>
+<p>简单说，Grunt是一个自动任务运行器，会按照预先设定的顺序自动运行一系列的任务。<br>
+这可以简化工作流程，减轻重复性工作带来的负担。</p>
+          
+        </section>
+      </article>
+
+      <div class="mt-4">
+          <a href="/2015/07/21/grunt-task-runner/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+      </div>
+  </div>
+
+  <div class="mb-5">
+      <h4><a href="/2015/07/19/demo/">Blog 主题功能演示</a></h4>
+
+      <div class="text-secondary mb-3">
+        <div class="italic mb-2">By Garryshield, Created at 2015-07-19, Updated at 2015-07-19</div>
+        
+        
+        <dl class="tags mb-1">
+            <dt>Tags:</dt>
+            
+              <dd><a href="/tags/#日志">日志</a></dd>
+            
+        </dl>
+        
+
+        
+        <dl class="tags mb-1">
+            <dt>Categories:</dt>
+            
+              <dd><a href="/categories/#日志">日志</a></dd>
+            
+        </dl>
+        
+      </div>
+
+      <article class="article mb-5">
+        <section>
+          
+            <h2 id="1-代码块">1. 代码块</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment">###### CONFIG</span></span><br><span class="line">ACCEPTED_HOSTS=<span class="string">"/root/.hag_accepted.conf"</span></span><br><span class="line">BE_VERBOSE=<span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$UID</span>"</span> -ne 0 ]</span><br><span class="line"></span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"> <span class="built_in">echo</span> <span class="string">"Superuser rights required"</span></span><br><span class="line"> <span class="built_in">exit</span> 2</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">genApacheConf</span></span>()&#123;</span><br><span class="line"> <span class="built_in">echo</span> -e <span class="string">"# Host <span class="variable">$&#123;HOME_DIR&#125;</span><span class="variable">$1</span>/<span class="variable">$2</span> :"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-相册">2. 相册</h2>
+
+<div class="gallery">
+<div class="row gutters-5px justify-content-center">
+    
+    <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+    <a href="https://jekyllcodex.org/uploads/album/1.jpg" data-fancybox="gallery" data-caption="My caption" target="_blank" rel="noopener">
+    <img class="img-fluid" src="//images.weserv.nl/?url=jekyllcodex.org/uploads/album/1.jpg&w=300&h=300&output=jpg&q=50&t=square">
+    </a>
+    </div>
+    
+    <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+    <a href="https://jekyllcodex.org/uploads/album/2.jpg" data-fancybox="gallery" data-caption="My caption" target="_blank" rel="noopener">
+    <img class="img-fluid" src="//images.weserv.nl/?url=jekyllcodex.org/uploads/album/2.jpg&w=300&h=300&output=jpg&q=50&t=square">
+    </a>
+    </div>
+    
+    <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+    <a href="https://jekyllcodex.org/uploads/album/3.jpg" data-fancybox="gallery" data-caption="My caption" target="_blank" rel="noopener">
+    <img class="img-fluid" src="//images.weserv.nl/?url=jekyllcodex.org/uploads/album/3.jpg&w=300&h=300&output=jpg&q=50&t=square">
+    </a>
+    </div>
+    
+    <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+    <a href="https://jekyllcodex.org/uploads/album/4.jpg" data-fancybox="gallery" data-caption="My caption" target="_blank" rel="noopener">
+    <img class="img-fluid" src="//images.weserv.nl/?url=jekyllcodex.org/uploads/album/4.jpg&w=300&h=300&output=jpg&q=50&t=square">
+    </a>
+    </div>
+    
+    <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+    <a href="https://jekyllcodex.org/uploads/album/5.jpg" data-fancybox="gallery" data-caption="My caption" target="_blank" rel="noopener">
+    <img class="img-fluid" src="//images.weserv.nl/?url=jekyllcodex.org/uploads/album/5.jpg&w=300&h=300&output=jpg&q=50&t=square">
+    </a>
+    </div>
+    
+    <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+    <a href="https://jekyllcodex.org/uploads/album/1.jpg" data-fancybox="gallery" data-caption="My caption" target="_blank" rel="noopener">
+    <img class="img-fluid" src="//images.weserv.nl/?url=jekyllcodex.org/uploads/album/1.jpg&w=300&h=300&output=jpg&q=50&t=square">
+    </a>
+    </div>
+    
+    <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+    <a href="https://jekyllcodex.org/uploads/album/2.jpg" data-fancybox="gallery" data-caption="My caption" target="_blank" rel="noopener">
+    <img class="img-fluid" src="//images.weserv.nl/?url=jekyllcodex.org/uploads/album/2.jpg&w=300&h=300&output=jpg&q=50&t=square">
+    </a>
+    </div>
+    
+    <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+    <a href="https://jekyllcodex.org/uploads/album/3.jpg" data-fancybox="gallery" data-caption="My caption" target="_blank" rel="noopener">
+    <img class="img-fluid" src="//images.weserv.nl/?url=jekyllcodex.org/uploads/album/3.jpg&w=300&h=300&output=jpg&q=50&t=square">
+    </a>
+    </div>
+    
+</div>
+</div>
+<h2 id="3-用户输入">3. 用户输入</h2>
+<p>To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<br>
+To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd></p>
+<h2 id="4-行内代码块">4. 行内代码块</h2>
+<p>For example, <code>&lt;section&gt;</code> should be wrapped as inline.</p>
+
+          
+        </section>
+      </article>
+
+      <div class="mt-4">
+          <a href="/2015/07/19/demo/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+      </div>
+  </div>
+
+  <div class="mb-5">
       <h4><a href="/2015/07/17/genesis/">写在最前面！</a></h4>
 
       <div class="text-secondary mb-3">
@@ -105,8 +300,14 @@
       <article class="article mb-5">
         <section>
           
-            <h2 id="写在最前面！"><a href="#写在最前面！" class="headerlink" title="写在最前面！"></a>写在最前面！</h2><p>折腾 折腾 折腾 一直在折腾。<br>芳华落尽，风轻云淡。<br>默然回首才发现什么都没有改变，什么都没有留下。<br>去他妈的。<br>我要在这里安家。</p>
-<p>The smaller the mind, the greater the conceit.<br>思想越狭隘，自负越膨胀。</p>
+            <h2 id="写在最前面">写在最前面！</h2>
+<p>折腾 折腾 折腾 一直在折腾。<br>
+芳华落尽，风轻云淡。<br>
+默然回首才发现什么都没有改变，什么都没有留下。<br>
+去他妈的。<br>
+我要在这里安家。</p>
+<p>The smaller the mind, the greater the conceit.<br>
+思想越狭隘，自负越膨胀。</p>
 
           
         </section>
@@ -183,6 +384,10 @@
 
   <dd><a href="/tags/#Linux">Linux</a></dd>
 
+  <dd><a href="/tags/#MacOS">MacOS</a></dd>
+
+  <dd><a href="/tags/#Systemd">Systemd</a></dd>
+
   <dd><a href="/tags/#Grunt">Grunt</a></dd>
 
   <dd><a href="/tags/#Node.js">Node.js</a></dd>
@@ -190,8 +395,6 @@
   <dd><a href="/tags/#Javascript">Javascript</a></dd>
 
   <dd><a href="/tags/#Rsync">Rsync</a></dd>
-
-  <dd><a href="/tags/#Systemd">Systemd</a></dd>
 
     </dl>
   </div>
@@ -216,9 +419,9 @@
 
   <dd><a href="/categories/#Hexo">Hexo</a></dd>
 
-  <dd><a href="/categories/#Grunt">Grunt</a></dd>
-
   <dd><a href="/categories/#Systemd">Systemd</a></dd>
+
+  <dd><a href="/categories/#Grunt">Grunt</a></dd>
 
     </dl>
   </div>
@@ -264,11 +467,22 @@
   
   
 
+  
+  
+
+  
+  
+
+  
+  
+
 
 
   <dd><a href="/archives/#2015">2015</a></dd>
 
   <dd><a href="/archives/#2016">2016</a></dd>
+
+  <dd><a href="/archives/#2018">2018</a></dd>
 
     </dl>
   </div>
