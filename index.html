@@ -78,6 +78,90 @@
 
 
   <div class="mb-5">
+      <h4><a href="/2016/03/24/systemd/">Linux 系统服务管理器 - Systemd</a></h4>
+
+      <div class="text-secondary mb-3">
+        <div class="italic mb-2">By Garryshield, Created at 2016-03-24, Updated at 2016-02-20</div>
+        
+        
+        <dl class="tags mb-1">
+            <dt>Tags:</dt>
+            
+              <dd><a href="/tags/#Linux">Linux</a></dd>
+            
+              <dd><a href="/tags/#Systemd">Systemd</a></dd>
+            
+        </dl>
+        
+
+        
+        <dl class="tags mb-1">
+            <dt>Categories:</dt>
+            
+              <dd><a href="/categories/#Linux">Linux</a></dd>
+            
+              <dd><a href="/categories/#Systemd">Systemd</a></dd>
+            
+        </dl>
+        
+      </div>
+
+      <article class="article mb-5">
+        <section>
+          
+            <p>Systemd 是 linux 系统中最新的初始化系统，大多数主流发行版要么已经采用 Systemd，要么即将在下个发布中采用。Systemd 并不是一个命令，而是一组命令，涉及到系统管理的方方面面。</p>
+<p>Systemd 取代了 initd，成为系统的第一个进程（PID 等于 1），其他进程都是它的子进程。</p>
+<p>查看 CentOS7 下的 <code>/etc/init.d/</code> 会发现只有一个 README 文件。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cat  /etc/init.d/README</span><br><span class="line"></span><br><span class="line">// ...</span><br><span class="line">// You are running a systemd-based OS <span class="built_in">where</span> traditional init scripts have</span><br><span class="line">// been replaced by native systemd services files.</span><br><span class="line">// ...</span><br></pre></td></tr></table></figure></p>
+          
+        </section>
+      </article>
+
+      <div class="mt-4">
+          <a href="/2016/03/24/systemd/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+      </div>
+  </div>
+
+  <div class="mb-5">
+      <h4><a href="/2016/02/20/linux-version/">查看 Linux 内核版本和发行版信息</a></h4>
+
+      <div class="text-secondary mb-3">
+        <div class="italic mb-2">By Garryshield, Created at 2016-02-20, Updated at 2016-02-20</div>
+        
+        
+        <dl class="tags mb-1">
+            <dt>Tags:</dt>
+            
+              <dd><a href="/tags/#Linux">Linux</a></dd>
+            
+        </dl>
+        
+
+        
+        <dl class="tags mb-1">
+            <dt>Categories:</dt>
+            
+              <dd><a href="/categories/#Linux">Linux</a></dd>
+            
+        </dl>
+        
+      </div>
+
+      <article class="article mb-5">
+        <section>
+          
+            <h2 id="1-内核版本-Kernel-Version"><a href="#1-内核版本-Kernel-Version" class="headerlink" title="1. 内核版本 Kernel Version"></a>1. 内核版本 Kernel Version</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">uname -a</span><br><span class="line">// Linux 72e1a384f328 4.9.87-linuxkit-aufs <span class="comment">#1 SMP Wed Mar 14 15:12:16 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-发行版信息-Distribution-Information"><a href="#2-发行版信息-Distribution-Information" class="headerlink" title="2. 发行版信息 Distribution Information"></a>2. 发行版信息 Distribution Information</h2><p>发行版信息查看命令和具体的发行版本有关，可以通过如下方式依次判断：</p>
+<h4 id="2-1-etc-release-文件"><a href="#2-1-etc-release-文件" class="headerlink" title="2.1. /etc/*-release 文件"></a>2.1. <code>/etc/*-release</code> 文件</h4><p>CentOS7 为例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">ls /etc/ | grep <span class="string">'release$'</span></span><br><span class="line">// centos-release</span><br><span class="line">// os-release</span><br><span class="line">// redhat-release</span><br><span class="line">// system-release</span><br><span class="line"></span><br><span class="line">cat /etc/centos-release</span><br><span class="line">// CentOS Linux release 7.5.1804 (Core)</span><br><span class="line"></span><br><span class="line">cat /etc/os-release</span><br><span class="line">// NAME=<span class="string">"CentOS Linux"</span></span><br><span class="line">// VERSION=<span class="string">"7 (Core)"</span></span><br><span class="line">// ID=<span class="string">"centos"</span></span><br><span class="line">// ID_LIKE=<span class="string">"rhel fedora"</span></span><br><span class="line">// VERSION_ID=<span class="string">"7"</span></span><br><span class="line">// PRETTY_NAME=<span class="string">"CentOS Linux 7 (Core)"</span></span><br><span class="line">// ANSI_COLOR=<span class="string">"0;31"</span></span><br><span class="line">// CPE_NAME=<span class="string">"cpe:/o:centos:centos:7"</span></span><br><span class="line">// HOME_URL=<span class="string">"https://www.centos.org/"</span></span><br><span class="line">// BUG_REPORT_URL=<span class="string">"https://bugs.centos.org/"</span></span><br><span class="line">// </span><br><span class="line">// CENTOS_MANTISBT_PROJECT=<span class="string">"CentOS-7"</span></span><br><span class="line">// CENTOS_MANTISBT_PROJECT_VERSION=<span class="string">"7"</span></span><br><span class="line">// REDHAT_SUPPORT_PRODUCT=<span class="string">"centos"</span></span><br><span class="line">// REDHAT_SUPPORT_PRODUCT_VERSION=<span class="string">"7"</span></span><br></pre></td></tr></table></figure></p>
+          
+        </section>
+      </article>
+
+      <div class="mt-4">
+          <a href="/2016/02/20/linux-version/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+      </div>
+  </div>
+
+  <div class="mb-5">
       <h4><a href="/2016/01/04/rsync/">文件同步工具 - rsync</a></h4>
 
       <div class="text-secondary mb-3">
@@ -468,47 +552,42 @@
       </div>
   </div>
 
-  <div class="mb-5">
-      <h4><a href="/2015/07/17/genesis/">写在最前面！</a></h4>
 
-      <div class="text-secondary mb-3">
-        <div class="italic mb-2">By Garryshield, Created at 2015-07-17, Updated at 2015-07-17</div>
-        
-        
-        <dl class="tags mb-1">
-            <dt>Tags:</dt>
-            
-              <dd><a href="/tags/#日志">日志</a></dd>
-            
-        </dl>
-        
 
-        
-        <dl class="tags mb-1">
-            <dt>Categories:</dt>
-            
-              <dd><a href="/categories/#日志">日志</a></dd>
-            
-        </dl>
-        
-      </div>
+  <div>
+    <ul class="pagination">
+      
+        <li class="page-item disabled">
+          <a class="page-link">PREV</a>
+        </li>
+      
 
-      <article class="article mb-5">
-        <section>
-          
-            <h2 id="写在最前面！"><a href="#写在最前面！" class="headerlink" title="写在最前面！"></a>写在最前面！</h2><p>折腾 折腾 折腾 一直在折腾。<br>芳华落尽，风轻云淡。<br>默然回首才发现什么都没有改变，什么都没有留下。<br>去他妈的。<br>我要在这里安家。</p>
-<p>The smaller the mind, the greater the conceit.<br>思想越狭隘，自负越膨胀。</p>
+      <li class="page-item active ">
+        <a class="page-link" href="/">1</a>
+      </li>
 
-          
-        </section>
-      </article>
+      
+      
+      
 
-      <div class="mt-4">
-          <a href="/2015/07/17/genesis/" class="btn btn-sm btn-outline-primary">READ MORE</a>
-      </div>
+      
+
+      
+      
+
+      
+
+      <li class="page-item">
+        <a class="page-link" href="/page/2">2</a>
+      </li>
+
+      
+        <li class="page-item">
+          <a class="page-link" href="/page/2">NEXT</a>
+        </li>
+      
+    </ul>
   </div>
-
-
 
 
   </div>
@@ -535,6 +614,8 @@
 
   <dd><a href="/tags/#Nvm">Nvm</a></dd>
 
+  <dd><a href="/tags/#Linux">Linux</a></dd>
+
   <dd><a href="/tags/#Grunt">Grunt</a></dd>
 
   <dd><a href="/tags/#Node.js">Node.js</a></dd>
@@ -542,6 +623,8 @@
   <dd><a href="/tags/#Javascript">Javascript</a></dd>
 
   <dd><a href="/tags/#Rsync">Rsync</a></dd>
+
+  <dd><a href="/tags/#Systemd">Systemd</a></dd>
 
     </dl>
   </div>
@@ -568,6 +651,8 @@
 
   <dd><a href="/categories/#Grunt">Grunt</a></dd>
 
+  <dd><a href="/categories/#Systemd">Systemd</a></dd>
+
     </dl>
   </div>
 </div>
@@ -578,6 +663,12 @@
     <dd><a href="/archives">All</a></dd>
     
 
+
+  
+  
+
+  
+  
 
   
   
