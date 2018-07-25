@@ -78,10 +78,115 @@
 
 
   <div class="mb-5">
-      <h4><a href="/2018/07/24/mac-keyboard/">Mac 修饰键和热键</a></h4>
+      <h4><a href="/2016/06/25/hexo-render/">使用 Markdown-it 渲染 Hexo</a></h4>
 
       <div class="text-secondary mb-3">
-        <div class="italic mb-2">By Garryshield, Created at 2018-07-24, Updated at 2018-07-24</div>
+        <div class="italic mb-2">By Garryshield, Created at 2016-06-25, Updated at 2016-06-25</div>
+        
+        
+        <dl class="tags mb-1">
+            <dt>Tags:</dt>
+            
+              <dd><a href="/tags/#Hexo">Hexo</a></dd>
+            
+              <dd><a href="/tags/#Markdown">Markdown</a></dd>
+            
+              <dd><a href="/tags/#Emoji">Emoji</a></dd>
+            
+        </dl>
+        
+
+        
+        <dl class="tags mb-1">
+            <dt>Categories:</dt>
+            
+              <dd><a href="/categories/#Node.js">Node.js</a></dd>
+            
+              <dd><a href="/categories/#Hexo">Hexo</a></dd>
+            
+              <dd><a href="/categories/#Markdown">Markdown</a></dd>
+            
+        </dl>
+        
+      </div>
+
+      <article class="article mb-5">
+        <section>
+          
+            <p>Hexo 默认其官方插件 <a href="https://github.com/hexojs/hexo-renderer-marked" target="_blank" rel="noopener">hexo-renderer-marked</a> 使用 <a href="https://github.com/markedjs/marked" target="_blank" rel="noopener">marked</a> 来渲染 Markdown。后来发现这个插件有很多特殊 Markdown 语法不支持。</p>
+<p>一番查找后发现 Hexo 官方还有另一个使用 <a href="https://github.com/markdown-it/markdown-it" target="_blank" rel="noopener">markdown-it</a> 做渲染器的插件 <a href="https://github.com/hexojs/hexo-renderer-markdown-it" target="_blank" rel="noopener">hexo-renderer-markdown-it</a>。该渲染器有众多插件可以用来处理诸如：</p>
+<ul>
+<li>缩写 <a href="https://www.npmjs.com/package/markdown-it-abbr" target="_blank" rel="noopener">markdown-it-abbr</a></li>
+<li>脚注 <a href="https://www.npmjs.com/package/markdown-it-footnote" target="_blank" rel="noopener">markdown-it-footnote</a></li>
+<li>&lt;ins&gt; <a href="https://www.npmjs.com/package/markdown-it-ins" target="_blank" rel="noopener">markdown-it-ins</a></li>
+<li>下标 <a href="https://www.npmjs.com/package/markdown-it-sub" target="_blank" rel="noopener">markdown-it-sub</a></li>
+<li>上标 <a href="https://www.npmjs.com/package/markdown-it-sup" target="_blank" rel="noopener">markdown-it-sup</a></li>
+<li>锚点 <a href="https://www.npmjs.com/package/markdown-it-anchor" target="_blank" rel="noopener">markdown-it-anchor</a></li>
+<li>表情 <a href="https://www.npmjs.com/package/markdown-it-emoji" target="_blank" rel="noopener">markdown-it-emoji</a></li>
+<li>Task Lists <a href="https://www.npmjs.com/package/markdown-it-task-lists" target="_blank" rel="noopener">markdown-it-task-lists</a></li>
+<li>HTML 属性 <a href="https://www.npmjs.com/package/markdown-it-attrs" target="_blank" rel="noopener">markdown-it-attrs</a></li>
+<li>&lt;dl&gt; <a href="https://www.npmjs.com/package/markdown-it-deflist" target="_blank" rel="noopener">markdown-it-deflist</a></li>
+<li>&lt;mark&gt; <a href="https://www.npmjs.com/package/markdown-it-mark" target="_blank" rel="noopener">markdown-it-mark</a></li>
+<li>自定义容器 <a href="https://www.npmjs.com/package/markdown-it-container" target="_blank" rel="noopener">markdown-it-container</a></li>
+<li><a href="https://www.npmjs.com/search?q=keywords:markdown-it" target="_blank" rel="noopener">其它...</a></li>
+</ul>
+          
+        </section>
+      </article>
+
+      <div class="mt-4">
+          <a href="/2016/06/25/hexo-render/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+      </div>
+  </div>
+
+  <div class="mb-5">
+      <h4><a href="/2016/05/20/systemd-timer/">Systemd 定时器单元 - Timer</a></h4>
+
+      <div class="text-secondary mb-3">
+        <div class="italic mb-2">By Garryshield, Created at 2016-05-20, Updated at 2016-05-20</div>
+        
+        
+        <dl class="tags mb-1">
+            <dt>Tags:</dt>
+            
+              <dd><a href="/tags/#Linux">Linux</a></dd>
+            
+              <dd><a href="/tags/#Systemd">Systemd</a></dd>
+            
+        </dl>
+        
+
+        
+        <dl class="tags mb-1">
+            <dt>Categories:</dt>
+            
+              <dd><a href="/categories/#Linux">Linux</a></dd>
+            
+              <dd><a href="/categories/#Systemd">Systemd</a></dd>
+            
+        </dl>
+        
+      </div>
+
+      <article class="article mb-5">
+        <section>
+          
+            <p>Timers 是以 .timer 为后缀名的 systemd 单元文件，用于控制 .service 文件或事件。Timers 可用来代替 cron。Timers 内置了日历定时事件和单调定时事件的支持，并可以异步执行这些事件。<br>
+更多关于 Systemd 的说明参见 <a href="/2016/03/24/systemd/" title="这篇文章">这篇文章</a>。</p>
+          
+        </section>
+      </article>
+
+      <div class="mt-4">
+          <a href="/2016/05/20/systemd-timer/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+      </div>
+  </div>
+
+  <div class="mb-5">
+      <h4><a href="/2016/04/24/mac-keyboard/">Mac 修饰键和热键</a></h4>
+
+      <div class="text-secondary mb-3">
+        <div class="italic mb-2">By Garryshield, Created at 2016-04-24, Updated at 2016-04-24</div>
         
         
         <dl class="tags mb-1">
@@ -105,8 +210,8 @@
       <article class="article mb-5">
         <section>
           
-            <p>应用菜单在某些菜单选项旁边显示组合键，例如 <kbd>⌘ + N</kbd>。组合键中的符号表示特殊的键盘按键，称为修饰键。<br>
-您可以按下显示在菜单中的按键组合来执行操作，而无需打开菜单。</p>
+            <p>MacOS 组合键，如 <kbd>⌘ + N</kbd>， <kbd>⌘ + ⌥ + C</kbd>，<kbd>Fn + F1</kbd> 中的符号表示特殊的键盘按键，称为修饰键。</p>
+<p>这里汇总了一些常用修饰键：</p>
 <table class="markdown-table">
 <thead>
 <tr>
@@ -253,40 +358,12 @@
 </tr>
 </tbody>
 </table>
-<h2 id="6-参考链接">6. 参考链接</h2>
-<p>· <a href="https://apple.meta.stackexchange.com/questions/193/keyboard-icons-terminology" target="_blank" rel="noopener">Keyboard icons &amp; terminology</a><br>
-· <a href="https://support.apple.com/en-us/HT201236" target="_blank" rel="noopener">Mac keyboard shortcuts</a></p>
-
           
         </section>
       </article>
 
       <div class="mt-4">
-          <a href="/2018/07/24/mac-keyboard/" class="btn btn-sm btn-outline-primary">READ MORE</a>
-      </div>
-  </div>
-
-  <div class="mb-5">
-      <h4><a href="/2018/07/24/docker/">docker</a></h4>
-
-      <div class="text-secondary mb-3">
-        <div class="italic mb-2">By Garryshield, Created at 2018-07-24, Updated at 2018-07-24</div>
-        
-        
-
-        
-      </div>
-
-      <article class="article mb-5">
-        <section>
-          
-            
-          
-        </section>
-      </article>
-
-      <div class="mt-4">
-          <a href="/2018/07/24/docker/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+          <a href="/2016/04/24/mac-keyboard/" class="btn btn-sm btn-outline-primary">READ MORE</a>
       </div>
   </div>
 
@@ -336,49 +413,6 @@
   </div>
 
   <div class="mb-5">
-      <h4><a href="/2016/03/24/systemd-timer-util/">Systemd 定时器单元 - Timer</a></h4>
-
-      <div class="text-secondary mb-3">
-        <div class="italic mb-2">By Garryshield, Created at 2016-03-24, Updated at 2016-02-20</div>
-        
-        
-        <dl class="tags mb-1">
-            <dt>Tags:</dt>
-            
-              <dd><a href="/tags/#Linux">Linux</a></dd>
-            
-              <dd><a href="/tags/#Systemd">Systemd</a></dd>
-            
-        </dl>
-        
-
-        
-        <dl class="tags mb-1">
-            <dt>Categories:</dt>
-            
-              <dd><a href="/categories/#Linux">Linux</a></dd>
-            
-              <dd><a href="/categories/#Systemd">Systemd</a></dd>
-            
-        </dl>
-        
-      </div>
-
-      <article class="article mb-5">
-        <section>
-          
-            <p>Timers 是以 .timer 为后缀名的 systemd 单元文件，用于控制 .service 文件或事件。Timers 可用来代替 cron。Timers 内置了日历定时事件和单调定时事件的支持，并可以异步执行这些事件。<br>
-更多关于 Systemd 的说明参见 <a href="/2016/03/24/systemd/" title="这篇文章">这篇文章</a>。</p>
-          
-        </section>
-      </article>
-
-      <div class="mt-4">
-          <a href="/2016/03/24/systemd-timer-util/" class="btn btn-sm btn-outline-primary">READ MORE</a>
-      </div>
-  </div>
-
-  <div class="mb-5">
       <h4><a href="/2016/02/20/linux-version/">查看 Linux 内核版本和发行版信息</a></h4>
 
       <div class="text-secondary mb-3">
@@ -407,11 +441,11 @@
         <section>
           
             <p>Linux 有众多发行版，在编辑通用脚本等工作时通常需要检测：</p>
-<ol>
+<ul>
 <li>内核版本 Kernel Version</li>
 <li>发行版信息 Distribution Information</li>
-<li>…</li>
-</ol>
+<li>...</li>
+</ul>
 <p>来兼容它们。这里先挖个坑汇总一些基本命令和检测脚本，方便以后使用。</p>
           
         </section>
@@ -509,7 +543,7 @@
   </div>
 
   <div class="mb-5">
-      <h4><a href="/2015/10/05/mac-screen-recorder-tool-kap/">MacOS 开源的录屏工具 - kap</a></h4>
+      <h4><a href="/2015/10/05/mac-tool-kap/">MacOS 开源的录屏工具 - kap</a></h4>
 
       <div class="text-secondary mb-3">
         <div class="italic mb-2">By Garryshield, Created at 2015-10-05, Updated at 2015-10-05</div>
@@ -538,8 +572,8 @@
       <article class="article mb-5">
         <section>
           
-            <img src="/2015/10/05/mac-screen-recorder-tool-kap/assets/logo.svg" width="100" title="Kap">
-<p><a href="https://getkap.co/" target="_blank" rel="noopener">Kap</a> 是一个开源的录屏工具，支持导出 GIF，MP4，WebM，APNG。同时可以自己编写插件用来分享，转化…<br>
+            <img src="/2015/10/05/mac-tool-kap/assets/logo.svg" width="100" title="Kap">
+<p><a href="https://getkap.co/" target="_blank" rel="noopener">Kap</a> 是一个开源的录屏工具，支持导出 GIF，MP4，WebM，APNG。同时可以自己编写插件用来分享，转化...<br>
 官网： <a href="https://getkap.co/" target="_blank" rel="noopener">Kap</a><br>
 GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="noopener">Kap GitHub</a></p>
           
@@ -547,12 +581,12 @@ GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="n
       </article>
 
       <div class="mt-4">
-          <a href="/2015/10/05/mac-screen-recorder-tool-kap/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+          <a href="/2015/10/05/mac-tool-kap/" class="btn btn-sm btn-outline-primary">READ MORE</a>
       </div>
   </div>
 
   <div class="mb-5">
-      <h4><a href="/2015/09/12/vs-code-custom-snippets/">VS Code 创建代码片段</a></h4>
+      <h4><a href="/2015/09/12/vscode-snippets/">VS Code 创建代码片段</a></h4>
 
       <div class="text-secondary mb-3">
         <div class="italic mb-2">By Garryshield, Created at 2015-09-12, Updated at 2015-09-12</div>
@@ -582,18 +616,18 @@ GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="n
             <p>Snippet 即代码段，指的是能够帮助输入重复代码模式，比如循环或条件语句的模板。</p>
 <p>通过 Snippet 我们仅仅输入一小段字符串「prefix」，就可以在代码段引擎的帮助下，生成预定义的模板代码，接着我们还可以通过在预定义的光标位置之间跳转，来快速补全模板。</p>
 <p>当然，看图更易懂。下图将 aja 补全为 JQuery 的 ajax() 方法，并通过光标的跳转，快速补全了待填键值对：</p>
-<img src="/2015/09/12/vs-code-custom-snippets/assets/Kapture_2018-07-20_at_22.57.09.gif" class="border img-fluid" title="ajax snippet">
+<img src="/2015/09/12/vscode-snippets/assets/Kapture_2018-07-20_at_22.57.09.gif" class="border img-fluid" title="ajax snippet">
           
         </section>
       </article>
 
       <div class="mt-4">
-          <a href="/2015/09/12/vs-code-custom-snippets/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+          <a href="/2015/09/12/vscode-snippets/" class="btn btn-sm btn-outline-primary">READ MORE</a>
       </div>
   </div>
 
   <div class="mb-5">
-      <h4><a href="/2015/08/24/linux-command-tree/">Linux 命令 - tree</a></h4>
+      <h4><a href="/2015/08/24/linux-cmd-tree/">Linux 命令 - tree</a></h4>
 
       <div class="text-secondary mb-3">
         <div class="italic mb-2">By Garryshield, Created at 2015-08-24, Updated at 2015-08-24</div>
@@ -633,7 +667,7 @@ GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="n
       </article>
 
       <div class="mt-4">
-          <a href="/2015/08/24/linux-command-tree/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+          <a href="/2015/08/24/linux-cmd-tree/" class="btn btn-sm btn-outline-primary">READ MORE</a>
       </div>
   </div>
 
@@ -705,6 +739,10 @@ GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="n
 
   <dd><a href="/tags/#Systemd">Systemd</a></dd>
 
+  <dd><a href="/tags/#Markdown">Markdown</a></dd>
+
+  <dd><a href="/tags/#Emoji">Emoji</a></dd>
+
   <dd><a href="/tags/#Grunt">Grunt</a></dd>
 
   <dd><a href="/tags/#Node.js">Node.js</a></dd>
@@ -737,6 +775,8 @@ GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="n
   <dd><a href="/categories/#Hexo">Hexo</a></dd>
 
   <dd><a href="/categories/#Systemd">Systemd</a></dd>
+
+  <dd><a href="/categories/#Markdown">Markdown</a></dd>
 
   <dd><a href="/categories/#Grunt">Grunt</a></dd>
 
@@ -798,8 +838,6 @@ GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="n
   <dd><a href="/archives/#2015">2015</a></dd>
 
   <dd><a href="/archives/#2016">2016</a></dd>
-
-  <dd><a href="/archives/#2018">2018</a></dd>
 
     </dl>
   </div>
