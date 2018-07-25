@@ -151,7 +151,7 @@
 <p>至此我们已经安装并配置好新的渲染器，运行如下命令使其生效：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo server -p 4000</span><br></pre></td></tr></table></figure>
 <h4 id="4-1-task-list">4.1. Task List</h4>
-<p><a href="https://www.npmjs.com/package/markdown-it-task-lists" target="_blank" rel="noopener">markdown-it-task-lists</a> 插件允许配置输出，从而通过 Css 控制显示风格，具体配置如下：</p>
+<p><a href="https://www.npmjs.com/package/markdown-it-task-lists" target="_blank" rel="noopener">markdown-it-task-lists</a> 用来渲染 GitHub 风格的 <a href="https://blog.github.com/2014-04-28-task-lists-in-all-markdown-documents/" target="_blank" rel="noopener">Task List</a>。</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">...</span></span><br><span class="line"><span class="attr">- name:</span> <span class="string">markdown-it-task-lists</span></span><br><span class="line"><span class="attr">  options:</span></span><br><span class="line"><span class="attr">    enabled:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">    label:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    labelAfter:</span> <span class="literal">false</span></span><br><span class="line"><span class="string">...</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">###### Task List</span></span><br><span class="line"><span class="bullet">- </span>[ ] Mercury</span><br><span class="line"><span class="bullet">- </span>[x] Venus</span><br><span class="line"><span class="bullet">- </span>[x] Earth (Orbit/Moon)</span><br><span class="line"><span class="bullet">- </span>[x] Mars</span><br><span class="line"><span class="bullet">- </span>[ ] Jupiter</span><br><span class="line"><span class="bullet">- </span>[ ] Saturn</span><br><span class="line"><span class="bullet">- </span>[ ] Uranus</span><br><span class="line"><span class="bullet">- </span>[ ] Neptune</span><br><span class="line"><span class="bullet">- </span>[ ] Comet Haley</span><br></pre></td></tr></table></figure>
 <h6 id="task-list">Task List</h6>
@@ -242,10 +242,6 @@
 
   <dd><a href="/tags/#Systemd">Systemd</a></dd>
 
-  <dd><a href="/tags/#Markdown">Markdown</a></dd>
-
-  <dd><a href="/tags/#Emoji">Emoji</a></dd>
-
   <dd><a href="/tags/#Grunt">Grunt</a></dd>
 
   <dd><a href="/tags/#Node.js">Node.js</a></dd>
@@ -253,6 +249,10 @@
   <dd><a href="/tags/#Javascript">Javascript</a></dd>
 
   <dd><a href="/tags/#Rsync">Rsync</a></dd>
+
+  <dd><a href="/tags/#Markdown">Markdown</a></dd>
+
+  <dd><a href="/tags/#Emoji">Emoji</a></dd>
 
     </dl>
   </div>
@@ -279,9 +279,9 @@
 
   <dd><a href="/categories/#Systemd">Systemd</a></dd>
 
-  <dd><a href="/categories/#Markdown">Markdown</a></dd>
-
   <dd><a href="/categories/#Grunt">Grunt</a></dd>
+
+  <dd><a href="/categories/#Markdown">Markdown</a></dd>
 
     </dl>
   </div>
