@@ -114,47 +114,47 @@
         <p>Timers 是以 .timer 为后缀名的 systemd 单元文件，用于控制 .service 文件或事件。Timers 可用来代替 cron。Timers 内置了日历定时事件和单调定时事件的支持，并可以异步执行这些事件。<br>
 更多关于 Systemd 的说明参见 <a href="/2016/03/24/systemd/" title="这篇文章">这篇文章</a>。</p>
 <a id="more"></a>
-<h2 id="1-定时器单元">1. 定时器单元</h2>
+<h2 id="1.-%E5%AE%9A%E6%97%B6%E5%99%A8%E5%8D%95%E5%85%83">1. 定时器单元</h2>
 <p>Timers 是以 .timer 为后缀的 systemd 单元文件。Timers 和其他单元配置文件是类似的，它通过相同的路径加载，不同的是包含了 [Timer] 部分。 [Timer] 部分定义了何时以及如何激活定时事件。Timers 可以被定义成以下两种类型：</p>
-<h4 id="1-1-单调定时器">1.1. 单调定时器</h4>
+<h4 id="1.1.-%E5%8D%95%E8%B0%83%E5%AE%9A%E6%97%B6%E5%99%A8">1.1. 单调定时器</h4>
 <p>即从一个时间点过一段时间后激活定时任务。所有的单调计时器都遵循如下形式： OnTypeSec=。 OnBootSec 和 OnActiveSec 是常用的单调定时器。</p>
-<h4 id="1-2-实时定时器-类似于-cronjobs">1.2. 实时定时器 （类似于 cronjobs ）</h4>
+<h4 id="1.2.-%E5%AE%9E%E6%97%B6%E5%AE%9A%E6%97%B6%E5%99%A8-%EF%BC%88%E7%B1%BB%E4%BC%BC%E4%BA%8E-cronjobs-%EF%BC%89">1.2. 实时定时器 （类似于 cronjobs ）</h4>
 <p>通过日历事件激活定时任务。 使用 OnCalender= 来定义实时定时器。</p>
 <p>要查阅完整的定时器选项参见 <a href="https://www.freedesktop.org/software/systemd/man/systemd.timer.html" target="_blank" rel="noopener">Timer unit configuration</a>。 关于日历事件和时间段的定义参见 <a href="https://www.freedesktop.org/software/systemd/man/systemd.time.html" target="_blank" rel="noopener">Time and date specifications</a>.</p>
-<h2 id="2-服务单元">2. 服务单元</h2>
+<h2 id="2.-%E6%9C%8D%E5%8A%A1%E5%8D%95%E5%85%83">2. 服务单元</h2>
 <p>每个 .timer 文件所在目录都得有一个对应的 .service 文件（如 foo.timer 和 foo.service）。.timer 用于激活并控制 .service 文件。<br>
 .service 文件中不需要包含 [Install] 部分，因为这由 timer 单元接管。必要时通过在定时器的 [Timer] 部分指定 Unit= 选项来控制一个与定时器不同名的服务单元。<br>
 更多服务单元说明参见 <a href="/2016/03/24/systemd/" title="这篇文章">这篇文章</a>。</p>
-<h2 id="3-管理">3. 管理</h2>
+<h2 id="3.-%E7%AE%A1%E7%90%86">3. 管理</h2>
 <p>使用 timer 单元时像其他单元一样 enable 或 start 即可（别忘了添加 .timer 后缀）。</p>
-<h4 id="3-1-查看单元文件">3.1. 查看单元文件</h4>
+<h4 id="3.1.-%E6%9F%A5%E7%9C%8B%E5%8D%95%E5%85%83%E6%96%87%E4%BB%B6">3.1. 查看单元文件</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看所有单元</span></span><br><span class="line">systemctl list-unit-files</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看所有 Service 单元</span></span><br><span class="line">systemctl list-unit-files --<span class="built_in">type</span>=service</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看所有 Timer 单元</span></span><br><span class="line">systemctl list-unit-files --<span class="built_in">type</span>=timer</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看所有正在运行的定时器</span></span><br><span class="line">systemctl list-timers</span><br></pre></td></tr></table></figure>
-<h4 id="3-2-单元管理命令">3.2. 单元管理命令</h4>
+<h4 id="3.2.-%E5%8D%95%E5%85%83%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4">3.2. 单元管理命令</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动单元</span></span><br><span class="line">systemctl start foo.timer</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭单元</span></span><br><span class="line">systemctl stop foo.timer</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启单元</span></span><br><span class="line">systemctl restart foo.timer</span><br><span class="line"></span><br><span class="line"><span class="comment"># 杀死单元进程</span></span><br><span class="line">systemctl <span class="built_in">kill</span> foo.timer</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看单元状态</span></span><br><span class="line">systemctl status foo.timer</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开机自动执行该单元</span></span><br><span class="line">systemctl <span class="built_in">enable</span> foo.timer</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭开机自动执行</span></span><br><span class="line">systemctl <span class="built_in">disable</span> foo.timer</span><br></pre></td></tr></table></figure>
-<h4 id="3-3-日志相关命令">3.3. 日志相关命令</h4>
+<h4 id="3.3.-%E6%97%A5%E5%BF%97%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4">3.3. 日志相关命令</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看整个日志</span></span><br><span class="line">journalctl</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 foo.timer 的日志</span></span><br><span class="line">journalctl -u foo.timer</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 foo.timer 和 foo.service 的日志</span></span><br><span class="line">journalctl -u foo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从结尾开始查看最新日志</span></span><br><span class="line">journalctl -f</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从结尾开始查看 foo.timer 的日志</span></span><br><span class="line">journalctl -f -u foo.timer</span><br></pre></td></tr></table></figure>
-<h2 id="4-配置示例">4. 配置示例</h2>
-<h4 id="4-1-单调定时器">4.1. 单调定时器</h4>
+<h2 id="4.-%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B">4. 配置示例</h2>
+<h4 id="4.1.-%E5%8D%95%E8%B0%83%E5%AE%9A%E6%97%B6%E5%99%A8">4.1. 单调定时器</h4>
 <p>定义一个在系统启动 15 分钟后执行，且之后每周都执行一次的定时器。</p>
 <figure class="highlight bash"><figcaption><span>/etc/systemd/system/foo.timer</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Run foo weekly and on boot</span><br><span class="line"></span><br><span class="line">[Timer]</span><br><span class="line">OnBootSec=15min</span><br><span class="line">OnUnitActiveSec=1w </span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=timers.target</span><br></pre></td></tr></table></figure>
-<h4 id="4-2-实时定时器">4.2. 实时定时器</h4>
+<h4 id="4.2.-%E5%AE%9E%E6%97%B6%E5%AE%9A%E6%97%B6%E5%99%A8">4.2. 实时定时器</h4>
 <p>定义一个每周执行一次（明确时间为周一上午十二点）且上次未执行就立即执行的定时器。</p>
 <figure class="highlight bash"><figcaption><span>/etc/systemd/system/foo.timer</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Run foo weekly</span><br><span class="line"></span><br><span class="line">[Timer]</span><br><span class="line">OnCalendar=weekly</span><br><span class="line">Persistent=<span class="literal">true</span>     </span><br><span class="line"> </span><br><span class="line">[Install]</span><br><span class="line">WantedBy=timers.target</span><br></pre></td></tr></table></figure>
-<h4 id="4-3-定时器单元文件说明">4.3. 定时器单元文件说明</h4>
+<h4 id="4.3.-%E5%AE%9A%E6%97%B6%E5%99%A8%E5%8D%95%E5%85%83%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E">4.3. 定时器单元文件说明</h4>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">OnActiveSec：定时器生效后，多少时间开始执行任务</span><br><span class="line">OnBootSec：系统启动后，多少时间开始执行任务</span><br><span class="line">OnStartupSec：Systemd 进程启动后，多少时间开始执行任务</span><br><span class="line">OnUnitActiveSec：该单元上次执行后，等多少时间再次执行</span><br><span class="line">OnUnitInactiveSec： 定时器上次关闭后多少时间，再次执行</span><br><span class="line">OnCalendar：基于绝对时间，而不是相对时间执行</span><br><span class="line">AccuracySec：如果因为各种原因，任务必须推迟执行，推迟的最大秒数，默认是60秒</span><br><span class="line">Unit：真正要执行的任务，默认是同名的带有.service后缀的单元</span><br><span class="line">Persistent：如果设置了该字段，即使定时器到时没有启动，也会自动执行相应的单元</span><br><span class="line">WakeSystem：如果系统休眠，是否自动唤醒系统</span><br></pre></td></tr></table></figure>
-<h2 id="5-案例一：定时追加文本">5. 案例一：定时追加文本</h2>
-<h4 id="5-1-创建脚本">5.1 创建脚本</h4>
+<h2 id="5.-%E6%A1%88%E4%BE%8B%E4%B8%80%EF%BC%9A%E5%AE%9A%E6%97%B6%E8%BF%BD%E5%8A%A0%E6%96%87%E6%9C%AC">5. 案例一：定时追加文本</h2>
+<h4 id="5.1-%E5%88%9B%E5%BB%BA%E8%84%9A%E6%9C%AC">5.1 创建脚本</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /root</span><br><span class="line">touch backup_www.sh</span><br><span class="line">chmod +x backup_www.sh</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><figcaption><span>backup_www.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 向 /root/backup_www.txt 文件中追加当前时间</span></span><br><span class="line">mydate()</span><br><span class="line">&#123;</span><br><span class="line">  date <span class="string">"+%Y-%m-%d %H:%M:%S"</span></span><br><span class="line">&#125;</span><br><span class="line">backupdate=$(mydate)</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;backupdate&#125;</span> &gt;&gt; /root/backup_www.txt</span><br></pre></td></tr></table></figure>
-<h4 id="5-2-创建服务单元">5.2. 创建服务单元</h4>
+<h4 id="5.2.-%E5%88%9B%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%8D%95%E5%85%83">5.2. 创建服务单元</h4>
 <figure class="highlight bash"><figcaption><span>/etc/systemd/system/backup_www.service</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=www backup service</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">User=www</span><br><span class="line">Group=www</span><br><span class="line">Type=simple</span><br><span class="line">ExecStart=/root/backup_www.sh</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-<h4 id="5-2-定时器单元">5.2. 定时器单元</h4>
+<h4 id="5.2.-%E5%AE%9A%E6%97%B6%E5%99%A8%E5%8D%95%E5%85%83">5.2. 定时器单元</h4>
 <figure class="highlight bash"><figcaption><span>/etc/systemd/system/backup_www.timer</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=www backup timer</span><br><span class="line"></span><br><span class="line">[Timer]</span><br><span class="line"><span class="comment"># 表示每 15 分钟执行一次</span></span><br><span class="line">OnCalendar=*:0/15</span><br><span class="line">Persistent=<span class="literal">true</span></span><br><span class="line">Unit=backup_www.service</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-<h4 id="5-3-创建链接并启动">5.3. 创建链接并启动</h4>
+<h4 id="5.3.-%E5%88%9B%E5%BB%BA%E9%93%BE%E6%8E%A5%E5%B9%B6%E5%90%AF%E5%8A%A8">5.3. 创建链接并启动</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> backup_www.service</span><br><span class="line">systemctl <span class="built_in">enable</span> backup_www.timer</span><br><span class="line">systemctl start backup_www.timer</span><br><span class="line"></span><br><span class="line">systemctl status backup_www.timer</span><br><span class="line"></span><br><span class="line">● backup_www.timer - www backup timer</span><br><span class="line">   Loaded: loaded (/etc/systemd/system/backup_www.timer; enabled; vendor preset: disabled)</span><br><span class="line">   Active: active (running) since Tue 2018-07-24 12:36:10 UTC; 10min ago</span><br><span class="line"></span><br><span class="line">Jul 24 12:36:10 e36d66eda18f systemd[1]: Started www backup timer.</span><br><span class="line">Jul 24 12:36:10 e36d66eda18f systemd[1]: Starting www backup timer.</span><br></pre></td></tr></table></figure>
 <p>每隔一分钟运行 <code>cat /root/backup_www.txt</code> 查看运行结果:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">2016-07-24 12:46:48</span><br><span class="line">2016-07-24 12:47:48</span><br><span class="line">2016-07-24 12:48:48</span><br><span class="line">2016-07-24 12:49:48</span><br><span class="line">2016-07-24 12:50:48</span><br><span class="line">2016-07-24 12:51:48</span><br><span class="line">2016-07-24 12:52:48</span><br></pre></td></tr></table></figure>
-<h2 id="6-参考链接">6. 参考链接</h2>
+<h2 id="6.-%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5">6. 参考链接</h2>
 <p>· <a href="https://github.com/systemd/systemd" target="_blank" rel="noopener">Systemd GitHub</a><br>
 · <a href="https://www.freedesktop.org/wiki/Software/systemd/" target="_blank" rel="noopener">Systemd Office Site</a><br>
 · <a href="https://www.freedesktop.org/software/systemd/man/systemd.unit.html" target="_blank" rel="noopener">Systemd Unit Man</a><br>
@@ -190,9 +190,9 @@
     
   <dd><a href="/tags/#日志">日志</a></dd>
 
-  <dd><a href="/tags/#Hexo">Hexo</a></dd>
-
   <dd><a href="/tags/#Tree">Tree</a></dd>
+
+  <dd><a href="/tags/#Hexo">Hexo</a></dd>
 
   <dd><a href="/tags/#VS Code">VS Code</a></dd>
 
@@ -231,9 +231,9 @@
     
   <dd><a href="/categories/#日志">日志</a></dd>
 
-  <dd><a href="/categories/#Node.js">Node.js</a></dd>
-
   <dd><a href="/categories/#Linux">Linux</a></dd>
+
+  <dd><a href="/categories/#Node.js">Node.js</a></dd>
 
   <dd><a href="/categories/#VS Code">VS Code</a></dd>
 
@@ -241,9 +241,9 @@
 
   <dd><a href="/categories/#Node.Js">Node.Js</a></dd>
 
-  <dd><a href="/categories/#Hexo">Hexo</a></dd>
-
   <dd><a href="/categories/#Systemd">Systemd</a></dd>
+
+  <dd><a href="/categories/#Hexo">Hexo</a></dd>
 
   <dd><a href="/categories/#Grunt">Grunt</a></dd>
 

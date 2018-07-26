@@ -114,14 +114,14 @@
 <p>当然，看图更易懂。下图将 aja 补全为 JQuery 的 ajax() 方法，并通过光标的跳转，快速补全了待填键值对：</p>
 <img src="/2015/09/12/vscode-snippets/assets/Kapture_2018-07-20_at_22.57.09.gif" class="border img-fluid" title="ajax snippet">
 <a id="more"></a>
-<h2 id="1-snippet-配置流程">1. Snippet 配置流程</h2>
+<h2 id="1.-snippet-%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B">1. Snippet 配置流程</h2>
 <p>进入 Snippet 设置文件，这里提供了三种方法：</p>
 <ol>
 <li>通过快捷键「Shift + Command + P」打开命令窗口（All Command Window），输入<kbd>snippet</kbd>，点选「首选项：配置用户代码段片段」。</li>
 <li>点击界面最左侧竖栏（也即活动栏）最下方的齿轮按钮，在弹出来的菜单中点选「用户代码片段」。</li>
 <li>下「Alt」键切换菜单栏，通过文件 &gt; 首选项 &gt; 用户代码片段。</li>
 </ol>
-<h2 id="2-snippet-详细介绍">2. Snippet 详细介绍</h2>
+<h2 id="2.-snippet-%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D">2. Snippet 详细介绍</h2>
 <p>设置文件头部的一个块注释给出了设置 Snippet 的格式</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"Print to console"</span>: &#123;</span><br><span class="line">    <span class="attr">"prefix"</span>: <span class="string">"log"</span>,</span><br><span class="line">    <span class="attr">"body"</span>: [</span><br><span class="line">      <span class="string">"console.log('$1');"</span>,</span><br><span class="line">      <span class="string">"$2"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"description"</span>: <span class="string">"Log output to console"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Snippet 由三部分组成：</p>
@@ -130,20 +130,20 @@
 <li>body： 主体，即模板的主体内容，其中每个字符串表示一行;</li>
 <li>description：说明，候选栏中出现。未定义的情况下直接显示对象名，上例中将会显示 Print to console。</li>
 </ol>
-<h4 id="2-1-snippet-主体">2.1. Snippet 主体</h4>
+<h4 id="2.1.-snippet-%E4%B8%BB%E4%BD%93">2.1. Snippet 主体</h4>
 <p>主体部分可以使用特殊语法结构，来控制光标和要插入的文本。支持的基本结构如下：</p>
-<h6 id="2-1-1-tabstops：制表符">2.1.1. Tabstops：制表符</h6>
+<h6 id="2.1.1.-tabstops%EF%BC%9A%E5%88%B6%E8%A1%A8%E7%AC%A6">2.1.1. Tabstops：制表符</h6>
 <p>「Tabstops」可以让编辑器的指针在 Snippet 内跳转。<br>
 使用 <code>$1</code>，<code>$2</code> 等指定光标位置。这些数字指定了光标跳转的顺序。<br>
 <code>$0</code> 表示最终光标位置。相同序号的「Tabstops」被链接在一起，将会同步更新</p>
-<h6 id="2-1-2-placeholders：占位符">2.1.2. Placeholders：占位符</h6>
+<h6 id="2.1.2.-placeholders%EF%BC%9A%E5%8D%A0%E4%BD%8D%E7%AC%A6">2.1.2. Placeholders：占位符</h6>
 <p>「Placeholder」是带有默认值的「Tabstops」。<br>
 如 <code>${1:Placeholder}</code>。「placeholder」文本将被插入「Tabstops」位置，并在跳转时被全选，以方便修改。</p>
-<h6 id="2-1-3-choice：可选项">2.1.3. Choice：可选项</h6>
+<h6 id="2.1.3.-choice%EF%BC%9A%E5%8F%AF%E9%80%89%E9%A1%B9">2.1.3. Choice：可选项</h6>
 <p>「Choice」是提供可选值的「Placeholder」。<br>
 语法为一系列用逗号隔开，并最终被两个竖线圈起来的枚举值，<br>
 比如 <code>${1|one,two,three|}</code>。当光标跳转到该位置的时候，用户将会被提供多个值 [<code>one</code>, <code>two</code>, <code>three</code>] 以供选择。</p>
-<h6 id="2-1-4-variables：变量">2.1.4. Variables：变量</h6>
+<h6 id="2.1.4.-variables%EF%BC%9A%E5%8F%98%E9%87%8F">2.1.4. Variables：变量</h6>
 <p>使用 <code>$name</code> 或 <code>${name:Placeholder}</code> 可以插入变量的值。<br>
 当变量未赋值时，将插入其缺省值或空字符串。<br>
 当变量未知时，将插入变量的名称，并将其转换为「Placeholder」。</p>
@@ -170,7 +170,7 @@
 <code>CURRENT_HOUR</code> 时<br>
 <code>CURRENT_MINUTE</code> 分<br>
 <code>CURRENT_SECOND</code> 秒</p>
-<h2 id="3-参考链接">3. 参考链接</h2>
+<h2 id="3.-%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5">3. 参考链接</h2>
 <p>· <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VS Code</a><br>
 · <a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets" target="_blank" rel="noopener">Creating your own snippets</a></p>
 
@@ -203,9 +203,9 @@
     
   <dd><a href="/tags/#日志">日志</a></dd>
 
-  <dd><a href="/tags/#Hexo">Hexo</a></dd>
-
   <dd><a href="/tags/#Tree">Tree</a></dd>
+
+  <dd><a href="/tags/#Hexo">Hexo</a></dd>
 
   <dd><a href="/tags/#VS Code">VS Code</a></dd>
 
@@ -244,9 +244,9 @@
     
   <dd><a href="/categories/#日志">日志</a></dd>
 
-  <dd><a href="/categories/#Node.js">Node.js</a></dd>
-
   <dd><a href="/categories/#Linux">Linux</a></dd>
+
+  <dd><a href="/categories/#Node.js">Node.js</a></dd>
 
   <dd><a href="/categories/#VS Code">VS Code</a></dd>
 
@@ -254,9 +254,9 @@
 
   <dd><a href="/categories/#Node.Js">Node.Js</a></dd>
 
-  <dd><a href="/categories/#Hexo">Hexo</a></dd>
-
   <dd><a href="/categories/#Systemd">Systemd</a></dd>
+
+  <dd><a href="/categories/#Hexo">Hexo</a></dd>
 
   <dd><a href="/categories/#Grunt">Grunt</a></dd>
 

@@ -107,13 +107,13 @@
 
       <article class="article mb-5">
         <section>
-        <h2 id="1-rsync-简介">1. rsync 简介</h2>
+        <h2 id="1.-rsync-%E7%AE%80%E4%BB%8B">1. rsync 简介</h2>
 <p>rsync（remote synchronize）是 Liunx/Unix 下的一个远程数据同步工具。它可通过 LAN/WAN 快速同步多台主机间的文件和目录，并适当利用 rsync 算法（差分编码）以减少数据的传输。</p>
 <p>rsync 算法并不是每一次都整份传输，而是只传输两个文件的不同部分，因此其传输速度相当快。</p>
 <p>除此之外，rsync 可拷贝、显示目录属性，以及拷贝文件，并可选择性的压缩以及递归拷贝。</p>
 <p>rsync 的目的是实现本地主机和远程主机上的文件同步(包括本地推到远程，远程拉到本地两种同步方式)，也可以实现本地不同路径下文件的同步，但不能实现远程路径1到远程路径2之间的同步。</p>
 <a id="more"></a>
-<h2 id="2-安装">2. 安装</h2>
+<h2 id="2.-%E5%AE%89%E8%A3%85">2. 安装</h2>
 <p>无论是服务器端还是客户端都是同一个软件包。<br>
 Linux 下安装首先从<a href="https://rsync.samba.org/" target="_blank" rel="noopener">rsync 官网</a>下载对应的安装包。也可以使用 <code>wget</code> 进行下载，如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://download.samba.org/pub/rsync/rsync-3.1.3.tar.gz</span><br></pre></td></tr></table></figure>
@@ -123,12 +123,12 @@ Linux 下安装首先从<a href="https://rsync.samba.org/" target="_blank" rel="
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">cp ./packaging/systemd/rsync.service /usr/lib/systemd/system/</span><br><span class="line"></span><br><span class="line">// 修改 rsync.service 如下：</span><br><span class="line">// [Unit]</span><br><span class="line">// Description=fast remote file copy program daemon</span><br><span class="line">// ConditionPathExists=/etc/rsyncd.conf</span><br><span class="line">// </span><br><span class="line">// [Service]</span><br><span class="line">// ExecStart=/usr/<span class="built_in">local</span>/rsync-3.1.3/bin/rsync --daemon --no-detach</span><br><span class="line">// </span><br><span class="line">// [Install]</span><br><span class="line">// WantedBy=multi-user.target</span><br><span class="line"></span><br><span class="line">systemctl <span class="built_in">enable</span> rsync</span><br></pre></td></tr></table></figure>
 <p>rsync 源码安装会把 rsync 默认安装到 <code>/usr/local/</code> 目录下，可以通过如下命令查看全部编辑选项：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure –<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
-<h2 id="3-rsync-命令参数">3. rsync 命令参数</h2>
+<h2 id="3.-rsync-%E5%91%BD%E4%BB%A4%E5%8F%82%E6%95%B0">3. rsync 命令参数</h2>
 <p>rsync安装完毕后，我们来查看下 rsync 命令的帮助，如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync –<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
 <p>常用参数:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-v, --verbose 详细模式输出</span><br><span class="line">-a, --archive 归档模式，表示以递归方式传输文件，并保持所有文件属性不变</span><br><span class="line">-z, --compress 对备份的文件在传输时进行压缩处理</span><br><span class="line">--exclude 排除不需要传输的文件</span><br><span class="line">--exclude-from 从文件中读取排除规则</span><br><span class="line">--existing 只更新目标端已存在的文件</span><br><span class="line">--ignore-existing 只是更新目标端不存在的文件</span><br><span class="line">--remove-source-files  删除 SRC 中已经更新成功的文件</span><br><span class="line">--delete：删除 DEST 中存在而在 SRC 中没有的文件</span><br></pre></td></tr></table></figure>
-<h2 id="4-rsync-三种工作模式">4. rsync 三种工作模式</h2>
+<h2 id="4.-rsync-%E4%B8%89%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F">4. rsync 三种工作模式</h2>
 <p>rsync 的七种基本命令格式如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">rsync [OPTION]... SRC [SRC]... DEST</span><br><span class="line">rsync [OPTION]... SRC [SRC]... [USER@]HOST:DEST</span><br><span class="line">rsync [OPTION]... SRC [SRC]... [USER@]HOST::DEST</span><br><span class="line">rsync [OPTION]... SRC [SRC]... rsync://[USER@]HOST[:PORT]/DEST</span><br><span class="line">rsync [OPTION]... [USER@]HOST:SRC [DEST]</span><br><span class="line">rsync [OPTION]... [USER@]HOST::SRC [DEST]</span><br><span class="line">rsync [OPTION]... rsync://[USER@]HOST[:PORT]/SRC [DEST]</span><br></pre></td></tr></table></figure>
 <p>七种基本命令包括三种工作方式：</p>
@@ -147,15 +147,15 @@ Linux 下安装首先从<a href="https://rsync.samba.org/" target="_blank" rel="
 <p>另外一定要注意的一点是，源路径如果是一个目录的话，带上尾随斜线和不带尾随斜线是不一样的，不带尾随斜线表示的是整个目录包括目录本身，带上尾随斜线表示的是目录中的文件，不包括目录本身。例如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rsync -a /src /dest</span><br><span class="line">rsync -a /src/ /dest</span><br></pre></td></tr></table></figure>
 <p>第一个命令会在 /dest 目录下创建 src 目录，而第二个命令不会在 /dest 目录下创建 src 目录，源路径 /src/ 中的所有文件都直接放在 /dest 目录下。</p>
-<h2 id="5-本地同步模式">5. 本地同步模式</h2>
+<h2 id="5.-%E6%9C%AC%E5%9C%B0%E5%90%8C%E6%AD%A5%E6%A8%A1%E5%BC%8F">5. 本地同步模式</h2>
 <p>此模式的命令如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">本地同步模式: </span><br><span class="line">  rsync [OPTION]... SRC [SRC]... DEST</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -avz /src /dest</span><br></pre></td></tr></table></figure>
-<h2 id="6-远程-shell-模式">6. 远程 shell 模式</h2>
+<h2 id="6.-%E8%BF%9C%E7%A8%8B-shell-%E6%A8%A1%E5%BC%8F">6. 远程 shell 模式</h2>
 <p>此模式的命令如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">远程 shell 模式:</span><br><span class="line">  推送:   </span><br><span class="line">    rsync [OPTION]... SRC [SRC]... [USER@]HOST:DEST</span><br><span class="line">  拉取: </span><br><span class="line">    rsync [OPTION]... [USER@]HOST:SRC [DEST]</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">推送:   </span><br><span class="line">rsync -avz -e <span class="string">"ssh -p 22"</span> /src user@192.168.199.247:/dest</span><br><span class="line">拉取: </span><br><span class="line">rsync -avz -e <span class="string">"ssh -p 22"</span> user@192.168.199.247:/src /dest</span><br></pre></td></tr></table></figure>
-<h2 id="7-rsync-daemon-模式">7. rsync daemon 模式</h2>
+<h2 id="7.-rsync-daemon-%E6%A8%A1%E5%BC%8F">7. rsync daemon 模式</h2>
 <p>此模式的命令如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">rsync daemon 模式:</span><br><span class="line">  推送:</span><br><span class="line">    rsync [OPTION]... SRC [SRC]... [USER@]HOST::DEST</span><br><span class="line">    rsync [OPTION]... SRC [SRC]... rsync://[USER@]HOST[:PORT]/DEST</span><br><span class="line">  拉取:</span><br><span class="line">    rsync [OPTION]... [USER@]HOST::SRC [DEST]</span><br><span class="line">    rsync [OPTION]... rsync://[USER@]HOST[:PORT]/SRC [DEST]</span><br></pre></td></tr></table></figure>
 <p>连接命令有两种类型：</p>
@@ -164,7 +164,7 @@ Linux 下安装首先从<a href="https://rsync.samba.org/" target="_blank" rel="
 <li>一种是 url 风格的 <code>rsync://[USER@]HOST[:PORT]/TARGET</code></li>
 </ol>
 <p>上述语法中，其中 TARGET 代表的是模块名，而不是真的文件系统中的路径。</p>
-<h4 id="7-1-rsyncd-conf-配置文件">7.1. rsyncd.conf 配置文件</h4>
+<h4 id="7.1.-rsyncd.conf-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">7.1. rsyncd.conf 配置文件</h4>
 <p>参见<a href="https://download.samba.org/pub/rsync/rsyncd.conf.html" target="_blank" rel="noopener">官方的配置说明</a>了解全部配置项。</p>
 <p>在服务器端启动 rsync daemon 的命令为 <code>rsync --daemon</code>，可能通过 <code>rsync --daemon --help</code> 查看其选项。<br>
 服务器端需要两个配置文件：rsyncd.conf 和 rsyncd.secrets。<br>
@@ -174,15 +174,15 @@ Linux 下默认配置文件为 <code>etc/rsyncd.conf</code><br>
 如果文件不存在，可以手动创建，也可以通过 <code>--config=FILE</code> 选项来指定。</p>
 <p>rsyncd.conf 配置实例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"># 全屏配置</span><br><span class="line">port = 873    # rsync 端口，默认873</span><br><span class="line">uid = root</span><br><span class="line">gid = root</span><br><span class="line">user chroot = no</span><br><span class="line">max connections = 200   # 0 表示没有限制</span><br><span class="line">timeout = 600   # 0 表示永远等待</span><br><span class="line">pid file = /var/run/rsyncd.pid</span><br><span class="line">lock file = /var/run/rsyncd.lock</span><br><span class="line">log file = /var/run/rsyncd.log</span><br><span class="line"></span><br><span class="line"># 模块配置</span><br><span class="line">[www]   # 模块ID</span><br><span class="line">path = /var/www/    # 模块路径</span><br><span class="line">uid = www   # 模块路径的最终所属用户名</span><br><span class="line">gid = www   # 模块路径的最终所属用户组</span><br><span class="line">ignore errors</span><br><span class="line">read only = no    # yes：不能上传，no：能上传</span><br><span class="line">write only = no   # yes：不能下载，no：能下载</span><br><span class="line">list = yes    # 客户端请求显示模块列表时，该模块是否显示出来</span><br><span class="line">hosts allow = 10.0.0.0/24   # 指定允许连接到该模块的机器，多个用空格隔开</span><br><span class="line">hosts deny = 0.0.0.0/32   # 指定不允许连接到该模块的机器</span><br><span class="line">auth users = rsync_www    # 指定允许链接到该模块的用户名列表，多个用空格隔开</span><br><span class="line">secrets file = /etc/rsyncd.secrets   # 指定一个包含定义用户名:密码对的文件</span><br><span class="line">comment = rsync deamon www module   # 模块描述</span><br><span class="line"></span><br><span class="line"># 其它模块</span><br><span class="line"># ...</span><br></pre></td></tr></table></figure>
-<h4 id="7-2-rsyncd-secrets-格式">7.2. rsyncd.secrets 格式</h4>
+<h4 id="7.2.-rsyncd.secrets-%E6%A0%BC%E5%BC%8F">7.2. rsyncd.secrets 格式</h4>
 <p>文件的权限一定要是600，否则客户端将不能连接服务器</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user:password</span><br><span class="line">user1:password1</span><br></pre></td></tr></table></figure>
-<h4 id="7-3-测试">7.3. 测试</h4>
+<h4 id="7.3.-%E6%B5%8B%E8%AF%95">7.3. 测试</h4>
 <p>服务端：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">useradd -r -s /sbin/nologin www</span><br><span class="line">mkdir /var/www</span><br><span class="line">chown -R www:www /var/www</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"rsync_www:123456"</span> &gt;&gt; /etc/rsyncd.secrets</span><br><span class="line">chmod 600 /etc/rsyncd.secrets</span><br><span class="line"></span><br><span class="line">// rsync --deamon</span><br><span class="line">systemctl start rsync</span><br></pre></td></tr></table></figure>
 <p>客户端：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">useradd -r -s /sbin/nologin www</span><br><span class="line">mkdir /var/www</span><br><span class="line">touch /var/www/01.txt</span><br><span class="line">chown -R www:www /var/www</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"123456"</span> &gt;&gt; /etc/rsyncd.secrets</span><br><span class="line">chmod 600 /etc/rsyncd.secrets</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /var/www</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列表服务端文件</span></span><br><span class="line">rsync rsync_www@172.17.0.2::www --password-file=/etc/rsyncd.secrets</span><br><span class="line"><span class="comment"># 上传</span></span><br><span class="line">rsync -avz ./ rsync_www@172.17.0.2::www --password-file=/etc/rsyncd.secrets</span><br></pre></td></tr></table></figure>
-<h2 id="8-参考链接">8. 参考链接</h2>
+<h2 id="8.-%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5">8. 参考链接</h2>
 <p>· <a href="https://rsync.samba.org/" target="_blank" rel="noopener">rsync</a><br>
 · <a href="https://download.samba.org/pub/rsync/rsyncd.conf.html" target="_blank" rel="noopener">rsyncd.conf man page</a></p>
 
@@ -215,9 +215,9 @@ Linux 下默认配置文件为 <code>etc/rsyncd.conf</code><br>
     
   <dd><a href="/tags/#日志">日志</a></dd>
 
-  <dd><a href="/tags/#Hexo">Hexo</a></dd>
-
   <dd><a href="/tags/#Tree">Tree</a></dd>
+
+  <dd><a href="/tags/#Hexo">Hexo</a></dd>
 
   <dd><a href="/tags/#VS Code">VS Code</a></dd>
 
@@ -256,9 +256,9 @@ Linux 下默认配置文件为 <code>etc/rsyncd.conf</code><br>
     
   <dd><a href="/categories/#日志">日志</a></dd>
 
-  <dd><a href="/categories/#Node.js">Node.js</a></dd>
-
   <dd><a href="/categories/#Linux">Linux</a></dd>
+
+  <dd><a href="/categories/#Node.js">Node.js</a></dd>
 
   <dd><a href="/categories/#VS Code">VS Code</a></dd>
 
@@ -266,9 +266,9 @@ Linux 下默认配置文件为 <code>etc/rsyncd.conf</code><br>
 
   <dd><a href="/categories/#Node.Js">Node.Js</a></dd>
 
-  <dd><a href="/categories/#Hexo">Hexo</a></dd>
-
   <dd><a href="/categories/#Systemd">Systemd</a></dd>
+
+  <dd><a href="/categories/#Hexo">Hexo</a></dd>
 
   <dd><a href="/categories/#Grunt">Grunt</a></dd>
 
