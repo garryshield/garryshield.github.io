@@ -7,13 +7,13 @@
     
     <title>使用 Hexo 创建博客 | Garry Shield</title>
 
-    <meta name="description" content="了解过的静态博客框架有 Hexo，Jekyll，Hugo 几种。  Hexo 基于 Node.js Jekyll 基于 Ruby，由 Github 开发用来服务于 GitHub pages Hugo 基于 Go  静态站点框架的基本思路是本地创建然后生成静态页面后部署到服务器上。 这样做的好处是服务器不需要做类似页面处理，数据库处理之类的工作，只需要发送 Html, css, js, image">
+    <meta name="description" content="了解过的静态博客框架有 Hexo，Jekyll，Hugo 几种。  Hexo 基于 NodeJS Jekyll 基于 Ruby，由 Github 开发用来服务于 GitHub pages Hugo 基于 Go  静态站点框架的基本思路是本地创建然后生成静态页面后部署到服务器上。 这样做的好处是服务器不需要做类似页面处理，数据库处理之类的工作，只需要发送 Html, css, js, imag">
 <meta name="keywords" content="Hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 Hexo 创建博客">
 <meta property="og:url" content="http://garryshield.github.com/2015/08/24/hexo/index.html">
 <meta property="og:site_name" content="Garry Shield">
-<meta property="og:description" content="了解过的静态博客框架有 Hexo，Jekyll，Hugo 几种。  Hexo 基于 Node.js Jekyll 基于 Ruby，由 Github 开发用来服务于 GitHub pages Hugo 基于 Go  静态站点框架的基本思路是本地创建然后生成静态页面后部署到服务器上。 这样做的好处是服务器不需要做类似页面处理，数据库处理之类的工作，只需要发送 Html, css, js, image">
+<meta property="og:description" content="了解过的静态博客框架有 Hexo，Jekyll，Hugo 几种。  Hexo 基于 NodeJS Jekyll 基于 Ruby，由 Github 开发用来服务于 GitHub pages Hugo 基于 Go  静态站点框架的基本思路是本地创建然后生成静态页面后部署到服务器上。 这样做的好处是服务器不需要做类似页面处理，数据库处理之类的工作，只需要发送 Html, css, js, imag">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://garryshield.github.com/2015/08/24/hexo/assets/logo.svg">
 <meta property="og:image" content="http://garryshield.github.com/2015/08/24/hexo/assets/Snipaste_2018-07-20_16-49-38.png">
@@ -24,7 +24,7 @@
 <meta property="og:updated_time" content="2015-08-24T06:43:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 Hexo 创建博客">
-<meta name="twitter:description" content="了解过的静态博客框架有 Hexo，Jekyll，Hugo 几种。  Hexo 基于 Node.js Jekyll 基于 Ruby，由 Github 开发用来服务于 GitHub pages Hugo 基于 Go  静态站点框架的基本思路是本地创建然后生成静态页面后部署到服务器上。 这样做的好处是服务器不需要做类似页面处理，数据库处理之类的工作，只需要发送 Html, css, js, image">
+<meta name="twitter:description" content="了解过的静态博客框架有 Hexo，Jekyll，Hugo 几种。  Hexo 基于 NodeJS Jekyll 基于 Ruby，由 Github 开发用来服务于 GitHub pages Hugo 基于 Go  静态站点框架的基本思路是本地创建然后生成静态页面后部署到服务器上。 这样做的好处是服务器不需要做类似页面处理，数据库处理之类的工作，只需要发送 Html, css, js, imag">
 <meta name="twitter:image" content="http://garryshield.github.com/2015/08/24/hexo/assets/logo.svg">
 
     <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico" />
@@ -64,8 +64,16 @@
         </li>              
         <li class="nav-item">
           <a class="nav-link" href="/about/">About</a>
+        </li>              
+        <li class="nav-item">
         </li>
       </ul>
+
+      <form class="form-inline ml-lg-2 my-2 my-lg-0">
+        <a class="btn btn-sm btn-light search" href="javascript:;">
+          <i class="fas fa-search"></i>
+        </a>
+      </form>
     </div>
 
 </nav>
@@ -92,7 +100,7 @@
           <dl class="tags">
               <dt>Categories:</dt>
               
-                <dd><a href="/categories/#Node.js">Node.js</a></dd>
+                <dd><a href="/categories/#NodeJS">NodeJS</a></dd>
               
                 <dd><a href="/categories/#Hexo">Hexo</a></dd>
               
@@ -116,10 +124,12 @@
 
       <article class="article mb-5">
         <section>
-        <img src="/2015/08/24/hexo/assets/logo.svg" width="200" title="Hexo blog framework">
+        <p>
+<img src="/2015/08/24/hexo/assets/logo.svg" width="200">
+</p>
 <p>了解过的静态博客框架有 <code>Hexo</code>，<code>Jekyll</code>，<code>Hugo</code> 几种。</p>
 <ol>
-<li><code>Hexo</code> 基于 <code>Node.js</code></li>
+<li><code>Hexo</code> 基于 <code>NodeJS</code></li>
 <li><code>Jekyll</code> 基于 <code>Ruby</code>，由 <code>Github</code> 开发用来服务于 <code>GitHub pages</code></li>
 <li><code>Hugo</code> 基于 <code>Go</code></li>
 </ol>
@@ -127,7 +137,7 @@
 这样做的好处是服务器不需要做类似页面处理，数据库处理之类的工作，只需要发送 Html, css, js, image...</p>
 <a id="more"></a>
 <h2 id="1.-%E5%AE%89%E8%A3%85">1. 安装</h2>
-<p><code>Hexo</code> 基于 <code>Node.js</code>，安装之前先确保系统已经安装好 <code>Node.js</code>。</p>
+<p><code>Hexo</code> 基于 <code>NodeJS</code>，安装之前先确保系统已经安装好 <code>NodeJS</code>。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
 <h2 id="2.-%E5%88%9D%E5%A7%8B%E5%8C%96">2. 初始化</h2>
 <p>全局安装好 <code>Hexo CLI</code> 后，<br>
@@ -141,7 +151,8 @@
 <h2 id="4.-%E6%9C%AC%E5%9C%B0%E8%BF%90%E8%A1%8C">4. 本地运行</h2>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
 <p>启动后打开浏览器，访问 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a></p>
-<img src="/2015/08/24/hexo/assets/Snipaste_2018-07-20_16-49-38.png" class="border img-fluid" title="Hexo blog">
+<img src="/2015/08/24/hexo/assets/Snipaste_2018-07-20_16-49-38.png" class="border">
+&nbsp;
 <h3 id="5.-%E6%96%B0%E5%BB%BA%E6%96%87%E7%AB%A0">5. 新建文章</h3>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> post <span class="string">'my first post'</span></span><br></pre></td></tr></table></figure>
 <p><code>hexo</code> 会在 <code>source/_posts/</code> 目录下生成 <code>my-first-post.md</code> 文件。<br>
@@ -149,14 +160,17 @@
 修改 <code>my-first-post.md</code> 如下：</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: My first post</span><br><span class="line">date: 2018-07-20 16:58:59</span><br><span class="line">tags:</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">This is my first post.</span><br><span class="line">blabla...</span><br><span class="line">blabla...</span><br><span class="line">blabla...</span><br></pre></td></tr></table></figure>
 <p>刷新浏览器，将看到我们新添加的文章。</p>
-<img src="/2015/08/24/hexo/assets/Snipaste_2018-07-20_17-05-40.png" class="border img-fluid" title="Hexo blog">
+<img src="/2015/08/24/hexo/assets/Snipaste_2018-07-20_17-05-40.png" class="border">
+&nbsp;
 <h2 id="6.-%E5%8F%91%E5%B8%83">6. 发布</h2>
 <p>Hexo 提供了快速方便的一键部署功能，让您只需一条命令就能将网站部署到服务器上。<br>
 我们以发布到 GitHub 上为例：</p>
 <p>注：每次添加文章和修改文章后，都要发布一次。</p>
 <p>在 GitHub 上新建一个 Repository 名字 <code>hexo.learn.01</code></p>
-<img src="/2015/08/24/hexo/assets/Snipaste_2018-07-20_17-20-21.png" class="border img-fluid" title="Hexo blog">
-<img src="/2015/08/24/hexo/assets/Snipaste_2018-07-20_17-21-52.png" class="border img-fluid" title="Hexo blog">
+<img src="/2015/08/24/hexo/assets/Snipaste_2018-07-20_17-20-21.png" class="border">
+&nbsp;
+<img src="/2015/08/24/hexo/assets/Snipaste_2018-07-20_17-21-52.png" class="border">
+&nbsp;
 <p>首先需要安装 hexo-deployer-git 插件</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git</span><br></pre></td></tr></table></figure>
 <p>然后修改 _config.yml 配置<br>
@@ -169,7 +183,8 @@
 <p>浏览器打开<br>
 <a href="https://garryshield.github.io/hexo.learn.01/" target="_blank" rel="noopener">https://garryshield.github.io/hexo.learn.01/</a><br>
 就能看到已经发布成功了。</p>
-<img src="/2015/08/24/hexo/assets/Snipaste_2018-07-20_17-40-35.png" class="border img-fluid" title="Hexo blog">
+<img src="/2015/08/24/hexo/assets/Snipaste_2018-07-20_17-40-35.png" class="border">
+&nbsp;
 <h2 id="7.-%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5">7. 参考链接</h2>
 <p>· <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo blog framework</a></p>
 
@@ -212,17 +227,19 @@
 
   <dd><a href="/tags/#Kap">Kap</a></dd>
 
-  <dd><a href="/tags/#Nvm">Nvm</a></dd>
-
   <dd><a href="/tags/#Linux">Linux</a></dd>
+
+  <dd><a href="/tags/#Nvm">Nvm</a></dd>
 
   <dd><a href="/tags/#MacOS">MacOS</a></dd>
 
   <dd><a href="/tags/#Systemd">Systemd</a></dd>
 
-  <dd><a href="/tags/#Grunt">Grunt</a></dd>
+  <dd><a href="/tags/#NodeJS">NodeJS</a></dd>
 
-  <dd><a href="/tags/#Node.js">Node.js</a></dd>
+  <dd><a href="/tags/#Promise">Promise</a></dd>
+
+  <dd><a href="/tags/#Grunt">Grunt</a></dd>
 
   <dd><a href="/tags/#Javascript">Javascript</a></dd>
 
@@ -243,7 +260,7 @@
     
   <dd><a href="/categories/#日志">日志</a></dd>
 
-  <dd><a href="/categories/#Node.js">Node.js</a></dd>
+  <dd><a href="/categories/#NodeJS">NodeJS</a></dd>
 
   <dd><a href="/categories/#Linux">Linux</a></dd>
 
@@ -256,6 +273,8 @@
   <dd><a href="/categories/#Hexo">Hexo</a></dd>
 
   <dd><a href="/categories/#Systemd">Systemd</a></dd>
+
+  <dd><a href="/categories/#Promise">Promise</a></dd>
 
   <dd><a href="/categories/#Grunt">Grunt</a></dd>
 
@@ -314,11 +333,19 @@
   
   
 
+  
+  
+
+  
+  
+
 
 
   <dd><a href="/archives/#2015">2015</a></dd>
 
   <dd><a href="/archives/#2016">2016</a></dd>
+
+  <dd><a href="/archives/#2018">2018</a></dd>
 
     </dl>
   </div>
@@ -359,6 +386,19 @@
     </div>
       
     </footer>
+
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Search" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
     
     <script src="/assets/js/libs.min.js"></script>
     <script src="/assets/js/main.min.js"></script>

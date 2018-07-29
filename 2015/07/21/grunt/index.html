@@ -7,19 +7,19 @@
     
     <title>任务自动管理工具 Grunt | Garry Shield</title>
 
-    <meta name="description" content="在前端的开发过程中，经常会遇到一些重复性的任务，比如合并文件、压缩代码、检查语法错误、将Less代码转成CSS代码等等。 通常，我们需要使用不同的工具，来完成不同的任务，既重复劳动又非常耗时。Grunt就是为了解决这个问题而发明的工具，可以帮助我们自动管理和运行各种任务。 简单说，Grunt是一个自动任务运行器，会按照预先设定的顺序自动运行一系列的任务。 这可以简化工作流程，减轻重复性工作带来的">
-<meta name="keywords" content="Grunt,Node.js,Javascript">
+    <meta name="description" content="在前端的开发过程中，经常会遇到一些重复性的任务，比如合并文件、压缩代码、检查语法错误、将Less代码转成CSS代码等等。 通常，我们需要使用不同的工具，来完成不同的任务，既重复劳动又非常耗时。Grunt就是为了解决这个问题而发明的工具，可以帮助我们自动管理和运行各种任务。 简单说，Grunt是一个自动任务运行器，会按照预先设定的顺序自动运行一系列的任务。 这可以简化工作流程，减轻重复性工作带">
+<meta name="keywords" content="NodeJS,Grunt,Javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="任务自动管理工具 Grunt">
 <meta property="og:url" content="http://garryshield.github.com/2015/07/21/grunt/index.html">
 <meta property="og:site_name" content="Garry Shield">
-<meta property="og:description" content="在前端的开发过程中，经常会遇到一些重复性的任务，比如合并文件、压缩代码、检查语法错误、将Less代码转成CSS代码等等。 通常，我们需要使用不同的工具，来完成不同的任务，既重复劳动又非常耗时。Grunt就是为了解决这个问题而发明的工具，可以帮助我们自动管理和运行各种任务。 简单说，Grunt是一个自动任务运行器，会按照预先设定的顺序自动运行一系列的任务。 这可以简化工作流程，减轻重复性工作带来的">
+<meta property="og:description" content="在前端的开发过程中，经常会遇到一些重复性的任务，比如合并文件、压缩代码、检查语法错误、将Less代码转成CSS代码等等。 通常，我们需要使用不同的工具，来完成不同的任务，既重复劳动又非常耗时。Grunt就是为了解决这个问题而发明的工具，可以帮助我们自动管理和运行各种任务。 简单说，Grunt是一个自动任务运行器，会按照预先设定的顺序自动运行一系列的任务。 这可以简化工作流程，减轻重复性工作带">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://garryshield.github.com/2015/07/21/grunt/assets/grunt-logo.svg">
 <meta property="og:updated_time" content="2015-07-22T13:21:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="任务自动管理工具 Grunt">
-<meta name="twitter:description" content="在前端的开发过程中，经常会遇到一些重复性的任务，比如合并文件、压缩代码、检查语法错误、将Less代码转成CSS代码等等。 通常，我们需要使用不同的工具，来完成不同的任务，既重复劳动又非常耗时。Grunt就是为了解决这个问题而发明的工具，可以帮助我们自动管理和运行各种任务。 简单说，Grunt是一个自动任务运行器，会按照预先设定的顺序自动运行一系列的任务。 这可以简化工作流程，减轻重复性工作带来的">
+<meta name="twitter:description" content="在前端的开发过程中，经常会遇到一些重复性的任务，比如合并文件、压缩代码、检查语法错误、将Less代码转成CSS代码等等。 通常，我们需要使用不同的工具，来完成不同的任务，既重复劳动又非常耗时。Grunt就是为了解决这个问题而发明的工具，可以帮助我们自动管理和运行各种任务。 简单说，Grunt是一个自动任务运行器，会按照预先设定的顺序自动运行一系列的任务。 这可以简化工作流程，减轻重复性工作带">
 <meta name="twitter:image" content="http://garryshield.github.com/2015/07/21/grunt/assets/grunt-logo.svg">
 
     <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico" />
@@ -59,8 +59,16 @@
         </li>              
         <li class="nav-item">
           <a class="nav-link" href="/about/">About</a>
+        </li>              
+        <li class="nav-item">
         </li>
       </ul>
+
+      <form class="form-inline ml-lg-2 my-2 my-lg-0">
+        <a class="btn btn-sm btn-light search" href="javascript:;">
+          <i class="fas fa-search"></i>
+        </a>
+      </form>
     </div>
 
 </nav>
@@ -76,9 +84,9 @@
           <dl class="tags">
               <dt>Tags:</dt>
               
-                <dd><a href="/tags/#Grunt">Grunt</a></dd>
+                <dd><a href="/tags/#NodeJS">NodeJS</a></dd>
               
-                <dd><a href="/tags/#Node.js">Node.js</a></dd>
+                <dd><a href="/tags/#Grunt">Grunt</a></dd>
               
                 <dd><a href="/tags/#Javascript">Javascript</a></dd>
               
@@ -113,14 +121,16 @@
 
       <article class="article mb-5">
         <section>
-        <img src="/2015/07/21/grunt/assets/grunt-logo.svg" width="200" title="The JavaScript Task Runner">
+        <p>
+<img src="/2015/07/21/grunt/assets/grunt-logo.svg" width="200">
+</p>
 <p>在前端的开发过程中，经常会遇到一些重复性的任务，比如合并文件、压缩代码、检查语法错误、将Less代码转成CSS代码等等。<br>
 通常，我们需要使用不同的工具，来完成不同的任务，既重复劳动又非常耗时。Grunt就是为了解决这个问题而发明的工具，可以帮助我们自动管理和运行各种任务。</p>
 <p>简单说，Grunt是一个自动任务运行器，会按照预先设定的顺序自动运行一系列的任务。<br>
 这可以简化工作流程，减轻重复性工作带来的负担。</p>
 <a id="more"></a>
 <h2 id="1.-%E5%AE%89%E8%A3%85">1. 安装</h2>
-<p>Grunt基于Node.js，安装之前先确保系统已经安装好Node.js。<br>
+<p>Grunt基于NodeJS，安装之前先确保系统已经安装好NodeJS。<br>
 运行下面的命令全局安装Grunt命令行<code>grunt-cli</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g grunt-cli</span><br></pre></td></tr></table></figure>
 <p>注意，安装<code>grunt-cli</code>并不等于安装了Grunt！Grunt CLI的任务很简单：调用与Gruntfile在同一目录中 Grunt。这样带来的好处是，允许你在同一个系统上同时安装多个版本的 Grunt。</p>
@@ -243,17 +253,19 @@
 
   <dd><a href="/tags/#Kap">Kap</a></dd>
 
-  <dd><a href="/tags/#Nvm">Nvm</a></dd>
-
   <dd><a href="/tags/#Linux">Linux</a></dd>
+
+  <dd><a href="/tags/#Nvm">Nvm</a></dd>
 
   <dd><a href="/tags/#MacOS">MacOS</a></dd>
 
   <dd><a href="/tags/#Systemd">Systemd</a></dd>
 
-  <dd><a href="/tags/#Grunt">Grunt</a></dd>
+  <dd><a href="/tags/#NodeJS">NodeJS</a></dd>
 
-  <dd><a href="/tags/#Node.js">Node.js</a></dd>
+  <dd><a href="/tags/#Promise">Promise</a></dd>
+
+  <dd><a href="/tags/#Grunt">Grunt</a></dd>
 
   <dd><a href="/tags/#Javascript">Javascript</a></dd>
 
@@ -274,7 +286,7 @@
     
   <dd><a href="/categories/#日志">日志</a></dd>
 
-  <dd><a href="/categories/#Node.js">Node.js</a></dd>
+  <dd><a href="/categories/#NodeJS">NodeJS</a></dd>
 
   <dd><a href="/categories/#Linux">Linux</a></dd>
 
@@ -287,6 +299,8 @@
   <dd><a href="/categories/#Hexo">Hexo</a></dd>
 
   <dd><a href="/categories/#Systemd">Systemd</a></dd>
+
+  <dd><a href="/categories/#Promise">Promise</a></dd>
 
   <dd><a href="/categories/#Grunt">Grunt</a></dd>
 
@@ -345,11 +359,19 @@
   
   
 
+  
+  
+
+  
+  
+
 
 
   <dd><a href="/archives/#2015">2015</a></dd>
 
   <dd><a href="/archives/#2016">2016</a></dd>
+
+  <dd><a href="/archives/#2018">2018</a></dd>
 
     </dl>
   </div>
@@ -390,6 +412,19 @@
     </div>
       
     </footer>
+
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Search" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
     
     <script src="/assets/js/libs.min.js"></script>
     <script src="/assets/js/main.min.js"></script>

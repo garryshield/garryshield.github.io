@@ -56,8 +56,16 @@
         </li>              
         <li class="nav-item">
           <a class="nav-link" href="/about/">About</a>
+        </li>              
+        <li class="nav-item">
         </li>
       </ul>
+
+      <form class="form-inline ml-lg-2 my-2 my-lg-0">
+        <a class="btn btn-sm btn-light search" href="javascript:;">
+          <i class="fas fa-search"></i>
+        </a>
+      </form>
     </div>
 
 </nav>
@@ -78,6 +86,93 @@
 
 
   <div class="mb-5">
+      <h4><a href="/2015/09/12/vscode-snippets/">VS Code 创建代码片段</a></h4>
+
+      <div class="text-secondary mb-3">
+        <div class="italic mb-2">By Garryshield, Created at 2015-09-12, Updated at 2015-09-12</div>
+        
+        
+        <dl class="tags mb-1">
+            <dt>Tags:</dt>
+            
+              <dd><a href="/tags/#VS Code">VS Code</a></dd>
+            
+        </dl>
+        
+
+        
+        <dl class="tags mb-1">
+            <dt>Categories:</dt>
+            
+              <dd><a href="/categories/#VS Code">VS Code</a></dd>
+            
+        </dl>
+        
+      </div>
+
+      <article class="article mb-5">
+        <section>
+          
+            <p>Snippet 即代码段，指的是能够帮助输入重复代码模式，比如循环或条件语句的模板。</p>
+<p>通过 Snippet 我们仅仅输入一小段字符串「prefix」，就可以在代码段引擎的帮助下，生成预定义的模板代码，接着我们还可以通过在预定义的光标位置之间跳转，来快速补全模板。</p>
+<p>当然，看图更易懂。下图将 aja 补全为 JQuery 的 ajax() 方法，并通过光标的跳转，快速补全了待填键值对：</p>
+<img src="/2015/09/12/vscode-snippets/assets/Kapture_2018-07-20_at_22.57.09.gif" class="border">
+&nbsp;
+          
+        </section>
+      </article>
+
+      <div class="mt-4">
+          <a href="/2015/09/12/vscode-snippets/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+      </div>
+  </div>
+
+  <div class="mb-5">
+      <h4><a href="/2015/08/24/linux-cmd-tree/">Linux 命令 - tree</a></h4>
+
+      <div class="text-secondary mb-3">
+        <div class="italic mb-2">By Garryshield, Created at 2015-08-24, Updated at 2015-08-24</div>
+        
+        
+        <dl class="tags mb-1">
+            <dt>Tags:</dt>
+            
+              <dd><a href="/tags/#Tree">Tree</a></dd>
+            
+        </dl>
+        
+
+        
+        <dl class="tags mb-1">
+            <dt>Categories:</dt>
+            
+              <dd><a href="/categories/#Linux">Linux</a></dd>
+            
+        </dl>
+        
+      </div>
+
+      <article class="article mb-5">
+        <section>
+          
+            <p>Linux tree 命令用于以树状图列出目录的内容。</p>
+<p>执行 <code>tree</code> 指令，它会列出指定目录下的所有文件，包括子目录里的文件。</p>
+<h2 id="1.-%E5%B8%B8%E7%94%A8">1. 常用</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-a              所有文件包括隐藏文件</span><br><span class="line">-d              只显示目录</span><br><span class="line">-L level        只显示第几级</span><br><span class="line">-P pattern      只显示匹配的文件</span><br><span class="line">-I pattern      不显示匹配的文件</span><br><span class="line">-o filename     输出到文件，而不是 stdout             </span><br></pre></td></tr></table></figure>
+<h2 id="2.-%E5%AE%9E%E4%BE%8B">2. 实例</h2>
+<h4 id="2.1.-%E5%B1%82%E7%BA%A7">2.1. 层级</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 列出目录 ./ 第一级文件名</span><br><span class="line">tree -L 1 ./</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./</span><br><span class="line">├── _config.yml</span><br><span class="line">├── node_modules</span><br><span class="line">├── package-lock.json</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── <span class="built_in">source</span></span><br><span class="line">└── themes</span><br><span class="line"></span><br><span class="line">4 directories, 3 files</span><br></pre></td></tr></table></figure>
+          
+        </section>
+      </article>
+
+      <div class="mt-4">
+          <a href="/2015/08/24/linux-cmd-tree/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+      </div>
+  </div>
+
+  <div class="mb-5">
       <h4><a href="/2015/08/24/hexo/">使用 Hexo 创建博客</a></h4>
 
       <div class="text-secondary mb-3">
@@ -96,7 +191,7 @@
         <dl class="tags mb-1">
             <dt>Categories:</dt>
             
-              <dd><a href="/categories/#Node.js">Node.js</a></dd>
+              <dd><a href="/categories/#NodeJS">NodeJS</a></dd>
             
               <dd><a href="/categories/#Hexo">Hexo</a></dd>
             
@@ -107,10 +202,12 @@
       <article class="article mb-5">
         <section>
           
-            <img src="/2015/08/24/hexo/assets/logo.svg" width="200" title="Hexo blog framework">
+            <p>
+<img src="/2015/08/24/hexo/assets/logo.svg" width="200">
+</p>
 <p>了解过的静态博客框架有 <code>Hexo</code>，<code>Jekyll</code>，<code>Hugo</code> 几种。</p>
 <ol>
-<li><code>Hexo</code> 基于 <code>Node.js</code></li>
+<li><code>Hexo</code> 基于 <code>NodeJS</code></li>
 <li><code>Jekyll</code> 基于 <code>Ruby</code>，由 <code>Github</code> 开发用来服务于 <code>GitHub pages</code></li>
 <li><code>Hugo</code> 基于 <code>Go</code></li>
 </ol>
@@ -135,9 +232,9 @@
         <dl class="tags mb-1">
             <dt>Tags:</dt>
             
-              <dd><a href="/tags/#Grunt">Grunt</a></dd>
+              <dd><a href="/tags/#NodeJS">NodeJS</a></dd>
             
-              <dd><a href="/tags/#Node.js">Node.js</a></dd>
+              <dd><a href="/tags/#Grunt">Grunt</a></dd>
             
               <dd><a href="/tags/#Javascript">Javascript</a></dd>
             
@@ -157,7 +254,9 @@
       <article class="article mb-5">
         <section>
           
-            <img src="/2015/07/21/grunt/assets/grunt-logo.svg" width="200" title="The JavaScript Task Runner">
+            <p>
+<img src="/2015/07/21/grunt/assets/grunt-logo.svg" width="200">
+</p>
 <p>在前端的开发过程中，经常会遇到一些重复性的任务，比如合并文件、压缩代码、检查语法错误、将Less代码转成CSS代码等等。<br>
 通常，我们需要使用不同的工具，来完成不同的任务，既重复劳动又非常耗时。Grunt就是为了解决这个问题而发明的工具，可以帮助我们自动管理和运行各种任务。</p>
 <p>简单说，Grunt是一个自动任务运行器，会按照预先设定的顺序自动运行一系列的任务。<br>
@@ -379,17 +478,19 @@ To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd></p>
 
   <dd><a href="/tags/#Kap">Kap</a></dd>
 
-  <dd><a href="/tags/#Nvm">Nvm</a></dd>
-
   <dd><a href="/tags/#Linux">Linux</a></dd>
+
+  <dd><a href="/tags/#Nvm">Nvm</a></dd>
 
   <dd><a href="/tags/#MacOS">MacOS</a></dd>
 
   <dd><a href="/tags/#Systemd">Systemd</a></dd>
 
-  <dd><a href="/tags/#Grunt">Grunt</a></dd>
+  <dd><a href="/tags/#NodeJS">NodeJS</a></dd>
 
-  <dd><a href="/tags/#Node.js">Node.js</a></dd>
+  <dd><a href="/tags/#Promise">Promise</a></dd>
+
+  <dd><a href="/tags/#Grunt">Grunt</a></dd>
 
   <dd><a href="/tags/#Javascript">Javascript</a></dd>
 
@@ -410,7 +511,7 @@ To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd></p>
     
   <dd><a href="/categories/#日志">日志</a></dd>
 
-  <dd><a href="/categories/#Node.js">Node.js</a></dd>
+  <dd><a href="/categories/#NodeJS">NodeJS</a></dd>
 
   <dd><a href="/categories/#Linux">Linux</a></dd>
 
@@ -423,6 +524,8 @@ To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd></p>
   <dd><a href="/categories/#Hexo">Hexo</a></dd>
 
   <dd><a href="/categories/#Systemd">Systemd</a></dd>
+
+  <dd><a href="/categories/#Promise">Promise</a></dd>
 
   <dd><a href="/categories/#Grunt">Grunt</a></dd>
 
@@ -481,11 +584,19 @@ To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd></p>
   
   
 
+  
+  
+
+  
+  
+
 
 
   <dd><a href="/archives/#2015">2015</a></dd>
 
   <dd><a href="/archives/#2016">2016</a></dd>
+
+  <dd><a href="/archives/#2018">2018</a></dd>
 
     </dl>
   </div>
@@ -526,6 +637,19 @@ To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd></p>
     </div>
       
     </footer>
+
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Search" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
     
     <script src="/assets/js/libs.min.js"></script>
     <script src="/assets/js/main.min.js"></script>

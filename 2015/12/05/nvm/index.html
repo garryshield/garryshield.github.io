@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     
-    <title>使用 nvm 管理 Node.js | Garry Shield</title>
+    <title>使用 nvm 管理 NodeJS | Garry Shield</title>
 
-    <meta name="description" content="同时开发多个项目，项目的需求不同，进而依赖不同版本的 Node.js 运行环境。nvm 版本管理工具能够很方便的切换，而不用每次全局修改。 1. 安装 &amp;amp; 更新 建议先删除系统安装的 node 和 npm，完全使用 nvm 来管理。 以 MacOS 为例： 123456brew uninstall node; // or `brew uninstall --force node` whic">
+    <meta name="description" content="同时开发多个项目，项目的需求不同，进而依赖不同版本的 NodeJS 运行环境。nvm 版本管理工具能够很方便的切换，而不用每次全局修改。 1. 安装 &amp;amp; 更新 建议先删除系统安装的 node 和 npm，完全使用 nvm 来管理。 以 MacOS 为例： 123456brew uninstall node; // or `brew uninstall --force node` which">
 <meta name="keywords" content="Nvm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用 nvm 管理 Node.js">
+<meta property="og:title" content="使用 nvm 管理 NodeJS">
 <meta property="og:url" content="http://garryshield.github.com/2015/12/05/nvm/index.html">
 <meta property="og:site_name" content="Garry Shield">
-<meta property="og:description" content="同时开发多个项目，项目的需求不同，进而依赖不同版本的 Node.js 运行环境。nvm 版本管理工具能够很方便的切换，而不用每次全局修改。 1. 安装 &amp;amp; 更新 建议先删除系统安装的 node 和 npm，完全使用 nvm 来管理。 以 MacOS 为例： 123456brew uninstall node; // or `brew uninstall --force node` whic">
+<meta property="og:description" content="同时开发多个项目，项目的需求不同，进而依赖不同版本的 NodeJS 运行环境。nvm 版本管理工具能够很方便的切换，而不用每次全局修改。 1. 安装 &amp;amp; 更新 建议先删除系统安装的 node 和 npm，完全使用 nvm 来管理。 以 MacOS 为例： 123456brew uninstall node; // or `brew uninstall --force node` which">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2015-12-04T17:29:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用 nvm 管理 Node.js">
-<meta name="twitter:description" content="同时开发多个项目，项目的需求不同，进而依赖不同版本的 Node.js 运行环境。nvm 版本管理工具能够很方便的切换，而不用每次全局修改。 1. 安装 &amp;amp; 更新 建议先删除系统安装的 node 和 npm，完全使用 nvm 来管理。 以 MacOS 为例： 123456brew uninstall node; // or `brew uninstall --force node` whic">
+<meta name="twitter:title" content="使用 nvm 管理 NodeJS">
+<meta name="twitter:description" content="同时开发多个项目，项目的需求不同，进而依赖不同版本的 NodeJS 运行环境。nvm 版本管理工具能够很方便的切换，而不用每次全局修改。 1. 安装 &amp;amp; 更新 建议先删除系统安装的 node 和 npm，完全使用 nvm 来管理。 以 MacOS 为例： 123456brew uninstall node; // or `brew uninstall --force node` which">
 
     <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico" />
 
@@ -57,17 +57,25 @@
         </li>              
         <li class="nav-item">
           <a class="nav-link" href="/about/">About</a>
+        </li>              
+        <li class="nav-item">
         </li>
       </ul>
+
+      <form class="form-inline ml-lg-2 my-2 my-lg-0">
+        <a class="btn btn-sm btn-light search" href="javascript:;">
+          <i class="fas fa-search"></i>
+        </a>
+      </form>
     </div>
 
 </nav>
 
 
       <div class="info info-post">
-          <h1>使用 nvm 管理 Node.js</h1>
+          <h1>使用 nvm 管理 NodeJS</h1>
 
-          <p class="lead">Node.js version manager</p>
+          <p class="lead">NodeJS version manager</p>
 
           
           <div class="post-tags">
@@ -107,7 +115,7 @@
 
       <article class="article mb-5">
         <section>
-        <p>同时开发多个项目，项目的需求不同，进而依赖不同版本的 Node.js 运行环境。<a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">nvm</a> 版本管理工具能够很方便的切换，而不用每次全局修改。</p>
+        <p>同时开发多个项目，项目的需求不同，进而依赖不同版本的 NodeJS 运行环境。<a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">nvm</a> 版本管理工具能够很方便的切换，而不用每次全局修改。</p>
 <h2 id="1.-%E5%AE%89%E8%A3%85-%26-%E6%9B%B4%E6%96%B0">1. 安装 &amp; 更新</h2>
 <p>建议先删除系统安装的 node 和 npm，完全使用 nvm 来管理。<br>
 以 MacOS 为例：</p>
@@ -185,17 +193,19 @@
 
   <dd><a href="/tags/#Kap">Kap</a></dd>
 
-  <dd><a href="/tags/#Nvm">Nvm</a></dd>
-
   <dd><a href="/tags/#Linux">Linux</a></dd>
+
+  <dd><a href="/tags/#Nvm">Nvm</a></dd>
 
   <dd><a href="/tags/#MacOS">MacOS</a></dd>
 
   <dd><a href="/tags/#Systemd">Systemd</a></dd>
 
-  <dd><a href="/tags/#Grunt">Grunt</a></dd>
+  <dd><a href="/tags/#NodeJS">NodeJS</a></dd>
 
-  <dd><a href="/tags/#Node.js">Node.js</a></dd>
+  <dd><a href="/tags/#Promise">Promise</a></dd>
+
+  <dd><a href="/tags/#Grunt">Grunt</a></dd>
 
   <dd><a href="/tags/#Javascript">Javascript</a></dd>
 
@@ -216,7 +226,7 @@
     
   <dd><a href="/categories/#日志">日志</a></dd>
 
-  <dd><a href="/categories/#Node.js">Node.js</a></dd>
+  <dd><a href="/categories/#NodeJS">NodeJS</a></dd>
 
   <dd><a href="/categories/#Linux">Linux</a></dd>
 
@@ -229,6 +239,8 @@
   <dd><a href="/categories/#Hexo">Hexo</a></dd>
 
   <dd><a href="/categories/#Systemd">Systemd</a></dd>
+
+  <dd><a href="/categories/#Promise">Promise</a></dd>
 
   <dd><a href="/categories/#Grunt">Grunt</a></dd>
 
@@ -287,11 +299,19 @@
   
   
 
+  
+  
+
+  
+  
+
 
 
   <dd><a href="/archives/#2015">2015</a></dd>
 
   <dd><a href="/archives/#2016">2016</a></dd>
+
+  <dd><a href="/archives/#2018">2018</a></dd>
 
     </dl>
   </div>
@@ -332,6 +352,19 @@
     </div>
       
     </footer>
+
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Search" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
     
     <script src="/assets/js/libs.min.js"></script>
     <script src="/assets/js/main.min.js"></script>
