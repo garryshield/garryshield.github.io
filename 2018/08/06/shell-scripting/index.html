@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    
+    <title>Shell Scripting | Garry Shield</title>
+
+    <meta name="description" content="Hello World! hello_world.sh12#!/bin/bashecho &quot;Hello World!&quot; 1234chmod +x ./hello_world.sh./hello_world.sh# or/bin/bash hello_world.sh">
+<meta name="keywords" content="Linux,Shell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shell Scripting">
+<meta property="og:url" content="http://garryshield.github.com/2018/08/06/shell-scripting/index.html">
+<meta property="og:site_name" content="Garry Shield">
+<meta property="og:description" content="Hello World! hello_world.sh12#!/bin/bashecho &quot;Hello World!&quot; 1234chmod +x ./hello_world.sh./hello_world.sh# or/bin/bash hello_world.sh">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-06T09:36:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Shell Scripting">
+<meta name="twitter:description" content="Hello World! hello_world.sh12#!/bin/bashecho &quot;Hello World!&quot; 1234chmod +x ./hello_world.sh./hello_world.sh# or/bin/bash hello_world.sh">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico" />
+
+    <link rel="stylesheet" href="/assets/css/libs.min.css">
+    <link rel="stylesheet" href="/assets/libs/fontawesome/css/all.css">
+
+    <link rel="stylesheet" href="/assets/css/main.min.css">
+  </head>
+  <body>
+  
+<header class="header mb-5">
+<div class="container">
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-transparent pl-0 pr-0">
+
+    <a class="navbar-brand" href="/">Garry Shield</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/archives">Archives</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/categories">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/tags/">Tags</a>
+        </li>              
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>              
+        <li class="nav-item">
+        </li>
+      </ul>
+
+      <form class="form-inline ml-lg-2 my-2 my-lg-0">
+        <a class="btn btn-sm btn-light search" href="javascript:;">
+          <i class="fas fa-search"></i>
+        </a>
+      </form>
+    </div>
+
+</nav>
+
+
+      <div class="info info-post">
+          <h1>Shell Scripting</h1>
+
+          <p class="lead">Shell Script Programming</p>
+
+          
+          <div class="post-tags">
+          <dl class="tags">
+              <dt>Tags:</dt>
+              
+                <dd><a href="/tags/#Linux">Linux</a></dd>
+              
+                <dd><a href="/tags/#Shell">Shell</a></dd>
+              
+          </dl>
+          </div>
+          
+
+          
+          <div class="post-categories">
+          <dl class="tags">
+              <dt>Categories:</dt>
+              
+                <dd><a href="/categories/#Linux">Linux</a></dd>
+              
+                <dd><a href="/categories/#Shell">Shell</a></dd>
+              
+          </dl>
+          </div>
+          
+
+          <div class="post-date">
+            By Garryshield, Created at 2018-08-06, Updated at 2018-08-06
+          </div>
+      </div>
+
+  </div>
+</div>
+</div>
+</header>
+
+<div class="container">
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+
+      <article class="article mb-5">
+        <section>
+        <h2 id="hello-world!">Hello World!</h2>
+<figure class="highlight bash"><figcaption><span>hello_world.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Hello World!"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">chmod +x ./hello_world.sh</span><br><span class="line">./hello_world.sh</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">/bin/bash hello_world.sh</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="%E5%8F%98%E9%87%8F">变量</h2>
+<p>变量名和等号之间不能有空格。<br>
+变量名名只能使用英文字母，数字和下划线，首个字符不能以数字开头。<br>
+变量名不能使用 bash 里的关键字。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">var_str1=string</span><br><span class="line">var_str2=<span class="string">'this is a string'</span></span><br><span class="line">var_str3=<span class="string">"this is another string"</span></span><br><span class="line">var_str4=<span class="string">"this is another <span class="variable">$&#123;string&#125;</span>"</span></span><br><span class="line"></span><br><span class="line">var_int1=2</span><br><span class="line">var_int2=002</span><br><span class="line">var_int3=<span class="string">'2'</span></span><br><span class="line">var_int4=<span class="string">'002'</span></span><br><span class="line"></span><br><span class="line">var_float1=3.1425</span><br><span class="line">var_float2=<span class="string">'3.1425'</span></span><br><span class="line"></span><br><span class="line">var_array1=(item0 item1 item2 <span class="string">"reset item"</span>)</span><br><span class="line">var_array2=(</span><br><span class="line">  item0</span><br><span class="line">  item1</span><br><span class="line">  item2</span><br><span class="line">  <span class="string">"reset item"</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h2 id="%E6%B3%A8%E9%87%8A">注释</h2>
+<p>以&quot;#&quot;开头的行就是注释，会被解释器忽略。<br>
+sh里没有多行注释，只能每一行加一个#号。只能像这样：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#--------------------------------------------</span></span><br><span class="line"><span class="comment"># Script Description</span></span><br><span class="line"><span class="comment"># author：Garry Shield</span></span><br><span class="line"><span class="comment"># site：garryshield.github.io</span></span><br><span class="line"><span class="comment"># slogan：stay hungry stay foolish</span></span><br><span class="line"><span class="comment">#--------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##### Block A Start #####</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Block A Description</span></span><br><span class="line"><span class="comment"># </span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">##### Block A End  #####</span></span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">:&lt;&lt;EOF</span><br><span class="line">注释内容...</span><br><span class="line">注释内容...</span><br><span class="line">注释内容...</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<h2 id="%E5%AD%97%E7%AC%A6%E4%B8%B2">字符串</h2>
+<p>字符串可以用单引号，也可以用双引号，也可以不用引号。如果字符串中有空格一定要用双引号。</p>
+<h5 id="%E5%8D%95%E5%BC%95%E5%8F%B7">单引号</h5>
+<p>单引号里的任何字符都会原样输出，单引号字符串中的变量是无效的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str=<span class="string">'this is a string'</span></span><br></pre></td></tr></table></figure>
+<h5 id="%E5%8F%8C%E5%BC%95%E5%8F%B7">双引号</h5>
+<p>双引号里可以有变量，特殊字符（如：<code>$</code>、<code>`</code>、<code>/</code>）需要使用 <code>/</code> 转义。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'\", \$, \`, \\, `whoami`, $&#123;PWD&#125;'</span> <span class="comment"># \", \$, \`, \\, `whoami`, $&#123;PWD&#125;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"\", \$, \`, \\, `whoami`, <span class="variable">$&#123;PWD&#125;</span>"</span> <span class="comment"># ", $, `, \, root, /root/shell</span></span><br></pre></td></tr></table></figure>
+<h5 id="%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6">字符串长度</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string=<span class="string">"www.google.com"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;#string&#125;</span> <span class="comment"># 输出 14</span></span><br><span class="line"><span class="built_in">echo</span> `expr length <span class="string">"<span class="variable">$&#123;string&#125;</span>"</span>` <span class="comment"># 输出 14</span></span><br><span class="line"><span class="built_in">echo</span> `expr <span class="string">"<span class="variable">$&#123;string&#125;</span>"</span> : <span class="string">".*"</span>` <span class="comment"># 输出 14</span></span><br></pre></td></tr></table></figure>
+<h5 id="%E6%88%AA%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2">截取字符串</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">string=<span class="string">"www.google.com"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;string:4:6&#125;</span> <span class="comment"># 从第4个字符开始截取6个字符，输出 google</span></span><br><span class="line"><span class="built_in">echo</span> `expr substr <span class="string">"<span class="variable">$&#123;string&#125;</span>"</span> 5 6` <span class="comment"># 输出 google</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;string:4&#125;</span> <span class="comment"># 从第4个字符开始截取，输出 google.com</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;string: -3&#125;</span> <span class="comment"># 截取后3个字符 输出 com</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;string:(-3)&#125;</span> <span class="comment"># 同上</span></span><br></pre></td></tr></table></figure>
+<h5 id="indexof">indexOf</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">string=<span class="string">"www.google.com"</span></span><br><span class="line"><span class="built_in">echo</span> `expr index <span class="string">"<span class="variable">$&#123;string&#125;</span>"</span> g` <span class="comment"># 输出 5</span></span><br></pre></td></tr></table></figure>
+<h5 id="%E6%9B%BF%E6%8D%A2">替换</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">string=<span class="string">"www.google.com"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;string/g/b&#125;</span> <span class="comment"># 代替第一个匹配 输出 www.boogle.com</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;string//g/b&#125;</span> <span class="comment"># 代替所有匹配 输出 www.booble.com</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;string//google/baidu&#125;</span> <span class="comment"># 代替所有匹配 输出 www.baidu.com</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;string/#www/cloud&#125;</span> <span class="comment"># #表示以什么开头来匹配 输出 cloud.google.com</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;string/%com/com.hk&#125;</span> <span class="comment"># %表示以什么结尾来匹配 输出 www.google.com.hk</span></span><br></pre></td></tr></table></figure>
+<h2 id="%E6%95%B0%E7%BB%84">数组</h2>
+<p>bash 支持一维数组（不支持多维数组），并且没有限定数组的大小。<br>
+数组元素的下标由 0 开始编号。获取数组中的元素要利用下标，下标可以是整数或算术表达式，其值应大于或等于 0。</p>
+<h5 id="%E5%AE%9A%E4%B9%89%E6%95%B0%E7%BB%84">定义数组</h5>
+<p>在 Shell 中，用括号来表示数组，数组元素用&quot;空格&quot;符号分割开。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array_name=(value0 value1 value2 value3)</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">array_name=(</span><br><span class="line">  value0</span><br><span class="line">  value1</span><br><span class="line">  value2</span><br><span class="line">  value3</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h5 id="%E4%BF%AE%E6%94%B9%E5%85%83%E7%B4%A0">修改元素</h5>
+<p>可以不使用连续的下标，而且下标的范围没有限制。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">array_name[0]=value0</span><br><span class="line">array_name[1]=value1</span><br><span class="line">array_name[100]=value100</span><br><span class="line">array_name[100+1]=value101</span><br></pre></td></tr></table></figure>
+<h5 id="%E8%8E%B7%E5%8F%96%E5%80%BC">获取值</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;array_name[100]&#125;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;array_name[100+1]&#125;</span></span><br></pre></td></tr></table></figure>
+<h5 id="%E8%8E%B7%E5%8F%96%E9%94%AE">获取键</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;!array_name[@]&#125;</span> <span class="comment"># 0 1 2 3 100 101</span></span><br></pre></td></tr></table></figure>
+<h5 id="%E6%89%80%E6%9C%89%E5%80%BC">所有值</h5>
+<p>使用 <code>@</code> 符号可以获取数组中的所有元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;array_name[@]&#125;</span> <span class="comment"># value0 value1 value2 value3 value100 value101</span></span><br></pre></td></tr></table></figure>
+<h5 id="%E8%8E%B7%E5%8F%96%E9%95%BF%E5%BA%A6">获取长度</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 取得数组元素的个数</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;#array_name[@]&#125;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;#array_name[*]&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取得数组单个元素的长度</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;#array_name[100]&#125;</span></span><br></pre></td></tr></table></figure>
+<h5 id="%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84">遍历数组</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="variable">$&#123;array_name[@]&#125;</span>; <span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"value:"</span> <span class="variable">$i</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>或者，推荐使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">"<span class="variable">$&#123;!array_name[@]&#125;</span>"</span>; <span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"key:"</span> <span class="variable">$i</span> <span class="string">"value:"</span> <span class="string">"<span class="variable">$&#123;array_name[$i]&#125;</span>"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>或者，慎用此法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (( i=0; i&lt;<span class="variable">$&#123;#array_name[@]&#125;</span>; i++ )); <span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"order:"</span> <span class="variable">$i</span> <span class="string">"value:"</span> <span class="variable">$&#123;array_name[$i]&#125;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<h6 id="indexof-2">indexOf</h6>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">search=<span class="string">"value2"</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">"<span class="variable">$&#123;!array_name[@]&#125;</span>"</span>; <span class="keyword">do</span></span><br><span class="line">   <span class="keyword">if</span> [[ <span class="string">"<span class="variable">$&#123;array_name[$i]&#125;</span>"</span> = <span class="string">"<span class="variable">$&#123;search&#125;</span>"</span> ]]; <span class="keyword">then</span></span><br><span class="line">       <span class="built_in">echo</span> <span class="string">"<span class="variable">$&#123;i&#125;</span>"</span>;</span><br><span class="line">   <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="comment"># 输出 2</span></span><br></pre></td></tr></table></figure>
+<h2 id="parameter-expansion">Parameter Expansion</h2>
+<p>1、Use Default Values <strong>${parameter:-word}</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="built_in">echo</span> -en <span class="string">"What is your name:"</span></span><br><span class="line"><span class="built_in">read</span> myname</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Your name is : <span class="variable">$&#123;myname:-garry&#125;</span>"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$myname</span></span><br></pre></td></tr></table></figure>
+<p>2、Assign Default Values <strong>${parameter:=word}</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="built_in">echo</span> -en <span class="string">"What is your name:"</span></span><br><span class="line"><span class="built_in">read</span> myname</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Your name is : <span class="variable">$&#123;myname:=garry&#125;</span>"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$myname</span></span><br></pre></td></tr></table></figure>
+<p>3、Display Error if Null or Unset <strong>${parameter:?word}</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="built_in">echo</span> -en <span class="string">"What is your name:"</span></span><br><span class="line"><span class="built_in">read</span> myname</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Your name is : <span class="variable">$&#123;myname:?'myname is undefined'&#125;</span>"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$myname</span></span><br></pre></td></tr></table></figure>
+<p>4、Use Alternate Value <strong>${parameter:+word}</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="built_in">echo</span> -en <span class="string">"What is your name:"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Your name is : <span class="variable">$&#123;myname:+shield&#125;</span>"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$myname</span></span><br></pre></td></tr></table></figure>
+<h2 id="for-loops">For Loops</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> &lt;item&gt; <span class="keyword">in</span> &lt;list&gt;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  &lt;commands&gt;</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<h2 id="while-loops">While Loops</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> [ &lt;condition&gt; ]</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  &lt;commands&gt;</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> :</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">  &lt;commands&gt;</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> &lt;line&gt;</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">  &lt;commands&gt;</span><br><span class="line"><span class="keyword">done</span> &lt; &lt;file&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="if-%2F-else">If / Else</h2>
+<p><strong>If</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ &lt;<span class="built_in">test</span>&gt; ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">  &lt;commands&gt;</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<p><strong>If Else</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ &lt;<span class="built_in">test</span>&gt; ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">  &lt;commands&gt;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  &lt;other commands&gt;</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<p><strong>If Elif Else</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ &lt;<span class="built_in">test</span>&gt; ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">  &lt;commands&gt;</span><br><span class="line"><span class="keyword">elif</span> [ &lt;<span class="built_in">test</span>&gt; ] </span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">  &lt;different commands&gt;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  &lt;other commands&gt;</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<h2 id="case">Case</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> &lt;variable&gt; <span class="keyword">in</span></span><br><span class="line">  &lt;pattern&gt;)</span><br><span class="line">    &lt;commands&gt;</span><br><span class="line">    ;;</span><br><span class="line">  &lt;other pattern&gt;)</span><br><span class="line">    &lt;commands&gt;</span><br><span class="line">    ;;</span><br><span class="line">  *)</span><br><span class="line">    &lt;commands&gt;</span><br><span class="line">    ;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
+<h2 id="test">Test</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">which</span> [</span><br></pre></td></tr></table></figure>
+<h2 id="boolean">Boolean</h2>
+<p>&amp;&amp;<br>
+||</p>
+<h2 id="hints-and-tips">Hints and Tips</h2>
+<p>批量创建目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir dir_&#123;0,1,2,3,4&#125;.d</span><br></pre></td></tr></table></figure>
+<p>只允许输出数字</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">read</span> X</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$X</span> | grep <span class="string">"[^0-9]"</span> &gt; /dev/null 2&gt;&amp;1</span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"$?"</span> -eq <span class="string">"0"</span> ]; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"Bad"</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"Good"</span></span><br><span class="line">  <span class="keyword">if</span> [ <span class="string">"<span class="variable">$X</span>"</span> -eq <span class="string">"10"</span> ]: <span class="keyword">then</span></span><br><span class="line">    &lt;commands&gt;</span><br><span class="line">  <span class="keyword">if</span></span><br><span class="line"><span class="keyword">if</span></span><br></pre></td></tr></table></figure>
+<p>输出所有调用变量</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="keyword">while</span> [ <span class="string">"<span class="variable">$#</span>"</span> -gt <span class="string">"0"</span> ]</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"\$1 is <span class="variable">$1</span>"</span></span><br><span class="line">  <span class="built_in">shift</span></span><br><span class="line"><span class="keyword">done</span>      </span><br></pre></td></tr></table></figure>
+
+        </section>
+      </article>
+
+      <div class="clearfix mb-4">
+          
+          <p>
+          <a class="float-left" href="/2018/08/07/selinux/" tabindex="-1"><i class="fas fa-chevron-left"></i> 查看 SELinux 状态及如何关闭</a>
+          </p>
+          
+
+          
+          <p>
+          <a class="float-right" href="/2018/08/06/memcached/" tabindex="-1">CentOS7 下编译安装 Memcached 1.5 系列 <i class="fas fa-chevron-right"></i></a>
+          </p>
+          
+      </div>
+
+  </div>
+
+  <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+
+    <div class="card border-0 mb-4">
+  <div class="card-body p-0">
+    <h4>TAGS</h4>
+    <dl class="tags">
+    <dd><a href="/tags">All</a></dd>
+    
+  <dd><a href="/tags/#Diary">Diary</a></dd>
+
+  <dd><a href="/tags/#Hexo">Hexo</a></dd>
+
+  <dd><a href="/tags/#Tree">Tree</a></dd>
+
+  <dd><a href="/tags/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/tags/#Gif">Gif</a></dd>
+
+  <dd><a href="/tags/#Kap">Kap</a></dd>
+
+  <dd><a href="/tags/#Nvm">Nvm</a></dd>
+
+  <dd><a href="/tags/#Linux">Linux</a></dd>
+
+  <dd><a href="/tags/#Shortcuts">Shortcuts</a></dd>
+
+  <dd><a href="/tags/#Systemd">Systemd</a></dd>
+
+  <dd><a href="/tags/#Promise">Promise</a></dd>
+
+  <dd><a href="/tags/#Google">Google</a></dd>
+
+  <dd><a href="/tags/#Pyenv">Pyenv</a></dd>
+
+  <dd><a href="/tags/#VMware">VMware</a></dd>
+
+  <dd><a href="/tags/#Memcached">Memcached</a></dd>
+
+  <dd><a href="/tags/#SELinux">SELinux</a></dd>
+
+  <dd><a href="/tags/#Grunt">Grunt</a></dd>
+
+  <dd><a href="/tags/#Rsync">Rsync</a></dd>
+
+  <dd><a href="/tags/#Markdown">Markdown</a></dd>
+
+  <dd><a href="/tags/#Emoji">Emoji</a></dd>
+
+  <dd><a href="/tags/#Jupyter">Jupyter</a></dd>
+
+  <dd><a href="/tags/#MariaDB">MariaDB</a></dd>
+
+  <dd><a href="/tags/#Shell">Shell</a></dd>
+
+    </dl>
+  </div>
+</div>
+    <div class="card border-0 mb-4">
+  <div class="card-body p-0">
+    <h4>CATEGORIES</h4>
+    <dl class="tags">
+    <dd><a href="/categories">All</a></dd>
+    
+  <dd><a href="/categories/#Diary">Diary</a></dd>
+
+  <dd><a href="/categories/#NodeJS">NodeJS</a></dd>
+
+  <dd><a href="/categories/#Linux">Linux</a></dd>
+
+  <dd><a href="/categories/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/categories/#MacOS">MacOS</a></dd>
+
+  <dd><a href="/categories/#Node.Js">Node.Js</a></dd>
+
+  <dd><a href="/categories/#Google">Google</a></dd>
+
+  <dd><a href="/categories/#Python">Python</a></dd>
+
+  <dd><a href="/categories/#VMware">VMware</a></dd>
+
+  <dd><a href="/categories/#CentOS">CentOS</a></dd>
+
+  <dd><a href="/categories/#MacOS">MacOS</a></dd>
+
+  <dd><a href="/categories/#Memcached">Memcached</a></dd>
+
+  <dd><a href="/categories/#MariaDB">MariaDB</a></dd>
+
+  <dd><a href="/categories/#Shell">Shell</a></dd>
+
+    </dl>
+  </div>
+</div>
+    <div class="card border-0 mb-4">
+  <div class="card-body p-0">
+    <h4>ARCHIVES</h4>
+    <dl class="tags">
+    <dd><a href="/archives">All</a></dd>
+    
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+  <dd><a href="/archives/#2015">2015</a></dd>
+
+  <dd><a href="/archives/#2016">2016</a></dd>
+
+  <dd><a href="/archives/#2018">2018</a></dd>
+
+    </dl>
+  </div>
+</div>
+    
+  </div>
+</div>
+</div>
+
+    <footer class="footer">
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+
+          <div class="text-center">
+            <p>
+  <a href="https://github.com/garryshield" target="_blank" class="fa-stack fa-1x">
+    <i class="fas fa-circle fa-stack-2x"></i>
+    <i class="fab fa-github-alt fa-stack-1x fa-inverse"></i>
+  </a>
+  <a href="https://twitter.com/garry_shield" target="_blank" class="fa-stack fa-1x">
+    <i class="fas fa-circle fa-stack-2x"></i>
+    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+  </a>
+  <a href="https://www.zhihu.com/people/garryshield" target="_blank" class="fa-stack fa-1x">
+    <i class="fas fa-circle fa-stack-2x"></i>
+    <i class="fa fa-stack-1x fa-inverse">知</i>
+  </a>
+</p>
+            <p class="mb-4"></p>
+            <p>Copyright © Garry Shield 2018 </p>
+<p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> and <a href="https://github.com/twbs/bootstrap" target="_blank">Bootstrap</a></p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+      
+    </footer>
+
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Search" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+    
+    <script src="/assets/js/libs.min.js"></script>
+    <script src="/assets/js/main.min.js"></script>
+  </body>
+</html>

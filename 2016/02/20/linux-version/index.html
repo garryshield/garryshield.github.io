@@ -124,7 +124,7 @@
 <p>来兼容它们。这里先挖个坑汇总一些基本命令和检测脚本，方便以后使用。</p>
 <a id="more"></a>
 <h2 id="1.-%E5%86%85%E6%A0%B8%E7%89%88%E6%9C%AC-kernel-version">1. 内核版本 Kernel Version</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">uname -a</span><br><span class="line">// Linux 72e1a384f328 4.9.87-linuxkit-aufs <span class="comment">#1 SMP Wed Mar 14 15:12:16 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">uname -a</span><br><span class="line">// Linux localhost.localdomain 3.10.0-862.el7.x86_64 <span class="comment">#1 SMP Fri Apr 20 16:44:24 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux</span></span><br><span class="line"></span><br><span class="line">uname -r</span><br><span class="line">// 3.10.0-862.el7.x86_64</span><br></pre></td></tr></table></figure>
 <h2 id="2.-%E5%8F%91%E8%A1%8C%E7%89%88%E4%BF%A1%E6%81%AF-distribution-information">2. 发行版信息 Distribution Information</h2>
 <p>发行版信息查看命令和具体的发行版本有关，可以通过如下方式依次判断：</p>
 <h4 id="2.1.-%2Fetc%2F*-release-%E6%96%87%E4%BB%B6">2.1. <code>/etc/*-release</code> 文件</h4>
@@ -135,15 +135,15 @@
 <p>部分系统默认没有安装 lsb_release，要手动安装</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum install -y redhat-lsb</span><br><span class="line">lsb_release -a</span><br><span class="line">// LSB Version:	:core-4.1-amd64:core-4.1-noarch:cxx-4.1-amd64:cxx-4.1-noarch:desktop-4.1-amd64:desktop-4.1-noarch:languages-4.1-amd64:languages-4.1-noarch:printing-4.1-amd64:printing-4.1-noarch</span><br><span class="line">// Distributor ID:	CentOS</span><br><span class="line">// Description:	CentOS Linux release 7.5.1804 (Core)</span><br><span class="line">// Release:	7.5.1804</span><br><span class="line">// Codename:	Core</span><br></pre></td></tr></table></figure>
 <h4 id="2.3.-%2Fproc%2Fversion-%E6%96%87%E4%BB%B6">2.3. <code>/proc/version</code> 文件</h4>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/version</span><br><span class="line">// Linux version 4.9.87-linuxkit-aufs (root@95fa5ec30613) (gcc version 6.4.0 (Alpine 6.4.0) ) <span class="comment">#1 SMP Wed Mar 14 15:12:16 UTC 2018</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/version</span><br><span class="line">// Linux version 3.10.0-862.el7.x86_64 (builder@kbuilder.dev.centos.org) (gcc version 4.8.5 20150623 (Red Hat 4.8.5-28) (GCC) ) <span class="comment">#1 SMP Fri Apr 20 16:44:24 UTC 2018</span></span><br></pre></td></tr></table></figure>
 <h4 id="2.4.-hostnamectl-%E5%91%BD%E4%BB%A4">2.4. <code>hostnamectl</code> 命令</h4>
 <p>部分发行版使用了 Systemd，可以 <code>hostnamectl</code> 命令查看查看当前主机的信息</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">hostnamectl</span><br><span class="line"></span><br><span class="line">//   Static hostname: e36d66eda18f</span><br><span class="line">//         Icon name: computer-vm</span><br><span class="line">//           Chassis: vm</span><br><span class="line">//        Machine ID: 6fb7133090d24396994f84269f86e21c</span><br><span class="line">//           Boot ID: 980c73ee271a4df78941610e46befcc5</span><br><span class="line">//    Virtualization: other</span><br><span class="line">//  Operating System: CentOS Linux 7 (Core)</span><br><span class="line">//       CPE OS Name: cpe:/o:centos:centos:7</span><br><span class="line">//            Kernel: Linux 4.9.87-linuxkit-aufs</span><br><span class="line">//      Architecture: x86-64</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">hostnamectl</span><br><span class="line"></span><br><span class="line">//    Static hostname: localhost.localdomain</span><br><span class="line">//          Icon name: computer-vm</span><br><span class="line">//            Chassis: vm</span><br><span class="line">//         Machine ID: 085c99725433460e9b2a00df4c364940</span><br><span class="line">//            Boot ID: f6c3ff7f068d41b0b1aaded0a87bf70e</span><br><span class="line">//     Virtualization: vmware</span><br><span class="line">//   Operating System: CentOS Linux 7 (Core)</span><br><span class="line">//        CPE OS Name: cpe:/o:centos:centos:7</span><br><span class="line">//             Kernel: Linux 3.10.0-862.el7.x86_64</span><br><span class="line">//       Architecture: x86-64</span><br></pre></td></tr></table></figure>
 <h2 id="3.-%E6%A3%80%E6%B5%8B%E8%84%9A%E6%9C%AC">3. 检测脚本</h2>
 <h4 id="3.1.-sh">3.1. sh</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="comment"># Detects which OS and if it is Linux then it will detect which Linux Distribution.</span></span><br><span class="line"></span><br><span class="line">OS=`uname -s`</span><br><span class="line">REV=`uname -r`</span><br><span class="line">MACH=`uname -m`</span><br><span class="line"></span><br><span class="line">GetVersionFromFile()</span><br><span class="line">&#123;</span><br><span class="line">	VERSION=`cat <span class="variable">$1</span> | tr <span class="string">"\n"</span> <span class="string">' '</span> | sed s/.*VERSION.*=\ // `</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$&#123;OS&#125;</span>"</span> = <span class="string">"SunOS"</span> ] ; <span class="keyword">then</span></span><br><span class="line">	OS=Solaris</span><br><span class="line">	ARCH=`uname -p`	</span><br><span class="line">	OSSTR=<span class="string">"<span class="variable">$&#123;OS&#125;</span> <span class="variable">$&#123;REV&#125;</span>(<span class="variable">$&#123;ARCH&#125;</span> `uname -v`)"</span></span><br><span class="line"><span class="keyword">elif</span> [ <span class="string">"<span class="variable">$&#123;OS&#125;</span>"</span> = <span class="string">"AIX"</span> ] ; <span class="keyword">then</span></span><br><span class="line">	OSSTR=<span class="string">"<span class="variable">$&#123;OS&#125;</span> `oslevel` (`oslevel -r`)"</span></span><br><span class="line"><span class="keyword">elif</span> [ <span class="string">"<span class="variable">$&#123;OS&#125;</span>"</span> = <span class="string">"Linux"</span> ] ; <span class="keyword">then</span></span><br><span class="line">	KERNEL=`uname -r`</span><br><span class="line">	<span class="keyword">if</span> [ -f /etc/redhat-release ] ; <span class="keyword">then</span></span><br><span class="line">		DIST=<span class="string">'RedHat'</span></span><br><span class="line">		PSUEDONAME=`cat /etc/redhat-release | sed s/.*\(// | sed s/\)//`</span><br><span class="line">		REV=`cat /etc/redhat-release | sed s/.*release\ // | sed s/\ .*//`</span><br><span class="line">	<span class="keyword">elif</span> [ -f /etc/SUSE-release ] ; <span class="keyword">then</span></span><br><span class="line">		DIST=`cat /etc/SUSE-release | tr <span class="string">"\n"</span> <span class="string">' '</span>| sed s/VERSION.*//`</span><br><span class="line">		REV=`cat /etc/SUSE-release | tr <span class="string">"\n"</span> <span class="string">' '</span> | sed s/.*=\ //`</span><br><span class="line">	<span class="keyword">elif</span> [ -f /etc/mandrake-release ] ; <span class="keyword">then</span></span><br><span class="line">		DIST=<span class="string">'Mandrake'</span></span><br><span class="line">		PSUEDONAME=`cat /etc/mandrake-release | sed s/.*\(// | sed s/\)//`</span><br><span class="line">		REV=`cat /etc/mandrake-release | sed s/.*release\ // | sed s/\ .*//`</span><br><span class="line">	<span class="keyword">elif</span> [ -f /etc/debian_version ] ; <span class="keyword">then</span></span><br><span class="line">		DIST=<span class="string">"Debian `cat /etc/debian_version`"</span></span><br><span class="line">		REV=<span class="string">""</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">fi</span></span><br><span class="line">	<span class="keyword">if</span> [ -f /etc/UnitedLinux-release ] ; <span class="keyword">then</span></span><br><span class="line">		DIST=<span class="string">"<span class="variable">$&#123;DIST&#125;</span>[`cat /etc/UnitedLinux-release | tr "</span>\n<span class="string">" ' ' | sed s/VERSION.*//`]"</span></span><br><span class="line">	<span class="keyword">fi</span></span><br><span class="line">	</span><br><span class="line">	OSSTR=<span class="string">"<span class="variable">$&#123;OS&#125;</span> <span class="variable">$&#123;DIST&#125;</span> <span class="variable">$&#123;REV&#125;</span>(<span class="variable">$&#123;PSUEDONAME&#125;</span> <span class="variable">$&#123;KERNEL&#125;</span> <span class="variable">$&#123;MACH&#125;</span>)"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;OSSTR&#125;</span></span><br></pre></td></tr></table></figure>
 <h4 id="3.2.-python">3.2. python</h4>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// python3</span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">wget https://raw.githubusercontent.com/python/cpython/master/Lib/platform.py</span><br><span class="line">chmod +x platform.py</span><br><span class="line">./platform.py</span><br><span class="line">// Linux-4.9.87-linuxkit-aufs-x86_64-with-centos-7.5.1804-Core</span><br><span class="line"></span><br><span class="line">// python2</span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">wget https://raw.githubusercontent.com/python/cpython/2.7/Lib/platform.py</span><br><span class="line">chmod +x platform.py</span><br><span class="line">./platform.py</span><br><span class="line">// Linux-4.9.87-linuxkit-aufs-x86_64-with-centos-7.5.1804-Core</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// python3</span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">wget https://raw.githubusercontent.com/python/cpython/master/Lib/platform.py</span><br><span class="line">chmod +x platform.py</span><br><span class="line">./platform.py</span><br><span class="line">// Linux-4.9.87-linuxkit-aufs-x86_64-with-centos-7.5.1804-Core</span><br><span class="line"></span><br><span class="line">// python2</span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">wget https://raw.githubusercontent.com/python/cpython/2.7/Lib/platform.py</span><br><span class="line">chmod +x platform.py</span><br><span class="line">./platform.py</span><br><span class="line">// Linux-3.10.0-862.el7.x86_64-x86_64-with-centos-7.5.1804-Core</span><br></pre></td></tr></table></figure>
 <h2 id="4.-%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5">4. 参考链接</h2>
 <p>· <a href="https://www.novell.com/coolsolutions/feature/11251.html" target="_blank" rel="noopener">Detecting Underlying Linux Distro</a></p>
 
@@ -159,7 +159,7 @@
 
           
           <p>
-          <a class="float-right" href="/2016/01/04/rsync/" tabindex="-1">文件同步工具 - rsync <i class="fas fa-chevron-right"></i></a>
+          <a class="float-right" href="/2016/01/04/rsync/" tabindex="-1">文件同步工具 - Rsync <i class="fas fa-chevron-right"></i></a>
           </p>
           
       </div>
@@ -174,7 +174,7 @@
     <dl class="tags">
     <dd><a href="/tags">All</a></dd>
     
-  <dd><a href="/tags/#日志">日志</a></dd>
+  <dd><a href="/tags/#Diary">Diary</a></dd>
 
   <dd><a href="/tags/#Hexo">Hexo</a></dd>
 
@@ -190,23 +190,35 @@
 
   <dd><a href="/tags/#Linux">Linux</a></dd>
 
-  <dd><a href="/tags/#MacOS">MacOS</a></dd>
+  <dd><a href="/tags/#Shortcuts">Shortcuts</a></dd>
 
   <dd><a href="/tags/#Systemd">Systemd</a></dd>
 
-  <dd><a href="/tags/#NodeJS">NodeJS</a></dd>
-
   <dd><a href="/tags/#Promise">Promise</a></dd>
 
-  <dd><a href="/tags/#Grunt">Grunt</a></dd>
+  <dd><a href="/tags/#Google">Google</a></dd>
 
-  <dd><a href="/tags/#Javascript">Javascript</a></dd>
+  <dd><a href="/tags/#Pyenv">Pyenv</a></dd>
+
+  <dd><a href="/tags/#VMware">VMware</a></dd>
+
+  <dd><a href="/tags/#Memcached">Memcached</a></dd>
+
+  <dd><a href="/tags/#SELinux">SELinux</a></dd>
+
+  <dd><a href="/tags/#Grunt">Grunt</a></dd>
 
   <dd><a href="/tags/#Rsync">Rsync</a></dd>
 
   <dd><a href="/tags/#Markdown">Markdown</a></dd>
 
   <dd><a href="/tags/#Emoji">Emoji</a></dd>
+
+  <dd><a href="/tags/#Jupyter">Jupyter</a></dd>
+
+  <dd><a href="/tags/#MariaDB">MariaDB</a></dd>
+
+  <dd><a href="/tags/#Shell">Shell</a></dd>
 
     </dl>
   </div>
@@ -217,7 +229,7 @@
     <dl class="tags">
     <dd><a href="/categories">All</a></dd>
     
-  <dd><a href="/categories/#日志">日志</a></dd>
+  <dd><a href="/categories/#Diary">Diary</a></dd>
 
   <dd><a href="/categories/#NodeJS">NodeJS</a></dd>
 
@@ -229,15 +241,21 @@
 
   <dd><a href="/categories/#Node.Js">Node.Js</a></dd>
 
-  <dd><a href="/categories/#Hexo">Hexo</a></dd>
+  <dd><a href="/categories/#Google">Google</a></dd>
 
-  <dd><a href="/categories/#Systemd">Systemd</a></dd>
+  <dd><a href="/categories/#Python">Python</a></dd>
 
-  <dd><a href="/categories/#Promise">Promise</a></dd>
+  <dd><a href="/categories/#VMware">VMware</a></dd>
 
-  <dd><a href="/categories/#Grunt">Grunt</a></dd>
+  <dd><a href="/categories/#CentOS">CentOS</a></dd>
 
-  <dd><a href="/categories/#Markdown">Markdown</a></dd>
+  <dd><a href="/categories/#MacOS">MacOS</a></dd>
+
+  <dd><a href="/categories/#Memcached">Memcached</a></dd>
+
+  <dd><a href="/categories/#MariaDB">MariaDB</a></dd>
+
+  <dd><a href="/categories/#Shell">Shell</a></dd>
 
     </dl>
   </div>
@@ -249,6 +267,27 @@
     <dd><a href="/archives">All</a></dd>
     
 
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
 
   
   

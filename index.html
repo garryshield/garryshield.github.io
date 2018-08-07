@@ -86,13 +86,331 @@
 
 
   <div class="mb-5">
-      <h4><a href="/2018/07/29/google-search/">Google 高级搜索</a></h4>
+      <h4><a href="/2018/08/07/selinux/">查看 SELinux 状态及如何关闭</a></h4>
 
       <div class="text-secondary mb-3">
-        <div class="italic mb-2">By Garryshield, Created at 2018-07-29, Updated at 2018-07-29</div>
+        <div class="italic mb-2">By Garryshield, Created at 2018-08-07, Updated at 2018-08-07</div>
         
+        
+        <dl class="tags mb-1">
+            <dt>Tags:</dt>
+            
+              <dd><a href="/tags/#SELinux">SELinux</a></dd>
+            
+        </dl>
         
 
+        
+        <dl class="tags mb-1">
+            <dt>Categories:</dt>
+            
+              <dd><a href="/categories/#Linux">Linux</a></dd>
+            
+        </dl>
+        
+      </div>
+
+      <article class="article mb-5">
+        <section>
+          
+            <h4 id="1.-%E6%9F%A5%E7%9C%8B-selinux-%E7%8A%B6%E6%80%81%EF%BC%9A">1. 查看 SELinux 状态：</h4>
+<p>SELinux 有三个状态 Enforcing，Permissive，Disabled，当中 Enforcing 是预设的模式。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sestatus -v </span><br><span class="line">// or</span><br><span class="line">getenforce</span><br></pre></td></tr></table></figure>
+<h4 id="2.-%E5%85%B3%E9%97%AD">2. 关闭</h4>
+<h6 id="2.1.-%E4%B8%B4%E6%97%B6%E5%85%B3%E9%97%AD">2.1. 临时关闭</h6>
+<p>setenforce 指令可以即时切换 Enforcing 及 Permissive 这两个模式，但这些改动在系统重新开机时不会被保留。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setenforce 0</span><br></pre></td></tr></table></figure>
+<h6 id="2.2.-%E6%B0%B8%E4%B9%85%E5%85%B3%E9%97%AD">2.2. 永久关闭</h6>
+<p>直接修改配置文件 <code>/etc/selinux/config</code> 禁用 SELinux。</p>
+<figure class="highlight bash"><figcaption><span>/etc/selinux/config</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#SELINUX=enforcing</span></span><br><span class="line">ELINUX=disabled</span><br></pre></td></tr></table></figure>
+          
+        </section>
+      </article>
+
+      <div class="mt-4">
+          <a href="/2018/08/07/selinux/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+      </div>
+  </div>
+
+  <div class="mb-5">
+      <h4><a href="/2018/08/06/shell-scripting/">Shell Scripting</a></h4>
+
+      <div class="text-secondary mb-3">
+        <div class="italic mb-2">By Garryshield, Created at 2018-08-06, Updated at 2018-08-06</div>
+        
+        
+        <dl class="tags mb-1">
+            <dt>Tags:</dt>
+            
+              <dd><a href="/tags/#Linux">Linux</a></dd>
+            
+              <dd><a href="/tags/#Shell">Shell</a></dd>
+            
+        </dl>
+        
+
+        
+        <dl class="tags mb-1">
+            <dt>Categories:</dt>
+            
+              <dd><a href="/categories/#Linux">Linux</a></dd>
+            
+              <dd><a href="/categories/#Shell">Shell</a></dd>
+            
+        </dl>
+        
+      </div>
+
+      <article class="article mb-5">
+        <section>
+          
+            <h2 id="hello-world!">Hello World!</h2>
+<figure class="highlight bash"><figcaption><span>hello_world.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Hello World!"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">chmod +x ./hello_world.sh</span><br><span class="line">./hello_world.sh</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">/bin/bash hello_world.sh</span><br></pre></td></tr></table></figure>
+          
+        </section>
+      </article>
+
+      <div class="mt-4">
+          <a href="/2018/08/06/shell-scripting/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+      </div>
+  </div>
+
+  <div class="mb-5">
+      <h4><a href="/2018/08/06/memcached/">CentOS7 下编译安装 Memcached 1.5 系列</a></h4>
+
+      <div class="text-secondary mb-3">
+        <div class="italic mb-2">By Garryshield, Created at 2018-08-06, Updated at 2018-08-06</div>
+        
+        
+        <dl class="tags mb-1">
+            <dt>Tags:</dt>
+            
+              <dd><a href="/tags/#Memcached">Memcached</a></dd>
+            
+        </dl>
+        
+
+        
+        <dl class="tags mb-1">
+            <dt>Categories:</dt>
+            
+              <dd><a href="/categories/#CentOS">CentOS</a></dd>
+            
+              <dd><a href="/categories/#Memcached">Memcached</a></dd>
+            
+        </dl>
+        
+      </div>
+
+      <article class="article mb-5">
+        <section>
+          
+            <p><a href="https://memcached.org/" target="_blank" rel="noopener">Memcached</a> 是一个高性能的分布式内存对象缓存系统，用于以减轻数据库负载。</p>
+<h2 id="1.-%E7%BB%93%E6%9E%84%E8%A7%84%E5%88%92">1. 结构规划</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">用户名 memcached</span><br><span class="line">用户组 memcached</span><br><span class="line">端口 2307</span><br><span class="line"></span><br><span class="line"><span class="comment"># 源码包</span></span><br><span class="line">/root/tmp/memcached-1.5.9.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解压后源码</span></span><br><span class="line">/root/tmp/memcached-1.5.9</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译目录</span></span><br><span class="line">/root/tmp/build</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译安装错误</span></span><br><span class="line">/root/tmp/configure.err</span><br><span class="line">/root/tmp/make.err</span><br><span class="line">/root/tmp/install.err</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装目录</span></span><br><span class="line">/usr/<span class="built_in">local</span>/memcached-1.5.9</span><br><span class="line"></span><br><span class="line"><span class="comment"># 工作目录</span></span><br><span class="line">/var/sites/memcached-1.5.9</span><br><span class="line">  <span class="comment"># 配置文件目录</span></span><br><span class="line">  /etc</span><br><span class="line">  <span class="comment"># Systemd Unit File</span></span><br><span class="line">  /systemd</span><br></pre></td></tr></table></figure>
+          
+        </section>
+      </article>
+
+      <div class="mt-4">
+          <a href="/2018/08/06/memcached/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+      </div>
+  </div>
+
+  <div class="mb-5">
+      <h4><a href="/2018/08/03/mariadb/">CentOS7 下编译安装 MariaDB 10.3 系列</a></h4>
+
+      <div class="text-secondary mb-3">
+        <div class="italic mb-2">By Garryshield, Created at 2018-08-03, Updated at 2018-08-03</div>
+        
+        
+        <dl class="tags mb-1">
+            <dt>Tags:</dt>
+            
+              <dd><a href="/tags/#MariaDB">MariaDB</a></dd>
+            
+        </dl>
+        
+
+        
+        <dl class="tags mb-1">
+            <dt>Categories:</dt>
+            
+              <dd><a href="/categories/#CentOS">CentOS</a></dd>
+            
+              <dd><a href="/categories/#MariaDB">MariaDB</a></dd>
+            
+        </dl>
+        
+      </div>
+
+      <article class="article mb-5">
+        <section>
+          
+            <p>Oracle 买下了 Sun， 考虑到 Oracle 的名声以及其入手之后闭源的可能性，MySQL 之父的 Michael 便先行一步，以他女儿 Maria 的名字开始了 MySQL 的另外一个衍生版本即 MariaDB。主流的 Linux 发行商基本上都开始转而支持使用 MariaDB 以规避 MySQL 不确定性的风险。</p>
+<h2 id="1.-%E7%BB%93%E6%9E%84%E8%A7%84%E5%88%92">1. 结构规划</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">用户名 mariadb</span><br><span class="line">用户组 mariadb</span><br><span class="line">端口 2306</span><br><span class="line"></span><br><span class="line"><span class="comment"># 源码包</span></span><br><span class="line">/root/tmp/mariadb-10.3.8.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解压后源码</span></span><br><span class="line">/root/tmp/mariadb-10.3.8 </span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译目录</span></span><br><span class="line">/root/tmp/build</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译安装错误</span></span><br><span class="line">/root/tmp/configure.err</span><br><span class="line">/root/tmp/make.err</span><br><span class="line">/root/tmp/install.err</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装目录</span></span><br><span class="line">/usr/<span class="built_in">local</span>/mariadb-10.3.8 </span><br><span class="line"></span><br><span class="line"><span class="comment"># 工作目录</span></span><br><span class="line">/var/sites/mariadb-10.3.8</span><br><span class="line">  <span class="comment"># 数据库、日志目录</span></span><br><span class="line">  /data</span><br><span class="line">  <span class="comment"># 配置文件目录</span></span><br><span class="line">  /etc</span><br><span class="line">    /my.cnf.d</span><br><span class="line">  <span class="comment"># 其它文件目录，如：sock，pid, lock...</span></span><br><span class="line">  /var</span><br><span class="line">  <span class="comment"># Systemd Unit File</span></span><br><span class="line">  /systemd</span><br></pre></td></tr></table></figure>
+          
+        </section>
+      </article>
+
+      <div class="mt-4">
+          <a href="/2018/08/03/mariadb/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+      </div>
+  </div>
+
+  <div class="mb-5">
+      <h4><a href="/2016/11/01/mac-vmware-network/">MacOS VMware 网络设置</a></h4>
+
+      <div class="text-secondary mb-3">
+        <div class="italic mb-2">By Garryshield, Created at 2016-11-01, Updated at 2016-11-01</div>
+        
+        
+        <dl class="tags mb-1">
+            <dt>Tags:</dt>
+            
+              <dd><a href="/tags/#VMware">VMware</a></dd>
+            
+        </dl>
+        
+
+        
+        <dl class="tags mb-1">
+            <dt>Categories:</dt>
+            
+              <dd><a href="/categories/#VMware">VMware</a></dd>
+            
+              <dd><a href="/categories/#MacOS">MacOS</a></dd>
+            
+        </dl>
+        
+      </div>
+
+      <article class="article mb-5">
+        <section>
+          
+            <p>VMware 安装后主机上多了两个 VMnet1 和 VMnet8 虚拟网卡，由它们控制虚拟机与主机间的网络链接方式。</p>
+<p>VMware 默认有三种链接方式:</p>
+<p><strong>VMnet0 桥接网络</strong><br>
+虚拟机相当与网络上的一台独立计算机，与主机一样，拥有一个独立的 IP 地址。</p>
+<p><strong>VMnet1 仅主机网络</strong><br>
+虚拟机只能和主机相互访问，不能访问外部网络。</p>
+<p><strong>VMnet8 NAT网络</strong><br>
+虚拟机在外部网络上共享主机的 IP 地址，主机为虚拟机发出的网络流量进行网络地址转换。</p>
+          
+        </section>
+      </article>
+
+      <div class="mt-4">
+          <a href="/2016/11/01/mac-vmware-network/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+      </div>
+  </div>
+
+  <div class="mb-5">
+      <h4><a href="/2016/10/30/jupyter/">Jupyter Notebook</a></h4>
+
+      <div class="text-secondary mb-3">
+        <div class="italic mb-2">By Garryshield, Created at 2016-10-30, Updated at 2016-10-30</div>
+        
+        
+        <dl class="tags mb-1">
+            <dt>Tags:</dt>
+            
+              <dd><a href="/tags/#Jupyter">Jupyter</a></dd>
+            
+        </dl>
+        
+
+        
+        <dl class="tags mb-1">
+            <dt>Categories:</dt>
+            
+              <dd><a href="/categories/#Python">Python</a></dd>
+            
+        </dl>
+        
+      </div>
+
+      <article class="article mb-5">
+        <section>
+          
+            <p><a href="https://jupyter.org/index.html" target="_blank" rel="noopener">Jupyter Notebook</a>（此前被称为 IPython Notebook）是基于网页的用于交互计算的应用程序。其可被应用于全过程计算：开发、文档编写、运行代码和展示结果。</p>
+<h2 id="1.-%E5%AE%89%E8%A3%85">1. 安装</h2>
+<p>安装前可以先体验几把 <a href="https://jupyter.org/try" target="_blank" rel="noopener">Try Jupyter</a>。</p>
+<p>安装 Jupyter Notebook 的前提是需要安装了 Python。<br>
+因为使用了 pyenv 来管理 Python，同时安装了 2.7.10 和 3.7.0 两个版本，我们默认使用 3.7.0 来安装。更多关于 pyenv 的用法参见：<a href="/2016/09/30/pyenv/" title="这篇文章">这篇文章</a>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pyenv shell 3.7.0</span><br><span class="line">python --version</span><br><span class="line">pip --version</span><br><span class="line"></span><br><span class="line">pip install jupyter</span><br></pre></td></tr></table></figure>
+          
+        </section>
+      </article>
+
+      <div class="mt-4">
+          <a href="/2016/10/30/jupyter/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+      </div>
+  </div>
+
+  <div class="mb-5">
+      <h4><a href="/2016/09/30/pyenv/">使用 Pyenv 管理 Python</a></h4>
+
+      <div class="text-secondary mb-3">
+        <div class="italic mb-2">By Garryshield, Created at 2016-09-30, Updated at 2016-09-30</div>
+        
+        
+        <dl class="tags mb-1">
+            <dt>Tags:</dt>
+            
+              <dd><a href="/tags/#Pyenv">Pyenv</a></dd>
+            
+        </dl>
+        
+
+        
+        <dl class="tags mb-1">
+            <dt>Categories:</dt>
+            
+              <dd><a href="/categories/#Python">Python</a></dd>
+            
+        </dl>
+        
+      </div>
+
+      <article class="article mb-5">
+        <section>
+          
+            <p><a href="https://github.com/pyenv/pyenv" target="_blank" rel="noopener">pyenv</a> 是 Python 的版本管理工具。 它可以改变全局的 Python 版本，安装多个版本的 Python，设置目录级别的 Python 版本，还能创建和管理 virtual python environments。</p>
+<p>pyenv 的特别之处在于，它并没有使用将不同的 PATH 植入不同的 shell 这种高耦合的工作方式，而是简单地在 PATH 的最前面插入了一个垫片路径（shims）：<code>$(pyenv root)/shims:/usr/local/bin:/usr/bin:/bin</code>。使得对 Python 可执行文件的查找都会首先被这个 shims 路径截获，从而使后方的系统路径失效。</p>
+          
+        </section>
+      </article>
+
+      <div class="mt-4">
+          <a href="/2016/09/30/pyenv/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+      </div>
+  </div>
+
+  <div class="mb-5">
+      <h4><a href="/2016/08/29/google-search/">Google 高级搜索</a></h4>
+
+      <div class="text-secondary mb-3">
+        <div class="italic mb-2">By Garryshield, Created at 2016-08-29, Updated at 2016-08-29</div>
+        
+        
+        <dl class="tags mb-1">
+            <dt>Tags:</dt>
+            
+              <dd><a href="/tags/#Google">Google</a></dd>
+            
+        </dl>
+        
+
+        
+        <dl class="tags mb-1">
+            <dt>Categories:</dt>
+            
+              <dd><a href="/categories/#Google">Google</a></dd>
+            
+        </dl>
         
       </div>
 
@@ -108,55 +426,12 @@
 <p>星号<br>
 星号 <code>*</code> 通配符代表任何文字。<br>
 例如：<code>搜索*擎</code> 中的 <code>*</code> 号代表任何文字。返回包含 <code>搜索引擎</code>，<code>搜索收擎</code>，<code>搜索巨擎</code> 等内容的网页。</p>
-<p>inurl<br>
-<code>inurl:WORD</code> 搜索关键词出现在url中的网页。<br>
-例如：<code>inurl:引擎</code> 返回url中包含 <code>引擎</code> 的网页。<br>
-<code>inurl:admin.php</code></p>
-<p>allinurl<br>
-<code>allinurl:WORDS</code> 搜索url中包含多个关键词的网页。<br>
-例如：<code>allinurl:搜索 引擎</code> 相当于：<code>inurl:搜索 inurl:引擎</code>。</p>
-<p>intitle<br>
-<code>intitle:WORD</code> 返回title中包含关键词的网页。<br>
-例如：<code>intitle:用户登录</code> 返回title包含 <code>用户登录</code> 的网页</p>
-<p>allintitle<br>
-<code>allintitle:WORDS</code> 返回title中包含多个关键词的网页。<br>
-例如：<code>allintitle:搜索 引擎</code> 相当于：<code>intitle:搜索 intitle:引擎</code></p>
-<p>intext<br>
-<code>intext:WORD</code> 返回正文中包含关键词的网页。<br>
-例如：<code>intext:用户登录</code> 返回正文包含 <code>用户登录</code> 的网页</p>
-<p>allintext<br>
-<code>allintext:WORDS</code> 返回正文中包含多个关键词的网页。<br>
-例如：<code>allintext:搜索 引擎</code> 相当于：<code>intext:搜索 intext:引擎</code></p>
-<p>inanchor<br>
-<code>inanchor:WORD</code> 返回链接锚点中包含关键词的网页<br>
-例如：<code>inanchor:搜索</code> 返回链接锚点中包含 <code>搜索</code> 的网页。</p>
-<p>allinanchor<br>
-<code>allinanchor:WORDS</code> 返回链接锚点中包含多个关键词的网页<br>
-例如：<code>allinanchor:搜索 引擎</code> 返回链接锚点中包含 <code>搜索</code> 和 <code>引擎</code> 的网页。</p>
-<p>link<br>
-<code>link:URL</code> 返回链接到目标URL的网页</p>
-<p>info<br>
-<code>info:URL</code> 返回目标URL信息</p>
-<p>filetype<br>
-<code>filetype:TYPE WORD</code> 返回包含关键词的特定文件。<br>
-例如：<code>filetype:pdf 搜索</code> 返回包含 <code>搜索</code> 关键词的所有 <code>pdf</code> 文件。</p>
-<p>site<br>
-<code>site:URL</code> 返回某个域名下的所有网页。<br>
-例如：<code>site:google.com</code>，<code>site:.google.com</code></p>
-<p>related<br>
-<code>related:URL</code> 返回与某个网站有关联的网页。</p>
-<p>cache<br>
-<code>cache:URL</code> 返回某些已经被删除的死链接网页。</p>
-<p>index of /<br>
-列出文件（需要服务器支持）<br>
-例如：<code>index of /mp3</code></p>
-
           
         </section>
       </article>
 
       <div class="mt-4">
-          <a href="/2018/07/29/google-search/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+          <a href="/2016/08/29/google-search/" class="btn btn-sm btn-outline-primary">READ MORE</a>
       </div>
   </div>
 
@@ -170,8 +445,6 @@
         <dl class="tags mb-1">
             <dt>Tags:</dt>
             
-              <dd><a href="/tags/#NodeJS">NodeJS</a></dd>
-            
               <dd><a href="/tags/#Promise">Promise</a></dd>
             
         </dl>
@@ -182,8 +455,6 @@
             <dt>Categories:</dt>
             
               <dd><a href="/categories/#NodeJS">NodeJS</a></dd>
-            
-              <dd><a href="/categories/#Promise">Promise</a></dd>
             
         </dl>
         
@@ -235,10 +506,6 @@
             
               <dd><a href="/categories/#NodeJS">NodeJS</a></dd>
             
-              <dd><a href="/categories/#Hexo">Hexo</a></dd>
-            
-              <dd><a href="/categories/#Markdown">Markdown</a></dd>
-            
         </dl>
         
       </div>
@@ -272,433 +539,6 @@
       </div>
   </div>
 
-  <div class="mb-5">
-      <h4><a href="/2016/05/20/systemd-timer/">Systemd 定时器单元 - Timer</a></h4>
-
-      <div class="text-secondary mb-3">
-        <div class="italic mb-2">By Garryshield, Created at 2016-05-20, Updated at 2016-05-20</div>
-        
-        
-        <dl class="tags mb-1">
-            <dt>Tags:</dt>
-            
-              <dd><a href="/tags/#Linux">Linux</a></dd>
-            
-              <dd><a href="/tags/#Systemd">Systemd</a></dd>
-            
-        </dl>
-        
-
-        
-        <dl class="tags mb-1">
-            <dt>Categories:</dt>
-            
-              <dd><a href="/categories/#Linux">Linux</a></dd>
-            
-              <dd><a href="/categories/#Systemd">Systemd</a></dd>
-            
-        </dl>
-        
-      </div>
-
-      <article class="article mb-5">
-        <section>
-          
-            <p>Timers 是以 .timer 为后缀名的 systemd 单元文件，用于控制 .service 文件或事件。Timers 可用来代替 cron。Timers 内置了日历定时事件和单调定时事件的支持，并可以异步执行这些事件。<br>
-更多关于 Systemd 的说明参见 <a href="/2016/03/24/systemd/" title="这篇文章">这篇文章</a>。</p>
-          
-        </section>
-      </article>
-
-      <div class="mt-4">
-          <a href="/2016/05/20/systemd-timer/" class="btn btn-sm btn-outline-primary">READ MORE</a>
-      </div>
-  </div>
-
-  <div class="mb-5">
-      <h4><a href="/2016/04/24/mac-keyboard/">Mac 修饰键和热键</a></h4>
-
-      <div class="text-secondary mb-3">
-        <div class="italic mb-2">By Garryshield, Created at 2016-04-24, Updated at 2016-04-24</div>
-        
-        
-        <dl class="tags mb-1">
-            <dt>Tags:</dt>
-            
-              <dd><a href="/tags/#MacOS">MacOS</a></dd>
-            
-        </dl>
-        
-
-        
-        <dl class="tags mb-1">
-            <dt>Categories:</dt>
-            
-              <dd><a href="/categories/#MacOS">MacOS</a></dd>
-            
-        </dl>
-        
-      </div>
-
-      <article class="article mb-5">
-        <section>
-          
-            <p><strong>MacOS 键盘按键修饰符:</strong></p>
-<table class="markdown-table" style="font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace">
-<thead>
-<tr>
-<th>GLYPH</th>
-<th>HTML Entity</th>
-<th>NAME</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td>&amp;#63743;</td>
-<td>Apple</td>
-</tr>
-<tr>
-<td>⌘</td>
-<td>&amp;#8984;</td>
-<td>Command</td>
-</tr>
-<tr>
-<td>⌥</td>
-<td>&amp;#8997;</td>
-<td>Option</td>
-</tr>
-<tr>
-<td>⇧</td>
-<td>&amp;#8679;</td>
-<td>Shift</td>
-</tr>
-<tr>
-<td>⌃</td>
-<td>&amp;#8963;</td>
-<td>Control</td>
-</tr>
-<tr>
-<td>⎋</td>
-<td>&amp;#9099;</td>
-<td>Esc</td>
-</tr>
-<tr>
-<td>⇪</td>
-<td>&amp;#8682;</td>
-<td>Caps lock</td>
-</tr>
-<tr>
-<td>⏏</td>
-<td>&amp;#9167;</td>
-<td>Eject</td>
-</tr>
-<tr>
-<td>↵</td>
-<td>&amp;#8629; &amp;crarr;</td>
-<td>Return</td>
-</tr>
-<tr>
-<td>⌫</td>
-<td>&amp;#9003;</td>
-<td>Delete</td>
-</tr>
-<tr>
-<td>⌦</td>
-<td>&amp;#8998;</td>
-<td>Forward Delete</td>
-</tr>
-<tr>
-<td>→</td>
-<td>&amp;#8594; &amp;rarr;</td>
-<td>Right</td>
-</tr>
-<tr>
-<td>←</td>
-<td>&amp;#8592; &amp;larr;</td>
-<td>Left</td>
-</tr>
-<tr>
-<td>↑</td>
-<td>&amp;#8593; &amp;uarr;</td>
-<td>Up</td>
-</tr>
-<tr>
-<td>↓</td>
-<td>&amp;#8595; &amp;darr;</td>
-<td>Down</td>
-</tr>
-<tr>
-<td>⇞</td>
-<td>&amp;#8670;</td>
-<td>Page Up</td>
-</tr>
-<tr>
-<td>⇟</td>
-<td>&amp;#8671;</td>
-<td>Page Down</td>
-</tr>
-<tr>
-<td>↖</td>
-<td>&amp;#8598;</td>
-<td>Home</td>
-</tr>
-<tr>
-<td>↘</td>
-<td>&amp;#8600;</td>
-<td>End</td>
-</tr>
-<tr>
-<td>⌧</td>
-<td>&amp;#8999;</td>
-<td>Clear</td>
-</tr>
-<tr>
-<td>⇥</td>
-<td>&amp;#8677;</td>
-<td>Tab</td>
-</tr>
-<tr>
-<td>⇤</td>
-<td>&amp;#8676;</td>
-<td>Shift Tab</td>
-</tr>
-<tr>
-<td><strong>␣</strong></td>
-<td>&amp;#9251;</td>
-<td>Space</td>
-</tr>
-</tbody>
-</table>
-          
-        </section>
-      </article>
-
-      <div class="mt-4">
-          <a href="/2016/04/24/mac-keyboard/" class="btn btn-sm btn-outline-primary">READ MORE</a>
-      </div>
-  </div>
-
-  <div class="mb-5">
-      <h4><a href="/2016/03/24/systemd/">Linux 系统服务管理器 - Systemd</a></h4>
-
-      <div class="text-secondary mb-3">
-        <div class="italic mb-2">By Garryshield, Created at 2016-03-24, Updated at 2016-02-20</div>
-        
-        
-        <dl class="tags mb-1">
-            <dt>Tags:</dt>
-            
-              <dd><a href="/tags/#Linux">Linux</a></dd>
-            
-              <dd><a href="/tags/#Systemd">Systemd</a></dd>
-            
-        </dl>
-        
-
-        
-        <dl class="tags mb-1">
-            <dt>Categories:</dt>
-            
-              <dd><a href="/categories/#Linux">Linux</a></dd>
-            
-              <dd><a href="/categories/#Systemd">Systemd</a></dd>
-            
-        </dl>
-        
-      </div>
-
-      <article class="article mb-5">
-        <section>
-          
-            <p>Systemd 是 linux 系统中最新的初始化系统，大多数主流发行版要么已经采用 Systemd，要么即将在下个发布中采用。Systemd 并不是一个命令，而是一组命令，涉及到系统管理的方方面面。</p>
-<p>Systemd 取代了 initd，成为系统的第一个进程（PID 等于 1），其他进程都是它的子进程。</p>
-<p>查看 CentOS7 下的 <code>/etc/init.d/</code> 会发现只有一个 README 文件。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cat  /etc/init.d/README</span><br><span class="line"></span><br><span class="line">// ...</span><br><span class="line">// You are running a systemd-based OS <span class="built_in">where</span> traditional init scripts have</span><br><span class="line">// been replaced by native systemd services files.</span><br><span class="line">// ...</span><br></pre></td></tr></table></figure>
-          
-        </section>
-      </article>
-
-      <div class="mt-4">
-          <a href="/2016/03/24/systemd/" class="btn btn-sm btn-outline-primary">READ MORE</a>
-      </div>
-  </div>
-
-  <div class="mb-5">
-      <h4><a href="/2016/02/20/linux-version/">查看 Linux 内核版本和发行版信息</a></h4>
-
-      <div class="text-secondary mb-3">
-        <div class="italic mb-2">By Garryshield, Created at 2016-02-20, Updated at 2016-02-20</div>
-        
-        
-        <dl class="tags mb-1">
-            <dt>Tags:</dt>
-            
-              <dd><a href="/tags/#Linux">Linux</a></dd>
-            
-        </dl>
-        
-
-        
-        <dl class="tags mb-1">
-            <dt>Categories:</dt>
-            
-              <dd><a href="/categories/#Linux">Linux</a></dd>
-            
-        </dl>
-        
-      </div>
-
-      <article class="article mb-5">
-        <section>
-          
-            <p>Linux 有众多发行版，在编辑通用脚本等工作时通常需要检测：</p>
-<ul>
-<li>内核版本 Kernel Version</li>
-<li>发行版信息 Distribution Information</li>
-<li>...</li>
-</ul>
-<p>来兼容它们。这里先挖个坑汇总一些基本命令和检测脚本，方便以后使用。</p>
-          
-        </section>
-      </article>
-
-      <div class="mt-4">
-          <a href="/2016/02/20/linux-version/" class="btn btn-sm btn-outline-primary">READ MORE</a>
-      </div>
-  </div>
-
-  <div class="mb-5">
-      <h4><a href="/2016/01/04/rsync/">文件同步工具 - rsync</a></h4>
-
-      <div class="text-secondary mb-3">
-        <div class="italic mb-2">By Garryshield, Created at 2016-01-04, Updated at 2016-01-04</div>
-        
-        
-        <dl class="tags mb-1">
-            <dt>Tags:</dt>
-            
-              <dd><a href="/tags/#Rsync">Rsync</a></dd>
-            
-        </dl>
-        
-
-        
-        <dl class="tags mb-1">
-            <dt>Categories:</dt>
-            
-              <dd><a href="/categories/#Linux">Linux</a></dd>
-            
-        </dl>
-        
-      </div>
-
-      <article class="article mb-5">
-        <section>
-          
-            <h2 id="1.-rsync-%E7%AE%80%E4%BB%8B">1. rsync 简介</h2>
-<p>rsync（remote synchronize）是 Liunx/Unix 下的一个远程数据同步工具。它可通过 LAN/WAN 快速同步多台主机间的文件和目录，并适当利用 rsync 算法（差分编码）以减少数据的传输。</p>
-<p>rsync 算法并不是每一次都整份传输，而是只传输两个文件的不同部分，因此其传输速度相当快。</p>
-<p>除此之外，rsync 可拷贝、显示目录属性，以及拷贝文件，并可选择性的压缩以及递归拷贝。</p>
-<p>rsync 的目的是实现本地主机和远程主机上的文件同步(包括本地推到远程，远程拉到本地两种同步方式)，也可以实现本地不同路径下文件的同步，但不能实现远程路径1到远程路径2之间的同步。</p>
-          
-        </section>
-      </article>
-
-      <div class="mt-4">
-          <a href="/2016/01/04/rsync/" class="btn btn-sm btn-outline-primary">READ MORE</a>
-      </div>
-  </div>
-
-  <div class="mb-5">
-      <h4><a href="/2015/12/05/nvm/">使用 nvm 管理 NodeJS</a></h4>
-
-      <div class="text-secondary mb-3">
-        <div class="italic mb-2">By Garryshield, Created at 2015-12-05, Updated at 2015-12-05</div>
-        
-        
-        <dl class="tags mb-1">
-            <dt>Tags:</dt>
-            
-              <dd><a href="/tags/#Nvm">Nvm</a></dd>
-            
-        </dl>
-        
-
-        
-        <dl class="tags mb-1">
-            <dt>Categories:</dt>
-            
-              <dd><a href="/categories/#Node.Js">Node.Js</a></dd>
-            
-        </dl>
-        
-      </div>
-
-      <article class="article mb-5">
-        <section>
-          
-            <p>同时开发多个项目，项目的需求不同，进而依赖不同版本的 NodeJS 运行环境。<a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">nvm</a> 版本管理工具能够很方便的切换，而不用每次全局修改。</p>
-<h2 id="1.-%E5%AE%89%E8%A3%85-%26-%E6%9B%B4%E6%96%B0">1. 安装 &amp; 更新</h2>
-<p>建议先删除系统安装的 node 和 npm，完全使用 nvm 来管理。<br>
-以 MacOS 为例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">brew uninstall node; </span><br><span class="line">// or `brew uninstall --force node` <span class="built_in">which</span> removes all versions</span><br><span class="line">brew prune;</span><br><span class="line">rm -rf /opt/<span class="built_in">local</span>/bin/node /opt/<span class="built_in">local</span>/include/node /opt/<span class="built_in">local</span>/lib/node_modules</span><br><span class="line">rm -rf /usr/<span class="built_in">local</span>/bin/npm /usr/<span class="built_in">local</span>/share/man/man1/node.1 /usr/<span class="built_in">local</span>/lib/dtrace/node.d</span><br><span class="line">rm -rf ~/.npm ~/.npmrc ~/.node-gyp</span><br></pre></td></tr></table></figure>
-<p>安装 &amp; 升级 nvm</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</span><br><span class="line">// or</span><br><span class="line">wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</span><br></pre></td></tr></table></figure>
-          
-        </section>
-      </article>
-
-      <div class="mt-4">
-          <a href="/2015/12/05/nvm/" class="btn btn-sm btn-outline-primary">READ MORE</a>
-      </div>
-  </div>
-
-  <div class="mb-5">
-      <h4><a href="/2015/10/05/mac-tool-kap/">MacOS 开源的录屏工具 - kap</a></h4>
-
-      <div class="text-secondary mb-3">
-        <div class="italic mb-2">By Garryshield, Created at 2015-10-05, Updated at 2015-10-05</div>
-        
-        
-        <dl class="tags mb-1">
-            <dt>Tags:</dt>
-            
-              <dd><a href="/tags/#Gif">Gif</a></dd>
-            
-              <dd><a href="/tags/#Kap">Kap</a></dd>
-            
-        </dl>
-        
-
-        
-        <dl class="tags mb-1">
-            <dt>Categories:</dt>
-            
-              <dd><a href="/categories/#MacOS">MacOS</a></dd>
-            
-        </dl>
-        
-      </div>
-
-      <article class="article mb-5">
-        <section>
-          
-            <p>
-<img src="/2015/10/05/mac-tool-kap/assets/logo.svg" width="200">
-</p>
-<p><a href="https://getkap.co/" target="_blank" rel="noopener">Kap</a> 是一个开源的录屏工具，支持导出 GIF，MP4，WebM，APNG。同时可以自己编写插件用来分享，转化...<br>
-官网： <a href="https://getkap.co/" target="_blank" rel="noopener">Kap</a><br>
-GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="noopener">Kap GitHub</a></p>
-          
-        </section>
-      </article>
-
-      <div class="mt-4">
-          <a href="/2015/10/05/mac-tool-kap/" class="btn btn-sm btn-outline-primary">READ MORE</a>
-      </div>
-  </div>
-
 
 
   <div>
@@ -721,11 +561,17 @@ GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="n
 
       
       
+        
+          <li class="page-item">
+            <a class="page-link" href="/page/2">2</a>
+          </li>
+         
+      
 
       
 
       <li class="page-item">
-        <a class="page-link" href="/page/2">2</a>
+        <a class="page-link" href="/page/3">3</a>
       </li>
 
       
@@ -747,7 +593,7 @@ GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="n
     <dl class="tags">
     <dd><a href="/tags">All</a></dd>
     
-  <dd><a href="/tags/#日志">日志</a></dd>
+  <dd><a href="/tags/#Diary">Diary</a></dd>
 
   <dd><a href="/tags/#Hexo">Hexo</a></dd>
 
@@ -763,23 +609,35 @@ GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="n
 
   <dd><a href="/tags/#Linux">Linux</a></dd>
 
-  <dd><a href="/tags/#MacOS">MacOS</a></dd>
+  <dd><a href="/tags/#Shortcuts">Shortcuts</a></dd>
 
   <dd><a href="/tags/#Systemd">Systemd</a></dd>
 
-  <dd><a href="/tags/#NodeJS">NodeJS</a></dd>
-
   <dd><a href="/tags/#Promise">Promise</a></dd>
 
-  <dd><a href="/tags/#Grunt">Grunt</a></dd>
+  <dd><a href="/tags/#Google">Google</a></dd>
 
-  <dd><a href="/tags/#Javascript">Javascript</a></dd>
+  <dd><a href="/tags/#Pyenv">Pyenv</a></dd>
+
+  <dd><a href="/tags/#VMware">VMware</a></dd>
+
+  <dd><a href="/tags/#Memcached">Memcached</a></dd>
+
+  <dd><a href="/tags/#SELinux">SELinux</a></dd>
+
+  <dd><a href="/tags/#Grunt">Grunt</a></dd>
 
   <dd><a href="/tags/#Rsync">Rsync</a></dd>
 
   <dd><a href="/tags/#Markdown">Markdown</a></dd>
 
   <dd><a href="/tags/#Emoji">Emoji</a></dd>
+
+  <dd><a href="/tags/#Jupyter">Jupyter</a></dd>
+
+  <dd><a href="/tags/#MariaDB">MariaDB</a></dd>
+
+  <dd><a href="/tags/#Shell">Shell</a></dd>
 
     </dl>
   </div>
@@ -790,7 +648,7 @@ GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="n
     <dl class="tags">
     <dd><a href="/categories">All</a></dd>
     
-  <dd><a href="/categories/#日志">日志</a></dd>
+  <dd><a href="/categories/#Diary">Diary</a></dd>
 
   <dd><a href="/categories/#NodeJS">NodeJS</a></dd>
 
@@ -802,15 +660,21 @@ GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="n
 
   <dd><a href="/categories/#Node.Js">Node.Js</a></dd>
 
-  <dd><a href="/categories/#Hexo">Hexo</a></dd>
+  <dd><a href="/categories/#Google">Google</a></dd>
 
-  <dd><a href="/categories/#Systemd">Systemd</a></dd>
+  <dd><a href="/categories/#Python">Python</a></dd>
 
-  <dd><a href="/categories/#Promise">Promise</a></dd>
+  <dd><a href="/categories/#VMware">VMware</a></dd>
 
-  <dd><a href="/categories/#Grunt">Grunt</a></dd>
+  <dd><a href="/categories/#CentOS">CentOS</a></dd>
 
-  <dd><a href="/categories/#Markdown">Markdown</a></dd>
+  <dd><a href="/categories/#MacOS">MacOS</a></dd>
+
+  <dd><a href="/categories/#Memcached">Memcached</a></dd>
+
+  <dd><a href="/categories/#MariaDB">MariaDB</a></dd>
+
+  <dd><a href="/categories/#Shell">Shell</a></dd>
 
     </dl>
   </div>
@@ -822,6 +686,27 @@ GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="n
     <dd><a href="/archives">All</a></dd>
     
 
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
 
   
   
