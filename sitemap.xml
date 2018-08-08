@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://garryshield.github.com/about/index.html</loc>
+    
+    <lastmod>2018-08-08T16:06:27.052Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://garryshield.github.com/tags/index.html</loc>
+    
+    <lastmod>2018-08-08T16:06:21.333Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://garryshield.github.com/categories/index.html</loc>
+    
+    <lastmod>2018-08-08T16:06:14.685Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://garryshield.github.com/2018/08/08/shell-scripting/</loc>
     
     <lastmod>2018-08-08T09:36:09.000Z</lastmod>
@@ -33,27 +54,6 @@
     <loc>http://garryshield.github.com/404.html</loc>
     
     <lastmod>2018-07-19T13:13:45.901Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://garryshield.github.com/about/index.html</loc>
-    
-    <lastmod>2018-07-19T07:11:25.041Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://garryshield.github.com/categories/index.html</loc>
-    
-    <lastmod>2018-07-18T05:20:08.693Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://garryshield.github.com/tags/index.html</loc>
-    
-    <lastmod>2018-07-18T05:19:58.703Z</lastmod>
     
   </url>
   
