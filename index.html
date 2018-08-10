@@ -86,6 +86,50 @@
 
 
   <div class="mb-5">
+      <h4><a href="/2018/08/10/electronjs/">使用 Electron 构建跨平台桌面应用</a></h4>
+
+      <div class="text-secondary mb-3">
+        <div class="italic mb-2">By Garryshield, Created at 2018-08-10, Updated at 2018-08-10</div>
+        
+        
+        <dl class="tags mb-1">
+            <dt>Tags:</dt>
+            
+              <dd><a href="/tags/#Electron">Electron</a></dd>
+            
+        </dl>
+        
+
+        
+        <dl class="tags mb-1">
+            <dt>Categories:</dt>
+            
+              <dd><a href="/categories/#Node.js">Node.js</a></dd>
+            
+        </dl>
+        
+      </div>
+
+      <article class="article mb-5">
+        <section>
+          
+            <p>
+<img src="/2018/08/10/electronjs/assets/logo.svg" width="400">
+</p>
+<p><a href="https://electronjs.org/" target="_blank" rel="noopener">Electron</a> 最早由 Github 开发用于构建文本编辑器 Atom，通过整合 Chromium 和 Node.js 能够直接使用 HTML，CSS，JavaScript 进行开发。</p>
+<h2 id="1.-%E5%BA%94%E7%94%A8%E7%BB%93%E6%9E%84">1. 应用结构</h2>
+<p><a href="https://electronjs.org/" target="_blank" rel="noopener">Electron</a> 基于 Node.js ，安装之前先确保系统已经安装好 Node.js。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/Node.js/electron</span><br><span class="line">mkdir 01 &amp;&amp; <span class="built_in">cd</span> 01</span><br><span class="line">npm init</span><br><span class="line">npm install --save-dev electron <span class="comment"># 安装 electron</span></span><br><span class="line">touch main.js <span class="comment"># 主进程文件</span></span><br><span class="line">touch index.html <span class="comment"># 页面文件</span></span><br></pre></td></tr></table></figure>
+          
+        </section>
+      </article>
+
+      <div class="mt-4">
+          <a href="/2018/08/10/electronjs/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+      </div>
+  </div>
+
+  <div class="mb-5">
       <h4><a href="/2018/08/08/shell-scripting/">Shell Scripting</a></h4>
 
       <div class="text-secondary mb-3">
@@ -94,8 +138,6 @@
         
         <dl class="tags mb-1">
             <dt>Tags:</dt>
-            
-              <dd><a href="/tags/#Linux">Linux</a></dd>
             
               <dd><a href="/tags/#Shell">Shell</a></dd>
             
@@ -107,8 +149,6 @@
             <dt>Categories:</dt>
             
               <dd><a href="/categories/#Linux">Linux</a></dd>
-            
-              <dd><a href="/categories/#Shell">Shell</a></dd>
             
         </dl>
         
@@ -436,7 +476,7 @@
   </div>
 
   <div class="mb-5">
-      <h4><a href="/2016/07/29/nodejs-promise/">NodeJS 的 Promise 的用法</a></h4>
+      <h4><a href="/2016/07/29/nodejs-promise/">Node.js 的 Promise 的用法</a></h4>
 
       <div class="text-secondary mb-3">
         <div class="italic mb-2">By Garryshield, Created at 2016-07-29, Updated at 2016-07-29</div>
@@ -454,7 +494,7 @@
         <dl class="tags mb-1">
             <dt>Categories:</dt>
             
-              <dd><a href="/categories/#NodeJS">NodeJS</a></dd>
+              <dd><a href="/categories/#Node.js">Node.js</a></dd>
             
         </dl>
         
@@ -478,64 +518,6 @@
 
       <div class="mt-4">
           <a href="/2016/07/29/nodejs-promise/" class="btn btn-sm btn-outline-primary">READ MORE</a>
-      </div>
-  </div>
-
-  <div class="mb-5">
-      <h4><a href="/2016/06/25/hexo-render/">使用 Markdown-it 渲染 Hexo</a></h4>
-
-      <div class="text-secondary mb-3">
-        <div class="italic mb-2">By Garryshield, Created at 2016-06-25, Updated at 2016-06-25</div>
-        
-        
-        <dl class="tags mb-1">
-            <dt>Tags:</dt>
-            
-              <dd><a href="/tags/#Hexo">Hexo</a></dd>
-            
-              <dd><a href="/tags/#Markdown">Markdown</a></dd>
-            
-              <dd><a href="/tags/#Emoji">Emoji</a></dd>
-            
-        </dl>
-        
-
-        
-        <dl class="tags mb-1">
-            <dt>Categories:</dt>
-            
-              <dd><a href="/categories/#NodeJS">NodeJS</a></dd>
-            
-        </dl>
-        
-      </div>
-
-      <article class="article mb-5">
-        <section>
-          
-            <p>Hexo 默认其官方插件 <a href="https://github.com/hexojs/hexo-renderer-marked" target="_blank" rel="noopener">hexo-renderer-marked</a> 使用 <a href="https://github.com/markedjs/marked" target="_blank" rel="noopener">marked</a> 来渲染 Markdown。后来发现这个插件有很多特殊 Markdown 语法不支持。</p>
-<p>一番查找后发现 Hexo 官方还有另一个使用 <a href="https://github.com/markdown-it/markdown-it" target="_blank" rel="noopener">markdown-it</a> 做渲染器的插件 <a href="https://github.com/hexojs/hexo-renderer-markdown-it" target="_blank" rel="noopener">hexo-renderer-markdown-it</a>。该渲染器有众多插件可以用来处理诸如：</p>
-<ul>
-<li>缩写 <a href="https://www.npmjs.com/package/markdown-it-abbr" target="_blank" rel="noopener">markdown-it-abbr</a></li>
-<li>脚注 <a href="https://www.npmjs.com/package/markdown-it-footnote" target="_blank" rel="noopener">markdown-it-footnote</a></li>
-<li>&lt;ins&gt; <a href="https://www.npmjs.com/package/markdown-it-ins" target="_blank" rel="noopener">markdown-it-ins</a></li>
-<li>下标 <a href="https://www.npmjs.com/package/markdown-it-sub" target="_blank" rel="noopener">markdown-it-sub</a></li>
-<li>上标 <a href="https://www.npmjs.com/package/markdown-it-sup" target="_blank" rel="noopener">markdown-it-sup</a></li>
-<li>锚点 <a href="https://www.npmjs.com/package/markdown-it-anchor" target="_blank" rel="noopener">markdown-it-anchor</a></li>
-<li>&lt;dl&gt; <a href="https://www.npmjs.com/package/markdown-it-deflist" target="_blank" rel="noopener">markdown-it-deflist</a></li>
-<li>&lt;mark&gt; <a href="https://www.npmjs.com/package/markdown-it-mark" target="_blank" rel="noopener">markdown-it-mark</a></li>
-<li>自定义容器 <a href="https://www.npmjs.com/package/markdown-it-container" target="_blank" rel="noopener">markdown-it-container</a></li>
-<li>表情 <a href="https://www.npmjs.com/package/markdown-it-emoji" target="_blank" rel="noopener">markdown-it-emoji</a></li>
-<li>HTML 属性 <a href="https://www.npmjs.com/package/markdown-it-attrs" target="_blank" rel="noopener">markdown-it-attrs</a></li>
-<li>Task Lists <a href="https://www.npmjs.com/package/markdown-it-task-lists" target="_blank" rel="noopener">markdown-it-task-lists</a></li>
-<li><a href="https://www.npmjs.com/search?q=keywords:markdown-it" target="_blank" rel="noopener">其它...</a></li>
-</ul>
-          
-        </section>
-      </article>
-
-      <div class="mt-4">
-          <a href="/2016/06/25/hexo-render/" class="btn btn-sm btn-outline-primary">READ MORE</a>
       </div>
   </div>
 
@@ -595,9 +577,9 @@
     
   <dd><a href="/tags/#Diary">Diary</a></dd>
 
-  <dd><a href="/tags/#Hexo">Hexo</a></dd>
-
   <dd><a href="/tags/#Tree">Tree</a></dd>
+
+  <dd><a href="/tags/#Hexo">Hexo</a></dd>
 
   <dd><a href="/tags/#VS Code">VS Code</a></dd>
 
@@ -625,6 +607,8 @@
 
   <dd><a href="/tags/#SELinux">SELinux</a></dd>
 
+  <dd><a href="/tags/#Electron">Electron</a></dd>
+
   <dd><a href="/tags/#Grunt">Grunt</a></dd>
 
   <dd><a href="/tags/#Rsync">Rsync</a></dd>
@@ -650,9 +634,9 @@
     
   <dd><a href="/categories/#Diary">Diary</a></dd>
 
-  <dd><a href="/categories/#NodeJS">NodeJS</a></dd>
-
   <dd><a href="/categories/#Linux">Linux</a></dd>
+
+  <dd><a href="/categories/#Node.js">Node.js</a></dd>
 
   <dd><a href="/categories/#VS Code">VS Code</a></dd>
 
@@ -674,8 +658,6 @@
 
   <dd><a href="/categories/#MariaDB">MariaDB</a></dd>
 
-  <dd><a href="/categories/#Shell">Shell</a></dd>
-
     </dl>
   </div>
 </div>
@@ -686,6 +668,9 @@
     <dd><a href="/archives">All</a></dd>
     
 
+
+  
+  
 
   
   

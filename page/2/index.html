@@ -86,6 +86,64 @@
 
 
   <div class="mb-5">
+      <h4><a href="/2016/06/25/hexo-render/">使用 Markdown-it 渲染 Hexo</a></h4>
+
+      <div class="text-secondary mb-3">
+        <div class="italic mb-2">By Garryshield, Created at 2016-06-25, Updated at 2016-06-25</div>
+        
+        
+        <dl class="tags mb-1">
+            <dt>Tags:</dt>
+            
+              <dd><a href="/tags/#Hexo">Hexo</a></dd>
+            
+              <dd><a href="/tags/#Markdown">Markdown</a></dd>
+            
+              <dd><a href="/tags/#Emoji">Emoji</a></dd>
+            
+        </dl>
+        
+
+        
+        <dl class="tags mb-1">
+            <dt>Categories:</dt>
+            
+              <dd><a href="/categories/#Node.js">Node.js</a></dd>
+            
+        </dl>
+        
+      </div>
+
+      <article class="article mb-5">
+        <section>
+          
+            <p>Hexo 默认其官方插件 <a href="https://github.com/hexojs/hexo-renderer-marked" target="_blank" rel="noopener">hexo-renderer-marked</a> 使用 <a href="https://github.com/markedjs/marked" target="_blank" rel="noopener">marked</a> 来渲染 Markdown。这个插件有很多特殊 Markdown 语法不支持。</p>
+<p>一番查找后发现 Hexo 官方还有另一个使用 <a href="https://github.com/markdown-it/markdown-it" target="_blank" rel="noopener">markdown-it</a> 做渲染器的插件 <a href="https://github.com/hexojs/hexo-renderer-markdown-it" target="_blank" rel="noopener">hexo-renderer-markdown-it</a>。该渲染器有众多插件可以用来处理诸如：</p>
+<ul>
+<li>缩写 <a href="https://www.npmjs.com/package/markdown-it-abbr" target="_blank" rel="noopener">markdown-it-abbr</a></li>
+<li>脚注 <a href="https://www.npmjs.com/package/markdown-it-footnote" target="_blank" rel="noopener">markdown-it-footnote</a></li>
+<li>&lt;ins&gt; <a href="https://www.npmjs.com/package/markdown-it-ins" target="_blank" rel="noopener">markdown-it-ins</a></li>
+<li>下标 <a href="https://www.npmjs.com/package/markdown-it-sub" target="_blank" rel="noopener">markdown-it-sub</a></li>
+<li>上标 <a href="https://www.npmjs.com/package/markdown-it-sup" target="_blank" rel="noopener">markdown-it-sup</a></li>
+<li>锚点 <a href="https://www.npmjs.com/package/markdown-it-anchor" target="_blank" rel="noopener">markdown-it-anchor</a></li>
+<li>&lt;dl&gt; <a href="https://www.npmjs.com/package/markdown-it-deflist" target="_blank" rel="noopener">markdown-it-deflist</a></li>
+<li>&lt;mark&gt; <a href="https://www.npmjs.com/package/markdown-it-mark" target="_blank" rel="noopener">markdown-it-mark</a></li>
+<li>自定义容器 <a href="https://www.npmjs.com/package/markdown-it-container" target="_blank" rel="noopener">markdown-it-container</a></li>
+<li>表情 <a href="https://www.npmjs.com/package/markdown-it-emoji" target="_blank" rel="noopener">markdown-it-emoji</a></li>
+<li>HTML 属性 <a href="https://www.npmjs.com/package/markdown-it-attrs" target="_blank" rel="noopener">markdown-it-attrs</a></li>
+<li>Task Lists <a href="https://www.npmjs.com/package/markdown-it-task-lists" target="_blank" rel="noopener">markdown-it-task-lists</a></li>
+<li><a href="https://www.npmjs.com/search?q=keywords:markdown-it" target="_blank" rel="noopener">其它...</a></li>
+</ul>
+          
+        </section>
+      </article>
+
+      <div class="mt-4">
+          <a href="/2016/06/25/hexo-render/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+      </div>
+  </div>
+
+  <div class="mb-5">
       <h4><a href="/2016/05/20/systemd-timer/">Systemd 定时器单元 - Timer</a></h4>
 
       <div class="text-secondary mb-3">
@@ -411,7 +469,7 @@
   </div>
 
   <div class="mb-5">
-      <h4><a href="/2015/12/05/nvm/">使用 Nvm 管理 NodeJS</a></h4>
+      <h4><a href="/2015/12/05/nvm/">使用 Nvm 管理 Node.js</a></h4>
 
       <div class="text-secondary mb-3">
         <div class="italic mb-2">By Garryshield, Created at 2015-12-05, Updated at 2015-12-05</div>
@@ -438,7 +496,7 @@
       <article class="article mb-5">
         <section>
           
-            <p>同时开发多个项目，项目的需求不同，进而依赖不同版本的 NodeJS 运行环境。<a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">nvm</a> 版本管理工具能够很方便的切换，而不用每次全局修改。</p>
+            <p>同时开发多个项目，项目的需求不同，进而依赖不同版本的 Node.js 运行环境。<a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">nvm</a> 版本管理工具能够很方便的切换，而不用每次全局修改。</p>
 <h2 id="1.-%E5%AE%89%E8%A3%85-%26-%E6%9B%B4%E6%96%B0">1. 安装 &amp; 更新</h2>
 <p>建议先删除系统安装的 node 和 npm，完全使用 nvm 来管理。<br>
 以 MacOS 为例：</p>
@@ -586,54 +644,6 @@ GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="n
       </div>
   </div>
 
-  <div class="mb-5">
-      <h4><a href="/2015/08/24/hexo/">使用 Hexo 创建博客</a></h4>
-
-      <div class="text-secondary mb-3">
-        <div class="italic mb-2">By Garryshield, Created at 2015-08-24, Updated at 2015-08-24</div>
-        
-        
-        <dl class="tags mb-1">
-            <dt>Tags:</dt>
-            
-              <dd><a href="/tags/#Hexo">Hexo</a></dd>
-            
-        </dl>
-        
-
-        
-        <dl class="tags mb-1">
-            <dt>Categories:</dt>
-            
-              <dd><a href="/categories/#NodeJS">NodeJS</a></dd>
-            
-        </dl>
-        
-      </div>
-
-      <article class="article mb-5">
-        <section>
-          
-            <p>
-<img src="/2015/08/24/hexo/assets/logo.svg" width="200">
-</p>
-<p>了解过的静态博客框架有 <code>Hexo</code>，<code>Jekyll</code>，<code>Hugo</code> 几种。</p>
-<ol>
-<li><code>Hexo</code> 基于 <code>NodeJS</code></li>
-<li><code>Jekyll</code> 基于 <code>Ruby</code>，由 <code>Github</code> 开发用来服务于 <code>GitHub pages</code></li>
-<li><code>Hugo</code> 基于 <code>Go</code></li>
-</ol>
-<p>静态站点框架的基本思路是本地创建然后生成静态页面后部署到服务器上。<br>
-这样做的好处是服务器不需要做类似页面处理，数据库处理之类的工作，只需要发送 Html, css, js, image...</p>
-          
-        </section>
-      </article>
-
-      <div class="mt-4">
-          <a href="/2015/08/24/hexo/" class="btn btn-sm btn-outline-primary">READ MORE</a>
-      </div>
-  </div>
-
 
 
   <div>
@@ -692,9 +702,9 @@ GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="n
     
   <dd><a href="/tags/#Diary">Diary</a></dd>
 
-  <dd><a href="/tags/#Hexo">Hexo</a></dd>
-
   <dd><a href="/tags/#Tree">Tree</a></dd>
+
+  <dd><a href="/tags/#Hexo">Hexo</a></dd>
 
   <dd><a href="/tags/#VS Code">VS Code</a></dd>
 
@@ -722,6 +732,8 @@ GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="n
 
   <dd><a href="/tags/#SELinux">SELinux</a></dd>
 
+  <dd><a href="/tags/#Electron">Electron</a></dd>
+
   <dd><a href="/tags/#Grunt">Grunt</a></dd>
 
   <dd><a href="/tags/#Rsync">Rsync</a></dd>
@@ -747,9 +759,9 @@ GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="n
     
   <dd><a href="/categories/#Diary">Diary</a></dd>
 
-  <dd><a href="/categories/#NodeJS">NodeJS</a></dd>
-
   <dd><a href="/categories/#Linux">Linux</a></dd>
+
+  <dd><a href="/categories/#Node.js">Node.js</a></dd>
 
   <dd><a href="/categories/#VS Code">VS Code</a></dd>
 
@@ -771,8 +783,6 @@ GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="n
 
   <dd><a href="/categories/#MariaDB">MariaDB</a></dd>
 
-  <dd><a href="/categories/#Shell">Shell</a></dd>
-
     </dl>
   </div>
 </div>
@@ -783,6 +793,9 @@ GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="n
     <dd><a href="/archives">All</a></dd>
     
 
+
+  
+  
 
   
   
