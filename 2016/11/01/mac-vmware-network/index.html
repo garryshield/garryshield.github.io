@@ -131,8 +131,10 @@
 <p><strong>VMnet8 NAT网络</strong><br>
 虚拟机在外部网络上共享主机的 IP 地址，主机为虚拟机发出的网络流量进行网络地址转换。</p>
 <a id="more"></a>
-<img src="/2016/11/01/mac-vmware-network/assets/Snipaste_2018-08-01_10-53-10.png" class="border">
-&nbsp;
+
+<p><a href="/2016/11/01/mac-vmware-network/assets/Snipaste_2018-08-01_10-53-10.png" data-fancybox="cjkogu3eo001186tpc2eqctwj" data-caption="MacOS VMware 网络设置">
+<img class="border" src="/2016/11/01/mac-vmware-network/assets/Snipaste_2018-08-01_10-53-10.png">
+</a></p>
 <h2 id="1.-%E4%B8%BB%E6%9C%BA%E8%AE%BE%E7%BD%AE">1. 主机设置</h2>
 <p>主机通过 <code>ifconfig</code> 命令可以查看两个网卡的信息：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vmnet1: flags=8863&lt;UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST&gt; mtu 1500</span><br><span class="line">	ether 00:50:56:c0:00:01</span><br><span class="line">	inet 172.16.233.1 netmask 0xffffff00 broadcast 172.16.233.255</span><br><span class="line">vmnet8: flags=8863&lt;UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST&gt; mtu 1500</span><br><span class="line">	ether 00:50:56:c0:00:08</span><br><span class="line">	inet 192.168.113.1 netmask 0xffffff00 broadcast 192.168.113.255</span><br></pre></td></tr></table></figure>
@@ -155,8 +157,10 @@ VMnet0 子网为 <code>172.16.233.0</code>，并开启 DHCP，主机的 IP 默�
 <p>以 VMware Fusion 10.1.2 安装 CentOS 7 64 为例，</p>
 <h4 id="2.1.-vmnet8-nat%E7%BD%91%E7%BB%9C">2.1. VMnet8 NAT网络</h4>
 <p>虚拟机在外部网络上共享主机的 IP 地址，主机为虚拟机发出的网络流量进行网络地址转换。</p>
-<img src="/2016/11/01/mac-vmware-network/assets/Snipaste_2018-08-01_13-06-47.png" class="border">
-&nbsp;
+
+<p><a href="/2016/11/01/mac-vmware-network/assets/Snipaste_2018-08-01_13-06-47.png" data-fancybox="cjkogu3eo001186tpc2eqctwj" data-caption="MacOS VMware 网络设置">
+<img class="border" src="/2016/11/01/mac-vmware-network/assets/Snipaste_2018-08-01_13-06-47.png">
+</a></p>
 <p>修改虚拟机信息：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// ens33 为网卡名</span><br><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-ens33</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">TYPE=Ethernet</span><br><span class="line">PROXY_METHOD=none</span><br><span class="line">BROWSER_ONLY=no</span><br><span class="line">BOOTPROTO=none <span class="comment"># dhcp 表示自动获取 IP，none：使用 IPADDR 设置静态 IP</span></span><br><span class="line">DEFROUTE=yes</span><br><span class="line">IPV4_FAILURE_FATAL=no</span><br><span class="line">IPV6INIT=yes</span><br><span class="line">IPV6_AUTOCONF=yes</span><br><span class="line">IPV6_DEFROUTE=yes</span><br><span class="line">IPV6_FAILURE_FATAL=no</span><br><span class="line">IPV6_ADDR_GEN_MODE=stable-privacy</span><br><span class="line">NAME=ens33 <span class="comment"># 网卡名</span></span><br><span class="line">UUID=28ad865d-5235-4454-9688-a1bce4637664</span><br><span class="line">DEVICE=ens33</span><br><span class="line">ONBOOT=yes <span class="comment"># 开机启动</span></span><br><span class="line">IPADDR=192.168.113.20 <span class="comment"># IP</span></span><br><span class="line">PREFIX=24</span><br><span class="line">GATEWAY=192.168.113.2 <span class="comment"># 网关</span></span><br><span class="line">DNS1=192.168.113.2 <span class="comment"># DNS</span></span><br><span class="line">IPV6_PRIVACY=no</span><br></pre></td></tr></table></figure>
@@ -168,8 +172,10 @@ CentOS 7 使用 Systemd 管理服务，更多关于 Systemd 的用法参见：<a
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 主机</span><br><span class="line">ping 192.168.113.20</span><br><span class="line"></span><br><span class="line">// 虚拟机</span><br><span class="line">ping 192.168.113.1</span><br><span class="line">ping baidu.com</span><br><span class="line"></span><br><span class="line">// 主机尝试用 ssh 链接虚拟机</span><br><span class="line">ssh root@192.168.113.20</span><br></pre></td></tr></table></figure>
 <h4 id="2.2.-vmnet0-%E6%A1%A5%E6%8E%A5%E7%BD%91%E7%BB%9C">2.2. VMnet0 桥接网络</h4>
 <p>虚拟机相当与网络上的一台独立计算机，与主机一样，拥有一个独立的IP地址。</p>
-<img src="/2016/11/01/mac-vmware-network/assets/Snipaste_2018-08-01_14-05-54.png" class="border">
-&nbsp;
+
+<p><a href="/2016/11/01/mac-vmware-network/assets/Snipaste_2018-08-01_14-05-54.png" data-fancybox="cjkogu3eo001186tpc2eqctwj" data-caption="MacOS VMware 网络设置">
+<img class="border" src="/2016/11/01/mac-vmware-network/assets/Snipaste_2018-08-01_14-05-54.png">
+</a></p>
 <p>修改虚拟机信息：<br>
 注：我的主机 IP 是 <code>192.168.0.10</code>，网关是 <code>192.168.0.1</code>。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// ens33 为网卡名</span><br><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-ens33</span><br></pre></td></tr></table></figure>
@@ -177,8 +183,10 @@ CentOS 7 使用 Systemd 管理服务，更多关于 Systemd 的用法参见：<a
 <p>保存修改后参见上述 <strong>VMnet8 NAT网络</strong> 的操作重启并检查。</p>
 <h4 id="2.3.-vmnet1-%E4%BB%85%E4%B8%BB%E6%9C%BA%E7%BD%91%E7%BB%9C">2.3. <strong>VMnet1 仅主机网络</strong></h4>
 <p>虚拟机只能和主机相互访问，不能访问外部网络。</p>
-<img src="/2016/11/01/mac-vmware-network/assets/Snipaste_2018-08-01_14-17-47.png" class="border">
-&nbsp;
+
+<p><a href="/2016/11/01/mac-vmware-network/assets/Snipaste_2018-08-01_14-17-47.png" data-fancybox="cjkogu3eo001186tpc2eqctwj" data-caption="MacOS VMware 网络设置">
+<img class="border" src="/2016/11/01/mac-vmware-network/assets/Snipaste_2018-08-01_14-17-47.png">
+</a></p>
 <p>修改虚拟机信息：<br>
 注：我的主机 IP 是 <code>192.168.0.10</code>，网关是 <code>192.168.0.1</code>。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// ens33 为网卡名</span><br><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-ens33</span><br></pre></td></tr></table></figure>
@@ -221,11 +229,9 @@ CentOS 7 使用 Systemd 管理服务，更多关于 Systemd 的用法参见：<a
     
   <dd><a href="/tags/#Diary">Diary</a></dd>
 
-  <dd><a href="/tags/#Tree">Tree</a></dd>
-
   <dd><a href="/tags/#Hexo">Hexo</a></dd>
 
-  <dd><a href="/tags/#VS Code">VS Code</a></dd>
+  <dd><a href="/tags/#Tree">Tree</a></dd>
 
   <dd><a href="/tags/#Gif">Gif</a></dd>
 
@@ -233,11 +239,13 @@ CentOS 7 使用 Systemd 管理服务，更多关于 Systemd 的用法参见：<a
 
   <dd><a href="/tags/#Nvm">Nvm</a></dd>
 
+  <dd><a href="/tags/#VS Code">VS Code</a></dd>
+
   <dd><a href="/tags/#Linux">Linux</a></dd>
 
-  <dd><a href="/tags/#Shortcuts">Shortcuts</a></dd>
-
   <dd><a href="/tags/#Systemd">Systemd</a></dd>
+
+  <dd><a href="/tags/#Shortcuts">Shortcuts</a></dd>
 
   <dd><a href="/tags/#Promise">Promise</a></dd>
 
@@ -278,15 +286,15 @@ CentOS 7 使用 Systemd 管理服务，更多关于 Systemd 的用法参见：<a
     
   <dd><a href="/categories/#Diary">Diary</a></dd>
 
-  <dd><a href="/categories/#Linux">Linux</a></dd>
-
   <dd><a href="/categories/#Node.js">Node.js</a></dd>
 
-  <dd><a href="/categories/#VS Code">VS Code</a></dd>
+  <dd><a href="/categories/#Linux">Linux</a></dd>
 
   <dd><a href="/categories/#MacOS">MacOS</a></dd>
 
   <dd><a href="/categories/#Node.Js">Node.Js</a></dd>
+
+  <dd><a href="/categories/#VS Code">VS Code</a></dd>
 
   <dd><a href="/categories/#Google">Google</a></dd>
 
