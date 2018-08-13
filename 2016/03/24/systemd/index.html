@@ -170,13 +170,12 @@
 <p><code>[Service]</code> 区块用来 Service 的配置，只有 Service 类型的 Unit 才有这个区块。它的主要字段如下：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Type：定义启动时的进程行为。它有以下几种值。</span><br><span class="line">  Type=simple：默认值，执行ExecStart指定的命令，启动主进程</span><br><span class="line">  Type=forking：以 fork 方式从父进程创建子进程，创建后父进程会立即退出</span><br><span class="line">  Type=oneshot：一次性进程，Systemd 会等当前服务退出，再继续往下执行</span><br><span class="line">  Type=dbus：当前服务通过D-Bus启动</span><br><span class="line">  Type=notify：当前服务启动完毕，会通知Systemd，再继续往下执行</span><br><span class="line">  Type=idle：若有其他任务执行完毕，当前服务才会运行</span><br><span class="line">ExecStart：启动当前服务的命令</span><br><span class="line">ExecStartPre：启动当前服务之前执行的命令</span><br><span class="line">ExecStartPost：启动当前服务之后执行的命令</span><br><span class="line">ExecReload：重启当前服务时执行的命令</span><br><span class="line">ExecStop：停止当前服务时执行的命令</span><br><span class="line">ExecStopPost：停止当其服务之后执行的命令</span><br><span class="line">RestartSec：自动重启当前服务间隔的秒数</span><br><span class="line">Restart：定义何种情况 Systemd 会自动重启当前服务，可能的值包括always（总是重启）、on-success、on-failure、on-abnormal、on-abort、on-watchdog</span><br><span class="line">TimeoutSec：定义 Systemd 停止当前服务之前等待的秒数</span><br><span class="line">Environment：指定环境变量</span><br></pre></td></tr></table></figure>
 <p>Unit 配置文件的完整字段清单，请参考<a href="https://www.freedesktop.org/software/systemd/man/systemd.unit.html" target="_blank" rel="noopener">官方文档</a>。</p>
-<h4 id="2.4.-%E4%BF%AE%E6%94%B9%E7%8E%B0%E5%AD%98%E5%8D%95%E5%85%83%E6%96%87%E4%BB%B6">2.4. 修改现存单元文件</h4>
-<h6 id="2.4.1.-%E7%9B%B4%E6%8E%A5%E4%BF%AE%E6%94%B9%E4%BA%86%E6%BA%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">2.4.1. 直接修改了源配置文件</h6>
+<h4 id="2.4.-%E7%9B%B4%E6%8E%A5%E4%BF%AE%E6%94%B9%E4%BA%86%E6%BA%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">2.4. 直接修改了源配置文件</h4>
 <p>修改后需要 Systemd 重新加载配置文件，然后重新启动，否则修改不会生效。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart rsync.service</span><br></pre></td></tr></table></figure>
-<h6 id="2.4.2.-%E7%9B%B4%E6%8E%A5%E7%BC%96%E8%BE%91%E5%B9%B6%E5%8A%A0%E8%BD%BD">2.4.2. 直接编辑并加载</h6>
+<h4 id="2.5.-%E7%9B%B4%E6%8E%A5%E7%BC%96%E8%BE%91%E5%B9%B6%E5%8A%A0%E8%BD%BD">2.5. 直接编辑并加载</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl edit --full rsync.service</span><br></pre></td></tr></table></figure>
-<h6 id="2.4.3.-%E6%B7%BB%E5%8A%A0%E5%AD%90%E9%85%8D%E7%BD%AE%E5%B9%B6%E5%8A%A0%E8%BD%BD">2.4.3. 添加子配置并加载</h6>
+<h4 id="2.6.-%E6%B7%BB%E5%8A%A0%E5%AD%90%E9%85%8D%E7%BD%AE%E5%B9%B6%E5%8A%A0%E8%BD%BD">2.6. 添加子配置并加载</h4>
 <p>如下命令会创建 <code>/etc/systemd/system/rsync.service.d/override.conf</code> 文件用来覆盖 <code>/etc/systemd/system/rsync.service</code> 中的配置。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl edit rsync.service</span><br></pre></td></tr></table></figure>
 <h2 id="3.-target">3. Target</h2>
@@ -185,7 +184,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看当前系统的所有 Target</span></span><br><span class="line">systemctl list-unit-files --<span class="built_in">type</span>=target</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看一个 Target 包含的所有 Unit</span></span><br><span class="line">systemctl list-dependencies multi-user.target</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看启动时的默认 Target</span></span><br><span class="line">systemctl get-default</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置启动时的默认 Target</span></span><br><span class="line">systemctl <span class="built_in">set</span>-default multi-user.target</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换 Target 时，默认不关闭前一个 Target 启动的进程，</span></span><br><span class="line"><span class="comment"># systemctl isolate 命令改变这种行为，</span></span><br><span class="line"><span class="comment"># 关闭前一个 Target 里面所有不属于后一个 Target 的进程</span></span><br><span class="line">systemctl isolate multi-user.target</span><br></pre></td></tr></table></figure>
 <p>Target 与 传统 RunLevel 的对应关系如下。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Traditional runlevel      New target name     Symbolically linked to...</span><br><span class="line">Runlevel 0           |    runlevel0.target -&gt; poweroff.target</span><br><span class="line">Runlevel 1           |    runlevel1.target -&gt; rescue.target</span><br><span class="line">Runlevel 2           |    runlevel2.target -&gt; multi-user.target</span><br><span class="line">Runlevel 3           |    runlevel3.target -&gt; multi-user.target</span><br><span class="line">Runlevel 4           |    runlevel4.target -&gt; multi-user.target</span><br><span class="line">Runlevel 5           |    runlevel5.target -&gt; graphical.target</span><br><span class="line">Runlevel 6           |    runlevel6.target -&gt; reboot.target</span><br></pre></td></tr></table></figure>
-<h2 id="4.%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86">4.日志管理</h2>
+<h2 id="4.-%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86">4. 日志管理</h2>
 <p>Systemd 统一管理所有 Unit 的启动日志。带来的好处就是，可以只用 <code>journalctl</code> 一个命令，查看所有日志（内核日志和应用日志）。日志的配置文件是 <code>/etc/systemd/journald.conf</code>。<br>
 <code>journalctl</code> 用法如下：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看所有日志（默认情况下 ，只保存本次启动的日志）</span></span><br><span class="line">journalctl</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看内核日志（不显示应用日志）</span></span><br><span class="line">journalctl -k</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看系统本次启动的日志</span></span><br><span class="line">journalctl -b</span><br><span class="line">journalctl -b -0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看上一次启动的日志（需更改设置）</span></span><br><span class="line">journalctl -b -1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看指定时间的日志</span></span><br><span class="line">journalctl --since=<span class="string">"2012-10-30 18:17:16"</span></span><br><span class="line">journalctl --since <span class="string">"20 min ago"</span></span><br><span class="line">journalctl --since yesterday</span><br><span class="line">journalctl --since <span class="string">"2015-01-10"</span> --until <span class="string">"2015-01-11 03:00"</span></span><br><span class="line">journalctl --since 09:00 --until <span class="string">"1 hour ago"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示尾部的最新10行日志</span></span><br><span class="line">journalctl -n</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示尾部指定行数的日志</span></span><br><span class="line">journalctl -n 20</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实时滚动显示最新日志</span></span><br><span class="line">journalctl -f</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看指定服务的日志</span></span><br><span class="line">journalctl /usr/lib/systemd/systemd</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看指定进程的日志</span></span><br><span class="line">journalctl _PID=1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看某个路径的脚本的日志</span></span><br><span class="line">journalctl /usr/bin/bash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看指定用户的日志</span></span><br><span class="line">journalctl _UID=33 --since today</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看某个 Unit 的日志</span></span><br><span class="line">journalctl -u rsync.service</span><br><span class="line">journalctl -u rsync.service --since today</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实时滚动显示 Unit 的最新日志</span></span><br><span class="line">journalctl -u rsync.service -f</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合并显示多个 Unit 的日志</span></span><br><span class="line">journalctl -u rsync.service -u php-fpm.service --since today</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看指定优先级（及其以上级别）的日志，共有8级</span></span><br><span class="line"><span class="comment"># 0: emerg</span></span><br><span class="line"><span class="comment"># 1: alert</span></span><br><span class="line"><span class="comment"># 2: crit</span></span><br><span class="line"><span class="comment"># 3: err</span></span><br><span class="line"><span class="comment"># 4: warning</span></span><br><span class="line"><span class="comment"># 5: notice</span></span><br><span class="line"><span class="comment"># 6: info</span></span><br><span class="line"><span class="comment"># 7: debug</span></span><br><span class="line">journalctl -p err -b</span><br><span class="line"></span><br><span class="line"><span class="comment"># 日志默认分页输出，--no-pager 改为正常的标准输出</span></span><br><span class="line">journalctl --no-pager</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以 JSON 格式（单行）输出</span></span><br><span class="line">journalctl -b -u rsync.service -o json</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以 JSON 格式（多行）输出，可读性更好</span></span><br><span class="line">journalctl -b -u rsync.serviceqq</span><br><span class="line"> -o json-pretty</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示日志占据的硬盘空间</span></span><br><span class="line">journalctl --disk-usage</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定日志文件占据的最大空间</span></span><br><span class="line">journalctl --vacuum-size=1G</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定日志文件保存多久</span></span><br><span class="line">journalctl --vacuum-time=1years</span><br></pre></td></tr></table></figure>
@@ -236,6 +235,15 @@
 
   <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
 
+  <!--
+    <div class="catalog card border-0 mb-4">
+      <div class="card-body p-0">
+        <h4>CATALOG</h4>
+        <div class="catalog-inn"></div>
+      </div>
+    </div>
+  -->
+    
     <div class="card border-0 mb-4">
   <div class="card-body p-0">
     <h4>TAGS</h4>
@@ -246,9 +254,9 @@
 
   <dd><a href="/tags/#Hexo">Hexo</a></dd>
 
-  <dd><a href="/tags/#Tree">Tree</a></dd>
-
   <dd><a href="/tags/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/tags/#Tree">Tree</a></dd>
 
   <dd><a href="/tags/#Gif">Gif</a></dd>
 
@@ -288,7 +296,7 @@
 
   <dd><a href="/tags/#MariaDB">MariaDB</a></dd>
 
-  <dd><a href="/tags/#Shell">Shell</a></dd>
+  <dd><a href="/tags/#Bash">Bash</a></dd>
 
     </dl>
   </div>
@@ -303,13 +311,15 @@
 
   <dd><a href="/categories/#Node.js">Node.js</a></dd>
 
-  <dd><a href="/categories/#Linux">Linux</a></dd>
-
   <dd><a href="/categories/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/categories/#Linux">Linux</a></dd>
 
   <dd><a href="/categories/#MacOS">MacOS</a></dd>
 
   <dd><a href="/categories/#Node.Js">Node.Js</a></dd>
+
+  <dd><a href="/categories/#Javascript">Javascript</a></dd>
 
   <dd><a href="/categories/#Google">Google</a></dd>
 

@@ -121,7 +121,7 @@
 <p>通过 Snippet 我们仅仅输入一小段字符串「prefix」，就可以在代码段引擎的帮助下，生成预定义的模板代码，接着我们还可以通过在预定义的光标位置之间跳转，来快速补全模板。</p>
 <p>当然，看图更易懂。下图将 aja 补全为 JQuery 的 ajax() 方法，并通过光标的跳转，快速补全了待填键值对：</p>
 
-<p><a href="/2015/09/12/vscode-snippets/assets/Kapture_2018-07-20_at_22.57.09.gif" data-fancybox="cjkoik9l9000a15tpwlqo2e63" data-caption="VS Code 创建代码片段">
+<p><a href="/2015/09/12/vscode-snippets/assets/Kapture_2018-07-20_at_22.57.09.gif" data-fancybox="cjksas1x40008v1tpkygo248y" data-caption="VS Code 创建代码片段">
 <img class="border""" src="/2015/09/12/vscode-snippets/assets/Kapture_2018-07-20_at_22.57.09.gif">
 </a></p>
 <a id="more"></a>
@@ -143,18 +143,18 @@
 </ol>
 <h4 id="2.1.-snippet-%E4%B8%BB%E4%BD%93">2.1. Snippet 主体</h4>
 <p>主体部分可以使用特殊语法结构，来控制光标和要插入的文本。支持的基本结构如下：</p>
-<h6 id="2.1.1.-tabstops%EF%BC%9A%E5%88%B6%E8%A1%A8%E7%AC%A6">2.1.1. Tabstops：制表符</h6>
+<h5 id="2.1.1.-tabstops%EF%BC%9A%E5%88%B6%E8%A1%A8%E7%AC%A6">2.1.1. Tabstops：制表符</h5>
 <p>「Tabstops」可以让编辑器的指针在 Snippet 内跳转。<br>
 使用 <code>$1</code>，<code>$2</code> 等指定光标位置。这些数字指定了光标跳转的顺序。<br>
 <code>$0</code> 表示最终光标位置。相同序号的「Tabstops」被链接在一起，将会同步更新</p>
-<h6 id="2.1.2.-placeholders%EF%BC%9A%E5%8D%A0%E4%BD%8D%E7%AC%A6">2.1.2. Placeholders：占位符</h6>
+<h5 id="2.1.2.-placeholders%EF%BC%9A%E5%8D%A0%E4%BD%8D%E7%AC%A6">2.1.2. Placeholders：占位符</h5>
 <p>「Placeholder」是带有默认值的「Tabstops」。<br>
 如 <code>${1:Placeholder}</code>。「placeholder」文本将被插入「Tabstops」位置，并在跳转时被全选，以方便修改。</p>
-<h6 id="2.1.3.-choice%EF%BC%9A%E5%8F%AF%E9%80%89%E9%A1%B9">2.1.3. Choice：可选项</h6>
+<h5 id="2.1.3.-choice%EF%BC%9A%E5%8F%AF%E9%80%89%E9%A1%B9">2.1.3. Choice：可选项</h5>
 <p>「Choice」是提供可选值的「Placeholder」。<br>
 语法为一系列用逗号隔开，并最终被两个竖线圈起来的枚举值，<br>
 比如 <code>${1|one,two,three|}</code>。当光标跳转到该位置的时候，用户将会被提供多个值 [<code>one</code>, <code>two</code>, <code>three</code>] 以供选择。</p>
-<h6 id="2.1.4.-variables%EF%BC%9A%E5%8F%98%E9%87%8F">2.1.4. Variables：变量</h6>
+<h5 id="2.1.4.-variables%EF%BC%9A%E5%8F%98%E9%87%8F">2.1.4. Variables：变量</h5>
 <p>使用 <code>$name</code> 或 <code>${name:Placeholder}</code> 可以插入变量的值。<br>
 当变量未赋值时，将插入其缺省值或空字符串。<br>
 当变量未知时，将插入变量的名称，并将其转换为「Placeholder」。</p>
@@ -206,6 +206,15 @@
 
   <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
 
+  <!--
+    <div class="catalog card border-0 mb-4">
+      <div class="card-body p-0">
+        <h4>CATALOG</h4>
+        <div class="catalog-inn"></div>
+      </div>
+    </div>
+  -->
+    
     <div class="card border-0 mb-4">
   <div class="card-body p-0">
     <h4>TAGS</h4>
@@ -216,9 +225,9 @@
 
   <dd><a href="/tags/#Hexo">Hexo</a></dd>
 
-  <dd><a href="/tags/#Tree">Tree</a></dd>
-
   <dd><a href="/tags/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/tags/#Tree">Tree</a></dd>
 
   <dd><a href="/tags/#Gif">Gif</a></dd>
 
@@ -258,7 +267,7 @@
 
   <dd><a href="/tags/#MariaDB">MariaDB</a></dd>
 
-  <dd><a href="/tags/#Shell">Shell</a></dd>
+  <dd><a href="/tags/#Bash">Bash</a></dd>
 
     </dl>
   </div>
@@ -273,13 +282,15 @@
 
   <dd><a href="/categories/#Node.js">Node.js</a></dd>
 
-  <dd><a href="/categories/#Linux">Linux</a></dd>
-
   <dd><a href="/categories/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/categories/#Linux">Linux</a></dd>
 
   <dd><a href="/categories/#MacOS">MacOS</a></dd>
 
   <dd><a href="/categories/#Node.Js">Node.Js</a></dd>
+
+  <dd><a href="/categories/#Javascript">Javascript</a></dd>
 
   <dd><a href="/categories/#Google">Google</a></dd>
 

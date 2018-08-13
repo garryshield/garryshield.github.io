@@ -119,10 +119,10 @@
 <p>SELinux 有三个状态 Enforcing，Permissive，Disabled，当中 Enforcing 是预设的模式。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sestatus -v </span><br><span class="line">// or</span><br><span class="line">getenforce</span><br></pre></td></tr></table></figure>
 <h2 id="2.-%E5%85%B3%E9%97%AD">2. 关闭</h2>
-<h6 id="2.1.-%E4%B8%B4%E6%97%B6%E5%85%B3%E9%97%AD">2.1. 临时关闭</h6>
+<h4 id="2.1.-%E4%B8%B4%E6%97%B6%E5%85%B3%E9%97%AD">2.1. 临时关闭</h4>
 <p><code>setenforce</code> 指令可以即时切换 Enforcing 及 Permissive 这两个模式，但这些改动在系统重新开机时不会被保留。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setenforce 0</span><br></pre></td></tr></table></figure>
-<h6 id="2.2.-%E6%B0%B8%E4%B9%85%E5%85%B3%E9%97%AD">2.2. 永久关闭</h6>
+<h4 id="2.2.-%E6%B0%B8%E4%B9%85%E5%85%B3%E9%97%AD">2.2. 永久关闭</h4>
 <p>直接修改配置文件 <code>/etc/selinux/config</code> 禁用 SELinux。</p>
 <figure class="highlight bash"><figcaption><span>/etc/selinux/config</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#SELINUX=enforcing</span></span><br><span class="line">ELINUX=disabled</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
@@ -135,7 +135,7 @@
       <div class="clearfix mb-4">
           
           <p>
-          <a class="float-left" href="/2018/08/08/shell-scripting/" tabindex="-1"><i class="fas fa-chevron-left"></i> Shell Scripting</a>
+          <a class="float-left" href="/2018/08/08/bash/" tabindex="-1"><i class="fas fa-chevron-left"></i> Bash</a>
           </p>
           
 
@@ -150,6 +150,15 @@
 
   <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
 
+  <!--
+    <div class="catalog card border-0 mb-4">
+      <div class="card-body p-0">
+        <h4>CATALOG</h4>
+        <div class="catalog-inn"></div>
+      </div>
+    </div>
+  -->
+    
     <div class="card border-0 mb-4">
   <div class="card-body p-0">
     <h4>TAGS</h4>
@@ -160,9 +169,9 @@
 
   <dd><a href="/tags/#Hexo">Hexo</a></dd>
 
-  <dd><a href="/tags/#Tree">Tree</a></dd>
-
   <dd><a href="/tags/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/tags/#Tree">Tree</a></dd>
 
   <dd><a href="/tags/#Gif">Gif</a></dd>
 
@@ -202,7 +211,7 @@
 
   <dd><a href="/tags/#MariaDB">MariaDB</a></dd>
 
-  <dd><a href="/tags/#Shell">Shell</a></dd>
+  <dd><a href="/tags/#Bash">Bash</a></dd>
 
     </dl>
   </div>
@@ -217,13 +226,15 @@
 
   <dd><a href="/categories/#Node.js">Node.js</a></dd>
 
-  <dd><a href="/categories/#Linux">Linux</a></dd>
-
   <dd><a href="/categories/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/categories/#Linux">Linux</a></dd>
 
   <dd><a href="/categories/#MacOS">MacOS</a></dd>
 
   <dd><a href="/categories/#Node.Js">Node.Js</a></dd>
+
+  <dd><a href="/categories/#Javascript">Javascript</a></dd>
 
   <dd><a href="/categories/#Google">Google</a></dd>
 

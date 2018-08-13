@@ -122,7 +122,7 @@
 <p>Timers 是以 .timer 为后缀的 systemd 单元文件。Timers 和其他单元配置文件是类似的，它通过相同的路径加载，不同的是包含了 [Timer] 部分。 [Timer] 部分定义了何时以及如何激活定时事件。Timers 可以被定义成以下两种类型：</p>
 <h4 id="1.1.-%E5%8D%95%E8%B0%83%E5%AE%9A%E6%97%B6%E5%99%A8">1.1. 单调定时器</h4>
 <p>即从一个时间点过一段时间后激活定时任务。所有的单调计时器都遵循如下形式： OnTypeSec=。 OnBootSec 和 OnActiveSec 是常用的单调定时器。</p>
-<h4 id="1.2.-%E5%AE%9E%E6%97%B6%E5%AE%9A%E6%97%B6%E5%99%A8-%EF%BC%88%E7%B1%BB%E4%BC%BC%E4%BA%8E-cronjobs-%EF%BC%89">1.2. 实时定时器 （类似于 cronjobs ）</h4>
+<h4 id="1.2.-%E5%AE%9E%E6%97%B6%E5%AE%9A%E6%97%B6%E5%99%A8">1.2. 实时定时器</h4>
 <p>通过日历事件激活定时任务。 使用 OnCalender= 来定义实时定时器。</p>
 <p>要查阅完整的定时器选项参见 <a href="https://www.freedesktop.org/software/systemd/man/systemd.timer.html" target="_blank" rel="noopener">Timer unit configuration</a>。 关于日历事件和时间段的定义参见 <a href="https://www.freedesktop.org/software/systemd/man/systemd.time.html" target="_blank" rel="noopener">Time and date specifications</a>.</p>
 <h2 id="2.-%E6%9C%8D%E5%8A%A1%E5%8D%95%E5%85%83">2. 服务单元</h2>
@@ -186,6 +186,15 @@
 
   <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
 
+  <!--
+    <div class="catalog card border-0 mb-4">
+      <div class="card-body p-0">
+        <h4>CATALOG</h4>
+        <div class="catalog-inn"></div>
+      </div>
+    </div>
+  -->
+    
     <div class="card border-0 mb-4">
   <div class="card-body p-0">
     <h4>TAGS</h4>
@@ -196,9 +205,9 @@
 
   <dd><a href="/tags/#Hexo">Hexo</a></dd>
 
-  <dd><a href="/tags/#Tree">Tree</a></dd>
-
   <dd><a href="/tags/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/tags/#Tree">Tree</a></dd>
 
   <dd><a href="/tags/#Gif">Gif</a></dd>
 
@@ -238,7 +247,7 @@
 
   <dd><a href="/tags/#MariaDB">MariaDB</a></dd>
 
-  <dd><a href="/tags/#Shell">Shell</a></dd>
+  <dd><a href="/tags/#Bash">Bash</a></dd>
 
     </dl>
   </div>
@@ -253,13 +262,15 @@
 
   <dd><a href="/categories/#Node.js">Node.js</a></dd>
 
-  <dd><a href="/categories/#Linux">Linux</a></dd>
-
   <dd><a href="/categories/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/categories/#Linux">Linux</a></dd>
 
   <dd><a href="/categories/#MacOS">MacOS</a></dd>
 
   <dd><a href="/categories/#Node.Js">Node.Js</a></dd>
+
+  <dd><a href="/categories/#Javascript">Javascript</a></dd>
 
   <dd><a href="/categories/#Google">Google</a></dd>
 

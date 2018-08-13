@@ -152,17 +152,17 @@
 <li>文件数组格式动</li>
 <li>态构建文件对象格式</li>
 </ol>
-<h5 id="3.1.-%E7%AE%80%E6%B4%81%E6%A0%BC%E5%BC%8F">3.1. 简洁格式</h5>
+<h4 id="3.1.-%E7%AE%80%E6%B4%81%E6%A0%BC%E5%BC%8F">3.1. 简洁格式</h4>
 <p>这种形式允许每个目标对应一个 <code>src-dest</code> 文件映射。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">grunt.initConfig(&#123;</span><br><span class="line">  less: &#123;</span><br><span class="line">    <span class="comment">// 编译 src/css/ 目录下的 aaa.less 和 bbb.less</span></span><br><span class="line">    <span class="comment">// 生成到 dest/css/ 目录下 ccc.css</span></span><br><span class="line">    foo: &#123;</span><br><span class="line">      src: [<span class="string">'src/css/aaa.less'</span>, <span class="string">'src/css/bbb.less'</span>],</span><br><span class="line">      dest: <span class="string">'dest/css/ccc.css'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h5 id="3.2.-%E6%96%87%E4%BB%B6%E5%AF%B9%E8%B1%A1%E6%A0%BC%E5%BC%8F">3.2. 文件对象格式</h5>
+<h4 id="3.2.-%E6%96%87%E4%BB%B6%E5%AF%B9%E8%B1%A1%E6%A0%BC%E5%BC%8F">3.2. 文件对象格式</h4>
 <p>这种形式支持每个目标对应多个 <code>src-dest</code> 形式的文件映射，<br>
 属性名就是目标文件，源文件就是它的值(源文件列表则使用数组格式声明)</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">grunt.initConfig(&#123;</span><br><span class="line">  less: &#123;</span><br><span class="line">    foo: &#123;</span><br><span class="line">      files: &#123;</span><br><span class="line">        <span class="string">'dest/css/ccc.css'</span>: [<span class="string">'src/css/aaa.less'</span>, <span class="string">'src/css/bbb.less'</span>],</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h5 id="3.3.-%E6%96%87%E4%BB%B6%E6%95%B0%E7%BB%84%E6%A0%BC%E5%BC%8F%E5%8A%A8">3.3. 文件数组格式动</h5>
+<h4 id="3.3.-%E6%96%87%E4%BB%B6%E6%95%B0%E7%BB%84%E6%A0%BC%E5%BC%8F%E5%8A%A8">3.3. 文件数组格式动</h4>
 <p>这种形式支持每个目标对应多个 <code>src-dest</code> 文件映射，同时允许每个映射拥有额外属性：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">grunt.initConfig(&#123;</span><br><span class="line">  less: &#123;</span><br><span class="line">    foo: &#123;</span><br><span class="line">      files: [</span><br><span class="line">        &#123;</span><br><span class="line">          src: [<span class="string">'src/css/aaa.less'</span>, <span class="string">'src/css/bbb.less'</span>], </span><br><span class="line">          dest: <span class="string">'dest/css/ccc.css'</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h5 id="3.4.-%E5%8A%A8%E6%80%81%E6%9E%84%E5%BB%BA%E6%96%87%E4%BB%B6%E5%AF%B9%E8%B1%A1%E6%A0%BC%E5%BC%8F">3.4. 动态构建文件对象格式</h5>
+<h4 id="3.4.-%E5%8A%A8%E6%80%81%E6%9E%84%E5%BB%BA%E6%96%87%E4%BB%B6%E5%AF%B9%E8%B1%A1%E6%A0%BC%E5%BC%8F">3.4. 动态构建文件对象格式</h4>
 <p>当你希望处理大量的单个文件时，这里有一些附加的属性可以用来动态的构建一个文件列表。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">grunt.initConfig(&#123;</span><br><span class="line">  less: &#123;</span><br><span class="line">    dynamic_mappings: &#123;</span><br><span class="line">      files: [</span><br><span class="line">        <span class="comment">// 匹配 src/css/ 目录及其子目录下的所有后缀为 .less 的文件</span></span><br><span class="line">        <span class="comment">// 分别编译生成到 dist/css 目录下，保留目录结构并以 .min.css 为后缀</span></span><br><span class="line">        &#123;</span><br><span class="line">          expand: <span class="literal">true</span>,</span><br><span class="line">          cwd: <span class="string">'src/'</span>, </span><br><span class="line">          src: [<span class="string">'css/**/*.less'</span>],</span><br><span class="line">          dest: <span class="string">'dist/'</span>,  </span><br><span class="line">          ext: <span class="string">'.min.css'</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <h2 id="4.-%E6%B3%A8%E5%86%8C%E4%BB%BB%E5%8A%A1">4. 注册任务</h2>
@@ -231,6 +231,15 @@
 
   <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
 
+  <!--
+    <div class="catalog card border-0 mb-4">
+      <div class="card-body p-0">
+        <h4>CATALOG</h4>
+        <div class="catalog-inn"></div>
+      </div>
+    </div>
+  -->
+    
     <div class="card border-0 mb-4">
   <div class="card-body p-0">
     <h4>TAGS</h4>
@@ -241,9 +250,9 @@
 
   <dd><a href="/tags/#Hexo">Hexo</a></dd>
 
-  <dd><a href="/tags/#Tree">Tree</a></dd>
-
   <dd><a href="/tags/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/tags/#Tree">Tree</a></dd>
 
   <dd><a href="/tags/#Gif">Gif</a></dd>
 
@@ -283,7 +292,7 @@
 
   <dd><a href="/tags/#MariaDB">MariaDB</a></dd>
 
-  <dd><a href="/tags/#Shell">Shell</a></dd>
+  <dd><a href="/tags/#Bash">Bash</a></dd>
 
     </dl>
   </div>
@@ -298,13 +307,15 @@
 
   <dd><a href="/categories/#Node.js">Node.js</a></dd>
 
-  <dd><a href="/categories/#Linux">Linux</a></dd>
-
   <dd><a href="/categories/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/categories/#Linux">Linux</a></dd>
 
   <dd><a href="/categories/#MacOS">MacOS</a></dd>
 
   <dd><a href="/categories/#Node.Js">Node.Js</a></dd>
+
+  <dd><a href="/categories/#Javascript">Javascript</a></dd>
 
   <dd><a href="/categories/#Google">Google</a></dd>
 
