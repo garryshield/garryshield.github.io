@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://garryshield.github.com/2018/08/25/git/</loc>
+    
+    <lastmod>2018-08-25T00:45:36.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://garryshield.github.com/2018/08/17/shadowsocks/</loc>
     
     <lastmod>2018-08-17T13:07:07.000Z</lastmod>
@@ -142,14 +149,14 @@
   </url>
   
   <url>
-    <loc>http://garryshield.github.com/2016/02/20/linux-version/</loc>
+    <loc>http://garryshield.github.com/2016/03/24/systemd/</loc>
     
     <lastmod>2016-02-19T23:23:36.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://garryshield.github.com/2016/03/24/systemd/</loc>
+    <loc>http://garryshield.github.com/2016/02/20/linux-version/</loc>
     
     <lastmod>2016-02-19T23:23:36.000Z</lastmod>
     

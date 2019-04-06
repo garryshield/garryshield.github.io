@@ -86,6 +86,49 @@
 
 
   <div class="mb-5">
+      <h4><a href="/2016/10/30/jupyter/">Jupyter Notebook</a></h4>
+
+      <div class="text-secondary mb-3">
+        <div class="italic mb-2">By Garryshield, Created at 2016-10-30, Updated at 2016-10-30</div>
+        
+        
+        <dl class="tags mb-1">
+            <dt>Tags:</dt>
+            
+              <dd><a href="/tags/#Jupyter">Jupyter</a></dd>
+            
+        </dl>
+        
+
+        
+        <dl class="tags mb-1">
+            <dt>Categories:</dt>
+            
+              <dd><a href="/categories/#Python">Python</a></dd>
+            
+        </dl>
+        
+      </div>
+
+      <article class="article mb-5">
+        <section>
+          
+            <p><a href="https://jupyter.org/index.html" target="_blank" rel="noopener">Jupyter Notebook</a>（此前被称为 IPython Notebook）是基于网页的用于交互计算的应用程序。其可被应用于全过程计算：开发、文档编写、运行代码和展示结果。</p>
+<h2 id="1.-%E5%AE%89%E8%A3%85">1. 安装</h2>
+<p>安装前可以先体验几把 <a href="https://jupyter.org/try" target="_blank" rel="noopener">Try Jupyter</a>。</p>
+<p>安装 Jupyter Notebook 的前提是需要安装了 Python。<br>
+因为使用了 pyenv 来管理 Python，同时安装了 2.7.10 和 3.7.0 两个版本，我们默认使用 3.7.0 来安装。更多关于 pyenv 的用法参见：<a href="/2016/09/30/pyenv/" title="这篇文章">这篇文章</a>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pyenv shell 3.7.0</span><br><span class="line">python --version</span><br><span class="line">pip --version</span><br><span class="line"></span><br><span class="line">pip install jupyter</span><br></pre></td></tr></table></figure>
+          
+        </section>
+      </article>
+
+      <div class="mt-4">
+          <a href="/2016/10/30/jupyter/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+      </div>
+  </div>
+
+  <div class="mb-5">
       <h4><a href="/2016/09/30/pyenv/">使用 Pyenv 管理 Python</a></h4>
 
       <div class="text-secondary mb-3">
@@ -597,50 +640,6 @@
       </div>
   </div>
 
-  <div class="mb-5">
-      <h4><a href="/2015/12/05/nvm/">使用 Nvm 管理 Node.js</a></h4>
-
-      <div class="text-secondary mb-3">
-        <div class="italic mb-2">By Garryshield, Created at 2015-12-05, Updated at 2015-12-05</div>
-        
-        
-        <dl class="tags mb-1">
-            <dt>Tags:</dt>
-            
-              <dd><a href="/tags/#Nvm">Nvm</a></dd>
-            
-        </dl>
-        
-
-        
-        <dl class="tags mb-1">
-            <dt>Categories:</dt>
-            
-              <dd><a href="/categories/#Node.Js">Node.Js</a></dd>
-            
-        </dl>
-        
-      </div>
-
-      <article class="article mb-5">
-        <section>
-          
-            <p>同时开发多个项目，项目的需求不同，进而依赖不同版本的 Node.js 运行环境。<a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">nvm</a> 版本管理工具能够很方便的切换，而不用每次全局修改。</p>
-<h2 id="1.-%E5%AE%89%E8%A3%85-%26-%E6%9B%B4%E6%96%B0">1. 安装 &amp; 更新</h2>
-<p>建议先删除系统安装的 node 和 npm，完全使用 nvm 来管理。<br>
-以 MacOS 为例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">brew uninstall node; </span><br><span class="line">// or `brew uninstall --force node` <span class="built_in">which</span> removes all versions</span><br><span class="line">brew prune;</span><br><span class="line">rm -rf /opt/<span class="built_in">local</span>/bin/node /opt/<span class="built_in">local</span>/include/node /opt/<span class="built_in">local</span>/lib/node_modules</span><br><span class="line">rm -rf /usr/<span class="built_in">local</span>/bin/npm /usr/<span class="built_in">local</span>/share/man/man1/node.1 /usr/<span class="built_in">local</span>/lib/dtrace/node.d</span><br><span class="line">rm -rf ~/.npm ~/.npmrc ~/.node-gyp</span><br></pre></td></tr></table></figure>
-<p>安装 &amp; 升级 nvm</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</span><br><span class="line">// or</span><br><span class="line">wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</span><br></pre></td></tr></table></figure>
-          
-        </section>
-      </article>
-
-      <div class="mt-4">
-          <a href="/2015/12/05/nvm/" class="btn btn-sm btn-outline-primary">READ MORE</a>
-      </div>
-  </div>
-
 
 
   <div>
@@ -697,15 +696,13 @@
     <dl class="tags">
     <dd><a href="/tags">All</a></dd>
     
-  <dd><a href="/tags/#Git">Git</a></dd>
-
   <dd><a href="/tags/#Tips">Tips</a></dd>
 
   <dd><a href="/tags/#Diary">Diary</a></dd>
 
-  <dd><a href="/tags/#Tree">Tree</a></dd>
-
   <dd><a href="/tags/#Hexo">Hexo</a></dd>
+
+  <dd><a href="/tags/#Tree">Tree</a></dd>
 
   <dd><a href="/tags/#VS Code">VS Code</a></dd>
 
@@ -737,6 +734,8 @@
 
   <dd><a href="/tags/#Yii">Yii</a></dd>
 
+  <dd><a href="/tags/#Git">Git</a></dd>
+
   <dd><a href="/tags/#Shadowsocks">Shadowsocks</a></dd>
 
   <dd><a href="/tags/#Grunt">Grunt</a></dd>
@@ -747,9 +746,9 @@
 
   <dd><a href="/tags/#Emoji">Emoji</a></dd>
 
-  <dd><a href="/tags/#MariaDB">MariaDB</a></dd>
-
   <dd><a href="/tags/#Jupyter">Jupyter</a></dd>
+
+  <dd><a href="/tags/#MariaDB">MariaDB</a></dd>
 
   <dd><a href="/tags/#Ansible">Ansible</a></dd>
 
@@ -764,15 +763,13 @@
     <dl class="tags">
     <dd><a href="/categories">All</a></dd>
     
-  <dd><a href="/categories/#Git">Git</a></dd>
-
   <dd><a href="/categories/#Tips">Tips</a></dd>
 
   <dd><a href="/categories/#Diary">Diary</a></dd>
 
-  <dd><a href="/categories/#Linux">Linux</a></dd>
-
   <dd><a href="/categories/#Node.js">Node.js</a></dd>
+
+  <dd><a href="/categories/#Linux">Linux</a></dd>
 
   <dd><a href="/categories/#VS Code">VS Code</a></dd>
 
@@ -791,6 +788,8 @@
   <dd><a href="/categories/#CentOS">CentOS</a></dd>
 
   <dd><a href="/categories/#Php">Php</a></dd>
+
+  <dd><a href="/categories/#Git">Git</a></dd>
 
   <dd><a href="/categories/#MacOS">MacOS</a></dd>
 
@@ -812,6 +811,9 @@
     <dd><a href="/archives">All</a></dd>
     
 
+
+  
+  
 
   
   
