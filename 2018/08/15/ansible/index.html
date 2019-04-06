@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    
+    <title>自动化运维工具 - Ansible | Garry Shield</title>
+
+    <meta name="description" content="Ansible 是一个轻量级的IT自动化工具，集合了众多运维工具（puppet、cfengine、chef、func、fabric）的优点，实现了批量系统配置、批量程序部署、批量运行命令等功能。 Ansible 是基于模块工作的，本身没有批量部署的能力。真正具有批量部署的是 Ansible 所运行的模块，包括： 1、连接插件 connection plugins：负责和被监控端实现通信； 2、ho">
+<meta name="keywords" content="Ansible">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自动化运维工具 - Ansible">
+<meta property="og:url" content="http://garryshield.github.com/2018/08/15/ansible/index.html">
+<meta property="og:site_name" content="Garry Shield">
+<meta property="og:description" content="Ansible 是一个轻量级的IT自动化工具，集合了众多运维工具（puppet、cfengine、chef、func、fabric）的优点，实现了批量系统配置、批量程序部署、批量运行命令等功能。 Ansible 是基于模块工作的，本身没有批量部署的能力。真正具有批量部署的是 Ansible 所运行的模块，包括： 1、连接插件 connection plugins：负责和被监控端实现通信； 2、ho">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-15T08:57:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自动化运维工具 - Ansible">
+<meta name="twitter:description" content="Ansible 是一个轻量级的IT自动化工具，集合了众多运维工具（puppet、cfengine、chef、func、fabric）的优点，实现了批量系统配置、批量程序部署、批量运行命令等功能。 Ansible 是基于模块工作的，本身没有批量部署的能力。真正具有批量部署的是 Ansible 所运行的模块，包括： 1、连接插件 connection plugins：负责和被监控端实现通信； 2、ho">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico" />
+
+    <link rel="stylesheet" href="/assets/css/libs.min.css">
+    <link rel="stylesheet" href="/assets/libs/fontawesome/css/all.css">
+
+    <link rel="stylesheet" href="/assets/css/main.min.css">
+  </head>
+  <body>
+  
+<header class="header mb-5">
+<div class="container">
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-transparent pl-0 pr-0">
+
+    <a class="navbar-brand" href="/">Garry Shield</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/archives">Archives</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/categories">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/tags/">Tags</a>
+        </li>              
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>              
+        <li class="nav-item">
+        </li>
+      </ul>
+
+      <form class="form-inline ml-lg-2 my-2 my-lg-0">
+        <a class="btn btn-sm btn-light search" href="javascript:;">
+          <i class="fas fa-search"></i>
+        </a>
+      </form>
+    </div>
+
+</nav>
+
+
+      <div class="info info-post">
+          <h1>自动化运维工具 - Ansible</h1>
+
+          <p class="lead">IT Automation Tool - Ansible</p>
+
+          
+          <div class="post-tags">
+          <dl class="tags">
+              <dt>Tags:</dt>
+              
+                <dd><a href="/tags/#Ansible">Ansible</a></dd>
+              
+          </dl>
+          </div>
+          
+
+          
+          <div class="post-categories">
+          <dl class="tags">
+              <dt>Categories:</dt>
+              
+                <dd><a href="/categories/#Python">Python</a></dd>
+              
+                <dd><a href="/categories/#Ansible">Ansible</a></dd>
+              
+          </dl>
+          </div>
+          
+
+          <div class="post-date">
+            By Garryshield, Created at 2018-08-15, Updated at 2018-08-15
+          </div>
+      </div>
+
+  </div>
+</div>
+</div>
+</header>
+
+<div class="container">
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+
+      <article class="article mb-5">
+        <section>
+        <p><a href="https://www.ansible.com/" target="_blank" rel="noopener">Ansible</a> 是一个轻量级的IT自动化工具，集合了众多运维工具（puppet、cfengine、chef、func、fabric）的优点，实现了批量系统配置、批量程序部署、批量运行命令等功能。</p>
+<p><a href="https://www.ansible.com/" target="_blank" rel="noopener">Ansible</a> 是基于模块工作的，本身没有批量部署的能力。真正具有批量部署的是 <a href="https://www.ansible.com/" target="_blank" rel="noopener">Ansible</a> 所运行的模块，包括：<br>
+1、连接插件 connection plugins：负责和被监控端实现通信；<br>
+2、host inventory：指定操作的主机，是一个配置文件里面定义监控的主机；<br>
+3、各种模块核心模块、command 模块、自定义模块；<br>
+4、借助于插件完成记录日志邮件等功能；<br>
+5、playbook：剧本执行多个任务时，非必需可以让节点一次性运行多个任务。</p>
+<a id="more"></a>
+<h2 id="1.-%E5%AE%89%E8%A3%85">1. 安装</h2>
+<p><a href="https://www.ansible.com/" target="_blank" rel="noopener">Ansible</a> 基于 Python，可以通过 pip 安装。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python --version</span><br><span class="line">pip install ansible</span><br><span class="line">ansible --version</span><br></pre></td></tr></table></figure>
+<h2 id="2.-%E9%85%8D%E7%BD%AE">2. 配置</h2>
+<p><a href="https://www.ansible.com/" target="_blank" rel="noopener">Ansible</a> 按以下顺序加载第一个找到的配置文件：<br>
+1、<code>ANSIBLE_CONFIG</code> 环境变量<br>
+2、<code>ansible.cfg</code> 当前目录下<br>
+3、<code>~/.ansible.cfg</code> 家目录下<br>
+4、<code>/etc/ansible/ansible.cfg</code></p>
+<p>通过 pip 安装需要手动创建配置文件，配置文件的格式可以参考 <a href="https://raw.githubusercontent.com/ansible/ansible/devel/examples/ansible.cfg" target="_blank" rel="noopener">官方样例</a>。</p>
+<h2 id="3.-inventory">3. inventory</h2>
+<p>在大规模的配置管理工作中需要管理不同业务的机器，这些机器的信息都存放在 <a href="https://www.ansible.com/" target="_blank" rel="noopener">Ansible</a> 的 inventory 组件里。配置部署针对的主机必须先存放在 inventory 里，这样才能使用 <a href="https://www.ansible.com/" target="_blank" rel="noopener">Ansible</a> 对它进行操作。默认 <a href="https://www.ansible.com/" target="_blank" rel="noopener">Ansible</a> 的 inventory 是一个静态的 ini 文件 <code>/etc/ansible/hosts</code>。亦可通过 <code>ANSIBLE_HOSTS</code> 环境变量指定或者命令运行时用 <code>-i</code> 参数临时设置。<br>
+参考示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1、100.0.0.1 ansible_ssh_pass=<span class="string">'123456'</span></span><br><span class="line">2、100.0.0.2 ansible_ssh_pass=<span class="string">'123456'</span></span><br><span class="line">3、[webserver]</span><br><span class="line">4、100.0.0.1[1:3]</span><br><span class="line">5、[webserver:vars]</span><br><span class="line">6、ansible_ssh_pass=<span class="string">'123456'</span></span><br><span class="line">7、[dbserver:children]</span><br><span class="line">8、webserver</span><br></pre></td></tr></table></figure>
+<p>第一、二行定义一个主机，指定 ssh 登录密码<br>
+第三行定义了一个叫 webserver 的组<br>
+第四行定义了 webserver 组下面四个主机从100.0.0.11-100.0.0.13<br>
+第五、六行定义了 webserver 组的 ssh 登录密码<br>
+第七、八行定义了 dbserver dbserver 组包含 webserver 组</p>
+<h2 id="4.-ad-hoc">4. ad-hoc</h2>
+<p>一般来说，我们可以用 Ad-Hoc command 和 Playbook 两种方式来操作 <a href="https://www.ansible.com/" target="_blank" rel="noopener">Ansible</a>。前者是透过一次次简短的指令来操作 <a href="https://www.ansible.com/" target="_blank" rel="noopener">Ansible</a>，而后者则是先把任务写好，然后再一次执行。两者的关系就好比我们在 Linux Shell 里打指令和先写个 Shell Script 再执行一样。</p>
+<p>使用 <code>ansible-doc -l</code> 可以查看所有自带模块，还可以使用 <code>ansible-doc 模块名</code>，查看模块的介绍以及案例。</p>
+<p>命令用法：<code>ansible &lt;host-pattern&gt; [options]</code>。</p>
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ansible all -m ping</span><br><span class="line">ansible all -m <span class="built_in">command</span> -a <span class="string">"echo Hello World"</span></span><br></pre></td></tr></table></figure>
+<p>从以上的例子中可以看到 Ad-Hoc commands 一次只能处理一件事情。</p>
+<h2 id="5.-playbook">5. Playbook</h2>
+<p>Playbook 即剧本。通过事先写好的剧本让被管理主机进行指定的动作 (Plays) 和任务 (Tasks)。 Playbook 文件使用 YAML 编写。</p>
+<p>例如：</p>
+<figure class="highlight yaml"><figcaption><span>test.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">- name:</span> <span class="string">test</span> <span class="string">playbook</span></span><br><span class="line"><span class="attr">  hosts:</span> <span class="string">test</span></span><br><span class="line"><span class="attr">  tasks:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">get</span> <span class="string">hostname</span></span><br><span class="line"><span class="attr">      shell:</span> <span class="string">hostname</span></span><br><span class="line"><span class="attr">      register:</span> <span class="string">hostname</span></span><br><span class="line"></span><br><span class="line"><span class="attr">    - debug:</span> <span class="string">var=hostname</span></span><br><span class="line"></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">echo</span> <span class="string">'hello world'</span></span><br><span class="line"><span class="attr">      command:</span> <span class="string">echo</span> <span class="string">'hello world'</span></span><br><span class="line"><span class="attr">      register:</span> <span class="string">echo</span></span><br><span class="line"></span><br><span class="line"><span class="attr">    - debug:</span> <span class="string">var=echo</span></span><br></pre></td></tr></table></figure>
+<h2 id="6.-%E6%A8%A1%E5%9D%97">6. 模块</h2>
+<p>在 <a href="https://www.ansible.com/" target="_blank" rel="noopener">Ansible</a> 里，其实都是通过现成的模块 (Modules) 在操作 <a href="https://www.ansible.com/" target="_blank" rel="noopener">Ansible</a>，掌握了如何使用模块 (Modules)就可以快速上手，其余都只是延伸使用。</p>
+<p><a href="https://www.ansible.com/" target="_blank" rel="noopener">Ansible</a> 中模块 (Modules) 的总数已来到 836 个之多，其种类约有 12 种，从套件 (Packaging)、资料库 (Database)、通知 (Notification)、云端 (Cloud)、Windows 到网络 (Network) 等。要是找不到想要的功能，我们还可以透过 command 和 shell 等 Modules 自行扩充。详情查看<a href="https://docs.ansible.com/ansible/latest/modules/modules_by_category.html" target="_blank" rel="noopener">官方模块</a>。</p>
+<h4 id="6.1.-command">6.1. command</h4>
+<p>command 模块用于运行系统命令。不支持管道符和变量等（&quot;&lt;&quot;, &quot;&gt;&quot;, &quot;|&quot;, and &quot;&amp;&quot;等），如果要使用这些，那么可以使用 shell 模块。</p>
+<p>常用参数：<br>
+<code>argv</code>：使用一个列表形式代替字符串形式的 command。<br>
+<code>chdir</code>：执行前切换目录。<br>
+<code>creates</code>：指定一个文件名，如果文件存在则不执行。<br>
+<code>removes</code>：指定一个文件名，如果文件存在才执行。</p>
+<p>示例：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">- name:</span> <span class="string">Reboot</span> <span class="string">at</span> <span class="string">now</span></span><br><span class="line"><span class="attr">  command:</span> <span class="string">/usr/sbin/shutdown</span> <span class="bullet">-r</span> <span class="string">now</span></span><br><span class="line"></span><br><span class="line"><span class="attr">- name:</span> <span class="string">return</span> <span class="string">motd</span> <span class="string">to</span> <span class="string">registered</span> <span class="string">var</span></span><br><span class="line"><span class="attr">  command:</span> <span class="string">cat</span> <span class="string">/etc/motd</span></span><br><span class="line"><span class="attr">  register:</span> <span class="string">mymotd</span></span><br><span class="line"></span><br><span class="line"><span class="attr">- name:</span> <span class="string">Run</span> <span class="string">the</span> <span class="string">command</span> <span class="string">if</span> <span class="string">the</span> <span class="string">specified</span> <span class="string">file</span> <span class="string">does</span> <span class="string">not</span> <span class="string">exist.</span></span><br><span class="line"><span class="attr">  command:</span> <span class="string">/usr/bin/make_database.sh</span> <span class="string">arg1</span> <span class="string">arg2</span></span><br><span class="line"><span class="attr">  args:</span></span><br><span class="line"><span class="attr">    creates:</span> <span class="string">/path/to/database</span></span><br><span class="line"></span><br><span class="line"><span class="attr">- name:</span> <span class="string">This</span> <span class="string">command</span> <span class="string">will</span> <span class="string">change</span> <span class="string">the</span> <span class="string">working</span> <span class="string">directory</span> <span class="string">to</span> <span class="string">somedir/</span> <span class="string">and</span> <span class="string">will</span> <span class="string">only</span> <span class="string">run</span> <span class="string">when</span> <span class="string">/path/to/database</span> <span class="string">doesn't</span> <span class="string">exist.</span></span><br><span class="line"><span class="attr">  command:</span> <span class="string">/usr/bin/make_database.sh</span> <span class="string">arg1</span> <span class="string">arg2</span></span><br><span class="line"><span class="attr">  args:</span></span><br><span class="line"><span class="attr">    chdir:</span> <span class="string">somedir/</span></span><br><span class="line"><span class="attr">    creates:</span> <span class="string">/path/to/database</span></span><br><span class="line"></span><br><span class="line"><span class="attr">- name:</span> <span class="string">use</span> <span class="string">argv</span> <span class="string">to</span> <span class="string">send</span> <span class="string">the</span> <span class="string">command</span> <span class="string">as</span> <span class="string">a</span> <span class="string">list.</span>  <span class="string">Be</span> <span class="string">sure</span> <span class="string">to</span> <span class="string">leave</span> <span class="string">command</span> <span class="string">empty</span></span><br><span class="line"><span class="attr">  command:</span></span><br><span class="line"><span class="attr">  args:</span></span><br><span class="line"><span class="attr">    argv:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">echo</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">testing</span></span><br><span class="line"></span><br><span class="line"><span class="attr">- name:</span> <span class="string">safely</span> <span class="string">use</span> <span class="string">templated</span> <span class="string">variable</span> <span class="string">to</span> <span class="string">run</span> <span class="string">command.</span> <span class="string">Always</span> <span class="string">use</span> <span class="string">the</span> <span class="string">quote</span> <span class="string">filter</span> <span class="string">to</span> <span class="string">avoid</span> <span class="string">injection</span> <span class="string">issues.</span></span><br><span class="line"><span class="attr">  command:</span> <span class="string">cat</span> <span class="string">&#123;&#123;</span> <span class="string">myfile|quote</span> <span class="string">&#125;&#125;</span></span><br><span class="line"><span class="attr">  register:</span> <span class="string">myoutput</span></span><br></pre></td></tr></table></figure>
+<h4 id="6.2.-copy">6.2. copy</h4>
+<p>copy 模块用于从本地或者远程节点复制文件到远程节点，fetch 模块用于从远程节点复制文件到本地，如果要复制同时使用变量修改文件应该使用 template 模块。</p>
+<p>常用参数：<br>
+<code>src</code>：要复制到远程节点的本地文件，可以是相对或者绝对路径，如果拷贝的是文件夹，那么文件夹会整体拷贝，如果结尾是 <code>/</code>，那么只有文件夹内的东西被考过去。<br>
+<code>content</code>：用来替代src，用于将指定文件的内容，拷贝到远程节点文件内。<br>
+<code>dest</code>：指定远程节点上的文件，需要绝对路径。如果 src 指向的是文件夹，这个参数也必须是指向文件夹。<br>
+<code>remote_src</code>：默认为 no，指定是否 <code>src</code> 是本地还是远程节点。<br>
+<code>backup</code>：是否备份远程节点上的原始文件，在拷贝之前。如果发生什么意外，原始文件还能使用。<br>
+<code>follow</code>：默认为 no，当拷贝的文件夹内有符号链接时，复制后是否同时建立符号链接。<br>
+<code>force</code>：默认为 yes，是否覆盖远程的同名文件。<br>
+<code>group</code>：复制后的文件所属组。<br>
+<code>owner</code>：复制后的文件权所属用户。<br>
+<code>mode</code>：复制后的文件权限。<br>
+<code>validate</code>：复制前执行的验证命令，验证通过则复制。通过 <code>%s</code> 变量代替复制的文件。</p>
+<p>示例：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">- name:</span> <span class="string">example</span> <span class="string">copying</span> <span class="string">file</span> <span class="string">with</span> <span class="string">owner</span> <span class="string">and</span> <span class="string">permissions</span></span><br><span class="line"><span class="attr">  copy:</span></span><br><span class="line"><span class="attr">    src:</span> <span class="string">/srv/myfiles/foo.conf</span></span><br><span class="line"><span class="attr">    dest:</span> <span class="string">/etc/foo.conf</span></span><br><span class="line"><span class="attr">    owner:</span> <span class="string">foo</span></span><br><span class="line"><span class="attr">    group:</span> <span class="string">foo</span></span><br><span class="line"><span class="attr">    mode:</span> <span class="number">0644</span></span><br><span class="line"></span><br><span class="line"><span class="attr">- name:</span> <span class="string">The</span> <span class="string">same</span> <span class="string">example</span> <span class="string">as</span> <span class="string">above,</span> <span class="string">but</span> <span class="string">using</span> <span class="string">a</span> <span class="string">symbolic</span> <span class="string">mode</span> <span class="string">equivalent</span> <span class="string">to</span> <span class="number">0644</span></span><br><span class="line"><span class="attr">  copy:</span></span><br><span class="line"><span class="attr">    src:</span> <span class="string">/srv/myfiles/foo.conf</span></span><br><span class="line"><span class="attr">    dest:</span> <span class="string">/etc/foo.conf</span></span><br><span class="line"><span class="attr">    owner:</span> <span class="string">foo</span></span><br><span class="line"><span class="attr">    group:</span> <span class="string">foo</span></span><br><span class="line"><span class="attr">    mode:</span> <span class="string">u=rw,g=r,o=r</span></span><br><span class="line"></span><br><span class="line"><span class="attr">- name:</span> <span class="string">Another</span> <span class="string">symbolic</span> <span class="string">mode</span> <span class="string">example,</span> <span class="string">adding</span> <span class="string">some</span> <span class="string">permissions</span> <span class="string">and</span> <span class="string">removing</span> <span class="string">others</span></span><br><span class="line"><span class="attr">  copy:</span></span><br><span class="line"><span class="attr">    src:</span> <span class="string">/srv/myfiles/foo.conf</span></span><br><span class="line"><span class="attr">    dest:</span> <span class="string">/etc/foo.conf</span></span><br><span class="line"><span class="attr">    owner:</span> <span class="string">foo</span></span><br><span class="line"><span class="attr">    group:</span> <span class="string">foo</span></span><br><span class="line"><span class="attr">    mode:</span> <span class="string">u+rw,g-wx,o-rwx</span></span><br><span class="line"></span><br><span class="line"><span class="attr">- name:</span> <span class="string">Copy</span> <span class="string">a</span> <span class="string">new</span> <span class="string">"ntp.conf file into place, backing up the original if it differs from the copied version</span></span><br><span class="line"><span class="string">  copy:</span></span><br><span class="line"><span class="string">    src: /mine/ntp.conf</span></span><br><span class="line"><span class="string">    dest: /etc/ntp.conf</span></span><br><span class="line"><span class="string">    owner: root</span></span><br><span class="line"><span class="string">    group: root</span></span><br><span class="line"><span class="string">    mode: 0644</span></span><br><span class="line"><span class="string">    backup: yes</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">- name: Copy a new "</span><span class="string">sudoers"</span> <span class="string">file</span> <span class="string">into</span> <span class="string">place,</span> <span class="string">after</span> <span class="string">passing</span> <span class="string">validation</span> <span class="string">with</span> <span class="string">visudo</span></span><br><span class="line"><span class="attr">  copy:</span></span><br><span class="line"><span class="attr">    src:</span> <span class="string">/mine/sudoers</span></span><br><span class="line"><span class="attr">    dest:</span> <span class="string">/etc/sudoers</span></span><br><span class="line"><span class="attr">    validate:</span> <span class="string">/usr/sbin/visudo</span> <span class="bullet">-cf</span> <span class="string">%s</span></span><br><span class="line"></span><br><span class="line"><span class="attr">- name:</span> <span class="string">Copy</span> <span class="string">a</span> <span class="string">"sudoers"</span> <span class="string">file</span> <span class="string">on</span> <span class="string">the</span> <span class="string">remote</span> <span class="string">machine</span> <span class="string">for</span> <span class="string">editing</span></span><br><span class="line"><span class="attr">  copy:</span></span><br><span class="line"><span class="attr">    src:</span> <span class="string">/etc/sudoers</span></span><br><span class="line"><span class="attr">    dest:</span> <span class="string">/etc/sudoers.edit</span></span><br><span class="line"><span class="attr">    remote_src:</span> <span class="literal">yes</span></span><br><span class="line"><span class="attr">    validate:</span> <span class="string">/usr/sbin/visudo</span> <span class="bullet">-cf</span> <span class="string">%s</span></span><br><span class="line"></span><br><span class="line"><span class="attr">- name:</span> <span class="string">Copy</span> <span class="string">using</span> <span class="string">the</span> <span class="string">'content'</span> <span class="string">for</span> <span class="string">inline</span> <span class="string">data</span></span><br><span class="line"><span class="attr">  copy:</span></span><br><span class="line"><span class="attr">    content:</span> <span class="string">'# This file was moved to /etc/other.conf'</span></span><br><span class="line"><span class="attr">    dest:</span> <span class="string">/etc/mine.conf'</span></span><br></pre></td></tr></table></figure>
+<h4 id="6.3.-fetch">6.3. fetch</h4>
+<p>fetch 模块用于从远程节点复制文件到本地<br>
+示例：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Store file into /tmp/fetched/host.example.com/tmp/somefile</span></span><br><span class="line"><span class="attr">- fetch:</span></span><br><span class="line"><span class="attr">    src:</span> <span class="string">/tmp/somefile</span></span><br><span class="line"><span class="attr">    dest:</span> <span class="string">/tmp/fetched</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Specifying a path directly</span></span><br><span class="line"><span class="attr">- fetch:</span></span><br><span class="line"><span class="attr">    src:</span> <span class="string">/tmp/somefile</span></span><br><span class="line"><span class="attr">    dest:</span> <span class="string">/tmp/prefix-&#123;&#123;</span> <span class="string">inventory_hostname</span> <span class="string">&#125;&#125;</span></span><br><span class="line"><span class="attr">    flat:</span> <span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Specifying a destination path</span></span><br><span class="line"><span class="attr">- fetch:</span></span><br><span class="line"><span class="attr">    src:</span> <span class="string">/tmp/uniquefile</span></span><br><span class="line"><span class="attr">    dest:</span> <span class="string">/tmp/special/</span></span><br><span class="line"><span class="attr">    flat:</span> <span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Storing in a path relative to the playbook</span></span><br><span class="line"><span class="attr">- fetch:</span></span><br><span class="line"><span class="attr">    src:</span> <span class="string">/tmp/uniquefile</span></span><br><span class="line"><span class="attr">    dest:</span> <span class="string">special/prefix-&#123;&#123;</span> <span class="string">inventory_hostname</span> <span class="string">&#125;&#125;</span></span><br><span class="line"><span class="attr">    flat:</span> <span class="literal">yes</span></span><br></pre></td></tr></table></figure>
+<h4 id="6.4.-file">6.4. file</h4>
+<p>file 模块用来设置文件、链接、目录的属性，或者移除文件、链接、目录，很多其他的模块也会包含这些作用。</p>
+<p>示例：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># change file ownership, group and mode. When specifying mode using octal numbers, first digit should always be 0.</span></span><br><span class="line"><span class="attr">- file:</span></span><br><span class="line"><span class="attr">    path:</span> <span class="string">/etc/foo.conf</span></span><br><span class="line"><span class="attr">    owner:</span> <span class="string">foo</span></span><br><span class="line"><span class="attr">    group:</span> <span class="string">foo</span></span><br><span class="line"><span class="attr">    mode:</span> <span class="number">0644</span></span><br><span class="line"><span class="attr">- file:</span></span><br><span class="line"><span class="attr">    path:</span> <span class="string">/work</span></span><br><span class="line"><span class="attr">    owner:</span> <span class="string">root</span></span><br><span class="line"><span class="attr">    group:</span> <span class="string">root</span></span><br><span class="line"><span class="attr">    mode:</span> <span class="number">01777</span></span><br><span class="line"><span class="attr">- file:</span></span><br><span class="line"><span class="attr">    src:</span> <span class="string">/file/to/link/to</span></span><br><span class="line"><span class="attr">    dest:</span> <span class="string">/path/to/symlink</span></span><br><span class="line"><span class="attr">    owner:</span> <span class="string">foo</span></span><br><span class="line"><span class="attr">    group:</span> <span class="string">foo</span></span><br><span class="line"><span class="attr">    state:</span> <span class="string">link</span></span><br><span class="line"><span class="attr">- file:</span></span><br><span class="line"><span class="attr">    src:</span> <span class="string">'/tmp/<span class="template-variable">&#123;&#123; item.src &#125;&#125;</span>'</span></span><br><span class="line"><span class="attr">    dest:</span> <span class="string">'<span class="template-variable">&#123;&#123; item.dest &#125;&#125;</span>'</span></span><br><span class="line"><span class="attr">    state:</span> <span class="string">link</span></span><br><span class="line"><span class="attr">  with_items:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">&#123;</span> <span class="attr">src:</span> <span class="string">'x'</span><span class="string">,</span> <span class="attr">dest:</span> <span class="string">'y'</span> <span class="string">&#125;</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">&#123;</span> <span class="attr">src:</span> <span class="string">'z'</span><span class="string">,</span> <span class="attr">dest:</span> <span class="string">'k'</span> <span class="string">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># touch a file, using symbolic modes to set the permissions (equivalent to 0644)</span></span><br><span class="line"><span class="attr">- file:</span></span><br><span class="line"><span class="attr">    path:</span> <span class="string">/etc/foo.conf</span></span><br><span class="line"><span class="attr">    state:</span> <span class="string">touch</span></span><br><span class="line"><span class="attr">    mode:</span> <span class="string">"u=rw,g=r,o=r"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># touch the same file, but add/remove some permissions</span></span><br><span class="line"><span class="attr">- file:</span></span><br><span class="line"><span class="attr">    path:</span> <span class="string">/etc/foo.conf</span></span><br><span class="line"><span class="attr">    state:</span> <span class="string">touch</span></span><br><span class="line"><span class="attr">    mode:</span> <span class="string">"u+rw,g-wx,o-rwx"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># create a directory if it doesn't exist</span></span><br><span class="line"><span class="attr">- file:</span></span><br><span class="line"><span class="attr">    path:</span> <span class="string">/etc/some_directory</span></span><br><span class="line"><span class="attr">    state:</span> <span class="string">directory</span></span><br><span class="line"><span class="attr">    mode:</span> <span class="number">0755</span></span><br></pre></td></tr></table></figure>
+<h2 id="7.-%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5">7. 参考链接</h2>
+<p>· <a href="https://www.ansible.com/" target="_blank" rel="noopener">Ansible</a><br>
+· <a href="https://docs.ansible.com/" target="_blank" rel="noopener">Ansible Docuement</a><br>
+· <a href="https://galaxy.ansible.com/" target="_blank" rel="noopener">Ansible Galaxy</a><br>
+· <a href="https://docs.ansible.com/ansible/latest/modules/modules_by_category.html" target="_blank" rel="noopener">Ansible Module Index</a><br>
+· <a href="https://raw.githubusercontent.com/ansible/ansible/devel/examples/ansible.cfg" target="_blank" rel="noopener">ansible.cfg</a></p>
+
+        </section>
+      </article>
+
+      <div class="clearfix mb-4">
+          
+          <p>
+          <a class="float-left" href="/2018/08/16/yii/" tabindex="-1"><i class="fas fa-chevron-left"></i> Yii PHP Framework</a>
+          </p>
+          
+
+          
+          <p>
+          <a class="float-right" href="/2018/08/10/electronjs/" tabindex="-1">使用 Electron 构建跨平台桌面应用 <i class="fas fa-chevron-right"></i></a>
+          </p>
+          
+      </div>
+
+  </div>
+
+  <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+
+  <!--
+    <div class="catalog card border-0 mb-4">
+      <div class="card-body p-0">
+        <h4>CATALOG</h4>
+        <div class="catalog-inn"></div>
+      </div>
+    </div>
+  -->
+    
+    <div class="card border-0 mb-4">
+  <div class="card-body p-0">
+    <h4>TAGS</h4>
+    <dl class="tags">
+    <dd><a href="/tags">All</a></dd>
+    
+  <dd><a href="/tags/#Tips">Tips</a></dd>
+
+  <dd><a href="/tags/#Git">Git</a></dd>
+
+  <dd><a href="/tags/#Diary">Diary</a></dd>
+
+  <dd><a href="/tags/#Hexo">Hexo</a></dd>
+
+  <dd><a href="/tags/#Tree">Tree</a></dd>
+
+  <dd><a href="/tags/#Gif">Gif</a></dd>
+
+  <dd><a href="/tags/#Kap">Kap</a></dd>
+
+  <dd><a href="/tags/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/tags/#Nvm">Nvm</a></dd>
+
+  <dd><a href="/tags/#Linux">Linux</a></dd>
+
+  <dd><a href="/tags/#Shortcuts">Shortcuts</a></dd>
+
+  <dd><a href="/tags/#Systemd">Systemd</a></dd>
+
+  <dd><a href="/tags/#Promise">Promise</a></dd>
+
+  <dd><a href="/tags/#Google">Google</a></dd>
+
+  <dd><a href="/tags/#Pyenv">Pyenv</a></dd>
+
+  <dd><a href="/tags/#VMware">VMware</a></dd>
+
+  <dd><a href="/tags/#Memcached">Memcached</a></dd>
+
+  <dd><a href="/tags/#SELinux">SELinux</a></dd>
+
+  <dd><a href="/tags/#Yii">Yii</a></dd>
+
+  <dd><a href="/tags/#Electron">Electron</a></dd>
+
+  <dd><a href="/tags/#Shadowsocks">Shadowsocks</a></dd>
+
+  <dd><a href="/tags/#Grunt">Grunt</a></dd>
+
+  <dd><a href="/tags/#Rsync">Rsync</a></dd>
+
+  <dd><a href="/tags/#Markdown">Markdown</a></dd>
+
+  <dd><a href="/tags/#Emoji">Emoji</a></dd>
+
+  <dd><a href="/tags/#Jupyter">Jupyter</a></dd>
+
+  <dd><a href="/tags/#MariaDB">MariaDB</a></dd>
+
+  <dd><a href="/tags/#Ansible">Ansible</a></dd>
+
+  <dd><a href="/tags/#Bash">Bash</a></dd>
+
+    </dl>
+  </div>
+</div>
+    <div class="card border-0 mb-4">
+  <div class="card-body p-0">
+    <h4>CATEGORIES</h4>
+    <dl class="tags">
+    <dd><a href="/categories">All</a></dd>
+    
+  <dd><a href="/categories/#Tips">Tips</a></dd>
+
+  <dd><a href="/categories/#Git">Git</a></dd>
+
+  <dd><a href="/categories/#Diary">Diary</a></dd>
+
+  <dd><a href="/categories/#Node.js">Node.js</a></dd>
+
+  <dd><a href="/categories/#Linux">Linux</a></dd>
+
+  <dd><a href="/categories/#MacOS">MacOS</a></dd>
+
+  <dd><a href="/categories/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/categories/#Node.Js">Node.Js</a></dd>
+
+  <dd><a href="/categories/#Javascript">Javascript</a></dd>
+
+  <dd><a href="/categories/#Google">Google</a></dd>
+
+  <dd><a href="/categories/#Python">Python</a></dd>
+
+  <dd><a href="/categories/#VMware">VMware</a></dd>
+
+  <dd><a href="/categories/#CentOS">CentOS</a></dd>
+
+  <dd><a href="/categories/#Php">Php</a></dd>
+
+  <dd><a href="/categories/#MacOS">MacOS</a></dd>
+
+  <dd><a href="/categories/#Memcached">Memcached</a></dd>
+
+  <dd><a href="/categories/#Yii">Yii</a></dd>
+
+  <dd><a href="/categories/#MariaDB">MariaDB</a></dd>
+
+  <dd><a href="/categories/#Ansible">Ansible</a></dd>
+
+    </dl>
+  </div>
+</div>
+    <div class="card border-0 mb-4">
+  <div class="card-body p-0">
+    <h4>ARCHIVES</h4>
+    <dl class="tags">
+    <dd><a href="/archives">All</a></dd>
+    
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+  <dd><a href="/archives/#2015">2015</a></dd>
+
+  <dd><a href="/archives/#2016">2016</a></dd>
+
+  <dd><a href="/archives/#2018">2018</a></dd>
+
+    </dl>
+  </div>
+</div>
+    
+  </div>
+</div>
+</div>
+
+    <footer class="footer">
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+
+          <div class="text-center">
+            <p>
+  <a href="https://github.com/garryshield" target="_blank" class="fa-stack fa-1x">
+    <i class="fas fa-circle fa-stack-2x"></i>
+    <i class="fab fa-github-alt fa-stack-1x fa-inverse"></i>
+  </a>
+  <a href="https://twitter.com/garry_shield" target="_blank" class="fa-stack fa-1x">
+    <i class="fas fa-circle fa-stack-2x"></i>
+    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+  </a>
+  <a href="https://www.zhihu.com/people/garryshield" target="_blank" class="fa-stack fa-1x">
+    <i class="fas fa-circle fa-stack-2x"></i>
+    <i class="fa fa-stack-1x fa-inverse">知</i>
+  </a>
+</p>
+            <p class="mb-4"></p>
+            <p>Copyright © Garry Shield 2018 </p>
+<p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> and <a href="https://github.com/twbs/bootstrap" target="_blank">Bootstrap</a></p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+      
+    </footer>
+
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Search" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+    
+    <script src="/assets/js/libs.min.js"></script>
+    <script src="/assets/js/main.min.js"></script>
+  </body>
+</html>

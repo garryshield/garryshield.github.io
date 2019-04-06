@@ -86,6 +86,135 @@
 
 
   <div class="mb-5">
+      <h4><a href="/2016/09/30/pyenv/">使用 Pyenv 管理 Python</a></h4>
+
+      <div class="text-secondary mb-3">
+        <div class="italic mb-2">By Garryshield, Created at 2016-09-30, Updated at 2016-09-30</div>
+        
+        
+        <dl class="tags mb-1">
+            <dt>Tags:</dt>
+            
+              <dd><a href="/tags/#Pyenv">Pyenv</a></dd>
+            
+        </dl>
+        
+
+        
+        <dl class="tags mb-1">
+            <dt>Categories:</dt>
+            
+              <dd><a href="/categories/#Python">Python</a></dd>
+            
+        </dl>
+        
+      </div>
+
+      <article class="article mb-5">
+        <section>
+          
+            <p><a href="https://github.com/pyenv/pyenv" target="_blank" rel="noopener">pyenv</a> 是 Python 的版本管理工具。 它可以改变全局的 Python 版本，安装多个版本的 Python，设置目录级别的 Python 版本，还能创建和管理 virtual python environments。</p>
+<p>pyenv 的特别之处在于，它并没有使用将不同的 PATH 植入不同的 shell 这种高耦合的工作方式，而是简单地在 PATH 的最前面插入了一个垫片路径（shims）：<code>$(pyenv root)/shims:/usr/local/bin:/usr/bin:/bin</code>。使得对 Python 可执行文件的查找都会首先被这个 shims 路径截获，从而使后方的系统路径失效。</p>
+          
+        </section>
+      </article>
+
+      <div class="mt-4">
+          <a href="/2016/09/30/pyenv/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+      </div>
+  </div>
+
+  <div class="mb-5">
+      <h4><a href="/2016/08/29/google-search/">Google 高级搜索</a></h4>
+
+      <div class="text-secondary mb-3">
+        <div class="italic mb-2">By Garryshield, Created at 2016-08-29, Updated at 2016-08-29</div>
+        
+        
+        <dl class="tags mb-1">
+            <dt>Tags:</dt>
+            
+              <dd><a href="/tags/#Google">Google</a></dd>
+            
+        </dl>
+        
+
+        
+        <dl class="tags mb-1">
+            <dt>Categories:</dt>
+            
+              <dd><a href="/categories/#Google">Google</a></dd>
+            
+        </dl>
+        
+      </div>
+
+      <article class="article mb-5">
+        <section>
+          
+            <p>双引号<br>
+关键词放在双引号中，代表完全匹配搜索，即返回的网页包含双引号中出现的所有的词，顺序也必须完全匹配。<br>
+例如：<code>&quot;搜索 图片&quot;</code></p>
+<p>减号<br>
+减号代表搜索不包含减号后面的词的网页。减号前面必须是空格，减号后面没有空格，紧跟着需要排除的词。<br>
+例如：<code>搜索 -引擎</code> 返回包含 <code>搜索</code> 不包含 <code>引擎</code> 的网页</p>
+<p>星号<br>
+星号 <code>*</code> 通配符代表任何文字。<br>
+例如：<code>搜索*擎</code> 中的 <code>*</code> 号代表任何文字。返回包含 <code>搜索引擎</code>，<code>搜索收擎</code>，<code>搜索巨擎</code> 等内容的网页。</p>
+          
+        </section>
+      </article>
+
+      <div class="mt-4">
+          <a href="/2016/08/29/google-search/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+      </div>
+  </div>
+
+  <div class="mb-5">
+      <h4><a href="/2016/07/29/javascript-promise/">Javascript Promise 的用法</a></h4>
+
+      <div class="text-secondary mb-3">
+        <div class="italic mb-2">By Garryshield, Created at 2016-07-29, Updated at 2016-07-29</div>
+        
+        
+        <dl class="tags mb-1">
+            <dt>Tags:</dt>
+            
+              <dd><a href="/tags/#Promise">Promise</a></dd>
+            
+        </dl>
+        
+
+        
+        <dl class="tags mb-1">
+            <dt>Categories:</dt>
+            
+              <dd><a href="/categories/#Javascript">Javascript</a></dd>
+            
+        </dl>
+        
+      </div>
+
+      <article class="article mb-5">
+        <section>
+          
+            <p>回调是 JavaScript 编程中比较令人纠结的写法，主要是用于处理“并列”或者“并行”的操作，然后在回调函数中处理操作结果。这样原生的回调写法就会带来以下的不便。</p>
+<ol>
+<li>回调结果状态不便管理</li>
+<li>回调方式自由松散，没有规范约束</li>
+</ol>
+<p>Promise 对象是 JavaScript 的异步操作解决方案，为异步操作提供统一接口。它起到代理作用，充当异步操作与回调函数之间的中介，使得异步操作具备同步操作的接口。Promise 可以让异步操作写起来，就像在写同步操作的流程，而不必一层层地嵌套回调函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 传统写法</span></span><br><span class="line">step1(<span class="function"><span class="keyword">function</span> (<span class="params">value1</span>) </span>&#123;</span><br><span class="line">  step2(value1, <span class="function"><span class="keyword">function</span>(<span class="params">value2</span>) </span>&#123;</span><br><span class="line">    step3(value2, <span class="function"><span class="keyword">function</span>(<span class="params">value3</span>) </span>&#123;</span><br><span class="line">      step4(value3, <span class="function"><span class="keyword">function</span>(<span class="params">value4</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Promise 的写法</span></span><br><span class="line">(<span class="keyword">new</span> <span class="built_in">Promise</span>(step1))</span><br><span class="line">  .then(step2)</span><br><span class="line">  .then(step3)</span><br><span class="line">  .then(step4);</span><br></pre></td></tr></table></figure>
+          
+        </section>
+      </article>
+
+      <div class="mt-4">
+          <a href="/2016/07/29/javascript-promise/" class="btn btn-sm btn-outline-primary">READ MORE</a>
+      </div>
+  </div>
+
+  <div class="mb-5">
       <h4><a href="/2016/06/25/hexo-render/">使用 Markdown-it 渲染 Hexo</a></h4>
 
       <div class="text-secondary mb-3">
@@ -512,140 +641,6 @@
       </div>
   </div>
 
-  <div class="mb-5">
-      <h4><a href="/2015/10/05/mac-tool-kap/">MacOS 开源的录屏工具 - Kap</a></h4>
-
-      <div class="text-secondary mb-3">
-        <div class="italic mb-2">By Garryshield, Created at 2015-10-05, Updated at 2015-10-05</div>
-        
-        
-        <dl class="tags mb-1">
-            <dt>Tags:</dt>
-            
-              <dd><a href="/tags/#Gif">Gif</a></dd>
-            
-              <dd><a href="/tags/#Kap">Kap</a></dd>
-            
-        </dl>
-        
-
-        
-        <dl class="tags mb-1">
-            <dt>Categories:</dt>
-            
-              <dd><a href="/categories/#MacOS">MacOS</a></dd>
-            
-        </dl>
-        
-      </div>
-
-      <article class="article mb-5">
-        <section>
-          
-            <p>
-<img src="/2015/10/05/mac-tool-kap/assets/logo.svg" width="200">
-</p>
-<p><a href="https://getkap.co/" target="_blank" rel="noopener">Kap</a> 是一个开源的录屏工具，支持导出 GIF，MP4，WebM，APNG。同时可以自己编写插件用来分享，转化...<br>
-官网： <a href="https://getkap.co/" target="_blank" rel="noopener">Kap</a><br>
-GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="noopener">Kap GitHub</a></p>
-          
-        </section>
-      </article>
-
-      <div class="mt-4">
-          <a href="/2015/10/05/mac-tool-kap/" class="btn btn-sm btn-outline-primary">READ MORE</a>
-      </div>
-  </div>
-
-  <div class="mb-5">
-      <h4><a href="/2015/09/12/vscode-snippets/">VS Code 创建代码片段</a></h4>
-
-      <div class="text-secondary mb-3">
-        <div class="italic mb-2">By Garryshield, Created at 2015-09-12, Updated at 2015-09-12</div>
-        
-        
-        <dl class="tags mb-1">
-            <dt>Tags:</dt>
-            
-              <dd><a href="/tags/#VS Code">VS Code</a></dd>
-            
-        </dl>
-        
-
-        
-        <dl class="tags mb-1">
-            <dt>Categories:</dt>
-            
-              <dd><a href="/categories/#VS Code">VS Code</a></dd>
-            
-        </dl>
-        
-      </div>
-
-      <article class="article mb-5">
-        <section>
-          
-            <p>Snippet 即代码段，指的是能够帮助输入重复代码模式，比如循环或条件语句的模板。</p>
-<p>通过 Snippet 我们仅仅输入一小段字符串「prefix」，就可以在代码段引擎的帮助下，生成预定义的模板代码，接着我们还可以通过在预定义的光标位置之间跳转，来快速补全模板。</p>
-<p>当然，看图更易懂。下图将 aja 补全为 JQuery 的 ajax() 方法，并通过光标的跳转，快速补全了待填键值对：</p>
-
-<p><a href="/2015/09/12/vscode-snippets/assets/Kapture_2018-07-20_at_22.57.09.gif" data-fancybox="cjksas1x40008v1tpkygo248y" data-caption="VS Code 创建代码片段">
-<img class="border""" src="/2015/09/12/vscode-snippets/assets/Kapture_2018-07-20_at_22.57.09.gif">
-</a></p>
-          
-        </section>
-      </article>
-
-      <div class="mt-4">
-          <a href="/2015/09/12/vscode-snippets/" class="btn btn-sm btn-outline-primary">READ MORE</a>
-      </div>
-  </div>
-
-  <div class="mb-5">
-      <h4><a href="/2015/08/24/linux-cmd-tree/">Linux 命令 - tree</a></h4>
-
-      <div class="text-secondary mb-3">
-        <div class="italic mb-2">By Garryshield, Created at 2015-08-24, Updated at 2015-08-24</div>
-        
-        
-        <dl class="tags mb-1">
-            <dt>Tags:</dt>
-            
-              <dd><a href="/tags/#Tree">Tree</a></dd>
-            
-        </dl>
-        
-
-        
-        <dl class="tags mb-1">
-            <dt>Categories:</dt>
-            
-              <dd><a href="/categories/#Linux">Linux</a></dd>
-            
-        </dl>
-        
-      </div>
-
-      <article class="article mb-5">
-        <section>
-          
-            <p>Linux tree 命令用于以树状图列出目录的内容。</p>
-<p>执行 <code>tree</code> 指令，它会列出指定目录下的所有文件，包括子目录里的文件。</p>
-<h2 id="1.-%E5%B8%B8%E7%94%A8">1. 常用</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-a              所有文件包括隐藏文件</span><br><span class="line">-d              只显示目录</span><br><span class="line">-L level        只显示第几级</span><br><span class="line">-P pattern      只显示匹配的文件</span><br><span class="line">-I pattern      不显示匹配的文件</span><br><span class="line">-o filename     输出到文件，而不是 stdout             </span><br></pre></td></tr></table></figure>
-<h2 id="2.-%E5%AE%9E%E4%BE%8B">2. 实例</h2>
-<h4 id="2.1.-%E5%B1%82%E7%BA%A7">2.1. 层级</h4>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 列出目录 ./ 第一级文件名</span><br><span class="line">tree -L 1 ./</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./</span><br><span class="line">├── _config.yml</span><br><span class="line">├── node_modules</span><br><span class="line">├── package-lock.json</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── <span class="built_in">source</span></span><br><span class="line">└── themes</span><br><span class="line"></span><br><span class="line">4 directories, 3 files</span><br></pre></td></tr></table></figure>
-          
-        </section>
-      </article>
-
-      <div class="mt-4">
-          <a href="/2015/08/24/linux-cmd-tree/" class="btn btn-sm btn-outline-primary">READ MORE</a>
-      </div>
-  </div>
-
 
 
   <div>
@@ -702,17 +697,21 @@ GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="n
     <dl class="tags">
     <dd><a href="/tags">All</a></dd>
     
+  <dd><a href="/tags/#Tips">Tips</a></dd>
+
+  <dd><a href="/tags/#Git">Git</a></dd>
+
   <dd><a href="/tags/#Diary">Diary</a></dd>
 
   <dd><a href="/tags/#Hexo">Hexo</a></dd>
-
-  <dd><a href="/tags/#VS Code">VS Code</a></dd>
 
   <dd><a href="/tags/#Tree">Tree</a></dd>
 
   <dd><a href="/tags/#Gif">Gif</a></dd>
 
   <dd><a href="/tags/#Kap">Kap</a></dd>
+
+  <dd><a href="/tags/#VS Code">VS Code</a></dd>
 
   <dd><a href="/tags/#Nvm">Nvm</a></dd>
 
@@ -734,7 +733,11 @@ GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="n
 
   <dd><a href="/tags/#SELinux">SELinux</a></dd>
 
+  <dd><a href="/tags/#Yii">Yii</a></dd>
+
   <dd><a href="/tags/#Electron">Electron</a></dd>
+
+  <dd><a href="/tags/#Shadowsocks">Shadowsocks</a></dd>
 
   <dd><a href="/tags/#Grunt">Grunt</a></dd>
 
@@ -748,6 +751,8 @@ GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="n
 
   <dd><a href="/tags/#MariaDB">MariaDB</a></dd>
 
+  <dd><a href="/tags/#Ansible">Ansible</a></dd>
+
   <dd><a href="/tags/#Bash">Bash</a></dd>
 
     </dl>
@@ -759,15 +764,19 @@ GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="n
     <dl class="tags">
     <dd><a href="/categories">All</a></dd>
     
+  <dd><a href="/categories/#Tips">Tips</a></dd>
+
+  <dd><a href="/categories/#Git">Git</a></dd>
+
   <dd><a href="/categories/#Diary">Diary</a></dd>
 
   <dd><a href="/categories/#Node.js">Node.js</a></dd>
 
-  <dd><a href="/categories/#VS Code">VS Code</a></dd>
-
   <dd><a href="/categories/#Linux">Linux</a></dd>
 
   <dd><a href="/categories/#MacOS">MacOS</a></dd>
+
+  <dd><a href="/categories/#VS Code">VS Code</a></dd>
 
   <dd><a href="/categories/#Node.Js">Node.Js</a></dd>
 
@@ -781,11 +790,17 @@ GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="n
 
   <dd><a href="/categories/#CentOS">CentOS</a></dd>
 
+  <dd><a href="/categories/#Php">Php</a></dd>
+
   <dd><a href="/categories/#MacOS">MacOS</a></dd>
 
   <dd><a href="/categories/#Memcached">Memcached</a></dd>
 
+  <dd><a href="/categories/#Yii">Yii</a></dd>
+
   <dd><a href="/categories/#MariaDB">MariaDB</a></dd>
+
+  <dd><a href="/categories/#Ansible">Ansible</a></dd>
 
     </dl>
   </div>
@@ -797,6 +812,15 @@ GitHub 网址： <a href="https://github.com/wulkano/kap" target="_blank" rel="n
     <dd><a href="/archives">All</a></dd>
     
 
+
+  
+  
+
+  
+  
+
+  
+  
 
   
   

@@ -251,6 +251,12 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">search=<span class="string">"value2"</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">"<span class="variable">$&#123;!array_name[@]&#125;</span>"</span>; <span class="keyword">do</span></span><br><span class="line">   <span class="keyword">if</span> [[ <span class="string">"<span class="variable">$&#123;array_name[$i]&#125;</span>"</span> = <span class="string">"<span class="variable">$&#123;search&#125;</span>"</span> ]]; <span class="keyword">then</span></span><br><span class="line">       <span class="built_in">echo</span> <span class="string">"<span class="variable">$&#123;i&#125;</span>"</span>;</span><br><span class="line">   <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="comment"># 2</span></span><br></pre></td></tr></table></figure>
 <h2 id="9.-for-%E5%BE%AA%E7%8E%AF">9. For 循环</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> &lt;item&gt; <span class="keyword">in</span> &lt;list&gt;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  &lt;commands&gt;</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;1..5&#125;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">   <span class="built_in">echo</span> <span class="string">"Welcome <span class="variable">$i</span> times"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $(seq 1 2 10)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">   <span class="built_in">echo</span> <span class="string">"Welcome <span class="variable">$i</span> times"</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Bash v4.0+ </span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;0..10..2&#125;</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"Welcome <span class="variable">$i</span> times"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (( c=1; c&lt;=5; c++ ))</span><br><span class="line"><span class="keyword">do</span>  </span><br><span class="line">   <span class="built_in">echo</span> <span class="string">"Welcome <span class="variable">$c</span> times"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> /etc/*</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$&#123;file&#125;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>无限循环</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (( ; ; ))</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">   <span class="built_in">echo</span> <span class="string">"infinite loops [ hit CTRL+C to stop]"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 <h2 id="10.-while-%E5%BE%AA%E7%8E%AF">10. While 循环</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> &lt;condition&gt;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  &lt;commands&gt;</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> :</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">  &lt;commands&gt;</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> &lt;line&gt;</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">  &lt;commands&gt;</span><br><span class="line"><span class="keyword">done</span> &lt; &lt;file&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="11.-if-%2F-else-%E8%AF%AD%E5%8F%A5">11. If / Else 语句</h2>
@@ -360,7 +366,7 @@
 <h4 id="17.6.-%5B%E3%80%81%5B%5B">17.6. [、[[</h4>
 <p><code>[[</code> 比 <code>[</code> 更强大，不同于 <code>[</code>，<code>[[</code> 是一个关键字而不是一个命令。</p>
 
-<p><a href="/2018/08/08/bash/assets/Snipaste_2018-08-11_03-33-51.png" data-fancybox="cjksas2ni003dv1tpmp5q2lqm" data-caption="Bash">
+<p><a href="/2018/08/08/bash/assets/Snipaste_2018-08-11_03-33-51.png" data-fancybox="cju5m2ig30045v8tp0jo56itw" data-caption="Bash">
 <img class="border""" src="/2018/08/08/bash/assets/Snipaste_2018-08-11_03-33-51.png">
 </a></p>
 <h2 id="18.-hints-and-tips">18. Hints and Tips</h2>
@@ -412,17 +418,21 @@
     <dl class="tags">
     <dd><a href="/tags">All</a></dd>
     
+  <dd><a href="/tags/#Tips">Tips</a></dd>
+
+  <dd><a href="/tags/#Git">Git</a></dd>
+
   <dd><a href="/tags/#Diary">Diary</a></dd>
 
   <dd><a href="/tags/#Hexo">Hexo</a></dd>
-
-  <dd><a href="/tags/#VS Code">VS Code</a></dd>
 
   <dd><a href="/tags/#Tree">Tree</a></dd>
 
   <dd><a href="/tags/#Gif">Gif</a></dd>
 
   <dd><a href="/tags/#Kap">Kap</a></dd>
+
+  <dd><a href="/tags/#VS Code">VS Code</a></dd>
 
   <dd><a href="/tags/#Nvm">Nvm</a></dd>
 
@@ -444,7 +454,11 @@
 
   <dd><a href="/tags/#SELinux">SELinux</a></dd>
 
+  <dd><a href="/tags/#Yii">Yii</a></dd>
+
   <dd><a href="/tags/#Electron">Electron</a></dd>
+
+  <dd><a href="/tags/#Shadowsocks">Shadowsocks</a></dd>
 
   <dd><a href="/tags/#Grunt">Grunt</a></dd>
 
@@ -458,6 +472,8 @@
 
   <dd><a href="/tags/#MariaDB">MariaDB</a></dd>
 
+  <dd><a href="/tags/#Ansible">Ansible</a></dd>
+
   <dd><a href="/tags/#Bash">Bash</a></dd>
 
     </dl>
@@ -469,15 +485,19 @@
     <dl class="tags">
     <dd><a href="/categories">All</a></dd>
     
+  <dd><a href="/categories/#Tips">Tips</a></dd>
+
+  <dd><a href="/categories/#Git">Git</a></dd>
+
   <dd><a href="/categories/#Diary">Diary</a></dd>
 
   <dd><a href="/categories/#Node.js">Node.js</a></dd>
 
-  <dd><a href="/categories/#VS Code">VS Code</a></dd>
-
   <dd><a href="/categories/#Linux">Linux</a></dd>
 
   <dd><a href="/categories/#MacOS">MacOS</a></dd>
+
+  <dd><a href="/categories/#VS Code">VS Code</a></dd>
 
   <dd><a href="/categories/#Node.Js">Node.Js</a></dd>
 
@@ -491,11 +511,17 @@
 
   <dd><a href="/categories/#CentOS">CentOS</a></dd>
 
+  <dd><a href="/categories/#Php">Php</a></dd>
+
   <dd><a href="/categories/#MacOS">MacOS</a></dd>
 
   <dd><a href="/categories/#Memcached">Memcached</a></dd>
 
+  <dd><a href="/categories/#Yii">Yii</a></dd>
+
   <dd><a href="/categories/#MariaDB">MariaDB</a></dd>
+
+  <dd><a href="/categories/#Ansible">Ansible</a></dd>
 
     </dl>
   </div>
@@ -507,6 +533,15 @@
     <dd><a href="/archives">All</a></dd>
     
 
+
+  
+  
+
+  
+  
+
+  
+  
 
   
   

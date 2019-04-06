@@ -160,8 +160,10 @@
 <p>安装目录下的 <code>bin/mysql_secure_installation</code> 用来修改密码、删除匿名用户、取消远程链接。<br>
 注：运行此命令要先启动 MariaDB。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/mariadb-10.3.8</span><br><span class="line">bin/mysql_secure_installation</span><br></pre></td></tr></table></figure>
+<p>GRANT ALL PRIVILEGES ON <em>.</em> TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;<br>
+FLUSH PRIVILEGES;</p>
 <h2 id="13.-%E6%9F%A5%E7%9C%8B%E7%94%A8%E6%88%B7%E8%A1%A8">13. 查看用户表</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># /usr/local/mariadb-10.3.8/bin/mysql -uroot -p</span></span><br><span class="line">Enter password:</span><br><span class="line">Welcome to the MariaDB monitor.  Commands end with ; or \g.</span><br><span class="line">Your MariaDB connection id is 16</span><br><span class="line">Server version: 10.3.8-MariaDB-log Source distribution</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.</span><br><span class="line"></span><br><span class="line">Type <span class="string">'help;'</span> or <span class="string">'\h'</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">'\c'</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; show databases;</span><br><span class="line">+--------------------+</span><br><span class="line">| Database           |</span><br><span class="line">+--------------------+</span><br><span class="line">| information_schema |</span><br><span class="line">| mysql              |</span><br><span class="line">| performance_schema |</span><br><span class="line">| <span class="built_in">test</span>               |</span><br><span class="line">+--------------------+</span><br><span class="line">4 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.018 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; use mysql;</span><br><span class="line">Reading table information <span class="keyword">for</span> completion of table and column names</span><br><span class="line">You can turn off this feature to get a quicker startup with -A</span><br><span class="line"></span><br><span class="line">Database changed</span><br><span class="line">MariaDB [mysql]&gt; select Host,User,Password from user;</span><br><span class="line">+-----------+------+-------------------------------------------+</span><br><span class="line">| Host      | User | Password                                  |</span><br><span class="line">+-----------+------+-------------------------------------------+</span><br><span class="line">| localhost | root | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX |</span><br><span class="line">| 127.0.0.1 | root | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX |</span><br><span class="line">| ::1       | root | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX |</span><br><span class="line">| %         | root | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX |</span><br><span class="line">+-----------+------+-------------------------------------------+</span><br><span class="line">4 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.003 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [mysql]&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># /usr/local/mariadb-10.3.8/bin/mysql -uroot -p</span></span><br><span class="line">Enter password:</span><br><span class="line">Welcome to the MariaDB monitor.  Commands end with ; or \g.</span><br><span class="line">Your MariaDB connection id is 16</span><br><span class="line">Server version: 10.3.8-MariaDB-log Source distribution</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.</span><br><span class="line"></span><br><span class="line">Type <span class="string">'help;'</span> or <span class="string">'\h'</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">'\c'</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; show databases;</span><br><span class="line">+--------------------+</span><br><span class="line">| Database           |</span><br><span class="line">+--------------------+</span><br><span class="line">| information_schema |</span><br><span class="line">| mysql              |</span><br><span class="line">| performance_schema |</span><br><span class="line">| <span class="built_in">test</span>               |</span><br><span class="line">+--------------------+</span><br><span class="line">4 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.018 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; use mysql;</span><br><span class="line">Reading table information <span class="keyword">for</span> completion of table and column names</span><br><span class="line">You can turn off this feature to get a quicker startup with -A</span><br><span class="line"></span><br><span class="line">Database changed</span><br><span class="line">MariaDB [mysql]&gt; GRANT ALL PRIVILEGES ON *.* TO <span class="string">'root'</span>@<span class="string">'%'</span> IDENTIFIED BY <span class="string">'123456'</span> WITH GRANT OPTION;</span><br><span class="line">Query OK, 0 rows affected (0.001 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [mysql]&gt; DELETE FROM user WHERE user=<span class="string">""</span>;</span><br><span class="line">Query OK, 2 rows affected (0.001 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [mysql]&gt; FLUSH PRIVILEGES;</span><br><span class="line">Query OK, 0 rows affected (0.000 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [mysql]&gt; SELECT Host,User,Password FROM user;</span><br><span class="line">+-----------------------+------+-------------------------------------------+</span><br><span class="line">| Host                  | User | Password                                  |</span><br><span class="line">+-----------------------+------+-------------------------------------------+</span><br><span class="line">| localhost             | root | *FCE33DF678E5F1F5B396FEC65CFB83AF4DBFDD28 |</span><br><span class="line">| localhost.localdomain | root | *FCE33DF678E5F1F5B396FEC65CFB83AF4DBFDD28 |</span><br><span class="line">| 127.0.0.1             | root | *FCE33DF678E5F1F5B396FEC65CFB83AF4DBFDD28 |</span><br><span class="line">| ::1                   | root | *FCE33DF678E5F1F5B396FEC65CFB83AF4DBFDD28 |</span><br><span class="line">| %                     | root | *FCE33DF678E5F1F5B396FEC65CFB83AF4DBFDD28 |</span><br><span class="line">+-----------------------+------+-------------------------------------------+</span><br><span class="line">5 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.001 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [mysql]&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="14.-%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5">14. 参考链接</h2>
 <p>· <a href="https://mariadb.com/" target="_blank" rel="noopener">MariaDB</a><br>
 · <a href="https://mariadb.com/kb/en/" target="_blank" rel="noopener">MariaDB Document</a><br>
@@ -204,17 +206,21 @@
     <dl class="tags">
     <dd><a href="/tags">All</a></dd>
     
+  <dd><a href="/tags/#Tips">Tips</a></dd>
+
+  <dd><a href="/tags/#Git">Git</a></dd>
+
   <dd><a href="/tags/#Diary">Diary</a></dd>
 
   <dd><a href="/tags/#Hexo">Hexo</a></dd>
-
-  <dd><a href="/tags/#VS Code">VS Code</a></dd>
 
   <dd><a href="/tags/#Tree">Tree</a></dd>
 
   <dd><a href="/tags/#Gif">Gif</a></dd>
 
   <dd><a href="/tags/#Kap">Kap</a></dd>
+
+  <dd><a href="/tags/#VS Code">VS Code</a></dd>
 
   <dd><a href="/tags/#Nvm">Nvm</a></dd>
 
@@ -236,7 +242,11 @@
 
   <dd><a href="/tags/#SELinux">SELinux</a></dd>
 
+  <dd><a href="/tags/#Yii">Yii</a></dd>
+
   <dd><a href="/tags/#Electron">Electron</a></dd>
+
+  <dd><a href="/tags/#Shadowsocks">Shadowsocks</a></dd>
 
   <dd><a href="/tags/#Grunt">Grunt</a></dd>
 
@@ -250,6 +260,8 @@
 
   <dd><a href="/tags/#MariaDB">MariaDB</a></dd>
 
+  <dd><a href="/tags/#Ansible">Ansible</a></dd>
+
   <dd><a href="/tags/#Bash">Bash</a></dd>
 
     </dl>
@@ -261,15 +273,19 @@
     <dl class="tags">
     <dd><a href="/categories">All</a></dd>
     
+  <dd><a href="/categories/#Tips">Tips</a></dd>
+
+  <dd><a href="/categories/#Git">Git</a></dd>
+
   <dd><a href="/categories/#Diary">Diary</a></dd>
 
   <dd><a href="/categories/#Node.js">Node.js</a></dd>
 
-  <dd><a href="/categories/#VS Code">VS Code</a></dd>
-
   <dd><a href="/categories/#Linux">Linux</a></dd>
 
   <dd><a href="/categories/#MacOS">MacOS</a></dd>
+
+  <dd><a href="/categories/#VS Code">VS Code</a></dd>
 
   <dd><a href="/categories/#Node.Js">Node.Js</a></dd>
 
@@ -283,11 +299,17 @@
 
   <dd><a href="/categories/#CentOS">CentOS</a></dd>
 
+  <dd><a href="/categories/#Php">Php</a></dd>
+
   <dd><a href="/categories/#MacOS">MacOS</a></dd>
 
   <dd><a href="/categories/#Memcached">Memcached</a></dd>
 
+  <dd><a href="/categories/#Yii">Yii</a></dd>
+
   <dd><a href="/categories/#MariaDB">MariaDB</a></dd>
+
+  <dd><a href="/categories/#Ansible">Ansible</a></dd>
 
     </dl>
   </div>
@@ -299,6 +321,15 @@
     <dd><a href="/archives">All</a></dd>
     
 
+
+  
+  
+
+  
+  
+
+  
+  
 
   
   
