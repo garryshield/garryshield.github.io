@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    
+    <title>任务自动管理工具 Grunt | Garry Shield</title>
+
+    <meta name="description" content="在前端的开发过程中，经常会遇到一些重复性的任务，比如合并文件、压缩代码、检查语法错误、将Less代码转成CSS代码等等。 通常，我们需要使用不同的工具，来完成不同的任务，既重复劳动又非常耗时。Grunt就是为了解决这个问题而发明的工具，可以帮助我们自动管理和运行各种任务。 简单说，Grunt是一个自动任务运行器，会按照预先设定的顺序自动运行一系列的任务。 这可以简化工作流程，减轻重复性工作带">
+<meta name="keywords" content="Grunt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="任务自动管理工具 Grunt">
+<meta property="og:url" content="http://garryshield.github.com/2015/07/21/grunt/index.html">
+<meta property="og:site_name" content="Garry Shield">
+<meta property="og:description" content="在前端的开发过程中，经常会遇到一些重复性的任务，比如合并文件、压缩代码、检查语法错误、将Less代码转成CSS代码等等。 通常，我们需要使用不同的工具，来完成不同的任务，既重复劳动又非常耗时。Grunt就是为了解决这个问题而发明的工具，可以帮助我们自动管理和运行各种任务。 简单说，Grunt是一个自动任务运行器，会按照预先设定的顺序自动运行一系列的任务。 这可以简化工作流程，减轻重复性工作带">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://garryshield.github.com/2015/07/21/grunt/assets/grunt-logo.svg">
+<meta property="og:updated_time" content="2015-07-22T13:21:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="任务自动管理工具 Grunt">
+<meta name="twitter:description" content="在前端的开发过程中，经常会遇到一些重复性的任务，比如合并文件、压缩代码、检查语法错误、将Less代码转成CSS代码等等。 通常，我们需要使用不同的工具，来完成不同的任务，既重复劳动又非常耗时。Grunt就是为了解决这个问题而发明的工具，可以帮助我们自动管理和运行各种任务。 简单说，Grunt是一个自动任务运行器，会按照预先设定的顺序自动运行一系列的任务。 这可以简化工作流程，减轻重复性工作带">
+<meta name="twitter:image" content="http://garryshield.github.com/2015/07/21/grunt/assets/grunt-logo.svg">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico" />
+
+    <link rel="stylesheet" href="/assets/css/libs.min.css">
+    <link rel="stylesheet" href="/assets/libs/fontawesome/css/all.css">
+
+    <link rel="stylesheet" href="/assets/css/main.min.css">
+  </head>
+  <body>
+  
+<header class="header mb-5">
+<div class="container">
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-transparent pl-0 pr-0">
+
+    <a class="navbar-brand" href="/">Garry Shield</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/archives">Archives</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/categories">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/tags/">Tags</a>
+        </li>              
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>              
+        <li class="nav-item">
+        </li>
+      </ul>
+
+      <form class="form-inline ml-lg-2 my-2 my-lg-0">
+        <a class="btn btn-sm btn-light search" href="javascript:;">
+          <i class="fas fa-search"></i>
+        </a>
+      </form>
+    </div>
+
+</nav>
+
+
+      <div class="info info-post">
+          <h1>任务自动管理工具 Grunt</h1>
+
+          <p class="lead">The JavaScript Task Runner Grunt</p>
+
+          
+          <div class="post-tags">
+          <dl class="tags">
+              <dt>Tags:</dt>
+              
+                <dd><a href="/tags/#Grunt">Grunt</a></dd>
+              
+          </dl>
+          </div>
+          
+
+          
+          <div class="post-categories">
+          <dl class="tags">
+              <dt>Categories:</dt>
+              
+                <dd><a href="/categories/#Node.js">Node.js</a></dd>
+              
+          </dl>
+          </div>
+          
+
+          <div class="post-date">
+            By Garryshield, Created at 2015-07-21, Updated at 2015-07-22
+          </div>
+      </div>
+
+  </div>
+</div>
+</div>
+</header>
+
+<div class="container">
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+
+      <article class="article mb-5">
+        <section>
+        <p>
+<img src="/2015/07/21/grunt/assets/grunt-logo.svg" width="200">
+</p>
+<p>在前端的开发过程中，经常会遇到一些重复性的任务，比如合并文件、压缩代码、检查语法错误、将Less代码转成CSS代码等等。<br>
+通常，我们需要使用不同的工具，来完成不同的任务，既重复劳动又非常耗时。Grunt就是为了解决这个问题而发明的工具，可以帮助我们自动管理和运行各种任务。</p>
+<p>简单说，Grunt是一个自动任务运行器，会按照预先设定的顺序自动运行一系列的任务。<br>
+这可以简化工作流程，减轻重复性工作带来的负担。</p>
+<a id="more"></a>
+<h2 id="1.-%E5%AE%89%E8%A3%85">1. 安装</h2>
+<p>Grunt基于Node.js，安装之前先确保系统已经安装好Node.js。<br>
+运行下面的命令全局安装Grunt命令行<code>grunt-cli</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g grunt-cli</span><br></pre></td></tr></table></figure>
+<p>注意，安装<code>grunt-cli</code>并不等于安装了Grunt！Grunt CLI的任务很简单：调用与Gruntfile在同一目录中 Grunt。这样带来的好处是，允许你在同一个系统上同时安装多个版本的 Grunt。</p>
+<h2 id="2.-%E5%88%9D%E5%A7%8B%E5%8C%96">2. 初始化</h2>
+<p>新建一个测试项目 grunt-learn-01，并初始化</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/grunt</span><br><span class="line">mkdir grunt-learn-01</span><br><span class="line"><span class="built_in">cd</span> grunt-learn-01</span><br><span class="line">touch GruntFile.js</span><br><span class="line">npm init</span><br></pre></td></tr></table></figure>
+<p><code>npm init</code> 命令使用交互方式生成 <code>package.json</code> 文件，当然你也可以手动创建。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── GruntFile.js</span><br><span class="line">└── package.json</span><br></pre></td></tr></table></figure>
+<p>通过 <kbd>npm install</kbd> 安装Grunt和项目所需的Grunt插件，<br>
+注意插件名格式一般都 <code>grunt-contrib-xxx</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install --save grunt <span class="comment"># 默认安装最新版本</span></span><br><span class="line">npm install --save grunt-contrib-less <span class="comment"># less编译成css</span></span><br><span class="line">npm install --save grunt-contrib-uglify <span class="comment"># js压缩</span></span><br><span class="line">npm install --save grunt-contrib-concat <span class="comment"># 文件合并</span></span><br><span class="line">npm install --save grunt-contrib-watch <span class="comment"># 文件监视</span></span><br></pre></td></tr></table></figure>
+<h2 id="3.-%E9%85%8D%E7%BD%AE%E4%BB%BB%E5%8A%A1">3. 配置任务</h2>
+<p>所有的任务都配置在 <code>package.json</code> 文件在同一目录下的 <code>GruntFile.js</code> 文件中。</p>
+<p><code>GruntFile.js</code> 文件格式如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">grunt</span>) </span>&#123;</span><br><span class="line">  grunt.initConfig(&#123;</span><br><span class="line">    pkg: grunt.file.readJSON(<span class="string">'package.json'</span>),</span><br><span class="line">    <span class="comment">// less 任务（task）</span></span><br><span class="line">    less: &#123;   </span><br><span class="line">      <span class="comment">// foo 目标（target）</span></span><br><span class="line">      foo: &#123;    </span><br><span class="line">        <span class="comment">// 任务主体</span></span><br><span class="line">      &#125;,</span><br><span class="line">      bar: &#123;&#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    uglify: &#123;</span><br><span class="line">      foo: &#123;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    concat: &#123;&#125;,</span><br><span class="line">    watch: &#123;&#125;,</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 插件列表</span></span><br><span class="line">  grunt.loadNpmTasks(<span class="string">'grunt-contrib-less'</span>);</span><br><span class="line">  grunt.loadNpmTasks(<span class="string">'grunt-contrib-uglify'</span>);</span><br><span class="line">  grunt.loadNpmTasks(<span class="string">'grunt-contrib-concat'</span>);</span><br><span class="line">  grunt.loadNpmTasks(<span class="string">'grunt-contrib-watch'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 注册任务</span></span><br><span class="line">  grunt.registerTask(<span class="string">'default'</span>, [<span class="string">'less'</span>, <span class="string">'uglify'</span>, <span class="string">'concat'</span>, <span class="string">'watch'</span>]);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>在上面的案例中，<code>less</code> 任务有名为 <code>foo</code> 和 <code>bar</code> 两个目标，而 <code>uglify</code> 任务仅仅只有一个名为 <code>foo</code> 目标。</p>
+<p><code>grunt less:foo</code> 将执行 <code>less</code> 任务（task）下的 <code>foo</code> 目标（target）<br>
+<code>grunt less</code> 将执行 <code>less</code> 任务（task）下的所有目标（target）</p>
+<p>任务主体有如下四种定义方式：</p>
+<ol>
+<li>简洁格式</li>
+<li>文件对象格式</li>
+<li>文件数组格式动</li>
+<li>态构建文件对象格式</li>
+</ol>
+<h4 id="3.1.-%E7%AE%80%E6%B4%81%E6%A0%BC%E5%BC%8F">3.1. 简洁格式</h4>
+<p>这种形式允许每个目标对应一个 <code>src-dest</code> 文件映射。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">grunt.initConfig(&#123;</span><br><span class="line">  less: &#123;</span><br><span class="line">    <span class="comment">// 编译 src/css/ 目录下的 aaa.less 和 bbb.less</span></span><br><span class="line">    <span class="comment">// 生成到 dest/css/ 目录下 ccc.css</span></span><br><span class="line">    foo: &#123;</span><br><span class="line">      src: [<span class="string">'src/css/aaa.less'</span>, <span class="string">'src/css/bbb.less'</span>],</span><br><span class="line">      dest: <span class="string">'dest/css/ccc.css'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="3.2.-%E6%96%87%E4%BB%B6%E5%AF%B9%E8%B1%A1%E6%A0%BC%E5%BC%8F">3.2. 文件对象格式</h4>
+<p>这种形式支持每个目标对应多个 <code>src-dest</code> 形式的文件映射，<br>
+属性名就是目标文件，源文件就是它的值(源文件列表则使用数组格式声明)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">grunt.initConfig(&#123;</span><br><span class="line">  less: &#123;</span><br><span class="line">    foo: &#123;</span><br><span class="line">      files: &#123;</span><br><span class="line">        <span class="string">'dest/css/ccc.css'</span>: [<span class="string">'src/css/aaa.less'</span>, <span class="string">'src/css/bbb.less'</span>],</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="3.3.-%E6%96%87%E4%BB%B6%E6%95%B0%E7%BB%84%E6%A0%BC%E5%BC%8F%E5%8A%A8">3.3. 文件数组格式动</h4>
+<p>这种形式支持每个目标对应多个 <code>src-dest</code> 文件映射，同时允许每个映射拥有额外属性：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">grunt.initConfig(&#123;</span><br><span class="line">  less: &#123;</span><br><span class="line">    foo: &#123;</span><br><span class="line">      files: [</span><br><span class="line">        &#123;</span><br><span class="line">          src: [<span class="string">'src/css/aaa.less'</span>, <span class="string">'src/css/bbb.less'</span>], </span><br><span class="line">          dest: <span class="string">'dest/css/ccc.css'</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="3.4.-%E5%8A%A8%E6%80%81%E6%9E%84%E5%BB%BA%E6%96%87%E4%BB%B6%E5%AF%B9%E8%B1%A1%E6%A0%BC%E5%BC%8F">3.4. 动态构建文件对象格式</h4>
+<p>当你希望处理大量的单个文件时，这里有一些附加的属性可以用来动态的构建一个文件列表。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">grunt.initConfig(&#123;</span><br><span class="line">  less: &#123;</span><br><span class="line">    dynamic_mappings: &#123;</span><br><span class="line">      files: [</span><br><span class="line">        <span class="comment">// 匹配 src/css/ 目录及其子目录下的所有后缀为 .less 的文件</span></span><br><span class="line">        <span class="comment">// 分别编译生成到 dist/css 目录下，保留目录结构并以 .min.css 为后缀</span></span><br><span class="line">        &#123;</span><br><span class="line">          expand: <span class="literal">true</span>,</span><br><span class="line">          cwd: <span class="string">'src/'</span>, </span><br><span class="line">          src: [<span class="string">'css/**/*.less'</span>],</span><br><span class="line">          dest: <span class="string">'dist/'</span>,  </span><br><span class="line">          ext: <span class="string">'.min.css'</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="4.-%E6%B3%A8%E5%86%8C%E4%BB%BB%E5%8A%A1">4. 注册任务</h2>
+<p>通常多个任务是要依次执行，如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">首先 编译 less</span><br><span class="line">然后 压缩 js</span><br><span class="line">然后 合并多个文件</span><br><span class="line">然后 监听上述文件</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>我们可以把相关的任务按自己的业务逻辑进行组织，方便执行。<br>
+每当运行Grunt时, 你可以为其指定一个或多个任务, 这些任务用于告诉Grunt你想要它做什么事情。</p>
+<p>注册任务有如下两种方式：</p>
+<ol>
+<li>别名任务</li>
+<li>自定义任务</li>
+</ol>
+<h4 id="4.1.-%E5%88%AB%E5%90%8D%E4%BB%BB%E5%8A%A1">4.1. 别名任务</h4>
+<p>别名任务，方便将多个相关任务用一个别名来调用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// taskList 是一个数组</span></span><br><span class="line">grunt.registerTask(taskName, [description, ] taskList)</span><br></pre></td></tr></table></figure>
+<p>下面的案例中，运行 <kbd>grunt</kbd> 时没有指定任何任务，<code>default</code> 别名意指默认。<br>
+它将自动依次执行 <code>less</code>、<code>uglify</code>、<code>concat</code> 任务。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grunt.registerTask(<span class="string">'default'</span>, [<span class="string">'less'</span>, <span class="string">'uglify'</span>, <span class="string">'concat'</span>]);</span><br></pre></td></tr></table></figure>
+<p><code>taskList</code> 中也可以以 <code>task:target</code> 形式，指定基本的目标。<br>
+下面的案例中，运行 <kbd>grunt dev</kbd> 时指定了 <code>dev</code> 别名，<br>
+它将自动依次执行 <code>less:dev</code>、<code>uglify:dev</code> 和 <code>concat:dev</code> 任务</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grunt.registerTask(<span class="string">'dev'</span>, [<span class="string">'less:dev'</span>, <span class="string">'uglify:dev'</span>, <span class="string">'concat:dev'</span>]);</span><br></pre></td></tr></table></figure>
+<h4 id="4.2.-%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BB%BB%E5%8A%A1">4.2. 自定义任务</h4>
+<p>自定义任务执行时，Grunt并不会检查配置和环境，它仅仅执行指定的任务函数，并传递任何使用冒号分割的参数作为函数的参数。<br>
+在任务函数里可以调用 Grunt API 执行其它任务，异步执行，自身名称和参数，获取配置...</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grunt.registerTask(taskName, [description, ] taskFunction)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grunt.registerTask(<span class="string">'foo'</span>, <span class="string">'My "foo" task.'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  grunt.log.writeln(<span class="string">'Currently running the "foo" task.'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>在一个任务内部，你可以执行其他的任务。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">grunt.registerTask(<span class="string">'foo'</span>, <span class="string">'My "foo" task.'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  grunt.task.run(<span class="string">'bar'</span>, <span class="string">'baz'</span>);</span><br><span class="line">  <span class="comment">// or</span></span><br><span class="line">  grunt.task.run([<span class="string">'bar'</span>, <span class="string">'baz'</span>]);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line">grunt.registerTask(<span class="string">'foo'</span>, <span class="string">'My "foo" task.'</span>, [<span class="string">'bar'</span>, <span class="string">'baz'</span>]);</span><br></pre></td></tr></table></figure>
+<p>任务也可以是异步的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">grunt.registerTask(<span class="string">'asyncfoo'</span>, <span class="string">'My "asyncfoo" task.'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 进入异步模式并返回 handle 句柄</span></span><br><span class="line">  <span class="keyword">var</span> done = <span class="keyword">this</span>.async();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 异步操作</span></span><br><span class="line">  grunt.log.writeln(<span class="string">'Processing task...'</span>);</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    grunt.log.writeln(<span class="string">'All done!'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 异步操作完后执行 handle 句柄</span></span><br><span class="line">    done();</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>任务也可以访问它们自身名称和参数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">grunt.registerTask(<span class="string">'foo'</span>, <span class="string">'My "foo" task.'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  grunt.log.writeln(<span class="keyword">this</span>.name, a, b);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用法：</span></span><br><span class="line"><span class="comment">// grunt foo</span></span><br><span class="line"><span class="comment">//   logs: "foo", undefined, undefined</span></span><br><span class="line"><span class="comment">// grunt foo:bar</span></span><br><span class="line"><span class="comment">//   logs: "foo", "bar", undefined</span></span><br><span class="line"><span class="comment">// grunt foo:bar:baz</span></span><br><span class="line"><span class="comment">//   logs: "foo", "bar", "baz"</span></span><br></pre></td></tr></table></figure>
+<p>如果记录到任何错误，那么任务就会失败。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">grunt.registerTask(<span class="string">'foo'</span>, <span class="string">'My "foo" task.'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (failureOfSomeKind) &#123;</span><br><span class="line">    grunt.log.error(<span class="string">'This is an error message.'</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果这个任务出现错误则返回 false</span></span><br><span class="line">  <span class="keyword">if</span> (ifErrors) &#123; <span class="keyword">return</span> <span class="literal">false</span>; &#125;</span><br><span class="line"></span><br><span class="line">  grunt.log.writeln(<span class="string">'This is the success message'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>当任务失败时，所有后续任务都将终止，除非指定 --force 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 非异步任务失败 return false</span></span><br><span class="line">grunt.registerTask(<span class="string">'foo'</span>, <span class="string">'My "foo" task.'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 异步任务失败 done(false)</span></span><br><span class="line">grunt.registerTask(<span class="string">'bar'</span>, <span class="string">'My "bar" task.'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> done = <span class="keyword">this</span>.async();</span><br><span class="line"></span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    done(<span class="literal">false</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>任务还可以依赖于其他任务的成功执行过。<br>
+注意 <code>grunt.task.requires</code> 并不会真正的运行其他任务，它仅仅检查其它任务是否已经执行过，并且没有失败。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">grunt.registerTask(<span class="string">'foo'</span>, <span class="string">'My "foo" task.'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">grunt.registerTask(<span class="string">'bar'</span>, <span class="string">'My "bar" task.'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 如果 "foo" 任务运行失败或者没有运行则任务失败。</span></span><br><span class="line">  grunt.task.requires(<span class="string">'foo'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果 "foo" 任务运行成功则执行这里的代码。</span></span><br><span class="line">  grunt.log.writeln(<span class="string">'Hello, world.'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用法：</span></span><br><span class="line"><span class="comment">// grunt foo bar</span></span><br><span class="line"><span class="comment">//   没有输出，因为"foo"失败。</span></span><br><span class="line"><span class="comment">// grunt bar</span></span><br><span class="line"><span class="comment">//   没有输出，因为"foo"从未运行。</span></span><br></pre></td></tr></table></figure>
+<p>如果任务需要的配置属性不存在，其也可能失败。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">grunt.registerTask(<span class="string">'foo'</span>, <span class="string">'My "foo" task.'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 检查是否存在 meta.name 配置项</span></span><br><span class="line">  grunt.config.requires(<span class="string">'meta.name'</span>);</span><br><span class="line">  <span class="comment">// or</span></span><br><span class="line">  grunt.config.requires([<span class="string">'meta'</span>, <span class="string">'name'</span>]);</span><br><span class="line"></span><br><span class="line">  grunt.log.writeln(<span class="string">'This will only log if meta.name is defined in the config.'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>任务还可以访问配置属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">grunt.registerTask(<span class="string">'foo'</span>, <span class="string">'My "foo" task.'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  grunt.log.writeln(<span class="string">'The meta.name property is: '</span> + grunt.config(<span class="string">'meta.name'</span>));</span><br><span class="line">  <span class="comment">// or</span></span><br><span class="line">  grunt.log.writeln(<span class="string">'The meta.name property is: '</span> + grunt.config([<span class="string">'meta'</span>, <span class="string">'name'</span>]));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="5.-%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5">5. 参考链接</h2>
+<p>· <a href="https://gruntjs.com/" target="_blank" rel="noopener">The JavaScript Task Runner</a></p>
+
+        </section>
+      </article>
+
+      <div class="clearfix mb-4">
+          
+          <p>
+          <a class="float-left" href="/2015/08/24/hexo/" tabindex="-1"><i class="fas fa-chevron-left"></i> 使用 Hexo 创建博客</a>
+          </p>
+          
+
+          
+          <p>
+          <a class="float-right" href="/2015/07/19/demo/" tabindex="-1">Blog 主题功能演示 <i class="fas fa-chevron-right"></i></a>
+          </p>
+          
+      </div>
+
+  </div>
+
+  <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+
+  <!--
+    <div class="catalog card border-0 mb-4">
+      <div class="card-body p-0">
+        <h4>CATALOG</h4>
+        <div class="catalog-inn"></div>
+      </div>
+    </div>
+  -->
+    
+    <div class="card border-0 mb-4">
+  <div class="card-body p-0">
+    <h4>TAGS</h4>
+    <dl class="tags">
+    <dd><a href="/tags">All</a></dd>
+    
+  <dd><a href="/tags/#Diary">Diary</a></dd>
+
+  <dd><a href="/tags/#Hexo">Hexo</a></dd>
+
+  <dd><a href="/tags/#Tree">Tree</a></dd>
+
+  <dd><a href="/tags/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/tags/#Gif">Gif</a></dd>
+
+  <dd><a href="/tags/#Kap">Kap</a></dd>
+
+  <dd><a href="/tags/#Nvm">Nvm</a></dd>
+
+  <dd><a href="/tags/#Linux">Linux</a></dd>
+
+  <dd><a href="/tags/#Shortcuts">Shortcuts</a></dd>
+
+  <dd><a href="/tags/#Systemd">Systemd</a></dd>
+
+  <dd><a href="/tags/#Promise">Promise</a></dd>
+
+  <dd><a href="/tags/#Google">Google</a></dd>
+
+  <dd><a href="/tags/#Pyenv">Pyenv</a></dd>
+
+  <dd><a href="/tags/#VMware">VMware</a></dd>
+
+  <dd><a href="/tags/#SELinux">SELinux</a></dd>
+
+  <dd><a href="/tags/#Memcached">Memcached</a></dd>
+
+  <dd><a href="/tags/#Electron">Electron</a></dd>
+
+  <dd><a href="/tags/#Yii">Yii</a></dd>
+
+  <dd><a href="/tags/#Git">Git</a></dd>
+
+  <dd><a href="/tags/#Shadowsocks">Shadowsocks</a></dd>
+
+  <dd><a href="/tags/#Tips">Tips</a></dd>
+
+  <dd><a href="/tags/#Grunt">Grunt</a></dd>
+
+  <dd><a href="/tags/#Rsync">Rsync</a></dd>
+
+  <dd><a href="/tags/#Markdown">Markdown</a></dd>
+
+  <dd><a href="/tags/#Emoji">Emoji</a></dd>
+
+  <dd><a href="/tags/#Jupyter">Jupyter</a></dd>
+
+  <dd><a href="/tags/#MariaDB">MariaDB</a></dd>
+
+  <dd><a href="/tags/#Ansible">Ansible</a></dd>
+
+  <dd><a href="/tags/#Bash">Bash</a></dd>
+
+    </dl>
+  </div>
+</div>
+    <div class="card border-0 mb-4">
+  <div class="card-body p-0">
+    <h4>CATEGORIES</h4>
+    <dl class="tags">
+    <dd><a href="/categories">All</a></dd>
+    
+  <dd><a href="/categories/#Diary">Diary</a></dd>
+
+  <dd><a href="/categories/#Node.js">Node.js</a></dd>
+
+  <dd><a href="/categories/#Linux">Linux</a></dd>
+
+  <dd><a href="/categories/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/categories/#MacOS">MacOS</a></dd>
+
+  <dd><a href="/categories/#Node.Js">Node.Js</a></dd>
+
+  <dd><a href="/categories/#Javascript">Javascript</a></dd>
+
+  <dd><a href="/categories/#Google">Google</a></dd>
+
+  <dd><a href="/categories/#Python">Python</a></dd>
+
+  <dd><a href="/categories/#VMware">VMware</a></dd>
+
+  <dd><a href="/categories/#CentOS">CentOS</a></dd>
+
+  <dd><a href="/categories/#Php">Php</a></dd>
+
+  <dd><a href="/categories/#Git">Git</a></dd>
+
+  <dd><a href="/categories/#Tips">Tips</a></dd>
+
+  <dd><a href="/categories/#MacOS">MacOS</a></dd>
+
+  <dd><a href="/categories/#Memcached">Memcached</a></dd>
+
+  <dd><a href="/categories/#Yii">Yii</a></dd>
+
+  <dd><a href="/categories/#MariaDB">MariaDB</a></dd>
+
+  <dd><a href="/categories/#Ansible">Ansible</a></dd>
+
+    </dl>
+  </div>
+</div>
+    <div class="card border-0 mb-4">
+  <div class="card-body p-0">
+    <h4>ARCHIVES</h4>
+    <dl class="tags">
+    <dd><a href="/archives">All</a></dd>
+    
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+  <dd><a href="/archives/#2015">2015</a></dd>
+
+  <dd><a href="/archives/#2016">2016</a></dd>
+
+  <dd><a href="/archives/#2018">2018</a></dd>
+
+    </dl>
+  </div>
+</div>
+    
+  </div>
+</div>
+</div>
+
+    <footer class="footer">
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+
+          <div class="text-center">
+            <p>
+  <a href="https://github.com/garryshield" target="_blank" class="fa-stack fa-1x">
+    <i class="fas fa-circle fa-stack-2x"></i>
+    <i class="fab fa-github-alt fa-stack-1x fa-inverse"></i>
+  </a>
+  <a href="https://twitter.com/garry_shield" target="_blank" class="fa-stack fa-1x">
+    <i class="fas fa-circle fa-stack-2x"></i>
+    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+  </a>
+  <a href="https://www.zhihu.com/people/garryshield" target="_blank" class="fa-stack fa-1x">
+    <i class="fas fa-circle fa-stack-2x"></i>
+    <i class="fa fa-stack-1x fa-inverse">知</i>
+  </a>
+</p>
+            <p class="mb-4"></p>
+            <p>Copyright © Garry Shield 2018 </p>
+<p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> and <a href="https://github.com/twbs/bootstrap" target="_blank">Bootstrap</a></p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+      
+    </footer>
+
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Search" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+    
+    <script src="/assets/js/libs.min.js"></script>
+    <script src="/assets/js/main.min.js"></script>
+  </body>
+</html>

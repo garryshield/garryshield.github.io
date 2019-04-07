@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    
+    <title>Jupyter Notebook | Garry Shield</title>
+
+    <meta name="description" content="Jupyter Notebook（此前被称为 IPython Notebook）是基于网页的用于交互计算的应用程序。其可被应用于全过程计算：开发、文档编写、运行代码和展示结果。 1. 安装 安装前可以先体验几把 Try Jupyter。 安装 Jupyter Notebook 的前提是需要安装了 Python。 因为使用了 pyenv 来管理 Python，同时安装了 2.7.10 和 3.7.0">
+<meta name="keywords" content="Jupyter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jupyter Notebook">
+<meta property="og:url" content="http://garryshield.github.com/2016/10/30/jupyter/index.html">
+<meta property="og:site_name" content="Garry Shield">
+<meta property="og:description" content="Jupyter Notebook（此前被称为 IPython Notebook）是基于网页的用于交互计算的应用程序。其可被应用于全过程计算：开发、文档编写、运行代码和展示结果。 1. 安装 安装前可以先体验几把 Try Jupyter。 安装 Jupyter Notebook 的前提是需要安装了 Python。 因为使用了 pyenv 来管理 Python，同时安装了 2.7.10 和 3.7.0">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2016-10-30T07:30:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jupyter Notebook">
+<meta name="twitter:description" content="Jupyter Notebook（此前被称为 IPython Notebook）是基于网页的用于交互计算的应用程序。其可被应用于全过程计算：开发、文档编写、运行代码和展示结果。 1. 安装 安装前可以先体验几把 Try Jupyter。 安装 Jupyter Notebook 的前提是需要安装了 Python。 因为使用了 pyenv 来管理 Python，同时安装了 2.7.10 和 3.7.0">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico" />
+
+    <link rel="stylesheet" href="/assets/css/libs.min.css">
+    <link rel="stylesheet" href="/assets/libs/fontawesome/css/all.css">
+
+    <link rel="stylesheet" href="/assets/css/main.min.css">
+  </head>
+  <body>
+  
+<header class="header mb-5">
+<div class="container">
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-transparent pl-0 pr-0">
+
+    <a class="navbar-brand" href="/">Garry Shield</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/archives">Archives</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/categories">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/tags/">Tags</a>
+        </li>              
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>              
+        <li class="nav-item">
+        </li>
+      </ul>
+
+      <form class="form-inline ml-lg-2 my-2 my-lg-0">
+        <a class="btn btn-sm btn-light search" href="javascript:;">
+          <i class="fas fa-search"></i>
+        </a>
+      </form>
+    </div>
+
+</nav>
+
+
+      <div class="info info-post">
+          <h1>Jupyter Notebook</h1>
+
+          <p class="lead">Jupyter Notebook</p>
+
+          
+          <div class="post-tags">
+          <dl class="tags">
+              <dt>Tags:</dt>
+              
+                <dd><a href="/tags/#Jupyter">Jupyter</a></dd>
+              
+          </dl>
+          </div>
+          
+
+          
+          <div class="post-categories">
+          <dl class="tags">
+              <dt>Categories:</dt>
+              
+                <dd><a href="/categories/#Python">Python</a></dd>
+              
+          </dl>
+          </div>
+          
+
+          <div class="post-date">
+            By Garryshield, Created at 2016-10-30, Updated at 2016-10-30
+          </div>
+      </div>
+
+  </div>
+</div>
+</div>
+</header>
+
+<div class="container">
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+
+      <article class="article mb-5">
+        <section>
+        <p><a href="https://jupyter.org/index.html" target="_blank" rel="noopener">Jupyter Notebook</a>（此前被称为 IPython Notebook）是基于网页的用于交互计算的应用程序。其可被应用于全过程计算：开发、文档编写、运行代码和展示结果。</p>
+<h2 id="1.-%E5%AE%89%E8%A3%85">1. 安装</h2>
+<p>安装前可以先体验几把 <a href="https://jupyter.org/try" target="_blank" rel="noopener">Try Jupyter</a>。</p>
+<p>安装 Jupyter Notebook 的前提是需要安装了 Python。<br>
+因为使用了 pyenv 来管理 Python，同时安装了 2.7.10 和 3.7.0 两个版本，我们默认使用 3.7.0 来安装。更多关于 pyenv 的用法参见：<a href="/2016/09/30/pyenv/" title="这篇文章">这篇文章</a>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pyenv shell 3.7.0</span><br><span class="line">python --version</span><br><span class="line">pip --version</span><br><span class="line"></span><br><span class="line">pip install jupyter</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="2.-%E5%91%BD%E4%BB%A4%E8%A1%8C%E9%80%89%E9%A1%B9">2. 命令行选项</h2>
+<p>启动并打开浏览器 <code>http://localhost:8888</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook</span><br></pre></td></tr></table></figure>
+<p>更多的选项</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Jupyter notebook --<span class="built_in">help</span></span><br><span class="line">// or</span><br><span class="line">Jupyter notebook --<span class="built_in">help</span>-all</span><br></pre></td></tr></table></figure>
+<h2 id="3.-%E9%85%8D%E7%BD%AE">3. 配置</h2>
+<p>查看 Jupyter 相关路径</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter --paths</span><br></pre></td></tr></table></figure>
+<p>生成配置文件 <code>~/.jupyter/jupyter_notebook_config.py</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Jupyter notebook --generate-config</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><figcaption><span>~/.jupyter/jupyter_notebook_config.py</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 存放目录</span></span><br><span class="line">c.NotebookApp.notebook_dir = <span class="string">'/jupyter'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动后是否自动打开浏览器</span></span><br><span class="line"><span class="comment">#c.NotebookApp.open_browser = True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动端口</span></span><br><span class="line"><span class="comment">#c.NotebookApp.port = 8888</span></span><br></pre></td></tr></table></figure>
+<h2 id="4.-%E4%BD%BF%E7%94%A8">4. 使用</h2>
+<p>Jupyter 使用单元（Cell）保存各种信息。Cell 有多种类型，有表示代码的 Code 单元，和表示格式化文本的 Markdown 单元。每个代码单元都有一个输出区域，在 Code 单元中输入代码，按 <kbd>Ctrl + Enter</kbd> 将运行此代码，代码中最后一个表达式的值将输出区域显示。如果希望屏蔽输出，可以在最后一条语句之后添加一个分号：<code>;</code>。此外，代码中还可以使用 <code>print</code> 语句在输出区域中显示信息。<br>
+与 IPython 一样，在 Cell 中可以直接按 <kbd>Tab</kbd> 键，可以自动补全。</p>
+<p>Markdown 单元主要用来添加说明<br>
+Code 单元存放实际的代码块</p>
+<h2 id="5.-%E5%BF%AB%E6%8D%B7%E9%94%AE">5. 快捷键</h2>
+<p>Jupyter 有两种模式的快捷键，编辑模式（Edit mode）和命令模式（Command mode）。编辑模式表示 Cell 处于编辑状态，边框是绿色。命令模式表示 Cell 处于选中状态，边框是灰色。</p>
+<p><kbd>Esc</kbd> 编辑模式 -&gt; 命令模式<br>
+<kbd>Enter</kbd> 命令模式 -&gt; 编辑模式</p>
+<h4 id="5.1.-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F">5.1. 命令模式</h4>
+<p><kbd>F</kbd> find and replace<br>
+<kbd>↩</kbd> enter edit mode<br>
+<kbd>⌘⇧F</kbd> open the command palette<br>
+<kbd>⌘⇧P</kbd> open the command palette<br>
+<kbd>P</kbd> open the command palette<br>
+<kbd>⇧↩</kbd> run cell, select below<br>
+<kbd>⌃↩</kbd> run selected cells<br>
+<kbd>⌥↩</kbd> run cell and insert below<br>
+<kbd>Y</kbd> change cell to code<br>
+<kbd>M</kbd> change cell to markdown<br>
+<kbd>R</kbd> change cell to raw<br>
+<kbd>1</kbd> change cell to heading 1<br>
+<kbd>2</kbd> change cell to heading 2<br>
+<kbd>3</kbd> change cell to heading 3<br>
+<kbd>4</kbd> change cell to heading 4<br>
+<kbd>5</kbd> change cell to heading 5<br>
+<kbd>6</kbd> change cell to heading 6<br>
+<kbd>K</kbd> select cell above<br>
+<kbd>↑</kbd> select cell above<br>
+<kbd>↓</kbd> select cell below<br>
+<kbd>J</kbd> select cell below<br>
+<kbd>⇧K</kbd> extend selected cells above<br>
+<kbd>⇧↑</kbd> extend selected cells above<br>
+<kbd>⇧↓</kbd> extend selected cells below<br>
+<kbd>⇧J</kbd> extend selected cells below<br>
+<kbd>A</kbd> insert cell above<br>
+<kbd>B</kbd> insert cell below<br>
+<kbd>X</kbd> cut selected cells<br>
+<kbd>C</kbd> copy selected cells<br>
+<kbd>⇧V</kbd> paste cells above<br>
+<kbd>V</kbd> paste cells below<br>
+<kbd>Z</kbd> undo cell deletion<br>
+<kbd>D,D</kbd> delete selected cells<br>
+<kbd>⇧M</kbd> merge selected cells, or current cell with cell below if only one cell is selected<br>
+<kbd>⌘S</kbd> Save and Checkpoint<br>
+<kbd>S</kbd> Save and Checkpoint<br>
+<kbd>L</kbd> toggle line numbers<br>
+<kbd>O</kbd> toggle output of selected cells<br>
+<kbd>⇧O</kbd> toggle output scrolling of selected cells<br>
+<kbd>H</kbd> show keyboard shortcuts<br>
+<kbd>I,I</kbd> interrupt the kernel<br>
+<kbd>0,0</kbd> restart the kernel (with dialog)<br>
+<kbd>Esc</kbd> close the pager<br>
+<kbd>Q</kbd> close the pager<br>
+<kbd>⇧L</kbd> toggles line numbers in all cells, and persist the setting<br>
+<kbd>⇧␣</kbd> scroll notebook up<br>
+<kbd>␣</kbd> scroll notebook down</p>
+<h4 id="5.2.-%E7%BC%96%E8%BE%91%E6%A8%A1%E5%BC%8F">5.2. 编辑模式</h4>
+<p><kbd>⇥</kbd> code completion or indent<br>
+<kbd>⇧⇥</kbd> tooltip<br>
+<kbd>⌘]</kbd> indent<br>
+<kbd>⌘[</kbd> dedent<br>
+<kbd>⌘A</kbd> select all<br>
+<kbd>⌘Z</kbd> undo<br>
+<kbd>⌘/</kbd> comment<br>
+<kbd>⌘D</kbd> delete whole line<br>
+<kbd>⌘U</kbd> undo selection<br>
+<kbd>Insert</kbd> toggle overwrite flag<br>
+<kbd>⌘↑</kbd> go to cell start<br>
+<kbd>⌘↓</kbd> go to cell end<br>
+<kbd>⌥←</kbd> go one word left<br>
+<kbd>⌥→</kbd> go one word right<br>
+<kbd>⌥⌫</kbd> delete word before<br>
+<kbd>⌥⌦</kbd> delete word after<br>
+<kbd>⌘⇧Z</kbd> redo<br>
+<kbd>⌘⇧U</kbd> redo selection<br>
+<kbd>⌃K</kbd> emacs-style line kill<br>
+<kbd>⌘⌫</kbd> delete line left of cursor<br>
+<kbd>⌘⌦</kbd> delete line right of cursor<br>
+<kbd>⌃M</kbd> enter command mode<br>
+<kbd>Esc</kbd> enter command mode<br>
+<kbd>⌘⇧F</kbd> open the command palette<br>
+<kbd>⌘⇧P</kbd> open the command palette<br>
+<kbd>⇧↩</kbd> run cell, select below<br>
+<kbd>⌃↩</kbd> run selected cells<br>
+<kbd>⌥↩</kbd> run cell and insert below<br>
+<kbd>⌃⇧Minus</kbd> split cell at cursor<br>
+<kbd>⌘S</kbd> Save and Checkpoint<br>
+<kbd>↓</kbd> move cursor down<br>
+<kbd>↑</kbd> move cursor up</p>
+<h2 id="6.-%E9%AD%94%E6%B3%95%E5%91%BD%E4%BB%A4%EF%BC%88magics%EF%BC%89">6. 魔法命令（Magics）</h2>
+<p>IPython 提供了许多魔法命令，使得在 IPython 环境中的操作更加得心应手。</p>
+<p>魔法命令都以 <code>%</code> 或者 <code>%%</code> 开头，以 <code>%</code> 开头的成为行命令（line magics），<code>%%</code> 开头的称为单元命令（cell magics）。<br>
+行命令只对命令所在的行有效，而单元命令则必须出现在单元的第一行，对整个单元的代码进行处理。</p>
+<p><code>%lsmagic</code> 查看所有魔法命令</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">%lsmagic</span><br><span class="line">Available line magics:</span><br><span class="line">%alias  %alias_magic  %autocall  %automagic  %autosave  %bookmark  %cat  %cd  %clear  %colors  %config  %connect_info  %cp  %debug  %dhist  %dirs  %doctest_mode  %ed  %edit  %env  %gui  %hist  %history  %killbgscripts  %ldir  %less  %lf  %lk  %ll  %load  %load_ext  %loadpy  %logoff  %logon  %logstart  %logstate  %logstop  %ls  %lsmagic  %lx  %macro  %magic  %man  %matplotlib  %mkdir  %more  %mv  %notebook  %page  %pastebin  %pdb  %pdef  %pdoc  %pfile  %pinfo  %pinfo2  %popd  %pprint  %precision  %profile  %prun  %psearch  %psource  %pushd  %pwd  %pycat  %pylab  %qtconsole  %quickref  %recall  %rehashx  %reload_ext  %rep  %rerun  %reset  %reset_selective  %rm  %rmdir  %run  %save  %sc  %set_env  %store  %sx  %system  %tb  %time  %timeit  %unalias  %unload_ext  %who  %who_ls  %whos  %xdel  %xmode</span><br><span class="line"></span><br><span class="line">Available cell magics:</span><br><span class="line">%%!  %%HTML  %%SVG  %%bash  %%capture  %%debug  %%file  %%html  %%javascript  %%js  %%latex  %%markdown  %%perl  %%prun  %%pypy  %%python  %%python2  %%python3  %%ruby  %%script  %%sh  %%svg  %%sx  %%system  %%time  %%timeit  %%writefile</span><br><span class="line"></span><br><span class="line">Automagic <span class="keyword">is</span> ON, % prefix IS NOT needed <span class="keyword">for</span> line magics.</span><br></pre></td></tr></table></figure>
+<p><code>%magic</code> 查看所有魔法命令的文档</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%magic</span><br></pre></td></tr></table></figure>
+<p><code>%magic_name?</code> 查看具体魔法命令的文档</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%cd?</span><br><span class="line">%bookmark?</span><br></pre></td></tr></table></figure>
+<h4 id="6.1.-%E8%A1%8C%E5%91%BD%E4%BB%A4%EF%BC%88line-magics%EF%BC%89">6.1. 行命令（line magics）</h4>
+<p><code>%alias</code>，<code>%unalias</code> 别名</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看所有别名</span></span><br><span class="line">%alias</span><br><span class="line"></span><br><span class="line"><span class="comment"># %l 对应全部参数</span></span><br><span class="line">%alias bracket echo <span class="string">"Input in brackets: &lt;%l&gt;"</span></span><br><span class="line">%bracket hello world</span><br><span class="line"><span class="comment"># Input in brackets: &lt;hello world&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># %s 对应空格分开的每个参数</span></span><br><span class="line">%alias parts echo first %s second %s</span><br><span class="line">%parts A B</span><br><span class="line"><span class="comment"># first A second B</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 参数不对应则报错</span></span><br><span class="line">%parts A</span><br><span class="line"><span class="comment"># UsageError: Alias &lt;parts&gt; requires 2 arguments, 1 given.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除指定别名</span></span><br><span class="line">%unalias bracket</span><br></pre></td></tr></table></figure>
+<p><code>%bookmark</code> 目录标签</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置当前目录的标签</span></span><br><span class="line">%bookmark foo </span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置指定目录的标签</span></span><br><span class="line">%bookmark foo ./ </span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出所有标签</span></span><br><span class="line">%bookmark -l </span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除指定标签</span></span><br><span class="line">%bookmark -d foo </span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除所有标签</span></span><br><span class="line">%bookmark -r </span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到指定标签   </span></span><br><span class="line">%cd -b foo</span><br></pre></td></tr></table></figure>
+<p><code>%cd</code> 切换当前工作目录<br>
+Jupyter 保存当前会话中所有访问过的目录到变量 <code>_dh</code> 中，可以使用 <code>%dhist</code> 命令查看。<br>
+<code>%cd</code> 不同于 <code>!cd</code> 命令，<code>!cd</code> 命令执行后就被丢弃。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换到指定目录</span></span><br><span class="line">%cd &lt;dir&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到指定目录但不输出</span></span><br><span class="line">%cd -q &lt;dir&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到指定标签</span></span><br><span class="line">%cd -b &lt;bookmark_name&gt;</span><br></pre></td></tr></table></figure>
+<p><code>%config</code> 配置 IPython</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看所有可配置项</span></span><br><span class="line">%config </span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看指定类的所有可配置项</span></span><br><span class="line">%config &lt;class_name&gt; </span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改指定配置项</span></span><br><span class="line">%config IPCompleter.greedy = <span class="keyword">True</span> </span><br></pre></td></tr></table></figure>
+<p><code>%env</code> 查看&amp;修改环境变量</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看所有环境变量</span></span><br><span class="line">%env</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看指定环境变量</span></span><br><span class="line">%env ENV_NAME</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改指定环境变量</span></span><br><span class="line">%env ENV_NAME=ENV_VALUE</span><br></pre></td></tr></table></figure>
+<p><code>%load</code> 载入文件到当前 Cell<br>
+可载入本地文件，网络文件，历史，宏。如果要载入的文件大于 200000 个字符会弹出提示，除非使用 <code>-y</code> 选项。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">%load myscript.py</span><br><span class="line">%load <span class="number">7</span><span class="number">-27</span></span><br><span class="line">%load myMacro</span><br><span class="line">%load http://www.example.com/myscript.py</span><br><span class="line">%load -r <span class="number">5</span><span class="number">-10</span> myscript.py</span><br><span class="line">%load -r <span class="number">10</span><span class="number">-20</span>,<span class="number">30</span>,<span class="number">40</span>: foo.py</span><br><span class="line">%load -s MyClass,wonder_function myscript.py</span><br><span class="line">%load -n MyClass</span><br><span class="line">%load -n my_module.wonder_function</span><br></pre></td></tr></table></figure>
+<p><code>%history</code> 查看输入历史记录<br>
+所有的输入历史记录存放到 <code>_i&lt;n&gt;</code> 变量中（<code>_i</code> 指向最后一次输入）<br>
+选项：<br>
+<code>-n</code> 同时打印行号<br>
+<code>-o</code> 同时打印输入对应的输出<br>
+<code>-f FILENAME</code> 输出结果到文件<br>
+打印范围：<br>
+默认将打印当前会话的所有历，也可以通过如下格式指定打印范围：<br>
+<code>4</code> 当前会话第4行<br>
+<code>4-6</code> 当前会话第4至6行<br>
+<code>3/1-5</code> 第3个会话的第1至5行<br>
+<code>~2/7</code> 当前会话倒数第2个会话的第7行<br>
+<code>~8/1-~6/5</code> 当前会话倒数第8个会话的第1行至当前会话倒数第6个会话的第5行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%history -n <span class="number">4</span><span class="number">-6</span></span><br></pre></td></tr></table></figure>
+<p><code>%notebook</code> 导出当前历史到文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导出当前所有历史到 foo.ipynb</span></span><br><span class="line">%notebook foo.ipynb</span><br></pre></td></tr></table></figure>
+<p><code>%pdef</code> 查看可执行对象的定义</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%pdef str.replace</span><br><span class="line"><span class="comment"># str.replace(self, old, new, count=-1, /) </span></span><br></pre></td></tr></table></figure>
+<p><code>%pdoc</code> 查看对象的文档</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%pdoc str.replace</span><br></pre></td></tr></table></figure>
+<p><code>%pinfo</code>，<code>?</code>，<code>%pinfo2</code>，<code>??</code> 查看帮助文档</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">%pinfo str.replace</span><br><span class="line">?str.replace</span><br><span class="line">str.replace?</span><br></pre></td></tr></table></figure>
+<p><code>%pycat</code> 查看内容<br>
+可载入本地文件，网络文件，历史，宏</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">%pycat myscript.py</span><br><span class="line">%pycat <span class="number">7</span><span class="number">-27</span></span><br><span class="line">%pycat myMacro</span><br><span class="line">%pycat http://www.example.com/myscript.py</span><br></pre></td></tr></table></figure>
+<p><code>%reset</code> 重置命名空间</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -f 表示强制删除，不提示</span></span><br><span class="line">%reset -f</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除输入历史（In）</span></span><br><span class="line">%reset -f <span class="keyword">in</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除输出历史（Out）</span></span><br><span class="line">%reset -f out </span><br><span class="line"></span><br><span class="line"><span class="comment"># 目录历史 (%dhist, _dh)</span></span><br><span class="line">%reset -f dhist </span><br></pre></td></tr></table></figure>
+<p><code>%run</code> 运行代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%run foo.py</span><br><span class="line">%run foo.ipynb</span><br></pre></td></tr></table></figure>
+<p><code>%save</code> 保存到文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># %save [options] filename n1-n2 n3-n4 … n5 .. n6 …</span></span><br><span class="line">%save output.py <span class="number">1</span><span class="number">-10</span></span><br></pre></td></tr></table></figure>
+<p><code>%store</code> 会话间变量</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看所有变量</span></span><br><span class="line">%store </span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除所有变量</span></span><br><span class="line">%store -z </span><br><span class="line"></span><br><span class="line"><span class="comment"># 存储变量 var</span></span><br><span class="line">%store var </span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除变量 var</span></span><br><span class="line">%store -d var </span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载所有变量</span></span><br><span class="line">%store -r </span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载变量 var</span></span><br><span class="line">%store -r var </span><br><span class="line"></span><br><span class="line"><span class="comment"># 存储变量 var 到文件 var.txt</span></span><br><span class="line">%store var &gt; var.txt </span><br><span class="line"></span><br><span class="line"><span class="comment"># 追加存储变量 var 到文件 var.txt</span></span><br><span class="line">%store var &gt;&gt; var.txt </span><br></pre></td></tr></table></figure>
+<p><code>%who</code>， <code>%who_ls</code>，<code>%whos</code> 查看全局变量</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 所有全局变量</span></span><br><span class="line">%who </span><br><span class="line"></span><br><span class="line"><span class="comment"># type 为 function 和 str 的全局变量</span></span><br><span class="line">%who function str </span><br></pre></td></tr></table></figure>
+<p><code>%sx</code>，<code>!!</code>，<code>%sc</code>，<code>!</code> 运行 Shell 命令并返回结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">%sx ls -la ./</span><br><span class="line">!!ls -la ./</span><br><span class="line"></span><br><span class="line">%sc ls -la ./</span><br><span class="line">!ls -la ./</span><br><span class="line"></span><br><span class="line">%sx ls_res=ls -la ./</span><br><span class="line">ls_res=%sx ls -la ./</span><br><span class="line">ls_res=!ls -la ./</span><br><span class="line">$sc -l ls_res=ls -la ./</span><br></pre></td></tr></table></figure>
+<p><code>%time</code> 计时</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%time <span class="number">2</span>**<span class="number">128</span></span><br></pre></td></tr></table></figure>
+<h4 id="6.2.-%E5%8D%95%E5%85%83%E5%91%BD%E4%BB%A4%EF%BC%88cell-magics%EF%BC%89">6.2. 单元命令（cell magics）</h4>
+<p><code>%%bash</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">%%bash</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span></span><br><span class="line">do</span><br><span class="line">    echo $i</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<p><code>%%html</code></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%%html</span><br><span class="line">&lt;b style="color:red"&gt;this html block&lt;/b&gt;</span><br></pre></td></tr></table></figure>
+<p><code>%%javascript</code>， <code>%%js</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">%%js</span><br><span class="line">var arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"><span class="keyword">for</span>(var i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    console.log(arr[i])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>%%markdown</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%%markdown</span><br><span class="line">__this markdown block__</span><br></pre></td></tr></table></figure>
+<p><code>%%writefile</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">%%writefile out.py</span><br><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">  print(<span class="string">'Hello World!'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">  main()</span><br></pre></td></tr></table></figure>
+<p><code>%%capture</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%%capture output</span><br><span class="line">print(<span class="string">'Hello World!'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="7.-notebook-server">7. Notebook Server</h2>
+<p>一般情况下，Jupyter Notebook 服务运行本地通过 <a href="http://localhost:8888" target="_blank" rel="noopener">http://localhost:8888</a> 访问和使用。<br>
+但在某些时候，我们想把 Jupyter Notebook 应用架设在公开的服务器中，以便获取更强的计算能力和更多的内存，同时省去在每台电脑上安装和配置 Jupyter Notebook 的过程。</p>
+<p>待续。。。</p>
+<h2 id="8.-%E5%B0%8F%E6%8A%80%E5%B7%A7">8. 小技巧</h2>
+<p>插入图片</p>
+<figure class="highlight python"><figcaption><span>IPython.display.Image</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> IPython.display <span class="keyword">import</span> display, HTML, Image</span><br><span class="line">image_url = <span class="string">'https://www.python.org/static/img/python-logo.png'</span>;</span><br><span class="line">image_src = <span class="string">'/Users/garryshield/Downloads/python-logo.png'</span>;</span><br><span class="line"></span><br><span class="line">Image(url=image_url)</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">Image(filename=image_src)</span><br><span class="line"><span class="comment"># or </span></span><br><span class="line">display(HTML(<span class="string">'&lt;img src="'</span>+ image_url +<span class="string">'"/&gt;'</span>))</span><br></pre></td></tr></table></figure>
+<p>待续。。。</p>
+<h2 id="9.-%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5">9. 参考链接</h2>
+<p>· <a href="https://jupyter.org/index.html" target="_blank" rel="noopener">Jupyter Notebook</a><br>
+· <a href="https://ipython.org/" target="_blank" rel="noopener">IPython</a><br>
+· <a href="https://ipython.readthedocs.io/en/stable/index.html" target="_blank" rel="noopener">IPython Documentation</a><br>
+· <a href="https://ipython.readthedocs.io/en/stable/interactive/magics.html" target="_blank" rel="noopener">IPython Built-in magic commands</a></p>
+
+        </section>
+      </article>
+
+      <div class="clearfix mb-4">
+          
+          <p>
+          <a class="float-left" href="/2016/11/01/mac-vmware-network/" tabindex="-1"><i class="fas fa-chevron-left"></i> MacOS VMware 网络设置</a>
+          </p>
+          
+
+          
+          <p>
+          <a class="float-right" href="/2016/09/30/pyenv/" tabindex="-1">使用 Pyenv 管理 Python <i class="fas fa-chevron-right"></i></a>
+          </p>
+          
+      </div>
+
+  </div>
+
+  <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+
+  <!--
+    <div class="catalog card border-0 mb-4">
+      <div class="card-body p-0">
+        <h4>CATALOG</h4>
+        <div class="catalog-inn"></div>
+      </div>
+    </div>
+  -->
+    
+    <div class="card border-0 mb-4">
+  <div class="card-body p-0">
+    <h4>TAGS</h4>
+    <dl class="tags">
+    <dd><a href="/tags">All</a></dd>
+    
+  <dd><a href="/tags/#Diary">Diary</a></dd>
+
+  <dd><a href="/tags/#Hexo">Hexo</a></dd>
+
+  <dd><a href="/tags/#Tree">Tree</a></dd>
+
+  <dd><a href="/tags/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/tags/#Gif">Gif</a></dd>
+
+  <dd><a href="/tags/#Kap">Kap</a></dd>
+
+  <dd><a href="/tags/#Nvm">Nvm</a></dd>
+
+  <dd><a href="/tags/#Linux">Linux</a></dd>
+
+  <dd><a href="/tags/#Shortcuts">Shortcuts</a></dd>
+
+  <dd><a href="/tags/#Systemd">Systemd</a></dd>
+
+  <dd><a href="/tags/#Promise">Promise</a></dd>
+
+  <dd><a href="/tags/#Google">Google</a></dd>
+
+  <dd><a href="/tags/#Pyenv">Pyenv</a></dd>
+
+  <dd><a href="/tags/#VMware">VMware</a></dd>
+
+  <dd><a href="/tags/#SELinux">SELinux</a></dd>
+
+  <dd><a href="/tags/#Memcached">Memcached</a></dd>
+
+  <dd><a href="/tags/#Electron">Electron</a></dd>
+
+  <dd><a href="/tags/#Yii">Yii</a></dd>
+
+  <dd><a href="/tags/#Git">Git</a></dd>
+
+  <dd><a href="/tags/#Shadowsocks">Shadowsocks</a></dd>
+
+  <dd><a href="/tags/#Tips">Tips</a></dd>
+
+  <dd><a href="/tags/#Grunt">Grunt</a></dd>
+
+  <dd><a href="/tags/#Rsync">Rsync</a></dd>
+
+  <dd><a href="/tags/#Markdown">Markdown</a></dd>
+
+  <dd><a href="/tags/#Emoji">Emoji</a></dd>
+
+  <dd><a href="/tags/#Jupyter">Jupyter</a></dd>
+
+  <dd><a href="/tags/#MariaDB">MariaDB</a></dd>
+
+  <dd><a href="/tags/#Ansible">Ansible</a></dd>
+
+  <dd><a href="/tags/#Bash">Bash</a></dd>
+
+    </dl>
+  </div>
+</div>
+    <div class="card border-0 mb-4">
+  <div class="card-body p-0">
+    <h4>CATEGORIES</h4>
+    <dl class="tags">
+    <dd><a href="/categories">All</a></dd>
+    
+  <dd><a href="/categories/#Diary">Diary</a></dd>
+
+  <dd><a href="/categories/#Node.js">Node.js</a></dd>
+
+  <dd><a href="/categories/#Linux">Linux</a></dd>
+
+  <dd><a href="/categories/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/categories/#MacOS">MacOS</a></dd>
+
+  <dd><a href="/categories/#Node.Js">Node.Js</a></dd>
+
+  <dd><a href="/categories/#Javascript">Javascript</a></dd>
+
+  <dd><a href="/categories/#Google">Google</a></dd>
+
+  <dd><a href="/categories/#Python">Python</a></dd>
+
+  <dd><a href="/categories/#VMware">VMware</a></dd>
+
+  <dd><a href="/categories/#CentOS">CentOS</a></dd>
+
+  <dd><a href="/categories/#Php">Php</a></dd>
+
+  <dd><a href="/categories/#Git">Git</a></dd>
+
+  <dd><a href="/categories/#Tips">Tips</a></dd>
+
+  <dd><a href="/categories/#MacOS">MacOS</a></dd>
+
+  <dd><a href="/categories/#Memcached">Memcached</a></dd>
+
+  <dd><a href="/categories/#Yii">Yii</a></dd>
+
+  <dd><a href="/categories/#MariaDB">MariaDB</a></dd>
+
+  <dd><a href="/categories/#Ansible">Ansible</a></dd>
+
+    </dl>
+  </div>
+</div>
+    <div class="card border-0 mb-4">
+  <div class="card-body p-0">
+    <h4>ARCHIVES</h4>
+    <dl class="tags">
+    <dd><a href="/archives">All</a></dd>
+    
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+  <dd><a href="/archives/#2015">2015</a></dd>
+
+  <dd><a href="/archives/#2016">2016</a></dd>
+
+  <dd><a href="/archives/#2018">2018</a></dd>
+
+    </dl>
+  </div>
+</div>
+    
+  </div>
+</div>
+</div>
+
+    <footer class="footer">
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+
+          <div class="text-center">
+            <p>
+  <a href="https://github.com/garryshield" target="_blank" class="fa-stack fa-1x">
+    <i class="fas fa-circle fa-stack-2x"></i>
+    <i class="fab fa-github-alt fa-stack-1x fa-inverse"></i>
+  </a>
+  <a href="https://twitter.com/garry_shield" target="_blank" class="fa-stack fa-1x">
+    <i class="fas fa-circle fa-stack-2x"></i>
+    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+  </a>
+  <a href="https://www.zhihu.com/people/garryshield" target="_blank" class="fa-stack fa-1x">
+    <i class="fas fa-circle fa-stack-2x"></i>
+    <i class="fa fa-stack-1x fa-inverse">知</i>
+  </a>
+</p>
+            <p class="mb-4"></p>
+            <p>Copyright © Garry Shield 2018 </p>
+<p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> and <a href="https://github.com/twbs/bootstrap" target="_blank">Bootstrap</a></p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+      
+    </footer>
+
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Search" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+    
+    <script src="/assets/js/libs.min.js"></script>
+    <script src="/assets/js/main.min.js"></script>
+  </body>
+</html>

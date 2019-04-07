@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    
+    <title>Javascript Promise 的用法 | Garry Shield</title>
+
+    <meta name="description" content="回调是 JavaScript 编程中比较令人纠结的写法，主要是用于处理“并列”或者“并行”的操作，然后在回调函数中处理操作结果。这样原生的回调写法就会带来以下的不便。  回调结果状态不便管理 回调方式自由松散，没有规范约束  Promise 对象是 JavaScript 的异步操作解决方案，为异步操作提供统一接口。它起到代理作用，充当异步操作与回调函数之间的中介，使得异步操作具备同步操作的接口。P">
+<meta name="keywords" content="Promise">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript Promise 的用法">
+<meta property="og:url" content="http://garryshield.github.com/2016/07/29/javascript-promise/index.html">
+<meta property="og:site_name" content="Garry Shield">
+<meta property="og:description" content="回调是 JavaScript 编程中比较令人纠结的写法，主要是用于处理“并列”或者“并行”的操作，然后在回调函数中处理操作结果。这样原生的回调写法就会带来以下的不便。  回调结果状态不便管理 回调方式自由松散，没有规范约束  Promise 对象是 JavaScript 的异步操作解决方案，为异步操作提供统一接口。它起到代理作用，充当异步操作与回调函数之间的中介，使得异步操作具备同步操作的接口。P">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2016-07-29T05:06:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript Promise 的用法">
+<meta name="twitter:description" content="回调是 JavaScript 编程中比较令人纠结的写法，主要是用于处理“并列”或者“并行”的操作，然后在回调函数中处理操作结果。这样原生的回调写法就会带来以下的不便。  回调结果状态不便管理 回调方式自由松散，没有规范约束  Promise 对象是 JavaScript 的异步操作解决方案，为异步操作提供统一接口。它起到代理作用，充当异步操作与回调函数之间的中介，使得异步操作具备同步操作的接口。P">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico" />
+
+    <link rel="stylesheet" href="/assets/css/libs.min.css">
+    <link rel="stylesheet" href="/assets/libs/fontawesome/css/all.css">
+
+    <link rel="stylesheet" href="/assets/css/main.min.css">
+  </head>
+  <body>
+  
+<header class="header mb-5">
+<div class="container">
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-transparent pl-0 pr-0">
+
+    <a class="navbar-brand" href="/">Garry Shield</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/archives">Archives</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/categories">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/tags/">Tags</a>
+        </li>              
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>              
+        <li class="nav-item">
+        </li>
+      </ul>
+
+      <form class="form-inline ml-lg-2 my-2 my-lg-0">
+        <a class="btn btn-sm btn-light search" href="javascript:;">
+          <i class="fas fa-search"></i>
+        </a>
+      </form>
+    </div>
+
+</nav>
+
+
+      <div class="info info-post">
+          <h1>Javascript Promise 的用法</h1>
+
+          <p class="lead">The Usage Of Javascript Promise</p>
+
+          
+          <div class="post-tags">
+          <dl class="tags">
+              <dt>Tags:</dt>
+              
+                <dd><a href="/tags/#Promise">Promise</a></dd>
+              
+          </dl>
+          </div>
+          
+
+          
+          <div class="post-categories">
+          <dl class="tags">
+              <dt>Categories:</dt>
+              
+                <dd><a href="/categories/#Javascript">Javascript</a></dd>
+              
+          </dl>
+          </div>
+          
+
+          <div class="post-date">
+            By Garryshield, Created at 2016-07-29, Updated at 2016-07-29
+          </div>
+      </div>
+
+  </div>
+</div>
+</div>
+</header>
+
+<div class="container">
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+
+      <article class="article mb-5">
+        <section>
+        <p>回调是 JavaScript 编程中比较令人纠结的写法，主要是用于处理“并列”或者“并行”的操作，然后在回调函数中处理操作结果。这样原生的回调写法就会带来以下的不便。</p>
+<ol>
+<li>回调结果状态不便管理</li>
+<li>回调方式自由松散，没有规范约束</li>
+</ol>
+<p>Promise 对象是 JavaScript 的异步操作解决方案，为异步操作提供统一接口。它起到代理作用，充当异步操作与回调函数之间的中介，使得异步操作具备同步操作的接口。Promise 可以让异步操作写起来，就像在写同步操作的流程，而不必一层层地嵌套回调函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 传统写法</span></span><br><span class="line">step1(<span class="function"><span class="keyword">function</span> (<span class="params">value1</span>) </span>&#123;</span><br><span class="line">  step2(value1, <span class="function"><span class="keyword">function</span>(<span class="params">value2</span>) </span>&#123;</span><br><span class="line">    step3(value2, <span class="function"><span class="keyword">function</span>(<span class="params">value3</span>) </span>&#123;</span><br><span class="line">      step4(value3, <span class="function"><span class="keyword">function</span>(<span class="params">value4</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Promise 的写法</span></span><br><span class="line">(<span class="keyword">new</span> <span class="built_in">Promise</span>(step1))</span><br><span class="line">  .then(step2)</span><br><span class="line">  .then(step3)</span><br><span class="line">  .then(step4);</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="1.-%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95">1. 基本用法</h2>
+<p>Promise 对象是一个构造函数，用来生成 Promise 实例。<br>
+下面代码创造了一个 Promise 实例。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="comment">/* 异步操作成功 */</span>)&#123;</span><br><span class="line">    resolve(value);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;<span class="comment">/* 异步操作失败 */</span></span><br><span class="line">    reject(error);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>上面代码中，Promise 构造函数接受一个函数作为参数，该函数的两个参数分别是 resolve 和 reject。它们是两个函数，不用自己实现。</p>
+<p>resolve 函数的作用是，将 Promise 实例的状态从“未完成”变为“成功”（即从 pending 变为 fulfilled ），在异步操作成功时调用，并将异步操作的结果，作为参数传递出去。<br>
+reject 函数的作用是，将 Promise 实例的状态从“未完成”变为“失败”（即从 pending 变为 rejected ），在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。</p>
+<h2 id="2.-%E7%8A%B6%E6%80%81">2. 状态</h2>
+<p>Promise 对象通过自身的状态，来控制异步操作。Promise 实例具有三种状态。<br>
+1、异步操作未完成（pending）<br>
+2、异步操作成功（fulfilled）<br>
+3、异步操作失败（rejected）</p>
+<p>上面三种状态里面，fulfilled 和 rejected 合在一起称为 resolved（已定型）。</p>
+<p>这三种的状态的变化途径只有两种。<br>
+1、从“未完成”到“成功”<br>
+2、从“未完成”到“失败”</p>
+<p>一旦状态发生变化，就凝固了，不会再有新的状态变化。</p>
+<p>因此，Promise 的最终结果只有两种。</p>
+<p>1、异步操作成功，Promise 实例传回一个值（value），状态变为 fulfilled。<br>
+2、异步操作失败，Promise 实例抛出一个错误（error），状态变为 rejected。</p>
+<h2 id="3.-resolve">3. Resolve</h2>
+<p>处理异步的成功状态</p>
+<h4 id="3.1.-%E6%99%AE%E9%80%9A%E6%96%B9%E5%BC%8F">3.1. 普通方式</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123; </span><br><span class="line">    <span class="keyword">let</span> result = <span class="number">1</span>;</span><br><span class="line">    resolve(result); </span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">p.then(<span class="function">(<span class="params">result</span>)=&gt;</span>&#123; <span class="built_in">console</span>.log(result) &#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="3.2.-%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F">3.2. 快捷方式</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p = <span class="built_in">Promise</span>.resolve(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">p.then(<span class="function">(<span class="params">result</span>)=&gt;</span>&#123; <span class="built_in">console</span>.log(result) &#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="4.-reject">4. Reject</h2>
+<p>处理异步的失败状态</p>
+<h4 id="4.1-%E6%99%AE%E9%80%9A%E6%96%B9%E5%BC%8F">4.1 普通方式</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="number">2</span>;</span><br><span class="line">    reject(result);</span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 有两种方式获取失败状态</span></span><br><span class="line"><span class="comment">// 第一种，通过 then 第二个函数参数处理失败状态</span></span><br><span class="line">p.then(<span class="function">(<span class="params">result</span>)=&gt;</span>&#123; </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'success:'</span>,result);</span><br><span class="line">&#125;, (err)=&gt;&#123; </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'fail:'</span>,err);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// "fail: 2"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二种，或者通过，catch 获取失败状态</span></span><br><span class="line">p.then(<span class="function">(<span class="params">result</span>)=&gt;</span>&#123; </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'success:'</span>,result);</span><br><span class="line">&#125;).catch(<span class="function">(<span class="params">err</span>)=&gt;</span>&#123; </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'error:'</span>,err);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// "error: 2"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意：如果两种方式同时使用的话</span></span><br><span class="line"><span class="comment">// 只会处理第一种方式操作的结果</span></span><br><span class="line">p.then(<span class="function">(<span class="params">result</span>)=&gt;</span>&#123; </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'success:'</span>,result);</span><br><span class="line">&#125;, (err)=&gt;&#123; </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'fail:'</span>,err);</span><br><span class="line">&#125;).catch(<span class="function">(<span class="params">err</span>)=&gt;</span>&#123; </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'error:'</span>,err);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// "fail: 2"</span></span><br></pre></td></tr></table></figure>
+<h4 id="4.2-%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F">4.2 快捷方式</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p = <span class="built_in">Promise</span>.reject(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">p.then(<span class="literal">null</span>, (err) =&gt; <span class="built_in">console</span>.log(<span class="string">'fail:'</span>, err))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或</span></span><br><span class="line">p.then().catch(<span class="function">(<span class="params">err</span>) =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'error:'</span>, err))</span><br></pre></td></tr></table></figure>
+<h2 id="5.-catch">5. Catch</h2>
+<p>从上述 reject 的使用过程中，会发现, catch 操作在没有设置 onRejected 处理的时候，会被 catch 捕获失败处理。同时 catch 也会捕获 onResolved 和 onRejected 中出现的错误。</p>
+<h4 id="5.1.-%E7%9B%B4%E6%8E%A5%E6%8D%95%E8%8E%B7-reject">5.1. 直接捕获 reject</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    reject(<span class="number">3</span>)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">p.then(<span class="function">(<span class="params">result</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'success:'</span>, result)</span><br><span class="line">&#125;).catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'error:'</span>, err)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// "error: 3"</span></span><br></pre></td></tr></table></figure>
+<h4 id="5.2.-%E6%8D%95%E8%8E%B7-onresolved-%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8">5.2. 捕获 onResolved 中的异常</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">  resolve(<span class="number">3</span>)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">p.then(<span class="function">(<span class="params">result</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'custom resolve error!'</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'success:'</span>, result)</span><br><span class="line">&#125;).catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Custom error:'</span>, err)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// "Custom error: Error: custom resolve error!"</span></span><br></pre></td></tr></table></figure>
+<h4 id="5.3.-%E6%8D%95%E8%8E%B7-onrejected-%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8">5.3. 捕获 onRejected 中的异常</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">  reject(<span class="number">3</span>)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">p.then(<span class="literal">null</span>, (err) =&gt; &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'custom reject error!'</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'fail:'</span>, err)</span><br><span class="line">&#125;).catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Custom error:'</span>, err)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// "Custom error: Error: custom reject error!"</span></span><br></pre></td></tr></table></figure>
+<h2 id="6.-%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5">6. 参考链接</h2>
+<p>· <a href="http://es6.ruanyifeng.com/#docs/promise" target="_blank" rel="noopener">Promise 对象</a></p>
+
+        </section>
+      </article>
+
+      <div class="clearfix mb-4">
+          
+          <p>
+          <a class="float-left" href="/2016/08/29/google-search/" tabindex="-1"><i class="fas fa-chevron-left"></i> Google 高级搜索</a>
+          </p>
+          
+
+          
+          <p>
+          <a class="float-right" href="/2016/06/25/hexo-render/" tabindex="-1">使用 Markdown-it 渲染 Hexo <i class="fas fa-chevron-right"></i></a>
+          </p>
+          
+      </div>
+
+  </div>
+
+  <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+
+  <!--
+    <div class="catalog card border-0 mb-4">
+      <div class="card-body p-0">
+        <h4>CATALOG</h4>
+        <div class="catalog-inn"></div>
+      </div>
+    </div>
+  -->
+    
+    <div class="card border-0 mb-4">
+  <div class="card-body p-0">
+    <h4>TAGS</h4>
+    <dl class="tags">
+    <dd><a href="/tags">All</a></dd>
+    
+  <dd><a href="/tags/#Diary">Diary</a></dd>
+
+  <dd><a href="/tags/#Hexo">Hexo</a></dd>
+
+  <dd><a href="/tags/#Tree">Tree</a></dd>
+
+  <dd><a href="/tags/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/tags/#Gif">Gif</a></dd>
+
+  <dd><a href="/tags/#Kap">Kap</a></dd>
+
+  <dd><a href="/tags/#Nvm">Nvm</a></dd>
+
+  <dd><a href="/tags/#Linux">Linux</a></dd>
+
+  <dd><a href="/tags/#Shortcuts">Shortcuts</a></dd>
+
+  <dd><a href="/tags/#Systemd">Systemd</a></dd>
+
+  <dd><a href="/tags/#Promise">Promise</a></dd>
+
+  <dd><a href="/tags/#Google">Google</a></dd>
+
+  <dd><a href="/tags/#Pyenv">Pyenv</a></dd>
+
+  <dd><a href="/tags/#VMware">VMware</a></dd>
+
+  <dd><a href="/tags/#SELinux">SELinux</a></dd>
+
+  <dd><a href="/tags/#Memcached">Memcached</a></dd>
+
+  <dd><a href="/tags/#Electron">Electron</a></dd>
+
+  <dd><a href="/tags/#Yii">Yii</a></dd>
+
+  <dd><a href="/tags/#Git">Git</a></dd>
+
+  <dd><a href="/tags/#Shadowsocks">Shadowsocks</a></dd>
+
+  <dd><a href="/tags/#Tips">Tips</a></dd>
+
+  <dd><a href="/tags/#Grunt">Grunt</a></dd>
+
+  <dd><a href="/tags/#Rsync">Rsync</a></dd>
+
+  <dd><a href="/tags/#Markdown">Markdown</a></dd>
+
+  <dd><a href="/tags/#Emoji">Emoji</a></dd>
+
+  <dd><a href="/tags/#Jupyter">Jupyter</a></dd>
+
+  <dd><a href="/tags/#MariaDB">MariaDB</a></dd>
+
+  <dd><a href="/tags/#Ansible">Ansible</a></dd>
+
+  <dd><a href="/tags/#Bash">Bash</a></dd>
+
+    </dl>
+  </div>
+</div>
+    <div class="card border-0 mb-4">
+  <div class="card-body p-0">
+    <h4>CATEGORIES</h4>
+    <dl class="tags">
+    <dd><a href="/categories">All</a></dd>
+    
+  <dd><a href="/categories/#Diary">Diary</a></dd>
+
+  <dd><a href="/categories/#Node.js">Node.js</a></dd>
+
+  <dd><a href="/categories/#Linux">Linux</a></dd>
+
+  <dd><a href="/categories/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/categories/#MacOS">MacOS</a></dd>
+
+  <dd><a href="/categories/#Node.Js">Node.Js</a></dd>
+
+  <dd><a href="/categories/#Javascript">Javascript</a></dd>
+
+  <dd><a href="/categories/#Google">Google</a></dd>
+
+  <dd><a href="/categories/#Python">Python</a></dd>
+
+  <dd><a href="/categories/#VMware">VMware</a></dd>
+
+  <dd><a href="/categories/#CentOS">CentOS</a></dd>
+
+  <dd><a href="/categories/#Php">Php</a></dd>
+
+  <dd><a href="/categories/#Git">Git</a></dd>
+
+  <dd><a href="/categories/#Tips">Tips</a></dd>
+
+  <dd><a href="/categories/#MacOS">MacOS</a></dd>
+
+  <dd><a href="/categories/#Memcached">Memcached</a></dd>
+
+  <dd><a href="/categories/#Yii">Yii</a></dd>
+
+  <dd><a href="/categories/#MariaDB">MariaDB</a></dd>
+
+  <dd><a href="/categories/#Ansible">Ansible</a></dd>
+
+    </dl>
+  </div>
+</div>
+    <div class="card border-0 mb-4">
+  <div class="card-body p-0">
+    <h4>ARCHIVES</h4>
+    <dl class="tags">
+    <dd><a href="/archives">All</a></dd>
+    
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+  <dd><a href="/archives/#2015">2015</a></dd>
+
+  <dd><a href="/archives/#2016">2016</a></dd>
+
+  <dd><a href="/archives/#2018">2018</a></dd>
+
+    </dl>
+  </div>
+</div>
+    
+  </div>
+</div>
+</div>
+
+    <footer class="footer">
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+
+          <div class="text-center">
+            <p>
+  <a href="https://github.com/garryshield" target="_blank" class="fa-stack fa-1x">
+    <i class="fas fa-circle fa-stack-2x"></i>
+    <i class="fab fa-github-alt fa-stack-1x fa-inverse"></i>
+  </a>
+  <a href="https://twitter.com/garry_shield" target="_blank" class="fa-stack fa-1x">
+    <i class="fas fa-circle fa-stack-2x"></i>
+    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+  </a>
+  <a href="https://www.zhihu.com/people/garryshield" target="_blank" class="fa-stack fa-1x">
+    <i class="fas fa-circle fa-stack-2x"></i>
+    <i class="fa fa-stack-1x fa-inverse">知</i>
+  </a>
+</p>
+            <p class="mb-4"></p>
+            <p>Copyright © Garry Shield 2018 </p>
+<p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> and <a href="https://github.com/twbs/bootstrap" target="_blank">Bootstrap</a></p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+      
+    </footer>
+
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Search" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+    
+    <script src="/assets/js/libs.min.js"></script>
+    <script src="/assets/js/main.min.js"></script>
+  </body>
+</html>
