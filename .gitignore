@@ -10,3 +10,4 @@ public/
 source/_posts/*/_assets/
 source/_drafts/*/_assets/
 themes/hoven/source/_assets/
+node_modules
