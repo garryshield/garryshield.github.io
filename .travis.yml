@@ -2,26 +2,26 @@ language: node_js
 node_js: stable
 cache:
   directories:
-    - node_modules
+  - node_modules
 install:
-  - npm install
+- npm install
 script:
-  - hexo generate
+- hexo generate
 after_success:
-  - cd public
-  - git init
-  - git config user.name "${USER_NAME}"
-  - git config user.email "${USER_EMAIL}"
-  - git add .
-  - git commit -m 'update site'
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+- cd public
+- git init
+- git config user.name "${USER_NAME}"
+- git config user.email "${USER_EMAIL}"
+- git add .
+- git commit -m 'update site'
+- git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
 branchs:
   only:
-    - dev
+  - dev
 env:
   global:
-    - USER_NAME="garryshield"
-    - USER_EMAIL="749291704@qq.com"
-    - REPO="garryshield.github.io"
-    - GH_REF="github.com/${USER_NAME}/${REPO}.git"
-    - secure: pVlTmuVFepMGRlNb6EzP0aDKH+Pu607SZy08PC2fPngMNn3YQWmJsuas8FZk+X6hnt4P9CbOlMUdep5vbezKJWKV2x/gdfsMFLdc6Tv/kF+CQ6FXO+dV8XLkznzQ+ZIW6LhL3rZKpmTdYbZO5reUdLdnBPSq1VEmHGhw9FEtepgHC5VMLCSUPq4YgZhZPOXhzq3hb85euflOqorfoRKR/eyqpdqRuG1xjqVM6bwD7MqVqXb4KWbJ79hFYg7Vc90z4WfyowDVh7P4ikt6C8IGb5qQigIb/xI2jBi7K7pP+0YVo/WAxkBGzVWEUOvI7RNb1q1o7YZ4doERZUvMRwS0YnKTA2Nbgw5ZUZQdVP7dUMapHpxURGw9WaS1akaQefjAfPFULAsJbdZ38nXPp4BBXpJVpm9n+SHowLa2a3kRtmLCXlCE76CF7vFtZQpa0a14mlqgP84rG2kcZSw7hRZ+SuiY7jEnsQGITmuoKRjY0DT6qatvhMf1naj3XOn19V3MsoHLVU7HLNWIruuwe9JGwduQm2A/iEu9mGA83hdYgy/v69KFApfb0aeFU4FmJBgiURLMbgVkTiVe02yKp2rLHdFzKS0eXmSrYOmIldLE36Tnu1Q6s56rbxGIcUccNGsGHbNZuzck06zhBjXy9VM3PdCiAx8SdZoIVjy/Fx1kUyE=
+  - USER_NAME="garryshield"
+  - USER_EMAIL="749291704@qq.com"
+  - REPO="garryshield.github.io"
+  - GH_REF="github.com/${USER_NAME}/${REPO}.git"
+  - secure: IdyeYRsx/2NheFhJiIQq6ur8zDAn2PzKmS9r3V5Hoc2aXDEJws1A4XNZL9jBwlRf875f4S2GxdKMc7iDCZTYc4/1YeMFDycU5ez2ENN4wPLCplpW7/ASJzLH9xuClF8wn7i5PlOIImMnv9MLeZaE3JYb6qfsCWdWb59/MlTvfsm/StrYVwZb4/ef4smYoD9J5sh5lhZsCl4zWGhTqV/fDIHYHI/sZJ+NGDV66gEmCgdXjna4juKO4GE7Avtivf10RCg6bpzNvWoYc6UbeQcdYN/DPGKwjWHT42x0DMcK9+Mvqyf2ep0dizcZ2ZqYvpTn900CJfRqrFI7N00Va/MuohOMFdHHCeqGTwI0w3rFRSjiDVk+Ey2i2/SRLDbThl0bv7K3hJ3kcYwI+YobA1Hy/S9N/GY6Ev3uWKjqBRK1X6NSmovEDmurMegBvtY8220RuZUxp+g+Tk9Gs5YTztBSr3ky/uvjYMYBuMZorgIIXs/ndxoIvmGYWgpDlAWI7DOC7fAp2YZ9Th+PcwAIjAqpWepvuHipWmpkPkPNGBIx8AmW0F09h7X+L3oDdit60bDzacMLGgw8fqGXo0gpumCVShJF+P/O8gTJJD8nYoV9dIngnSLTEsobr/6Lkn2V615+FRSftiseMqfaebsagxkczqARbj79v7St1HAwJTxjs6Y=
