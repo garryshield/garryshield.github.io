@@ -1,0 +1,107 @@
+<% if (page.total > 1){ %>
+  <div>
+    <ul class="pagination">
+      <% if (page.prev == 0) { %>
+        <li class="page-item disabled">
+          <a class="page-link">PREV</a>
+        </li>
+      <% } else { %>
+        <% if (page.prev == 1) { %>
+          <li class="page-item">
+            <a class="page-link" href="<%- url_for() %>">PREV</a>
+          </li>
+        <% } else { %>
+          <li class="page-item">
+            <a class="page-link" href="<%- url_for(config.pagination_dir + '/' + page.prev) %>">PREV</a>
+          </li>
+        <% } %>
+      <% } %>
+
+      <li class="page-item<%= page.current == 1 ? ' active ' : ''%>">
+        <a class="page-link" href="<%- url_for() %>">1</a>
+      </li>
+
+      <% 
+      var show_page = 5;
+      var active_position = page.total > show_page + 2 ? Math.ceil(show_page / 2) : 0;
+      var ellipsis_head = false;
+      var ellipsis_tail = false;
+      var page_head = 2;
+      var page_tail = page.total;
+      %>
+      <% if(active_position) { %>
+        <% var flag = page.total - (show_page - active_position) - 1 %>
+        <% if (page.current <= show_page && (page.current < flag)) { %>
+          <%
+            // 左边不需要出现省略符号占位
+            ellipsis_head = false;
+            ellipsis_tail = true;
+
+            page_head = 2;
+            page_tail = show_page + 2;
+          %>
+        <% } %>
+        <% if (page.current > show_page && page.current < flag) { %>
+          <%
+            // 两边都需要出现省略符号占位
+            ellipsis_head = true;
+            ellipsis_tail = true;
+
+            page_head = page.current + (1 - active_position);
+            page_tail = page.current + (show_page + 1 - active_position);
+          %>
+        <% } %>
+        <% if (page.current >= flag) { %>
+          <%
+            // 右边不需要出现省略符号占位
+            ellipsis_head = true;
+            ellipsis_tail = false;
+
+            page_head = page.total - (show_page + 1 - 2) - 1;
+            page_tail = page.total;
+          %>
+        <% } %>
+      <% } else { %>
+      <% } %>
+
+      <% if(ellipsis_head){ %>
+      <li class="page-item">
+        <a class="page-link">...</a>
+      </li>
+      <% } %>
+
+      <% var pages = _.range(page_head, page_tail) %>
+      <% _.each(pages, function (i) { %>
+        <% if (i == 1) { %>
+          <li class="page-item<%= page.current == i ? ' active ' : ''%>">
+            <a class="page-link" href="<%- url_for() %>"><%= i %></a>
+          </li>
+        <% } else { %>
+          <li class="page-item<%= page.current == i ? ' active ' : ''%>">
+            <a class="page-link" href="<%- url_for(config.pagination_dir + '/' + i) %>"><%= i %></a>
+          </li>
+        <% } %> 
+      <% }) %>
+
+      <% if(ellipsis_tail){ %>
+      <li class="page-item">
+        <a class="page-link">...</a>
+      </li>
+      <% } %>
+
+      <li class="page-item<%= page.current == page.total ? ' active ' : ''%>">
+        <a class="page-link" href="<%- url_for(config.pagination_dir + '/' + page.total) %>"><%= page.total %></a>
+      </li>
+
+      <% if (page.next == 0) { %>
+        <li class="page-item disabled">
+          <a class="page-link">NEXT</a>
+        </li>
+      <% } else { %>
+        <li class="page-item">
+          <a class="page-link" href="<%- url_for(config.pagination_dir + '/' + page.next) %>">NEXT</a>
+        </li>
+      <% } %>
+    </ul>
+  </div>
+<% } %>

@@ -1,0 +1,10 @@
+<% var years = [] %>
+
+<% site.posts.each(function(post, i){ %>
+  <% var currentDate = post.date.year() %>
+  <% !_.includes(years, currentDate) ? years.push(currentDate) : null %>
+<% }) %>
+
+<% _.each(years, function(year, i) { %>
+  <dd><a href="<%- url_for(config.archive_dir + '/#' + year) %>"><%= year %></a></dd>
+<% }) %>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <%- css('assets/css/libs.min') %>
+    <%- css('assets/libs/fontawesome/css/all') %>
+
+    <%- css('assets/css/main.min') %>
+    <%- css('assets/css/404.min') %>
+  </head>
+  <body>
+  
+    <div class="d-flex w-100 h-100 mx-auto flex-column">
+      <div class="mb-auto">
+      <header>
+      <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+
+          <%- partial('_partial/nav') %>
+
+        </div>
+      </div>
+      </div>
+      </header>
+      </div>
+
+      <main class="cover text-center">
+          <h2>404</h1>
+          <p>你来到了没有知识的荒原 :(</p>
+          <%- partial('_partial/_sns') %>
+      </main>
+
+      <div class="mt-auto pb-3">
+        <div class="text-center">
+          <%- partial('_partial/_copyright') %>
+        </div>
+      </div>
+    </div>
+    
+
+    <%- partial('_partial/insight') %>
+
+    <%- js('assets/js/libs.min') %>
+    <%- js('assets/js/main.min') %>
+  </body>
+</html>

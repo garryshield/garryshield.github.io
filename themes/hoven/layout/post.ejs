@@ -1,0 +1,92 @@
+<%- partial('_partial/header') %>
+  
+<header class="header mb-5">
+<div class="container">
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+
+      <%- partial('_partial/nav') %>
+
+      <div class="info info-post">
+          <h1><%= page.title %></h1>
+
+          <p class="lead"><%= page.subtitle ? page.subtitle : page.title %></p>
+
+          <% if (page.tags && page.tags.length){ %>
+          <div class="post-tags">
+          <dl class="tags">
+              <dt>Tags:</dt>
+              <% page.tags.each(function(tag, i){ %>
+                <dd><a href="<%- url_for(config.tag_dir + '/#' + tag.name) %>"><%= tag.name %></a></dd>
+              <% }) %>
+          </dl>
+          </div>
+          <% } %>
+
+          <% if (page.categories && page.categories.length){ %>
+          <div class="post-categories">
+          <dl class="tags">
+              <dt>Categories:</dt>
+              <% page.categories.each(function(category, i){ %>
+                <dd><a href="<%- url_for(config.category_dir + '/#' + category.name) %>"><%= category.name %></a></dd>
+              <% }) %>
+          </dl>
+          </div>
+          <% } %>
+
+          <div class="post-date">
+            By <%= config.author %>, Created at <%- date(page.date) %><% if(page.updated){ %>, Updated at <%- date(page.updated) %><% } %>
+          </div>
+      </div>
+
+  </div>
+</div>
+</div>
+</header>
+
+<div class="container">
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+
+      <article class="article mb-5">
+        <section>
+        <%- page.content %>
+        </section>
+      </article>
+
+      <div class="clearfix mb-4">
+          <% if(page.prev) { %>
+          <p>
+          <a class="float-left" href="<%- url_for(page.prev.path) %>" tabindex="-1"><i class="fas fa-chevron-left"></i> <%= page.prev.title %></a>
+          </p>
+          <% } %>
+
+          <% if(page.next) { %>
+          <p>
+          <a class="float-right" href="<%- url_for(page.next.path) %>" tabindex="-1"><%= page.next.title %> <i class="fas fa-chevron-right"></i></a>
+          </p>
+          <% } %>
+      </div>
+
+  </div>
+
+  <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+
+  <!--
+    <div class="catalog card border-0 mb-4">
+      <div class="card-body p-0">
+        <h4>CATALOG</h4>
+        <div class="catalog-inn"></div>
+      </div>
+    </div>
+  -->
+    
+    <%- partial('_partial/tags') %>
+    <%- partial('_partial/categories') %>
+    <%- partial('_partial/archives') %>
+    
+  </div>
+</div>
+</div>
+
+<%- partial('_partial/footer') %>
