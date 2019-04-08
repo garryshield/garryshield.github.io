@@ -8,13 +8,17 @@ install:
 script:
   - hexo generate
 after_success:
-  - cd public
-  - git init
-  - git config user.name "${USER_NAME}"
-  - git config user.email "${USER_EMAIL}"
-  - git add .
-  - git commit --allow-empty -m 'update site'
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+  - echo ${USER_NAME}
+  - echo ${USER_EMAIL}
+  - echo ${GH_TOKEN}
+  - echo ${GH_REF}
+# - cd public
+# - git init
+# - git config user.name "${USER_NAME}"
+# - git config user.email "${USER_EMAIL}"
+# - git add .
+# - git commit --allow-empty -m 'update site'
+# - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
 branchs:
   only:
     - dev
@@ -24,3 +28,4 @@ env:
     - USER_EMAIL="749291704@qq.com"
     - REPO="garryshield.github.io"
     - GH_REF="github.com/${USER_NAME}/${REPO}.git"
+    - secure: bzyctlafdj8KHTiTI5nxZgtAYap8jlaLJ94LvUfIN6SuzlWYqY/PAKIXOI8lopXNc21Mewpc9CnG4kmyA0df+yrGEw8Y7UiPMJM53xQWSDlcZLPO6fx3pk7tdqEgrfGW72+UcKqgIMRTjDSdmZGi7YwBJBYB/iLjBFrHESVkM5kI0NvPmesGRtcLdhHb2sPqPpbLzEuRJaHlHOvu1g69nLe+6UkcXtG5EcA3QJuVSebihLXSKXPQnuoU9qbgIxYqNdXXuiDg4JY6of/StOOWsGlNhj33JLkkaMtiHFxNcDrm1f5hjgxP61eyUmD4BN2NkG9tUp0L4C2s3yGQu6jP3CsigAONLMPSOIJAYMFKoRcktTEacutiYqtYcJxsapDXxYrWifEKOps0HbsaK7FBBn+35LPPpK3IJqe0xyHbjiJlKD7Xo0ooI7qfll4GtEZo2LkKdtPANS3DAec6rdqtUpl4+P8MXoRjJh228ZCvBPbDkZJlt6/9FqOeu9neNeCAs+aAjDbK+oJf7XOSUJXN/mTmSsI25bxarvZ+rCq0EHoEM30T7oXGePBy8G3McqAayUIGeXWy7B7yoqT5RF65DfBJjaZrFA2jsK/u6vHDxHUQ5w9Pvf+MEFWDnVmUs8hMZf5XV5Gidoo/jPDIC3JY7urQR0rmar9rmuMYIWTzUiQ=
