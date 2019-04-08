@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    
+    <title>使用 Electron 构建跨平台桌面应用 | Garry Shield</title>
+
+    <meta name="description" content="Electron 最早由 Github 开发用于构建文本编辑器 Atom，通过整合 Chromium 和 Node.js 能够直接使用 HTML，CSS，JavaScript 进行开发。 1. 应用结构 Electron 基于 Node.js ，安装之前先确保系统已经安装好 Node.js。 123456cd ~/Node.js/electronmkdir 01 &amp;amp;&amp;amp; cd">
+<meta name="keywords" content="Electron">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Electron 构建跨平台桌面应用">
+<meta property="og:url" content="http://garryshield.github.com/2018/08/10/electronjs/index.html">
+<meta property="og:site_name" content="Garry Shield">
+<meta property="og:description" content="Electron 最早由 Github 开发用于构建文本编辑器 Atom，通过整合 Chromium 和 Node.js 能够直接使用 HTML，CSS，JavaScript 进行开发。 1. 应用结构 Electron 基于 Node.js ，安装之前先确保系统已经安装好 Node.js。 123456cd ~/Node.js/electronmkdir 01 &amp;amp;&amp;amp; cd">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://garryshield.github.com/2018/08/10/electronjs/assets/logo.svg">
+<meta property="og:image" content="http://garryshield.github.com/2018/08/10/electronjs/assets/Snipaste_2018-08-10_14-04-47.png">
+<meta property="og:updated_time" content="2018-08-10T13:08:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用 Electron 构建跨平台桌面应用">
+<meta name="twitter:description" content="Electron 最早由 Github 开发用于构建文本编辑器 Atom，通过整合 Chromium 和 Node.js 能够直接使用 HTML，CSS，JavaScript 进行开发。 1. 应用结构 Electron 基于 Node.js ，安装之前先确保系统已经安装好 Node.js。 123456cd ~/Node.js/electronmkdir 01 &amp;amp;&amp;amp; cd">
+<meta name="twitter:image" content="http://garryshield.github.com/2018/08/10/electronjs/assets/logo.svg">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico" />
+
+    <link rel="stylesheet" href="/assets/css/libs.min.css">
+    <link rel="stylesheet" href="/assets/libs/fontawesome/css/all.css">
+
+    <link rel="stylesheet" href="/assets/css/main.min.css">
+  </head>
+  <body>
+  
+<header class="header mb-5">
+<div class="container">
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-transparent pl-0 pr-0">
+
+    <a class="navbar-brand" href="/">Garry Shield</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/archives">Archives</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/categories">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/tags/">Tags</a>
+        </li>              
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>              
+        <li class="nav-item">
+        </li>
+      </ul>
+
+      <form class="form-inline ml-lg-2 my-2 my-lg-0">
+        <a class="btn btn-sm btn-light search" href="javascript:;">
+          <i class="fas fa-search"></i>
+        </a>
+      </form>
+    </div>
+
+</nav>
+
+
+      <div class="info info-post">
+          <h1>使用 Electron 构建跨平台桌面应用</h1>
+
+          <p class="lead">User Electronjs Create Cross Platform Desktop App</p>
+
+          
+          <div class="post-tags">
+          <dl class="tags">
+              <dt>Tags:</dt>
+              
+                <dd><a href="/tags/#Electron">Electron</a></dd>
+              
+          </dl>
+          </div>
+          
+
+          
+          <div class="post-categories">
+          <dl class="tags">
+              <dt>Categories:</dt>
+              
+                <dd><a href="/categories/#Node.js">Node.js</a></dd>
+              
+          </dl>
+          </div>
+          
+
+          <div class="post-date">
+            By Garryshield, Created at 2018-08-10, Updated at 2018-08-10
+          </div>
+      </div>
+
+  </div>
+</div>
+</div>
+</header>
+
+<div class="container">
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+
+      <article class="article mb-5">
+        <section>
+        <p>
+<img src="/2018/08/10/electronjs/assets/logo.svg" width="400">
+</p>
+<p><a href="https://electronjs.org/" target="_blank" rel="noopener">Electron</a> 最早由 Github 开发用于构建文本编辑器 Atom，通过整合 Chromium 和 Node.js 能够直接使用 HTML，CSS，JavaScript 进行开发。</p>
+<h2 id="1.-%E5%BA%94%E7%94%A8%E7%BB%93%E6%9E%84">1. 应用结构</h2>
+<p><a href="https://electronjs.org/" target="_blank" rel="noopener">Electron</a> 基于 Node.js ，安装之前先确保系统已经安装好 Node.js。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/Node.js/electron</span><br><span class="line">mkdir 01 &amp;&amp; <span class="built_in">cd</span> 01</span><br><span class="line">npm init</span><br><span class="line">npm install --save-dev electron <span class="comment"># 安装 electron</span></span><br><span class="line">touch main.js <span class="comment"># 主进程文件</span></span><br><span class="line">touch index.html <span class="comment"># 页面文件</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>一个最基本的 Electron 应用目录结构如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── index.html</span><br><span class="line">├── main.js</span><br><span class="line">├── node_modules</span><br><span class="line">├── package-lock.json</span><br><span class="line">└── package.json</span><br><span class="line"></span><br><span class="line">1 directory, 4 files</span><br></pre></td></tr></table></figure>
+<p>修改 <code>package.json</code> 文件如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"01"</span>,</span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="string">"description"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="string">"main"</span>: <span class="string">"main.js"</span>, <span class="comment">// 指向 main.js</span></span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>,</span><br><span class="line">    <span class="string">"start"</span>: <span class="string">"electron ."</span> <span class="comment">// 启动命令</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"author"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="string">"license"</span>: <span class="string">"ISC"</span>,</span><br><span class="line">  <span class="string">"dependencies"</span>: &#123;&#125;,</span><br><span class="line">  <span class="string">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="string">"electron"</span>: <span class="string">"^2.0.7"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2.-main.js">2. main.js</h2>
+<p>Electron 通过执行 <code>main.js</code> 创建主进程。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Modules to control application life and create native browser window</span></span><br><span class="line"><span class="keyword">const</span> &#123;app, BrowserWindow&#125; = <span class="built_in">require</span>(<span class="string">'electron'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Keep a global reference of the window object, if you don't, the window will</span></span><br><span class="line"><span class="comment">// be closed automatically when the JavaScript object is garbage collected.</span></span><br><span class="line"><span class="keyword">let</span> mainWindow</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createWindow</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Create the browser window.</span></span><br><span class="line">  mainWindow = <span class="keyword">new</span> BrowserWindow(&#123;<span class="attr">width</span>: <span class="number">800</span>, <span class="attr">height</span>: <span class="number">600</span>&#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// and load the index.html of the app.</span></span><br><span class="line">  mainWindow.loadFile(<span class="string">'index.html'</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Open the DevTools.</span></span><br><span class="line">  <span class="comment">// mainWindow.webContents.openDevTools()</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// Emitted when the window is closed.</span></span><br><span class="line">  mainWindow.on(<span class="string">'closed'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Dereference the window object, usually you would store windows</span></span><br><span class="line">    <span class="comment">// in an array if your app supports multi windows, this is the time</span></span><br><span class="line">    <span class="comment">// when you should delete the corresponding element.</span></span><br><span class="line">    mainWindow = <span class="literal">null</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// This method will be called when Electron has finished</span></span><br><span class="line"><span class="comment">// initialization and is ready to create browser windows.</span></span><br><span class="line"><span class="comment">// Some APIs can only be used after this event occurs.</span></span><br><span class="line">app.on(<span class="string">'ready'</span>, createWindow)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Quit when all windows are closed.</span></span><br><span class="line">app.on(<span class="string">'window-all-closed'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// On OS X it is common for applications and their menu bar</span></span><br><span class="line">  <span class="comment">// to stay active until the user quits explicitly with Cmd + Q</span></span><br><span class="line">  <span class="keyword">if</span> (process.platform !== <span class="string">'darwin'</span>) &#123;</span><br><span class="line">    app.quit()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.on(<span class="string">'activate'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// On OS X it's common to re-create a window in the app when the</span></span><br><span class="line">  <span class="comment">// dock icon is clicked and there are no other windows open.</span></span><br><span class="line">  <span class="keyword">if</span> (mainWindow === <span class="literal">null</span>) &#123;</span><br><span class="line">    createWindow()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// In this file you can include the rest of your app's specific main process</span></span><br><span class="line"><span class="comment">// code. You can also put them in separate files and require them here.</span></span><br></pre></td></tr></table></figure>
+<h2 id="3.-index.html">3. index.html</h2>
+<p>主进程通过 <code>win.loadFile('index.html')</code> 加载渲染页面。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- All of the Node.js APIs are available in this renderer process. --&gt;</span></span><br><span class="line">    We are using Node.js <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="built_in">document</span>.write(process.versions.node)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>,</span><br><span class="line">    Chromium <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="built_in">document</span>.write(process.versions.chrome)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>,</span><br><span class="line">    and Electron <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="built_in">document</span>.write(process.versions.electron)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>.</span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="4.-%E5%90%AF%E5%8A%A8">4. 启动</h2>
+<p>在创建并初始化完成 <code>main.js</code>、 <code>index.html</code> 和 <code>package.json</code> 之后，您就可以在当前工程的根目录执行 <code>npm start</code> 命令来启动刚刚编写好的 Electron 程序了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm start</span><br></pre></td></tr></table></figure>
+
+<p><a href="/2018/08/10/electronjs/assets/Snipaste_2018-08-10_14-04-47.png" data-fancybox="cju7w74i10018brogjk12mjuc" data-caption="使用 Electron 构建跨平台桌面应用">
+<img src="/2018/08/10/electronjs/assets/Snipaste_2018-08-10_14-04-47.png" class="border">
+</a></p>
+<h2 id="5.-%E6%89%93%E5%8C%85">5. 打包</h2>
+<p>使用 <a href="https://www.electron.build/" target="_blank" rel="noopener">electron-builder</a> 打包应用。</p>
+<h4 id="5.1.-%E5%AE%89%E8%A3%85">5.1. 安装</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev electron-builder</span><br></pre></td></tr></table></figure>
+<h4 id="5.2.-%E9%85%8D%E7%BD%AE">5.2. 配置</h4>
+<p>1、确认 <code>package.json</code> 中的 <code>name</code>, <code>description</code>, <code>version</code> 和 <code>author</code> 字段。</p>
+<p>2、在 <code>package.json</code> 中添加 <code>build</code> 属性</p>
+<figure class="highlight bash"><figcaption><span>package.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">// ...</span><br><span class="line"><span class="string">"build"</span>: &#123;</span><br><span class="line">  <span class="string">"productName"</span>: <span class="string">"helloworld"</span>,</span><br><span class="line">  <span class="string">"appId"</span>: <span class="string">"com.electrom.helloworld"</span>,</span><br><span class="line">  <span class="string">"directories"</span>: &#123;</span><br><span class="line">    <span class="string">"output"</span>: <span class="string">"build"</span> // 打包到 build 目录</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"files"</span>: [</span><br><span class="line">    <span class="string">"./**/*"</span></span><br><span class="line">  ],</span><br><span class="line">  // MacOS DMG</span><br><span class="line">  <span class="string">"dmg"</span>: &#123;</span><br><span class="line">    <span class="string">"contents"</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">"x"</span>: 410,</span><br><span class="line">        <span class="string">"y"</span>: 150,</span><br><span class="line">        <span class="string">"type"</span>: <span class="string">"link"</span>,</span><br><span class="line">        <span class="string">"path"</span>: <span class="string">"/Applications"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">"x"</span>: 130,</span><br><span class="line">        <span class="string">"y"</span>: 150,</span><br><span class="line">        <span class="string">"type"</span>: <span class="string">"file"</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  // MacOS </span><br><span class="line">  <span class="string">"mac"</span>: &#123;</span><br><span class="line">    <span class="string">"icon"</span>: <span class="string">"build/icons/icon.icns"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  // Windows</span><br><span class="line">  <span class="string">"win"</span>: &#123;</span><br><span class="line">    <span class="string">"icon"</span>: <span class="string">"build/icons/icon.ico"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  // Linux</span><br><span class="line">  <span class="string">"linux"</span>: &#123;</span><br><span class="line">    <span class="string">"icon"</span>: <span class="string">"build/icons"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">// ...</span><br></pre></td></tr></table></figure>
+<p>3、应用图标</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">build/icons/</span><br><span class="line">├── 256x256.png</span><br><span class="line">├── icon.icns</span><br><span class="line">└── icon.ico</span><br><span class="line"></span><br><span class="line">0 directories, 3 files</span><br></pre></td></tr></table></figure>
+<p>4、打包指令</p>
+<figure class="highlight bash"><figcaption><span>package.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// ...</span><br><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">  // ...</span><br><span class="line">  // -mwl 同时打包 MacOS，Windows，Linux</span><br><span class="line">  <span class="string">"build:dir"</span>: <span class="string">"electron-builder -mwl --dir"</span>,</span><br><span class="line">  <span class="string">"build"</span>: <span class="string">"electron-builder -mwl"</span></span><br><span class="line">&#125;,</span><br><span class="line">// ...</span><br></pre></td></tr></table></figure>
+<h4 id="5.3.-%E6%89%93%E5%8C%85">5.3. 打包</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
+<p>打包后文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">build/</span><br><span class="line">├── builder-effective-config.yaml</span><br><span class="line">├── helloworld\ Setup\ 1.0.0.exe</span><br><span class="line">├── helloworld\ Setup\ 1.0.0.exe.blockmap</span><br><span class="line">├── helloworld-1.0.0-mac.zip</span><br><span class="line">├── helloworld-1.0.0-x86_64.AppImage</span><br><span class="line">├── helloworld-1.0.0.dmg</span><br><span class="line">├── helloworld-1.0.0.dmg.blockmap</span><br><span class="line">├── helloworld_1.0.0_amd64.snap</span><br><span class="line">├── icons</span><br><span class="line">├── linux-unpacked</span><br><span class="line">├── mac</span><br><span class="line">└── win-unpacked</span><br><span class="line"></span><br><span class="line">4 directories, 8 files</span><br></pre></td></tr></table></figure>
+<h2 id="6.-%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5">6. 参考链接</h2>
+<p>· <a href="https://electronjs.org/" target="_blank" rel="noopener">Electron</a><br>
+· <a href="https://www.electron.build/" target="_blank" rel="noopener">electron-builder</a></p>
+
+        </section>
+      </article>
+
+      <div class="clearfix mb-4">
+          
+          <p>
+          <a class="float-left" href="/2018/08/15/ansible/" tabindex="-1"><i class="fas fa-chevron-left"></i> 自动化运维工具 - Ansible</a>
+          </p>
+          
+
+          
+          <p>
+          <a class="float-right" href="/2018/08/08/bash/" tabindex="-1">Bash <i class="fas fa-chevron-right"></i></a>
+          </p>
+          
+      </div>
+
+  </div>
+
+  <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+
+  <!--
+    <div class="catalog card border-0 mb-4">
+      <div class="card-body p-0">
+        <h4>CATALOG</h4>
+        <div class="catalog-inn"></div>
+      </div>
+    </div>
+  -->
+    
+    <div class="card border-0 mb-4">
+  <div class="card-body p-0">
+    <h4>TAGS</h4>
+    <dl class="tags">
+    <dd><a href="/tags">All</a></dd>
+    
+  <dd><a href="/tags/#Tips">Tips</a></dd>
+
+  <dd><a href="/tags/#Diary">Diary</a></dd>
+
+  <dd><a href="/tags/#Hexo">Hexo</a></dd>
+
+  <dd><a href="/tags/#Tree">Tree</a></dd>
+
+  <dd><a href="/tags/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/tags/#Gif">Gif</a></dd>
+
+  <dd><a href="/tags/#Kap">Kap</a></dd>
+
+  <dd><a href="/tags/#Nvm">Nvm</a></dd>
+
+  <dd><a href="/tags/#Linux">Linux</a></dd>
+
+  <dd><a href="/tags/#Shortcuts">Shortcuts</a></dd>
+
+  <dd><a href="/tags/#Systemd">Systemd</a></dd>
+
+  <dd><a href="/tags/#Promise">Promise</a></dd>
+
+  <dd><a href="/tags/#Google">Google</a></dd>
+
+  <dd><a href="/tags/#Pyenv">Pyenv</a></dd>
+
+  <dd><a href="/tags/#VMware">VMware</a></dd>
+
+  <dd><a href="/tags/#Memcached">Memcached</a></dd>
+
+  <dd><a href="/tags/#SELinux">SELinux</a></dd>
+
+  <dd><a href="/tags/#Electron">Electron</a></dd>
+
+  <dd><a href="/tags/#Yii">Yii</a></dd>
+
+  <dd><a href="/tags/#Shadowsocks">Shadowsocks</a></dd>
+
+  <dd><a href="/tags/#Git">Git</a></dd>
+
+  <dd><a href="/tags/#Travis CI">Travis CI</a></dd>
+
+  <dd><a href="/tags/#Grunt">Grunt</a></dd>
+
+  <dd><a href="/tags/#Rsync">Rsync</a></dd>
+
+  <dd><a href="/tags/#Markdown">Markdown</a></dd>
+
+  <dd><a href="/tags/#Emoji">Emoji</a></dd>
+
+  <dd><a href="/tags/#Jupyter">Jupyter</a></dd>
+
+  <dd><a href="/tags/#MariaDB">MariaDB</a></dd>
+
+  <dd><a href="/tags/#Ansible">Ansible</a></dd>
+
+  <dd><a href="/tags/#Bash">Bash</a></dd>
+
+    </dl>
+  </div>
+</div>
+    <div class="card border-0 mb-4">
+  <div class="card-body p-0">
+    <h4>CATEGORIES</h4>
+    <dl class="tags">
+    <dd><a href="/categories">All</a></dd>
+    
+  <dd><a href="/categories/#Tips">Tips</a></dd>
+
+  <dd><a href="/categories/#Diary">Diary</a></dd>
+
+  <dd><a href="/categories/#Node.js">Node.js</a></dd>
+
+  <dd><a href="/categories/#Linux">Linux</a></dd>
+
+  <dd><a href="/categories/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/categories/#MacOS">MacOS</a></dd>
+
+  <dd><a href="/categories/#Node.Js">Node.Js</a></dd>
+
+  <dd><a href="/categories/#Javascript">Javascript</a></dd>
+
+  <dd><a href="/categories/#Google">Google</a></dd>
+
+  <dd><a href="/categories/#Python">Python</a></dd>
+
+  <dd><a href="/categories/#VMware">VMware</a></dd>
+
+  <dd><a href="/categories/#CentOS">CentOS</a></dd>
+
+  <dd><a href="/categories/#Php">Php</a></dd>
+
+  <dd><a href="/categories/#Git">Git</a></dd>
+
+  <dd><a href="/categories/#Hexo">Hexo</a></dd>
+
+  <dd><a href="/categories/#MacOS">MacOS</a></dd>
+
+  <dd><a href="/categories/#Memcached">Memcached</a></dd>
+
+  <dd><a href="/categories/#Yii">Yii</a></dd>
+
+  <dd><a href="/categories/#Travis CI">Travis CI</a></dd>
+
+  <dd><a href="/categories/#MariaDB">MariaDB</a></dd>
+
+  <dd><a href="/categories/#Ansible">Ansible</a></dd>
+
+    </dl>
+  </div>
+</div>
+    <div class="card border-0 mb-4">
+  <div class="card-body p-0">
+    <h4>ARCHIVES</h4>
+    <dl class="tags">
+    <dd><a href="/archives">All</a></dd>
+    
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+  <dd><a href="/archives/#2015">2015</a></dd>
+
+  <dd><a href="/archives/#2016">2016</a></dd>
+
+  <dd><a href="/archives/#2018">2018</a></dd>
+
+  <dd><a href="/archives/#2019">2019</a></dd>
+
+    </dl>
+  </div>
+</div>
+    
+  </div>
+</div>
+</div>
+
+    <footer class="footer">
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+
+          <div class="text-center">
+            <p>
+  <a href="https://github.com/garryshield" target="_blank" class="fa-stack fa-1x">
+    <i class="fas fa-circle fa-stack-2x"></i>
+    <i class="fab fa-github-alt fa-stack-1x fa-inverse"></i>
+  </a>
+  <a href="https://twitter.com/garry_shield" target="_blank" class="fa-stack fa-1x">
+    <i class="fas fa-circle fa-stack-2x"></i>
+    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+  </a>
+  <a href="https://www.zhihu.com/people/garryshield" target="_blank" class="fa-stack fa-1x">
+    <i class="fas fa-circle fa-stack-2x"></i>
+    <i class="fa fa-stack-1x fa-inverse">知</i>
+  </a>
+</p>
+            <p class="mb-4"></p>
+            <p>Copyright © Garry Shield 2018 </p>
+<p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> and <a href="https://github.com/twbs/bootstrap" target="_blank">Bootstrap</a></p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+      
+    </footer>
+
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Search" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+    
+    <script src="/assets/js/libs.min.js"></script>
+    <script src="/assets/js/main.min.js"></script>
+  </body>
+</html>

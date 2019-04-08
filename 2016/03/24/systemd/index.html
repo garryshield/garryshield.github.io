@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    
+    <title>Linux 系统服务管理器 - Systemd | Garry Shield</title>
+
+    <meta name="description" content="Systemd 是 linux 系统中最新的初始化系统，大多数主流发行版要么已经采用 Systemd，要么即将在下个发布中采用。Systemd 并不是一个命令，而是一组命令，涉及到系统管理的方方面面。 Systemd 取代了 initd，成为系统的第一个进程（PID 等于 1），其他进程都是它的子进程。 查看 CentOS7 下的 /etc/init.d/ 会发现有一个 README 文件。 12">
+<meta name="keywords" content="Systemd">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 系统服务管理器 - Systemd">
+<meta property="og:url" content="http://garryshield.github.com/2016/03/24/systemd/index.html">
+<meta property="og:site_name" content="Garry Shield">
+<meta property="og:description" content="Systemd 是 linux 系统中最新的初始化系统，大多数主流发行版要么已经采用 Systemd，要么即将在下个发布中采用。Systemd 并不是一个命令，而是一组命令，涉及到系统管理的方方面面。 Systemd 取代了 initd，成为系统的第一个进程（PID 等于 1），其他进程都是它的子进程。 查看 CentOS7 下的 /etc/init.d/ 会发现有一个 README 文件。 12">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2016-02-20T07:23:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux 系统服务管理器 - Systemd">
+<meta name="twitter:description" content="Systemd 是 linux 系统中最新的初始化系统，大多数主流发行版要么已经采用 Systemd，要么即将在下个发布中采用。Systemd 并不是一个命令，而是一组命令，涉及到系统管理的方方面面。 Systemd 取代了 initd，成为系统的第一个进程（PID 等于 1），其他进程都是它的子进程。 查看 CentOS7 下的 /etc/init.d/ 会发现有一个 README 文件。 12">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico" />
+
+    <link rel="stylesheet" href="/assets/css/libs.min.css">
+    <link rel="stylesheet" href="/assets/libs/fontawesome/css/all.css">
+
+    <link rel="stylesheet" href="/assets/css/main.min.css">
+  </head>
+  <body>
+  
+<header class="header mb-5">
+<div class="container">
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-transparent pl-0 pr-0">
+
+    <a class="navbar-brand" href="/">Garry Shield</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/archives">Archives</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/categories">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/tags/">Tags</a>
+        </li>              
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>              
+        <li class="nav-item">
+        </li>
+      </ul>
+
+      <form class="form-inline ml-lg-2 my-2 my-lg-0">
+        <a class="btn btn-sm btn-light search" href="javascript:;">
+          <i class="fas fa-search"></i>
+        </a>
+      </form>
+    </div>
+
+</nav>
+
+
+      <div class="info info-post">
+          <h1>Linux 系统服务管理器 - Systemd</h1>
+
+          <p class="lead">Linux system service manager - Systemd</p>
+
+          
+          <div class="post-tags">
+          <dl class="tags">
+              <dt>Tags:</dt>
+              
+                <dd><a href="/tags/#Systemd">Systemd</a></dd>
+              
+          </dl>
+          </div>
+          
+
+          
+          <div class="post-categories">
+          <dl class="tags">
+              <dt>Categories:</dt>
+              
+                <dd><a href="/categories/#Linux">Linux</a></dd>
+              
+          </dl>
+          </div>
+          
+
+          <div class="post-date">
+            By Garryshield, Created at 2016-03-24, Updated at 2016-02-20
+          </div>
+      </div>
+
+  </div>
+</div>
+</div>
+</header>
+
+<div class="container">
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+
+      <article class="article mb-5">
+        <section>
+        <p>Systemd 是 linux 系统中最新的初始化系统，大多数主流发行版要么已经采用 Systemd，要么即将在下个发布中采用。Systemd 并不是一个命令，而是一组命令，涉及到系统管理的方方面面。</p>
+<p>Systemd 取代了 initd，成为系统的第一个进程（PID 等于 1），其他进程都是它的子进程。</p>
+<p>查看 CentOS7 下的 <code>/etc/init.d/</code> 会发现有一个 README 文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cat  /etc/init.d/README</span><br><span class="line"></span><br><span class="line">// ...</span><br><span class="line">// You are running a systemd-based OS <span class="built_in">where</span> traditional init scripts have</span><br><span class="line">// been replaced by native Systemd services files.</span><br><span class="line">// ...</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="1.-%E5%8D%95%E5%85%83-unit">1. 单元 Unit</h2>
+<p>Unit 是 Systemd 进行任务管理的基本单位，代表所有系统能够处理的资源，这些资源通过配置文件的方式提供给 Systemd 管理。目前 Unit 有如下类型：<br>
+<code>.service</code> 系统服务<br>
+<code>.socket</code> Sockets<br>
+<code>.device</code> 系统设备<br>
+<code>.mount</code> 挂载点<br>
+<code>.automount</code> 自动挂载点<br>
+<code>.swap</code> 交换分区<br>
+<code>.target</code> 启动目标<br>
+<code>.path</code> 文件路径<br>
+<code>.timer</code> 定时器<br>
+<code>.snapshot</code> Systemd 快照，可以切回某个快照<br>
+<code>.slice</code> 进程组<br>
+<code>.scope</code> 从 Systemd 外部创建的进程</p>
+<h4 id="1.1.-unit-%E5%88%97%E8%A1%A8">1.1. Unit 列表</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列出正在运行的 Unit</span></span><br><span class="line">systemctl list-units</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出所有Unit，包括没有找到配置文件的或者启动失败的</span></span><br><span class="line">systemctl list-units --all</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出所有没有运行的 Unit</span></span><br><span class="line">systemctl list-units --all --state=inactive</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出所有加载失败的 Unit</span></span><br><span class="line">systemctl list-units --failed</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出所有正在运行的、类型为 service 的 Unit</span></span><br><span class="line">systemctl list-units --<span class="built_in">type</span>=service</span><br></pre></td></tr></table></figure>
+<h4 id="1.2.-unit-%E7%9A%84%E7%8A%B6%E6%80%81">1.2. Unit 的状态</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示系统状态</span></span><br><span class="line">systemctl status</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示单个 Unit 的状态</span></span><br><span class="line">sysystemctl status rsync.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示 Unit 是否正在运行</span></span><br><span class="line">systemctl is-active rsync.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示 Unit 是否处于启动失败状态</span></span><br><span class="line">systemctl is-failed rsync.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示 Unit 服务是否建立了启动链接</span></span><br><span class="line">systemctl is-enabled rsync.service</span><br></pre></td></tr></table></figure>
+<h4 id="1.3.-%E7%AE%A1%E7%90%86-unit">1.3. 管理 Unit</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 激活 Util</span></span><br><span class="line">systemctl <span class="built_in">enable</span> rsync.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># 禁止 Util</span></span><br><span class="line">systemctl <span class="built_in">disable</span> rsync.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示单元的手册页（必须由单元文件提供）：</span></span><br><span class="line">systemctl <span class="built_in">help</span> rsync.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># 立即启动 Unit</span></span><br><span class="line">systemctl start rsync.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># 立即停止 Unit</span></span><br><span class="line">systemctl stop rsync.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启 Unit</span></span><br><span class="line">systemctl restart rsync.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># 杀死 Unit 的所有子进程</span></span><br><span class="line">systemctl <span class="built_in">kill</span> rsync.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重新加载 Unit 的配置文件</span></span><br><span class="line">systemctl reload rsync.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重载所有修改过的配置文件</span></span><br><span class="line">systemctl daemon-reload</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示 Unit 配置文件</span></span><br><span class="line">systemctl cat rsync.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑 Unit 主配置文件，并重新加载</span></span><br><span class="line">systemctl edit --full rsync.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑 Unit 子配置文件，并重新加载</span></span><br><span class="line">systemctl edit rsync.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示 Unit 的所有底层参数</span></span><br><span class="line">systemctl show rsync.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示 Unit 的指定属性的值</span></span><br><span class="line">systemctl show -p CPUShares rsync.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置某个 Unit 的指定属性</span></span><br><span class="line">systemctl <span class="built_in">set</span>-property rsync.service CPUShares=500</span><br></pre></td></tr></table></figure>
+<h2 id="2.-unit-%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">2. Unit 的配置文件</h2>
+<p>每一个 Unit 都有一个配置文件，告诉 Systemd 怎么启动这个 Unit。<br>
+<code>systemctl show --property=UnitPath</code> 查看按优先级从低到高显示加载目录<br>
+默认最先加载 <code>/etc/systemd/system/</code> 目录下的 Util。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 激活 Util</span></span><br><span class="line">systemctl <span class="built_in">enable</span> rsync.service</span><br><span class="line"><span class="comment"># 禁止 Util</span></span><br><span class="line">systemctl <span class="built_in">disable</span> rsync.service</span><br></pre></td></tr></table></figure>
+<h4 id="2.1.-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E7%8A%B6%E6%80%81">2.1. 配置文件的状态</h4>
+<p><code>systemctl list-unit-files</code> 命令用于列出所有配置文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列出所有配置文件</span></span><br><span class="line">systemctl list-unit-files</span><br><span class="line"><span class="comment"># 列出指定类型的配置文件</span></span><br><span class="line">systemctl list-unit-files --<span class="built_in">type</span>=service</span><br></pre></td></tr></table></figure>
+<p>这个列表显示每个配置文件的状态，一共有四种:</p>
+<ol>
+<li><code>enabled</code> 已建立启动链接</li>
+<li><code>disabled</code> 没建立启动链接</li>
+<li><code>static</code> 该配置文件没有 [Install] 部分（无法执行），只能作为其他配置文件的依赖</li>
+<li><code>masked</code> 该配置文件被禁止建立启动链接</li>
+</ol>
+<h4 id="2.2.-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E6%A0%BC%E5%BC%8F">2.2. 配置文件的格式</h4>
+<p><code>systemctl cat</code> 命令可以查看配置文件的内容。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">systemctl cat rsync.service</span><br><span class="line"></span><br><span class="line">[Unit]</span><br><span class="line">Description=fast remote file copy program daemon</span><br><span class="line">ConditionPathExists=/etc/rsyncd.conf</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">ExecStart=/usr/<span class="built_in">local</span>/rsync-3.1.3/bin/rsync --daemon --no-detach</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<p>可以看到，配置文件分成几个区块。每个区块的第一行，是用方括号表示的区别名，比如[Unit]。注意，配置文件的区块名和字段名，都是大小写敏感的。<br>
+每个区块内部是一些等号连接的键值对，键值对的等号两侧不能有空格。<br>
+以 # 开头的注释可能也能用在 unit-files 中，但是只能在新行中使用。不要在 Systemd 的参数后面使用行末注释，否则 unit 将会启动失败。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[Section]</span><br><span class="line">Directive1=value</span><br><span class="line">Directive2=value</span><br><span class="line">. . .</span><br></pre></td></tr></table></figure>
+<h4 id="2.3.-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E5%8C%BA%E5%9D%97">2.3. 配置文件的区块</h4>
+<p><code>[Unit]</code> 区块通常是配置文件的第一个区块，用来定义 Unit 的元数据，以及配置与其他 Unit 的关系。它的主要字段如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Description：简短描述</span><br><span class="line">Documentation：文档地址</span><br><span class="line">Requires：当前 Unit 依赖的其他 Unit，如果它们没有运行，当前 Unit 会启动失败</span><br><span class="line">Wants：与当前 Unit 配合的其他 Unit，如果它们没有运行，当前 Unit 不会启动失败</span><br><span class="line">BindsTo：与Requires类似，它指定的 Unit 如果退出，会导致当前 Unit 停止运行</span><br><span class="line">Before：如果该字段指定的 Unit 也要启动，那么必须在当前 Unit 之后启动</span><br><span class="line">After：如果该字段指定的 Unit 也要启动，那么必须在当前 Unit 之前启动</span><br><span class="line">Conflicts：这里指定的 Unit 不能与当前 Unit 同时运行</span><br><span class="line">Condition...：当前 Unit 运行必须满足的条件，否则不会运行</span><br><span class="line">Assert...：当前 Unit 运行必须满足的条件，否则会报启动失败</span><br></pre></td></tr></table></figure>
+<p><code>[Install]</code> 通常是配置文件的最后一个区块，用来定义如何启动，以及是否开机启动。它的主要字段如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">WantedBy：它的值是一个或多个 Target，当前 Unit 激活时（enable）符号链接会放入/etc/systemd/system目录下面以 Target 名 + .wants后缀构成的子目录中</span><br><span class="line">RequiredBy：它的值是一个或多个 Target，当前 Unit 激活时，符号链接会放入/etc/systemd/system目录下面以 Target 名 + .required后缀构成的子目录中</span><br><span class="line">Alias：当前 Unit 可用于启动的别名</span><br><span class="line">Also：当前 Unit 激活（enable）时，会被同时激活的其他 Unit</span><br></pre></td></tr></table></figure>
+<p><code>[Service]</code> 区块用来 Service 的配置，只有 Service 类型的 Unit 才有这个区块。它的主要字段如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Type：定义启动时的进程行为。它有以下几种值。</span><br><span class="line">  Type=simple：默认值，执行ExecStart指定的命令，启动主进程</span><br><span class="line">  Type=forking：以 fork 方式从父进程创建子进程，创建后父进程会立即退出</span><br><span class="line">  Type=oneshot：一次性进程，Systemd 会等当前服务退出，再继续往下执行</span><br><span class="line">  Type=dbus：当前服务通过D-Bus启动</span><br><span class="line">  Type=notify：当前服务启动完毕，会通知Systemd，再继续往下执行</span><br><span class="line">  Type=idle：若有其他任务执行完毕，当前服务才会运行</span><br><span class="line">ExecStart：启动当前服务的命令</span><br><span class="line">ExecStartPre：启动当前服务之前执行的命令</span><br><span class="line">ExecStartPost：启动当前服务之后执行的命令</span><br><span class="line">ExecReload：重启当前服务时执行的命令</span><br><span class="line">ExecStop：停止当前服务时执行的命令</span><br><span class="line">ExecStopPost：停止当其服务之后执行的命令</span><br><span class="line">RestartSec：自动重启当前服务间隔的秒数</span><br><span class="line">Restart：定义何种情况 Systemd 会自动重启当前服务，可能的值包括always（总是重启）、on-success、on-failure、on-abnormal、on-abort、on-watchdog</span><br><span class="line">TimeoutSec：定义 Systemd 停止当前服务之前等待的秒数</span><br><span class="line">Environment：指定环境变量</span><br></pre></td></tr></table></figure>
+<p>Unit 配置文件的完整字段清单，请参考<a href="https://www.freedesktop.org/software/systemd/man/systemd.unit.html" target="_blank" rel="noopener">官方文档</a>。</p>
+<h4 id="2.4.-%E7%9B%B4%E6%8E%A5%E4%BF%AE%E6%94%B9%E4%BA%86%E6%BA%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">2.4. 直接修改了源配置文件</h4>
+<p>修改后需要 Systemd 重新加载配置文件，然后重新启动，否则修改不会生效。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart rsync.service</span><br></pre></td></tr></table></figure>
+<h4 id="2.5.-%E7%9B%B4%E6%8E%A5%E7%BC%96%E8%BE%91%E5%B9%B6%E5%8A%A0%E8%BD%BD">2.5. 直接编辑并加载</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl edit --full rsync.service</span><br></pre></td></tr></table></figure>
+<h4 id="2.6.-%E6%B7%BB%E5%8A%A0%E5%AD%90%E9%85%8D%E7%BD%AE%E5%B9%B6%E5%8A%A0%E8%BD%BD">2.6. 添加子配置并加载</h4>
+<p>如下命令会创建 <code>/etc/systemd/system/rsync.service.d/override.conf</code> 文件用来覆盖 <code>/etc/systemd/system/rsync.service</code> 中的配置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl edit rsync.service</span><br></pre></td></tr></table></figure>
+<h2 id="3.-target">3. Target</h2>
+<p>Target 就是一个 Unit 组，包含许多相关的 Unit 。启动某个 Target 的时候，Systemd 就会启动里面所有的 Unit。从这个意义上说，Target 这个概念类似于&quot;状态点&quot;，启动某个 Target 就好比启动到某种状态。<br>
+传统的 init 启动模式里面，有 RunLevel 的概念，跟 Target 的作用很类似。不同的是，RunLevel 是互斥的，不可能多个 RunLevel 同时启动，但是多个 Target 可以同时启动。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看当前系统的所有 Target</span></span><br><span class="line">systemctl list-unit-files --<span class="built_in">type</span>=target</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看一个 Target 包含的所有 Unit</span></span><br><span class="line">systemctl list-dependencies multi-user.target</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看启动时的默认 Target</span></span><br><span class="line">systemctl get-default</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置启动时的默认 Target</span></span><br><span class="line">systemctl <span class="built_in">set</span>-default multi-user.target</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换 Target 时，默认不关闭前一个 Target 启动的进程，</span></span><br><span class="line"><span class="comment"># systemctl isolate 命令改变这种行为，</span></span><br><span class="line"><span class="comment"># 关闭前一个 Target 里面所有不属于后一个 Target 的进程</span></span><br><span class="line">systemctl isolate multi-user.target</span><br></pre></td></tr></table></figure>
+<p>Target 与 传统 RunLevel 的对应关系如下。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Traditional runlevel      New target name     Symbolically linked to...</span><br><span class="line">Runlevel 0           |    runlevel0.target -&gt; poweroff.target</span><br><span class="line">Runlevel 1           |    runlevel1.target -&gt; rescue.target</span><br><span class="line">Runlevel 2           |    runlevel2.target -&gt; multi-user.target</span><br><span class="line">Runlevel 3           |    runlevel3.target -&gt; multi-user.target</span><br><span class="line">Runlevel 4           |    runlevel4.target -&gt; multi-user.target</span><br><span class="line">Runlevel 5           |    runlevel5.target -&gt; graphical.target</span><br><span class="line">Runlevel 6           |    runlevel6.target -&gt; reboot.target</span><br></pre></td></tr></table></figure>
+<h2 id="4.-%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86">4. 日志管理</h2>
+<p>Systemd 统一管理所有 Unit 的启动日志。带来的好处就是，可以只用 <code>journalctl</code> 一个命令，查看所有日志（内核日志和应用日志）。日志的配置文件是 <code>/etc/systemd/journald.conf</code>。<br>
+<code>journalctl</code> 用法如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看所有日志（默认情况下 ，只保存本次启动的日志）</span></span><br><span class="line">journalctl</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看内核日志（不显示应用日志）</span></span><br><span class="line">journalctl -k</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看系统本次启动的日志</span></span><br><span class="line">journalctl -b</span><br><span class="line">journalctl -b -0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看上一次启动的日志（需更改设置）</span></span><br><span class="line">journalctl -b -1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看指定时间的日志</span></span><br><span class="line">journalctl --since=<span class="string">"2012-10-30 18:17:16"</span></span><br><span class="line">journalctl --since <span class="string">"20 min ago"</span></span><br><span class="line">journalctl --since yesterday</span><br><span class="line">journalctl --since <span class="string">"2015-01-10"</span> --until <span class="string">"2015-01-11 03:00"</span></span><br><span class="line">journalctl --since 09:00 --until <span class="string">"1 hour ago"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示尾部的最新10行日志</span></span><br><span class="line">journalctl -n</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示尾部指定行数的日志</span></span><br><span class="line">journalctl -n 20</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实时滚动显示最新日志</span></span><br><span class="line">journalctl -f</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看指定服务的日志</span></span><br><span class="line">journalctl /usr/lib/systemd/systemd</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看指定进程的日志</span></span><br><span class="line">journalctl _PID=1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看某个路径的脚本的日志</span></span><br><span class="line">journalctl /usr/bin/bash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看指定用户的日志</span></span><br><span class="line">journalctl _UID=33 --since today</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看某个 Unit 的日志</span></span><br><span class="line">journalctl -u rsync.service</span><br><span class="line">journalctl -u rsync.service --since today</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实时滚动显示 Unit 的最新日志</span></span><br><span class="line">journalctl -u rsync.service -f</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合并显示多个 Unit 的日志</span></span><br><span class="line">journalctl -u rsync.service -u php-fpm.service --since today</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看指定优先级（及其以上级别）的日志，共有8级</span></span><br><span class="line"><span class="comment"># 0: emerg</span></span><br><span class="line"><span class="comment"># 1: alert</span></span><br><span class="line"><span class="comment"># 2: crit</span></span><br><span class="line"><span class="comment"># 3: err</span></span><br><span class="line"><span class="comment"># 4: warning</span></span><br><span class="line"><span class="comment"># 5: notice</span></span><br><span class="line"><span class="comment"># 6: info</span></span><br><span class="line"><span class="comment"># 7: debug</span></span><br><span class="line">journalctl -p err -b</span><br><span class="line"></span><br><span class="line"><span class="comment"># 日志默认分页输出，--no-pager 改为正常的标准输出</span></span><br><span class="line">journalctl --no-pager</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以 JSON 格式（单行）输出</span></span><br><span class="line">journalctl -b -u rsync.service -o json</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以 JSON 格式（多行）输出，可读性更好</span></span><br><span class="line">journalctl -b -u rsync.serviceqq</span><br><span class="line"> -o json-pretty</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示日志占据的硬盘空间</span></span><br><span class="line">journalctl --disk-usage</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定日志文件占据的最大空间</span></span><br><span class="line">journalctl --vacuum-size=1G</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定日志文件保存多久</span></span><br><span class="line">journalctl --vacuum-time=1years</span><br></pre></td></tr></table></figure>
+<h2 id="5.-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4">5. 系统管理命令</h2>
+<h4 id="5.1.-systemctl">5.1. systemctl</h4>
+<p><code>systemctl</code> 是 Systemd 的主命令，用于管理系统。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 命令查看 Systemd 的版本</span></span><br><span class="line">systemctl --version</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启</span></span><br><span class="line">systemctl reboot</span><br><span class="line"></span><br><span class="line"><span class="comment"># 退出系统并关闭电源</span></span><br><span class="line">systemctl poweroff</span><br><span class="line"></span><br><span class="line"><span class="comment"># CPU停止工作</span></span><br><span class="line">systemctl halt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 待机</span></span><br><span class="line">systemctl <span class="built_in">suspend</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 休眠</span></span><br><span class="line">systemctl hibernate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 休眠并待机</span></span><br><span class="line">systemctl hybrid-sleep</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动进入救援模式</span></span><br><span class="line">systemctl rescue</span><br></pre></td></tr></table></figure>
+<h4 id="5.2.-systemd-analyze">5.2. systemd-analyze</h4>
+<p><code>systemd-analyze</code> 命令用于查看启动耗时。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看启动耗时</span></span><br><span class="line">systemd-analyze                                                                                       </span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看每个服务的启动耗时</span></span><br><span class="line">systemd-analyze blame</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示瀑布状的启动过程流</span></span><br><span class="line">systemd-analyze critical-chain</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示指定服务的启动流</span></span><br><span class="line">systemd-analyze critical-chain atd.service</span><br></pre></td></tr></table></figure>
+<h4 id="5.3.-hostnamectl">5.3. hostnamectl</h4>
+<p><code>hostnamectl</code> 命令用于查看本地化设置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示当前主机的信息</span></span><br><span class="line">hostnamectl</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置主机名。</span></span><br><span class="line">hostnamectl <span class="built_in">set</span>-hostname rhel7</span><br></pre></td></tr></table></figure>
+<h4 id="5.4.-localectl">5.4. localectl</h4>
+<p><code>localectl</code> 命令用于查看本地化设置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看本地化设置</span></span><br><span class="line">localectl</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置本地化参数。</span></span><br><span class="line">localectl <span class="built_in">set</span>-locale LANG=en_GB.utf8</span><br><span class="line">localectl <span class="built_in">set</span>-keymap en_GB</span><br></pre></td></tr></table></figure>
+<h4 id="5.5.-timedatectl">5.5. timedatectl</h4>
+<p><code>timedatectl</code> 命令用于查看当前时区设置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看当前时区设置</span></span><br><span class="line">timedatectl</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示所有可用的时区</span></span><br><span class="line">timedatectl list-timezones            </span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置当前时区</span></span><br><span class="line">timedatectl <span class="built_in">set</span>-timezone America/New_York</span><br><span class="line">timedatectl <span class="built_in">set</span>-time YYYY-MM-DD</span><br><span class="line">timedatectl <span class="built_in">set</span>-time HH:MM:SS</span><br></pre></td></tr></table></figure>
+<h4 id="5.6.-loginctl">5.6. loginctl</h4>
+<p><code>loginctl</code> 命令用于查看当前登录的用户。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列出当前session</span></span><br><span class="line">loginctl list-sessions</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出当前登录用户</span></span><br><span class="line">loginctl list-users</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出显示指定用户的信息</span></span><br><span class="line">loginctl show-user root</span><br></pre></td></tr></table></figure>
+<h2 id="6.-%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5">6. 参考链接</h2>
+<p>· <a href="https://github.com/systemd/systemd" target="_blank" rel="noopener">Systemd GitHub</a><br>
+· <a href="https://www.freedesktop.org/wiki/Software/systemd/" target="_blank" rel="noopener">Systemd Office Site</a><br>
+· <a href="https://www.freedesktop.org/software/systemd/man/systemd.unit.html" target="_blank" rel="noopener">Systemd Unit Man</a><br>
+· <a href="https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units" target="_blank" rel="noopener">How To Use Systemd</a><br>
+· <a href="https://wiki.archlinux.org/index.php/Systemd" target="_blank" rel="noopener">Archlinux Systemd</a></p>
+
+        </section>
+      </article>
+
+      <div class="clearfix mb-4">
+          
+          <p>
+          <a class="float-left" href="/2016/04/24/mac-keyboard/" tabindex="-1"><i class="fas fa-chevron-left"></i> Mac 修饰键和热键</a>
+          </p>
+          
+
+          
+          <p>
+          <a class="float-right" href="/2016/02/20/linux-version/" tabindex="-1">查看 Linux 内核版本和发行版信息 <i class="fas fa-chevron-right"></i></a>
+          </p>
+          
+      </div>
+
+  </div>
+
+  <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+
+  <!--
+    <div class="catalog card border-0 mb-4">
+      <div class="card-body p-0">
+        <h4>CATALOG</h4>
+        <div class="catalog-inn"></div>
+      </div>
+    </div>
+  -->
+    
+    <div class="card border-0 mb-4">
+  <div class="card-body p-0">
+    <h4>TAGS</h4>
+    <dl class="tags">
+    <dd><a href="/tags">All</a></dd>
+    
+  <dd><a href="/tags/#Tips">Tips</a></dd>
+
+  <dd><a href="/tags/#Diary">Diary</a></dd>
+
+  <dd><a href="/tags/#Hexo">Hexo</a></dd>
+
+  <dd><a href="/tags/#Tree">Tree</a></dd>
+
+  <dd><a href="/tags/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/tags/#Gif">Gif</a></dd>
+
+  <dd><a href="/tags/#Kap">Kap</a></dd>
+
+  <dd><a href="/tags/#Nvm">Nvm</a></dd>
+
+  <dd><a href="/tags/#Linux">Linux</a></dd>
+
+  <dd><a href="/tags/#Shortcuts">Shortcuts</a></dd>
+
+  <dd><a href="/tags/#Systemd">Systemd</a></dd>
+
+  <dd><a href="/tags/#Promise">Promise</a></dd>
+
+  <dd><a href="/tags/#Google">Google</a></dd>
+
+  <dd><a href="/tags/#Pyenv">Pyenv</a></dd>
+
+  <dd><a href="/tags/#VMware">VMware</a></dd>
+
+  <dd><a href="/tags/#Memcached">Memcached</a></dd>
+
+  <dd><a href="/tags/#SELinux">SELinux</a></dd>
+
+  <dd><a href="/tags/#Electron">Electron</a></dd>
+
+  <dd><a href="/tags/#Yii">Yii</a></dd>
+
+  <dd><a href="/tags/#Shadowsocks">Shadowsocks</a></dd>
+
+  <dd><a href="/tags/#Git">Git</a></dd>
+
+  <dd><a href="/tags/#Travis CI">Travis CI</a></dd>
+
+  <dd><a href="/tags/#Grunt">Grunt</a></dd>
+
+  <dd><a href="/tags/#Rsync">Rsync</a></dd>
+
+  <dd><a href="/tags/#Markdown">Markdown</a></dd>
+
+  <dd><a href="/tags/#Emoji">Emoji</a></dd>
+
+  <dd><a href="/tags/#Jupyter">Jupyter</a></dd>
+
+  <dd><a href="/tags/#MariaDB">MariaDB</a></dd>
+
+  <dd><a href="/tags/#Ansible">Ansible</a></dd>
+
+  <dd><a href="/tags/#Bash">Bash</a></dd>
+
+    </dl>
+  </div>
+</div>
+    <div class="card border-0 mb-4">
+  <div class="card-body p-0">
+    <h4>CATEGORIES</h4>
+    <dl class="tags">
+    <dd><a href="/categories">All</a></dd>
+    
+  <dd><a href="/categories/#Tips">Tips</a></dd>
+
+  <dd><a href="/categories/#Diary">Diary</a></dd>
+
+  <dd><a href="/categories/#Node.js">Node.js</a></dd>
+
+  <dd><a href="/categories/#Linux">Linux</a></dd>
+
+  <dd><a href="/categories/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/categories/#MacOS">MacOS</a></dd>
+
+  <dd><a href="/categories/#Node.Js">Node.Js</a></dd>
+
+  <dd><a href="/categories/#Javascript">Javascript</a></dd>
+
+  <dd><a href="/categories/#Google">Google</a></dd>
+
+  <dd><a href="/categories/#Python">Python</a></dd>
+
+  <dd><a href="/categories/#VMware">VMware</a></dd>
+
+  <dd><a href="/categories/#CentOS">CentOS</a></dd>
+
+  <dd><a href="/categories/#Php">Php</a></dd>
+
+  <dd><a href="/categories/#Git">Git</a></dd>
+
+  <dd><a href="/categories/#Hexo">Hexo</a></dd>
+
+  <dd><a href="/categories/#MacOS">MacOS</a></dd>
+
+  <dd><a href="/categories/#Memcached">Memcached</a></dd>
+
+  <dd><a href="/categories/#Yii">Yii</a></dd>
+
+  <dd><a href="/categories/#Travis CI">Travis CI</a></dd>
+
+  <dd><a href="/categories/#MariaDB">MariaDB</a></dd>
+
+  <dd><a href="/categories/#Ansible">Ansible</a></dd>
+
+    </dl>
+  </div>
+</div>
+    <div class="card border-0 mb-4">
+  <div class="card-body p-0">
+    <h4>ARCHIVES</h4>
+    <dl class="tags">
+    <dd><a href="/archives">All</a></dd>
+    
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+  <dd><a href="/archives/#2015">2015</a></dd>
+
+  <dd><a href="/archives/#2016">2016</a></dd>
+
+  <dd><a href="/archives/#2018">2018</a></dd>
+
+  <dd><a href="/archives/#2019">2019</a></dd>
+
+    </dl>
+  </div>
+</div>
+    
+  </div>
+</div>
+</div>
+
+    <footer class="footer">
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+
+          <div class="text-center">
+            <p>
+  <a href="https://github.com/garryshield" target="_blank" class="fa-stack fa-1x">
+    <i class="fas fa-circle fa-stack-2x"></i>
+    <i class="fab fa-github-alt fa-stack-1x fa-inverse"></i>
+  </a>
+  <a href="https://twitter.com/garry_shield" target="_blank" class="fa-stack fa-1x">
+    <i class="fas fa-circle fa-stack-2x"></i>
+    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+  </a>
+  <a href="https://www.zhihu.com/people/garryshield" target="_blank" class="fa-stack fa-1x">
+    <i class="fas fa-circle fa-stack-2x"></i>
+    <i class="fa fa-stack-1x fa-inverse">知</i>
+  </a>
+</p>
+            <p class="mb-4"></p>
+            <p>Copyright © Garry Shield 2018 </p>
+<p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> and <a href="https://github.com/twbs/bootstrap" target="_blank">Bootstrap</a></p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+      
+    </footer>
+
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Search" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+    
+    <script src="/assets/js/libs.min.js"></script>
+    <script src="/assets/js/main.min.js"></script>
+  </body>
+</html>

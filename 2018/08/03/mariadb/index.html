@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    
+    <title>CentOS7 下编译安装 MariaDB 10.3 系列 | Garry Shield</title>
+
+    <meta name="description" content="Oracle 买下了 Sun， 考虑到 Oracle 的名声以及其入手之后闭源的可能性，MySQL 之父的 Michael 便先行一步，以他女儿 Maria 的名字开始了 MySQL 的另外一个衍生版本即 MariaDB。主流的 Linux 发行商基本上都开始转而支持使用 MariaDB 以规避 MySQL 不确定性的风险。 1. 结构规划 用户名 mariadb用户组 mariadb端口 230">
+<meta name="keywords" content="MariaDB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS7 下编译安装 MariaDB 10.3 系列">
+<meta property="og:url" content="http://garryshield.github.com/2018/08/03/mariadb/index.html">
+<meta property="og:site_name" content="Garry Shield">
+<meta property="og:description" content="Oracle 买下了 Sun， 考虑到 Oracle 的名声以及其入手之后闭源的可能性，MySQL 之父的 Michael 便先行一步，以他女儿 Maria 的名字开始了 MySQL 的另外一个衍生版本即 MariaDB。主流的 Linux 发行商基本上都开始转而支持使用 MariaDB 以规避 MySQL 不确定性的风险。 1. 结构规划 用户名 mariadb用户组 mariadb端口 230">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-03T12:38:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CentOS7 下编译安装 MariaDB 10.3 系列">
+<meta name="twitter:description" content="Oracle 买下了 Sun， 考虑到 Oracle 的名声以及其入手之后闭源的可能性，MySQL 之父的 Michael 便先行一步，以他女儿 Maria 的名字开始了 MySQL 的另外一个衍生版本即 MariaDB。主流的 Linux 发行商基本上都开始转而支持使用 MariaDB 以规避 MySQL 不确定性的风险。 1. 结构规划 用户名 mariadb用户组 mariadb端口 230">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico" />
+
+    <link rel="stylesheet" href="/assets/css/libs.min.css">
+    <link rel="stylesheet" href="/assets/libs/fontawesome/css/all.css">
+
+    <link rel="stylesheet" href="/assets/css/main.min.css">
+  </head>
+  <body>
+  
+<header class="header mb-5">
+<div class="container">
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-transparent pl-0 pr-0">
+
+    <a class="navbar-brand" href="/">Garry Shield</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/archives">Archives</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/categories">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/tags/">Tags</a>
+        </li>              
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>              
+        <li class="nav-item">
+        </li>
+      </ul>
+
+      <form class="form-inline ml-lg-2 my-2 my-lg-0">
+        <a class="btn btn-sm btn-light search" href="javascript:;">
+          <i class="fas fa-search"></i>
+        </a>
+      </form>
+    </div>
+
+</nav>
+
+
+      <div class="info info-post">
+          <h1>CentOS7 下编译安装 MariaDB 10.3 系列</h1>
+
+          <p class="lead">Compile MariaDB 10.3 Series Under CentOS7</p>
+
+          
+          <div class="post-tags">
+          <dl class="tags">
+              <dt>Tags:</dt>
+              
+                <dd><a href="/tags/#MariaDB">MariaDB</a></dd>
+              
+          </dl>
+          </div>
+          
+
+          
+          <div class="post-categories">
+          <dl class="tags">
+              <dt>Categories:</dt>
+              
+                <dd><a href="/categories/#CentOS">CentOS</a></dd>
+              
+                <dd><a href="/categories/#MariaDB">MariaDB</a></dd>
+              
+          </dl>
+          </div>
+          
+
+          <div class="post-date">
+            By Garryshield, Created at 2018-08-03, Updated at 2018-08-03
+          </div>
+      </div>
+
+  </div>
+</div>
+</div>
+</header>
+
+<div class="container">
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+
+      <article class="article mb-5">
+        <section>
+        <p>Oracle 买下了 Sun， 考虑到 Oracle 的名声以及其入手之后闭源的可能性，MySQL 之父的 Michael 便先行一步，以他女儿 Maria 的名字开始了 MySQL 的另外一个衍生版本即 MariaDB。主流的 Linux 发行商基本上都开始转而支持使用 MariaDB 以规避 MySQL 不确定性的风险。</p>
+<h2 id="1.-%E7%BB%93%E6%9E%84%E8%A7%84%E5%88%92">1. 结构规划</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">用户名 mariadb</span><br><span class="line">用户组 mariadb</span><br><span class="line">端口 2306</span><br><span class="line"></span><br><span class="line"><span class="comment"># 源码包</span></span><br><span class="line">/root/tmp/mariadb-10.3.8.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解压后源码</span></span><br><span class="line">/root/tmp/mariadb-10.3.8 </span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译目录</span></span><br><span class="line">/root/tmp/build</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译安装错误</span></span><br><span class="line">/root/tmp/configure.err</span><br><span class="line">/root/tmp/make.err</span><br><span class="line">/root/tmp/install.err</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装目录</span></span><br><span class="line">/usr/<span class="built_in">local</span>/mariadb-10.3.8 </span><br><span class="line"></span><br><span class="line"><span class="comment"># 工作目录</span></span><br><span class="line">/var/sites/mariadb-10.3.8</span><br><span class="line">  <span class="comment"># 数据库、日志目录</span></span><br><span class="line">  /data</span><br><span class="line">  <span class="comment"># 配置文件目录</span></span><br><span class="line">  /etc</span><br><span class="line">    /my.cnf.d</span><br><span class="line">  <span class="comment"># 其它文件目录，如：sock，pid, lock...</span></span><br><span class="line">  /var</span><br><span class="line">  <span class="comment"># Systemd Unit File</span></span><br><span class="line">  /systemd</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="2.-%E4%B8%8B%E8%BD%BD%E6%BA%90%E7%A0%81%E5%8C%85">2. 下载源码包</h2>
+<p>到 <a href="https://downloads.mariadb.org/" target="_blank" rel="noopener">官网下载</a> 最新版 MariaDB。目前最新版本是 <a href="https://downloads.mariadb.org/interstitial/mariadb-10.3.8/source/mariadb-10.3.8.tar.gz" target="_blank" rel="noopener">mariadb-10.3.8.tar.gz</a>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /root/tmp/</span><br><span class="line">wget -O ./mariadb-10.3.8.tar.gz  https://downloads.mariadb.org/interstitial/mariadb-10.3.8/<span class="built_in">source</span>/mariadb-10.3.8.tar.gz</span><br></pre></td></tr></table></figure>
+<h2 id="3.-%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96">3. 安装依赖</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> packages <span class="keyword">in</span> openssl openssl-devel cmake ncurses ncurses-devel bison bison-devel jemalloc jemalloc-devel; <span class="keyword">do</span></span><br><span class="line">  yum -y install <span class="variable">$packages</span>;</span><br><span class="line"><span class="keyword">done</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="4.-%E5%AE%89%E8%A3%85-devtoolset-7">4. 安装 devtoolset-7</h2>
+<p>MariaDB 编译 TokuDB 引擎时会用到 C++11 标准，系统里 GCC 最高版本 4.8.5 是支持 C++11 标准的，可就算指定了 <code>-DCMAKE_CXX_FLAGS=-std=c++11</code> 也不行。手动编译更高版本的 GCC 又太麻烦，这里直接安装了 <a href="https://www.softwarecollections.org/en/scls/rhscl/devtoolset-7/" target="_blank" rel="noopener">devtoolset-7</a>，当然你禁用 TokuDB 引擎也无可厚非。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> packages <span class="keyword">in</span> centos-release-scl devtoolset-7; <span class="keyword">do</span></span><br><span class="line">  yum -y install <span class="variable">$packages</span></span><br><span class="line"><span class="keyword">done</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">gcc --version</span><br><span class="line">// gcc (GCC) 4.8.5 20150623 (Red Hat 4.8.5-28)</span><br><span class="line">// Copyright © 2015 Free Software Foundation, Inc.</span><br><span class="line"></span><br><span class="line">scl <span class="built_in">enable</span> devtoolset-7 bash</span><br><span class="line">// or</span><br><span class="line">. /opt/rh/devtoolset-7/<span class="built_in">enable</span></span><br><span class="line"></span><br><span class="line">gcc --version</span><br><span class="line">// gcc (GCC) 7.3.1 20180303 (Red Hat 7.3.1-5)</span><br><span class="line">// Copyright (C) 2017 Free Software Foundation, Inc.</span><br></pre></td></tr></table></figure>
+<h2 id="5.-%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84">5. 添加用户和组</h2>
+<p>添加用户 mariadb 和组 mariadb 用来启动 MariaBD 服务，MariaDB 默认使用 mysql 用户和 mysql 组。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd mariadb;</span><br><span class="line">useradd -s /sbin/nologin -d /dev/null -M -g mariadb mariadb;</span><br></pre></td></tr></table></figure>
+<h2 id="6.-%E6%B7%BB%E5%8A%A0%E7%AB%AF%E5%8F%A3">6. 添加端口</h2>
+<p>添加运程访问端口 2306，MariaDB 默认使用 3306</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --zone=public --add-port=2306/tcp;</span><br><span class="line">firewall-cmd --reload;</span><br></pre></td></tr></table></figure>
+<h2 id="7.-%E8%A7%A3%E5%8C%85%E5%B9%B6%E7%BC%96%E8%AF%91">7. 解包并编译</h2>
+<p>建议新建一个目录用来编译而不是有源码目录里直接编译，这个过程会非常耗时。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /root/tmp/</span><br><span class="line"></span><br><span class="line">tar -zxvf mariadb-10.3.8.tar.gz  -C ./</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译目录</span></span><br><span class="line">mkdir build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译并导出错误到 ../configure.err</span></span><br><span class="line">cmake -DCMAKE_INSTALL_PREFIX=/usr/<span class="built_in">local</span>/mariadb-10.3.8 \</span><br><span class="line">  -DINSTALL_MYSQLDATADIR=/var/sites/mariadb-10.3.8/data \</span><br><span class="line">  -DINSTALL_SYSCONFDIR=/var/sites/mariadb-10.3.8/etc \</span><br><span class="line">  -DINSTALL_SYSCONF2DIR=/var/sites/mariadb-10.3.8/etc/my.cnf.d \</span><br><span class="line">  -DINSTALL_UNIX_ADDRDIR=/var/sites/mariadb-10.3.8/var/mysql.sock \</span><br><span class="line">  -DMYSQL_DATADIR=/var/sites/mariadb-10.3.8/data \</span><br><span class="line">  -DWITH_SYSTEMD=yes \</span><br><span class="line">  -DCONC_WITH_CURL=ON \</span><br><span class="line">  -DCONC_WITH_SSL=ON \</span><br><span class="line">  -DENABLED_LOCAL_INFILE=ON \</span><br><span class="line">  ../mariadb-10.3.8 2&gt; ../configure.err</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看是否出错</span></span><br><span class="line">cat ../configure.err</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看所有编译选项</span></span><br><span class="line">cmake -LAH ./</span><br><span class="line"></span><br><span class="line">make -j 4 2&gt; ../make.err</span><br><span class="line"></span><br><span class="line">make -j 4 install 2&gt; ../install.err</span><br></pre></td></tr></table></figure>
+<h2 id="8.-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-my.cnf">8. 配置文件 my.cnf</h2>
+<p>上面的编译选项 <code>-DINSTALL_SYSCONFDIR</code>，<code>-DINSTALL_SYSCONF2DIR</code> 指定了默认的配置文件位置为 <code>/var/sites/mariadb-10.3.8/etc</code> 和 <code>/var/sites/mariadb-10.3.8/etc/my.cnf.d</code>，安装后 <code>/var/sites/mariadb-10.3.8/etc</code> 的结构如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/var/sites/mariadb-10.3.8/etc/</span><br><span class="line">├── init.d</span><br><span class="line">│   └── mysql</span><br><span class="line">├── logrotate.d</span><br><span class="line">│   └── mysql</span><br><span class="line">├── my.cnf</span><br><span class="line">├── my.cnf.d</span><br><span class="line">│   ├── client.cnf</span><br><span class="line">│   ├── enable_encryption.preset</span><br><span class="line">│   ├── mysql-clients.cnf</span><br><span class="line">│   └── server.cnf</span><br><span class="line">└── systemd</span><br><span class="line">    └── system</span><br><span class="line">        └── mariadb.service.d</span><br><span class="line">            └── tokudb.conf</span><br><span class="line"></span><br><span class="line">6 directories, 8 files</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><figcaption><span>my.cnf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat ../sites/mariadb-10.3.8/etc/my.cnf | sed -e <span class="string">"s/#.*//g"</span> | awk <span class="string">'&#123;if (length !=0) print $0&#125;'</span></span><br><span class="line"></span><br><span class="line">[client-server]</span><br><span class="line">!includedir /var/sites/mariadb-10.3.8/etc/my.cnf.d</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><figcaption><span>my.cnf.d/client.cnf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cat /var/sites/mariadb-10.3.8/etc/my.cnf.d/client.cnf | sed -e <span class="string">"s/#.*//g"</span> | awk <span class="string">'&#123;if (length !=0) print $0&#125;'</span></span><br><span class="line"></span><br><span class="line">[client]</span><br><span class="line">port=2306</span><br><span class="line">socket=/var/sites/mariadb-10.3.8/var/mysql.sock</span><br><span class="line">[client-mariadb]</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><figcaption><span>my.cnf.d/server.cnf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">cat /var/sites/mariadb-10.3.8/etc/my.cnf.d/server.cnf | sed -e <span class="string">"s/#.*//g"</span> | awk <span class="string">'&#123;if (length !=0) print $0&#125;'</span></span><br><span class="line"></span><br><span class="line">[server]</span><br><span class="line">[mysqld]</span><br><span class="line">port=2318</span><br><span class="line">socket=/var/sites/mariadb-10.3.8/var/mysql.sock</span><br><span class="line">datadir=/var/sites/mariadb-10.3.8/data</span><br><span class="line">character-set-server=utf8</span><br><span class="line"><span class="built_in">log</span>-output=FILE</span><br><span class="line"><span class="built_in">log</span>-basename=logbase</span><br><span class="line"><span class="built_in">log</span>-error=1</span><br><span class="line">general-log=1</span><br><span class="line">slow-query-log=1</span><br><span class="line">long-query-time=2</span><br><span class="line"><span class="built_in">log</span>-queries-not-using-indexes=1</span><br><span class="line"><span class="built_in">log</span>-bin=1</span><br><span class="line">[galera]</span><br><span class="line">[embedded]</span><br><span class="line">[mariadb]</span><br><span class="line">[mariadb-10.3]</span><br></pre></td></tr></table></figure>
+<h2 id="9.-systemd-unit-file">9. Systemd Unit File</h2>
+<p>编译安装后需要用 Systemd 来管理 MariaDB，默认的 Unit File 在编译目录下分别为 <code>support-files/mariadb.service</code>、<code>support-files/mariadb@.service</code>。其中 <code>mariadb@.service</code> 用来启动多实例服务。分别复制到 <code>/var/sites/mariadb-10.3.8/systemd</code> 目录并修改重命名为 <code>mariadb-10.3.8.service</code>、<code>mariadb-10.3.8@.service</code>，做相应修改后用如下命令启用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /var/sites/mariadb-10.3.8/systemd/</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /root/tmp/build</span><br><span class="line">cp support-files/mariadb.service /var/sites/mariadb-10.3.8/systemd/mariadb-10.3.8.service</span><br><span class="line">cp support-files/mariadb@.service /var/sites/mariadb-10.3.8/systemd/mariadb-10.3.8@.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> /var/sites/mariadb-10.3.8/systemd/mariadb-10.3.8.service</span><br></pre></td></tr></table></figure>
+<p>注：这里并没有直接复制到默认的 Unit File 目录 <code>/etc/systemd/system</code> 下，而是直接通过 <code>systemctl enable</code> 机制创建相关的链接文件。这样的做的好处是所有的配置文件、启动脚集中在一个目录下方便管理。</p>
+<figure class="highlight bash"><figcaption><span>mariadb-10.3.8.service</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">cat /var/sites/mariadb-10.3.8/systemd/mariadb-10.3.8.service | sed -e <span class="string">"s/#.*//g"</span> | awk <span class="string">'&#123;if (length !=0) print $0&#125;'</span></span><br><span class="line"></span><br><span class="line">[Unit]</span><br><span class="line">Description=MariaDB 10.3.8 database server</span><br><span class="line">Documentation=man:mysqld(8)</span><br><span class="line">Documentation=https://mariadb.com/kb/en/library/systemd/</span><br><span class="line">After=network.target</span><br><span class="line">After=syslog.target</span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line">[Service]</span><br><span class="line">Type=notify</span><br><span class="line">PrivateNetwork=<span class="literal">false</span></span><br><span class="line">User=mariadb</span><br><span class="line">Group=mariadb</span><br><span class="line">CapabilityBoundingSet=CAP_IPC_LOCK</span><br><span class="line">ProtectSystem=full</span><br><span class="line">PrivateDevices=<span class="literal">true</span></span><br><span class="line">ProtectHome=<span class="literal">true</span></span><br><span class="line">PermissionsStartOnly=<span class="literal">true</span></span><br><span class="line">ExecStartPre=/bin/sh -c <span class="string">"systemctl unset-environment _WSREP_START_POSITION"</span></span><br><span class="line">ExecStartPre=/bin/sh -c <span class="string">"[ ! -e /usr/local/mariadb-10.3.8/bin/galera_recovery ] &amp;&amp; VAR= || \</span></span><br><span class="line"><span class="string"> VAR=`/usr/local/mariadb-10.3.8/bin/galera_recovery`; [ $? -eq 0 ] \</span></span><br><span class="line"><span class="string"> &amp;&amp; systemctl set-environment _WSREP_START_POSITION=<span class="variable">$VAR</span> || exit 1"</span></span><br><span class="line">ExecStart=/usr/<span class="built_in">local</span>/mariadb-10.3.8/bin/mysqld <span class="variable">$MYSQLD_OPTS</span> <span class="variable">$_WSREP_NEW_CLUSTER</span> <span class="variable">$_WSREP_START_POSITION</span></span><br><span class="line">ExecStartPost=/bin/sh -c <span class="string">"systemctl unset-environment _WSREP_START_POSITION"</span></span><br><span class="line">KillSignal=SIGTERM</span><br><span class="line">SendSIGKILL=no</span><br><span class="line">Restart=on-abort</span><br><span class="line">RestartSec=5s</span><br><span class="line">UMask=007</span><br><span class="line">PrivateTmp=<span class="literal">false</span></span><br><span class="line">LimitNOFILE=16364</span><br></pre></td></tr></table></figure>
+<h2 id="10.-%E5%88%9D%E5%A7%8B%E5%8C%96-mariadb">10. 初始化 MariaDB</h2>
+<p>通过安装目录下的 <code>scripts/mysql_install_db</code> 初始化 MariaDB。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /var/sites/mariadb-10.3.8/data</span><br><span class="line">chown -R mariadb:mariadb /var/sites/mariadb-10.3.8/data</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/mariadb-10.3.8</span><br><span class="line">scripts/mysql_install_db --basedir=/usr/<span class="built_in">local</span>/mariadb-10.3.8 --datadir=/var/sites/mariadb-10.3.8/data --user=mariadb</span><br></pre></td></tr></table></figure>
+<h2 id="11.-%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86">11. 服务管理</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看当前状态</span></span><br><span class="line">systemctl status mariadb-10.3.8</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动</span></span><br><span class="line">systemctl start mariadb-10.3.8</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止</span></span><br><span class="line">systemctl stop mariadb-10.3.8</span><br></pre></td></tr></table></figure>
+<h2 id="12.-%E6%8F%90%E9%AB%98%E5%AE%89%E5%85%A8%E6%80%A7">12. 提高安全性</h2>
+<p>安装目录下的 <code>bin/mysql_secure_installation</code> 用来修改密码、删除匿名用户、取消远程链接。<br>
+注：运行此命令要先启动 MariaDB。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/mariadb-10.3.8</span><br><span class="line">bin/mysql_secure_installation</span><br></pre></td></tr></table></figure>
+<p>GRANT ALL PRIVILEGES ON <em>.</em> TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;<br>
+FLUSH PRIVILEGES;</p>
+<h2 id="13.-%E6%9F%A5%E7%9C%8B%E7%94%A8%E6%88%B7%E8%A1%A8">13. 查看用户表</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[root@localhost ~]<span class="comment"># /usr/local/mariadb-10.3.8/bin/mysql -uroot -p</span></span><br><span class="line">Enter password:</span><br><span class="line">Welcome to the MariaDB monitor.  Commands end with ; or \g.</span><br><span class="line">Your MariaDB connection id is 16</span><br><span class="line">Server version: 10.3.8-MariaDB-log Source distribution</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.</span><br><span class="line"></span><br><span class="line">Type <span class="string">'help;'</span> or <span class="string">'\h'</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">'\c'</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; show databases;</span><br><span class="line">+--------------------+</span><br><span class="line">| Database           |</span><br><span class="line">+--------------------+</span><br><span class="line">| information_schema |</span><br><span class="line">| mysql              |</span><br><span class="line">| performance_schema |</span><br><span class="line">| <span class="built_in">test</span>               |</span><br><span class="line">+--------------------+</span><br><span class="line">4 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.018 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; use mysql;</span><br><span class="line">Reading table information <span class="keyword">for</span> completion of table and column names</span><br><span class="line">You can turn off this feature to get a quicker startup with -A</span><br><span class="line"></span><br><span class="line">Database changed</span><br><span class="line">MariaDB [mysql]&gt; GRANT ALL PRIVILEGES ON *.* TO <span class="string">'root'</span>@<span class="string">'%'</span> IDENTIFIED BY <span class="string">'123456'</span> WITH GRANT OPTION;</span><br><span class="line">Query OK, 0 rows affected (0.001 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [mysql]&gt; DELETE FROM user WHERE user=<span class="string">""</span>;</span><br><span class="line">Query OK, 2 rows affected (0.001 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [mysql]&gt; FLUSH PRIVILEGES;</span><br><span class="line">Query OK, 0 rows affected (0.000 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [mysql]&gt; SELECT Host,User,Password FROM user;</span><br><span class="line">+-----------------------+------+-------------------------------------------+</span><br><span class="line">| Host                  | User | Password                                  |</span><br><span class="line">+-----------------------+------+-------------------------------------------+</span><br><span class="line">| localhost             | root | *FCE33DF678E5F1F5B396FEC65CFB83AF4DBFDD28 |</span><br><span class="line">| localhost.localdomain | root | *FCE33DF678E5F1F5B396FEC65CFB83AF4DBFDD28 |</span><br><span class="line">| 127.0.0.1             | root | *FCE33DF678E5F1F5B396FEC65CFB83AF4DBFDD28 |</span><br><span class="line">| ::1                   | root | *FCE33DF678E5F1F5B396FEC65CFB83AF4DBFDD28 |</span><br><span class="line">| %                     | root | *FCE33DF678E5F1F5B396FEC65CFB83AF4DBFDD28 |</span><br><span class="line">+-----------------------+------+-------------------------------------------+</span><br><span class="line">5 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.001 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [mysql]&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="14.-%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5">14. 参考链接</h2>
+<p>· <a href="https://mariadb.com/" target="_blank" rel="noopener">MariaDB</a><br>
+· <a href="https://mariadb.com/kb/en/" target="_blank" rel="noopener">MariaDB Document</a><br>
+· <a href="https://downloads.mariadb.org/" target="_blank" rel="noopener">MariaDB Download</a><br>
+· <a href="https://www.softwarecollections.org/en/scls/rhscl/devtoolset-7/" target="_blank" rel="noopener">devtoolset-7</a></p>
+
+        </section>
+      </article>
+
+      <div class="clearfix mb-4">
+          
+          <p>
+          <a class="float-left" href="/2018/08/06/memcached/" tabindex="-1"><i class="fas fa-chevron-left"></i> CentOS7 下编译安装 Memcached 1.5 系列</a>
+          </p>
+          
+
+          
+          <p>
+          <a class="float-right" href="/2016/11/01/mac-vmware-network/" tabindex="-1">MacOS VMware 网络设置 <i class="fas fa-chevron-right"></i></a>
+          </p>
+          
+      </div>
+
+  </div>
+
+  <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+
+  <!--
+    <div class="catalog card border-0 mb-4">
+      <div class="card-body p-0">
+        <h4>CATALOG</h4>
+        <div class="catalog-inn"></div>
+      </div>
+    </div>
+  -->
+    
+    <div class="card border-0 mb-4">
+  <div class="card-body p-0">
+    <h4>TAGS</h4>
+    <dl class="tags">
+    <dd><a href="/tags">All</a></dd>
+    
+  <dd><a href="/tags/#Tips">Tips</a></dd>
+
+  <dd><a href="/tags/#Diary">Diary</a></dd>
+
+  <dd><a href="/tags/#Hexo">Hexo</a></dd>
+
+  <dd><a href="/tags/#Tree">Tree</a></dd>
+
+  <dd><a href="/tags/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/tags/#Gif">Gif</a></dd>
+
+  <dd><a href="/tags/#Kap">Kap</a></dd>
+
+  <dd><a href="/tags/#Nvm">Nvm</a></dd>
+
+  <dd><a href="/tags/#Linux">Linux</a></dd>
+
+  <dd><a href="/tags/#Shortcuts">Shortcuts</a></dd>
+
+  <dd><a href="/tags/#Systemd">Systemd</a></dd>
+
+  <dd><a href="/tags/#Promise">Promise</a></dd>
+
+  <dd><a href="/tags/#Google">Google</a></dd>
+
+  <dd><a href="/tags/#Pyenv">Pyenv</a></dd>
+
+  <dd><a href="/tags/#VMware">VMware</a></dd>
+
+  <dd><a href="/tags/#Memcached">Memcached</a></dd>
+
+  <dd><a href="/tags/#SELinux">SELinux</a></dd>
+
+  <dd><a href="/tags/#Electron">Electron</a></dd>
+
+  <dd><a href="/tags/#Yii">Yii</a></dd>
+
+  <dd><a href="/tags/#Shadowsocks">Shadowsocks</a></dd>
+
+  <dd><a href="/tags/#Git">Git</a></dd>
+
+  <dd><a href="/tags/#Travis CI">Travis CI</a></dd>
+
+  <dd><a href="/tags/#Grunt">Grunt</a></dd>
+
+  <dd><a href="/tags/#Rsync">Rsync</a></dd>
+
+  <dd><a href="/tags/#Markdown">Markdown</a></dd>
+
+  <dd><a href="/tags/#Emoji">Emoji</a></dd>
+
+  <dd><a href="/tags/#Jupyter">Jupyter</a></dd>
+
+  <dd><a href="/tags/#MariaDB">MariaDB</a></dd>
+
+  <dd><a href="/tags/#Ansible">Ansible</a></dd>
+
+  <dd><a href="/tags/#Bash">Bash</a></dd>
+
+    </dl>
+  </div>
+</div>
+    <div class="card border-0 mb-4">
+  <div class="card-body p-0">
+    <h4>CATEGORIES</h4>
+    <dl class="tags">
+    <dd><a href="/categories">All</a></dd>
+    
+  <dd><a href="/categories/#Tips">Tips</a></dd>
+
+  <dd><a href="/categories/#Diary">Diary</a></dd>
+
+  <dd><a href="/categories/#Node.js">Node.js</a></dd>
+
+  <dd><a href="/categories/#Linux">Linux</a></dd>
+
+  <dd><a href="/categories/#VS Code">VS Code</a></dd>
+
+  <dd><a href="/categories/#MacOS">MacOS</a></dd>
+
+  <dd><a href="/categories/#Node.Js">Node.Js</a></dd>
+
+  <dd><a href="/categories/#Javascript">Javascript</a></dd>
+
+  <dd><a href="/categories/#Google">Google</a></dd>
+
+  <dd><a href="/categories/#Python">Python</a></dd>
+
+  <dd><a href="/categories/#VMware">VMware</a></dd>
+
+  <dd><a href="/categories/#CentOS">CentOS</a></dd>
+
+  <dd><a href="/categories/#Php">Php</a></dd>
+
+  <dd><a href="/categories/#Git">Git</a></dd>
+
+  <dd><a href="/categories/#Hexo">Hexo</a></dd>
+
+  <dd><a href="/categories/#MacOS">MacOS</a></dd>
+
+  <dd><a href="/categories/#Memcached">Memcached</a></dd>
+
+  <dd><a href="/categories/#Yii">Yii</a></dd>
+
+  <dd><a href="/categories/#Travis CI">Travis CI</a></dd>
+
+  <dd><a href="/categories/#MariaDB">MariaDB</a></dd>
+
+  <dd><a href="/categories/#Ansible">Ansible</a></dd>
+
+    </dl>
+  </div>
+</div>
+    <div class="card border-0 mb-4">
+  <div class="card-body p-0">
+    <h4>ARCHIVES</h4>
+    <dl class="tags">
+    <dd><a href="/archives">All</a></dd>
+    
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+  <dd><a href="/archives/#2015">2015</a></dd>
+
+  <dd><a href="/archives/#2016">2016</a></dd>
+
+  <dd><a href="/archives/#2018">2018</a></dd>
+
+  <dd><a href="/archives/#2019">2019</a></dd>
+
+    </dl>
+  </div>
+</div>
+    
+  </div>
+</div>
+</div>
+
+    <footer class="footer">
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+
+          <div class="text-center">
+            <p>
+  <a href="https://github.com/garryshield" target="_blank" class="fa-stack fa-1x">
+    <i class="fas fa-circle fa-stack-2x"></i>
+    <i class="fab fa-github-alt fa-stack-1x fa-inverse"></i>
+  </a>
+  <a href="https://twitter.com/garry_shield" target="_blank" class="fa-stack fa-1x">
+    <i class="fas fa-circle fa-stack-2x"></i>
+    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+  </a>
+  <a href="https://www.zhihu.com/people/garryshield" target="_blank" class="fa-stack fa-1x">
+    <i class="fas fa-circle fa-stack-2x"></i>
+    <i class="fa fa-stack-1x fa-inverse">知</i>
+  </a>
+</p>
+            <p class="mb-4"></p>
+            <p>Copyright © Garry Shield 2018 </p>
+<p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> and <a href="https://github.com/twbs/bootstrap" target="_blank">Bootstrap</a></p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+      
+    </footer>
+
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Search" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+    
+    <script src="/assets/js/libs.min.js"></script>
+    <script src="/assets/js/main.min.js"></script>
+  </body>
+</html>
