@@ -2,32 +2,24 @@ language: node_js
 node_js: stable
 cache:
   directories:
-    - node_modules
+  - node_modules
 install:
-  - npm install
+- npm install
 script:
-  - hexo generate
+- hexo generate
 after_success:
-  - echo ${USER_NAME}
-  - echo ${USER_EMAIL}
-  - echo ${GH_TOKEN}
-  - echo ${GH_REF}
-  
-  - echo https://${GH_TOKEN}@${GH_REF}
-# - cd public
-# - git init
-# - git config user.name "${USER_NAME}"
-# - git config user.email "${USER_EMAIL}"
-# - git add .
-# - git commit --allow-empty -m 'update site'
-# - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+- echo ${USER_NAME}
+- echo ${USER_EMAIL}
+- echo ${GH_TOKEN}
+- echo ${GH_REF}
+- echo https://${GH_TOKEN}@${GH_REF}
 branchs:
   only:
-    - dev
+  - dev
 env:
   global:
-    - USER_NAME="garryshield"
-    - USER_EMAIL="749291704@qq.com"
-    - REPO="garryshield.github.io"
-    - GH_REF="github.com/${USER_NAME}/${REPO}.git"
-    - secure: bzyctlafdj8KHTiTI5nxZgtAYap8jlaLJ94LvUfIN6SuzlWYqY/PAKIXOI8lopXNc21Mewpc9CnG4kmyA0df+yrGEw8Y7UiPMJM53xQWSDlcZLPO6fx3pk7tdqEgrfGW72+UcKqgIMRTjDSdmZGi7YwBJBYB/iLjBFrHESVkM5kI0NvPmesGRtcLdhHb2sPqPpbLzEuRJaHlHOvu1g69nLe+6UkcXtG5EcA3QJuVSebihLXSKXPQnuoU9qbgIxYqNdXXuiDg4JY6of/StOOWsGlNhj33JLkkaMtiHFxNcDrm1f5hjgxP61eyUmD4BN2NkG9tUp0L4C2s3yGQu6jP3CsigAONLMPSOIJAYMFKoRcktTEacutiYqtYcJxsapDXxYrWifEKOps0HbsaK7FBBn+35LPPpK3IJqe0xyHbjiJlKD7Xo0ooI7qfll4GtEZo2LkKdtPANS3DAec6rdqtUpl4+P8MXoRjJh228ZCvBPbDkZJlt6/9FqOeu9neNeCAs+aAjDbK+oJf7XOSUJXN/mTmSsI25bxarvZ+rCq0EHoEM30T7oXGePBy8G3McqAayUIGeXWy7B7yoqT5RF65DfBJjaZrFA2jsK/u6vHDxHUQ5w9Pvf+MEFWDnVmUs8hMZf5XV5Gidoo/jPDIC3JY7urQR0rmar9rmuMYIWTzUiQ=
+  - USER_NAME="garryshield"
+  - USER_EMAIL="749291704@qq.com"
+  - REPO="garryshield.github.io"
+  - GH_REF="github.com/${USER_NAME}/${REPO}.git"
+  - secure: XT2vIpzCyImBuWiJ2BeoUDoIrOYrVI0S/OrFTevoVRrMYZ1XOvLsgF2m175+MQyPi6YZJ4nn6ul+cowru32ltGD73i1H2L512UY/ePlH+FSMfRrxWPvhJZMWQLTT8Xonpd83j0ds7Bl+p/OndtitGcPFF3BN1pinvTgvMdZ5ldidYaq95VN9WJ0UU/Xgzz586Qtm7NDOdfr/zNyOlnf/ci66bbcopKJHZwMmo7akNT5rlxlA+6irmuJqzyjuDpjBFAp6Aj1+ZiRwtEWiZbjJ1Nv8DqpvM2INv7cXis598crvgsMBYfvmQjzWzadFosm6NWSxC3aetuUWPLB8zYJNN/Hm9MjvRtUzQAQUPx/50/cKcxxfjcxGZlCHx2dsThJVcOpX1Q57osSeHie349+yYDYUNkEbSTX7eQhwLlkr0fmUEKVZ+HZyoIYs1vn5gAWfAe16RylBKQAWZEiwvNsgbQiB6VdlFvYglKCrG+ua+ts8ccfqtGlu2mV64eqcOyANOJUKoXzcXQjkZRpEtsW4QmlrzGlru3UibVOvdD7HY2vcP0kH6IKHCc6+UY8xsXIGcTcGNbewKVTcDVBOCMGK2D4dLrTx6EpCsZdqr8gvhgUfHMO4+rn/w7opjrszHpTPERDOeKXEwKe4YM5MzySUCP0VsYfjeB52bsWCo5hFMbk=
